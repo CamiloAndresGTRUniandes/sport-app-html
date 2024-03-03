@@ -7,18 +7,18 @@ import { IMAGES } from "../constants/theme";
 
 const dataBlog = [
   {
-    image: IMAGES.portfolio1,
-    title: "Fitness – Workout Exercises for Fat Loss",
+    image: IMAGES.aboutman,
+    title: "Fitness - Ejercicios para perder grasa",
     changestyle: "box-1",
   },
   {
-    image: IMAGES.portfolio2,
-    title: "The Worst Advices We've Heard For Health.",
+    image: IMAGES.aboutPic,
+    title: "Fitness - Planes alimentarios",
     changestyle: "box-2",
   },
   {
-    image: IMAGES.portfolio3,
-    title: "Fitness – Workout Exercises for Fat Loss",
+    image: IMAGES.footergril1,
+    title: "Fitness – Eventos de entrenamietos",
     changestyle: "box-3",
   },
 ];

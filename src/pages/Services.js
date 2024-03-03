@@ -8,14 +8,14 @@ import PageTitle from '../elements/PageTitle';
 import WorkoutSlider from '../elements/WorkoutSlider';
 
 const  wrapperBlog = [
-    {title:"Right Nutrition", image:IMAGES.boxlog1},
-    {title:"Health & Fitness", image:IMAGES.boxlog2},
-    {title:"Gym & Exercise", image:IMAGES.boxlog3},
-    {title:"Health Motivation", image:IMAGES.boxlog4},
-    {title:"Healthy Heart", image:IMAGES.boxlog5},
-    {title:"Smoothie & Juice", image:IMAGES.boxlog6},
-    {title:"Yoga & Exercise", image:IMAGES.boxlog7},
-    {title:"Health Motivation", image:IMAGES.boxlog8},
+    {title:"Nutricion", image:IMAGES.boxlog1},
+    {title:"Planes personalizados ", image:IMAGES.boxlog2},
+    {title:"Elementos deportivos", image:IMAGES.boxlog3},
+    {title:"Motivacion y salud", image:IMAGES.boxlog4},
+    {title:"Corazon saludable", image:IMAGES.boxlog5},
+    {title:"Planes alimentarios", image:IMAGES.boxlog6},
+    {title:"Ejercicios ", image:IMAGES.boxlog7},
+    {title:"Suplementos y dieta", image:IMAGES.boxlog8},
 ];
 
 const Services = () => {
@@ -39,8 +39,8 @@ const Services = () => {
                                         </div>
                                         <div className="icon-content">
                                             <h5 className="dz-title m-b10"><Link to={"#"}>{item.title}</Link></h5>
-                                            <p className="m-b25">Aliquam sit amet volutpat sem, eget aliquet odio. Integer lobortis sed.</p>
-                                            <Link to={"/services-details"} className="btn btn-primary shadow-primary btn-skew"><span>Read More</span></Link>
+                                            
+                                            <Link to={"/services-details"} className="btn btn-primary shadow-primary btn-skew"><span>Leer mas</span></Link>
                                         </div>
                                     </div>
                                 </div>
@@ -65,8 +65,8 @@ const Services = () => {
                 <section className="content-inner-1 testimonial-wrapper1" data-text="FEEDBACK" style={{backgroundImage: "url("+ IMAGES.BgImage2 +")", backgroundPosition: "center"}}>
                     <div className="container">
                         <div className="section-head text-center">
-                            <h5 className="sub-title">TESTIMONIAL</h5>
-                            <h2 className="title">What Client Say’s</h2>
+                            <h5 className="sub-title">TESTIMONIOS</h5>
+                            <h2 className="title">Opiniones</h2>
                         </div>
                         <ClientSlider />
 

@@ -10,26 +10,25 @@ const Home2Banner = ({ open }) => {
         style={{ backgroundImage: `url(${IMAGES.SliderBg2})` }}
       >
         <h2 className="data-text">
-          <span>F</span>
-          <span>I</span>
+          <span>S</span>
+          <span>P</span>
+          <span>O</span>
+          <span>R</span>
           <span>T</span>
-          <span>N</span>
-          <span>E</span>
-          <span>S</span>
-          <span>S</span>
+          <span>A</span>
+          <span>P</span>
+          <span>P</span>
         </h2>
         <div className="container">
           <div className="banner-content">
             <h1 className="title">
-              <span className="left anm wow fadeInUp">KEEP</span>
-              <span className="right anm wow fadeInUp">TRAINING</span>
+              <span className="right anm wow fadeInUp"> SPORTAPP</span>
             </h1>
             <div className="row wow fadeInUp" data-wow-delay="0.4s">
               <div className="col-4">
                 <div className="bottom-content">
                   <p>
-                    Whether your aim is to loose weight, tone up, gain weight we
-                    can put together Link gym programe or recommend.
+                    ¡Transforma tu estado físico con SPORTAPP, tu compañero definitivo para alcanzar tus metas de bienestar!
                   </p>
                 </div>
               </div>
