@@ -56,7 +56,7 @@ export const IMAGES = {
   aboutgirl: require("../assets/images/about/girl.png"),
   aboutman: require("../assets/images/about/man.png"),
   boxpic1: require("../assets/images/about/image-box/pic1.jpg"),
-  boxpic2: require("../assets/images/about/image-box/pic2.jpg"),
+  boxpic2: require("../assets/images/about/danielTrainer.jpg"),
   sliderpic1: require("../assets/images/main-slider/slider1/pic1.png"),
   footerbg: require("../assets/images/background/footer-bg.png"),
   footergril1: require("../assets/images/footer-girl1.png"),
@@ -179,7 +179,25 @@ export const IMAGES = {
   portfolioPic8: require("../assets/images/portfolio/pic8.png"),
   portfolioPic9: require("../assets/images/portfolio/pic9.png"),
   portfolioPic10: require("../assets/images/portfolio/pic10.png"),
+
+  //Acerca de nosotros
+
+
+  aboutExcercise1: require("../assets/images/about/aboutExcercise1.PNG"),
+  aboutElisa: require("../assets/images/about/aboutElisa.png"),
+  aboutElisa2: require("../assets/images/about/aboutElisa2.png"),
+  aboutElisa3: require("../assets/images/about/aboutElisa3.png"),
+  aboutElisa4: require("../assets/images/about/aboutElisa4.png"),
+  vegetales: require("../assets/images/about/vegetales.jpg"),
+  ejercicio1: require("../assets/images/about/Ejericio1.jpg"),
+  ejercicio2: require("../assets/images/about/Ejericio2.jpg"),
+  ejercicio3: require("../assets/images/about/Ejericio3.jpg"),
+  ejercicio4: require("../assets/images/about/Ejericio4.jpg"),
+  danielTrainer: require("../assets/images/about/danielTrainer.jpg"),
+  yonisTrainer: require("../assets/images/about/yonis.jpg"),
+  camiloTrainer: require("../assets/images/about/camilo.jpg"),
 };
+
 
 export const SVGICON = {
   map: (

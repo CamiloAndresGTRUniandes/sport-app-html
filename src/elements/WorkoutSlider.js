@@ -8,7 +8,7 @@ import { IMAGES } from "../constants/theme";
 const dataBlog = [
   {
     image: IMAGES.aboutman,
-    title: "Fitness - Ejercicios para perder grasa",
+    title: "Fitness – Workout Exercises for Fat Loss",
     changestyle: "box-1",
   },
   {
@@ -17,8 +17,8 @@ const dataBlog = [
     changestyle: "box-2",
   },
   {
-    image: IMAGES.footergril1,
-    title: "Fitness – Eventos de entrenamietos",
+    image: IMAGES.vegetales,
+    title: "Fitness – Ejercicios de entrenamiento para perder grasa",
     changestyle: "box-3",
   },
 ];

@@ -141,11 +141,11 @@ const Footer2 = () => {
               <span className="copyright-text">
                 Copyright © {update.getFullYear()}{" "}
                 <Link
-                  to="https://dexignzone.com/"
+                  to="https://uniandes.edu.co/"
                   rel="noreferrer"
                   target="_blank"
                 >
-                  DexignZone
+                  Grupo  13
                 </Link>
                 . All rights reserved.
               </span>

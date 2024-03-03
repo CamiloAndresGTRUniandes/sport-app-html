@@ -31,24 +31,23 @@ const ContactUs = () => {
   return (
     <>
       <div className="page-content bg-white">
-        <PageTitle activePage="Contact Us" parentTitle="Home" />
+        <PageTitle activePage="Contactanos" parentTitle="Home" />
         <section className="content-inner-2 z-index-none">
           <div className="container">
             <div className="row align-items-center">
               <div className="col-md-6 col-xl-5 m-sm-b30 m-xl-b0">
                 <div className="contact-box">
-                  <h3 className="contact-title">Contact Information</h3>
+                  <h3 className="contact-title">Informaci&oacute;n de Contacto </h3>
                   <p className="contact-text">
-                    Fill up the form and our Team will get back to you within 24
-                    hours.
+                   Llena la informaci&oacute;n y nuestro equipo se comunicara contigo
+                    O llama a nuestros telefonos
                   </p>
                   <div className="widget widget_getintuch ">
                     <ul>
                       <li>
                         <i className="fa-solid fa-location-dot"></i>
                         <p>
-                          832 Thompson Drive, San Fransisco CA 94107, United
-                          States
+                          Puerto  boyaca calle 9 #13 -25
                         </p>
                       </li>
                       <li>
@@ -57,7 +56,7 @@ const ContactUs = () => {
                       </li>
                       <li>
                         <i className="fa-solid fa-envelope"></i>
-                        <p>support@BodyShape.com</p>
+                        <p>elisamendel@andes.edu.co</p>
                       </li>
                     </ul>
                   </div>
@@ -150,7 +149,7 @@ const ContactUs = () => {
                           required
                           type="text"
                           className="form-control"
-                          placeholder="First Name"
+                          placeholder="Nombre"
                         />
                       </div>
                     </div>
@@ -161,7 +160,7 @@ const ContactUs = () => {
                           required
                           type="text"
                           className="form-control"
-                          placeholder="Last Name"
+                          placeholder="Apellido"
                         />
                       </div>
                     </div>
@@ -172,7 +171,7 @@ const ContactUs = () => {
                           required
                           type="text"
                           className="form-control"
-                          placeholder="Your Email Address"
+                          placeholder="Tu correo"
                         />
                       </div>
                     </div>
@@ -194,7 +193,7 @@ const ContactUs = () => {
                           rows="5"
                           required
                           className="form-control"
-                          placeholder="Message..."
+                          placeholder="Mensaje..."
                         ></textarea>
                       </div>
                     </div>
@@ -205,7 +204,7 @@ const ContactUs = () => {
                         value="Submit"
                         className="btn btn-primary btn-lg btn-skew"
                       >
-                        <span>Send Message</span>
+                        <span>Contactenos</span>
                       </button>
                     </div>
                   </div>

@@ -5,24 +5,23 @@ import NewsLetter from "../elements/NewsLetter";
 import PageTitle from "../elements/PageTitle";
 
 const mediaBlog = [
-  { images: IMAGES.team1, title: "EMILY" },
-  { images: IMAGES.team2, title: "EMMA" },
-  { images: IMAGES.team3, title: "OLIVER" },
-  { images: IMAGES.team4, title: "ELIJAH" },
-  { images: IMAGES.team5, title: "JAMES" },
-  { images: IMAGES.team6, title: "AMELIA" },
+  { images: IMAGES.aboutElisa3, title: "Elisa", position:"SCRUM-Frontend" },
+  { images: IMAGES.yonisTrainer, title: "Yonis" , position:"Backend"},
+  { images: IMAGES.danielTrainer, title: "Daniel", position:"Mobile-Frontend" },
+  { images: IMAGES.camiloTrainer, title: "Camilo", position:"Backend" },
+  
 ];
 
 const Team = () => {
   return (
     <>
       <div className="page-content bg-white">
-        <PageTitle parentTitle="Pages" activePage="Our Team" />
+        <PageTitle parentTitle="Pages" activePage="Nuestro equipoo" />
         <section className="content-inner">
           <div className="container">
             <div className="row ">
               {mediaBlog.map((item, index) => (
-                <div className="col-lg-4 col-sm-6 m-b30" key={index}>
+                <div className="col-lg-6 col-sm-6 m-b30" key={index}>
                   <div className="dz-team style-1">
                     <div className="dz-media">
                       <Link to={"#"}>
@@ -60,7 +59,7 @@ const Team = () => {
                     </div>
                     <div className="dz-content ">
                       <h4 className="dz-name">{item.title}</h4>
-                      <span className="dz-position">Yoga trainer</span>
+                      <span className="dz-position">{item.position}</span>
                     </div>
                   </div>
                 </div>
