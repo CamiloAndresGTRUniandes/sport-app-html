@@ -39,32 +39,31 @@ const Appointment = () => {
                         <div className="container">
                             <div className="section-head">
                                 <span className="sub-title">Get in Touch</span>
-                                <h2 className="title">Schedule An <span>Appointment</span></h2>
+                                <h2 className="title">Agenda una <span>Cita</span></h2>
                             </div>
                             <form className="appointment-form dzForm" ref={form} onSubmit={sendEmail}>
                                 
                                 <p className="appointment-text">
-                                    Hey, My Name is{"  "}
-                                    <input name="dzFirstName" required type="text" className="form-control" placeholder="Name" /> {" "}
-                                    And i'm looking for                                    
+                                    Hola, Mi Nombre es{"  "}
+                                    <input name="dzFirstName" required type="text" className="form-control" placeholder="Nombre" /> {" "}
+                                    y estoy buscando
                                     <Select 
                                         options={options} 
                                         defaultValue={options[0]}
                                         isSearchable = {false}
-                                        //menuIsOpen = {true}
                                         
                                         className="custom-react-select ms-2"
                                     />
                                    
-                                    Get in consult with us at {" "}
-                                    <input name="dzEmail" required type="text"  className="form-control" placeholder="Your Email ID Here"/> {" "}
+                                   Ponte en contacto con nosotros en {" "}
+                                    <input name="dzEmail" required type="text"  className="form-control" placeholder="Tu  correo electrónico aquí"/> {" "}
                                     !
                                 </p>
                                 <div className="form-check">
                                     <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />{" "}
-                                    <label className="form-check-label" for="flexCheckDefault">I here by accept all terms and conditions.</label>
+                                    <label className="form-check-label" for="flexCheckDefault">Por la presente acepto todos los términos y condiciones.</label>
                                 </div>
-                                <button name="submit" type="submit" value="Submit" className="btn btn-primary btn-lg btn-skew"><span>Appointment</span></button>
+                                <button name="submit" type="submit" value="Submit" className="btn btn-primary btn-lg btn-skew"><span>Agendar</span></button>
                             </form>
                         </div>
                     </section>
@@ -72,7 +71,7 @@ const Appointment = () => {
                 <footer className="site-footer style-1 bg-img-fix footer-action" id="footer">
                     <div className="footer-bottom">
                         <div className="text-center"> 
-                            <span className="copyright-text">Copyright © 2023 <Link to="https://dexignzone.com/" target="_blank" rel="noreferrer" >DexignZone</Link>. All rights reserved.</span> 
+                            <span className="copyright-text">Copyright © 2023 <Link to="https://uniandes.edu.co/" target="_blank" rel="noreferrer" >Grupo  13</Link>. Todos  los derechos reservados</span> 
                         </div>
                     </div>
                 </footer>

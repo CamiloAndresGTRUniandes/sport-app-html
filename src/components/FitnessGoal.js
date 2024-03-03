@@ -8,33 +8,39 @@ const FitnessGoal = ({isOpenModal}) => {
         <>
             <div className="col-lg-6 about-content m-b30">
                 <div className="section-head m-0">
-                    <span className="sub-title">ABOUT US</span>
-                    <h2 className="title">We Help To Get <span>Fitness</span> Goal</h2>
-                    <p className="m-0">We are an independent gym that is committed to working with you to gain the results you want. Whether your aim is to loose weight</p>
+                    <span className="sub-title">Acerca de nosotros</span>
+                    <h2 className="title">Ayudanos a conseguir el objetivo <span>Fitness</span> </h2>
+                    <p className="m-0">
+                        
+                    Somos sport app y deseamos trabajar contigo para obtener los resultados que deseas. Si tu objetivo es perder peso, nutrici&oacute;n 
+                    Estamos para servirte  con nuestros eventos  y activadades para ti :)
+</p>
                 </div>
                 <div className="" data-wow-delay="0.8s">
                     <Tab.Container defaultActiveKey={'Mission'}>
                         <Nav as="ul" className="nav nav-tabs style-1 m-b20 m-t30">
                             <Nav.Item as="li" className="nav-item">
                                 <Nav.Link className="nav-link" eventKey={'Mission'}>
-                                    <span>Our Mission</span>
+                                    <span>Nuestra misi&oacute;n</span>
                                 </Nav.Link>
                             </Nav.Item>
                             <Nav.Item as="li" className="nav-item">
                                 <Nav.Link className="nav-link" eventKey={'Vision'}>
-                                    <span>Our Vision</span>
+                                    <span>Nuestra  Visi&oacute;n</span>
                                 </Nav.Link>
                             </Nav.Item>
                         </Nav>
                         <Tab.Content className="tab-content m-sm-b30 m-b40 p-r30" id="myTabContent">
                             <Tab.Pane eventKey={'Mission'}>
                                 <div className="content">
-                                    <p>We are an independent gym that is committed to working with you to gain the results you want. Whether your aim is to loose weight, tone up, build bulk or gain weight we can put together a gym programme or recommend.</p>
+                                    <p>Ser la compañía líder en Latinoamérica que inspira y acompaña a las personas a alcanzar sus sueños de bienestar a través del ejercicio y la vida saludable. </p>
                                 </div>
                             </Tab.Pane>
                             <Tab.Pane eventKey={'Vision'}>
                                 <div className="content">
-                                    <p>Nunc vulputate urna ut erat posuere accumsan. Curabitur ut commodo mauris, ac volutpat dui. Nullam eget enim ut mi bibendum ultrices. Pellentesque non feugiat nisi. Nam aliquam accumsan ante, ut accumsan risus together.</p>
+                                    <p>Ser la primera plataforma de asesoria en latinoamerica, que permite a nuestros usuarios obtener sus metas fisicas asesorados por nuestros asociados y expertos
+                                    Ser la plataforma líder en Latinoamérica que transforma vidas a través de asesorías personalizadas en fitness y bienestar, conectando a usuarios con expertos apasionados por su salud.
+                                    </p>
                                 </div>
                             </Tab.Pane>
                         </Tab.Content>
@@ -43,8 +49,8 @@ const FitnessGoal = ({isOpenModal}) => {
                 <div className="contact-us">
                     <span className="icon"><i className="fa-solid fa-phone"></i></span>
                     <div className="content">
-                        <span>Call us for help</span>
-                        <h4 className="number">12 452 1505</h4>
+                        <span>Llámanos para ayudarte</span>
+                        <h4 className="number">+57 311 69 96 12 31</h4>
                     </div>
                 </div>
             </div>
@@ -52,10 +58,13 @@ const FitnessGoal = ({isOpenModal}) => {
                 <div className="dz-media">
                     <div className="image-box">
                         <div className="video-bx1 h-auto w-auto overflow-visible">
-                            <img src={IMAGES.boxpic1} alt="" />
+                            <img src={IMAGES.aboutExcercise1} alt="" />
                             <div className="video-btn sm">
-                                <Link to={"#"} className="popup-youtube" 
-                                    onClick={()=> isOpenModal(true)} >
+                                
+                                <Link to={"https://www.youtube.com/watch?v=ZMO_XC9w7Lw"} className="popup-youtube" 
+                                    onClick={()=> isOpenModal(true)} 
+                                    target='_blank' rel="noopener noreferrer"
+                                    >
                                     <i className="fa fa-play"/>
                                 </Link> 
                             </div>
@@ -67,7 +76,7 @@ const FitnessGoal = ({isOpenModal}) => {
                     <div className="image-box">
                         <img src={IMAGES.boxpic2} alt="" />
                         <div className="info-box">
-                            <span><i className="flaticon-athletics text-primary"></i> Proffesional Trainer</span>
+                            <span><i className="flaticon-athletics text-primary"></i> Entranador Profesional</span>
                         </div>
                     </div>
                 </div>

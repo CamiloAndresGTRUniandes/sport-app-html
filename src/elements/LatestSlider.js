@@ -7,21 +7,21 @@ import { IMAGES } from "../constants/theme";
 
 const dataBlog = [
   {
-    image1: IMAGES.bloggrid1,
+    image1: IMAGES.ejercicio1,
     image2: IMAGES.avatar1,
     author: "Jone Doe",
     title: "How to keep your Body.",
     date: "17 May 2023",
   },
   {
-    image1: IMAGES.bloggrid2,
+    image1: IMAGES.ejercicio2,
     image2: IMAGES.avatar2,
     author: "Frenchi",
     title: "The Philosophy Of FITNESS.",
     date: "18 May 2023",
   },
   {
-    image1: IMAGES.bloggrid3,
+    image1: IMAGES.ejercicio3,
     image2: IMAGES.avatar3,
     author: "Bucher",
     title: "Best 50 Tips For FITNESS.",
@@ -49,7 +49,7 @@ function LatestSlider() {
         <div className="col-xl-7">
           <div className="section-head text-center text-md-start">
             <h2 className="title">
-              Latest <span>News Feed</span>
+              Ultimos <span>Noticias</span>
             </h2>
           </div>
         </div>

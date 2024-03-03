@@ -93,11 +93,11 @@ const ComingSoon = () => {
             </Link>
           </div>
           <h1 className="dz-head">
-            We Are Coming <span className="text-primary">Soon !</span>
+            Estaremos en nuestro proximo evento <span className="text-primary">Pronto !</span>
           </h1>
           <p>
-            We`ll be here soon with our new awesome site, subscribe to be
-            notified.
+          Estaremos aquí pronto con nuestro nuevo e increíble sitio, suscríbete para estar
+             notificado.
           </p>
           <div className="countdown countdown-timer">
             <div className="date clock-days">
@@ -112,7 +112,7 @@ const ComingSoon = () => {
                 <p className="val">{timerDays}</p>
               </div>
               <span className="type-days type-time" data-border-color="#000">
-                Days
+                Dias
               </span>
             </div>
             <div className="date clock-hours">
@@ -127,7 +127,7 @@ const ComingSoon = () => {
                 <p className="val">{timerHours}</p>
               </div>
               <span className="type-hours type-time" data-border-color="#000">
-                Hours
+                Horas
               </span>
             </div>
             <div className="date clock-minutes">
@@ -142,7 +142,7 @@ const ComingSoon = () => {
                 <p className="val">{timerMinutes}</p>
               </div>
               <span className="type-minutes type-time" data-border-color="#000">
-                Minutes
+                Minutos
               </span>
             </div>
             <div className="date clock-seconds">
@@ -157,13 +157,13 @@ const ComingSoon = () => {
                 <p className="val">{timerSeconds}</p>
               </div>
               <span className="type-seconds type-time" data-border-color="#000">
-                Second
+                Segundos
               </span>
             </div>
           </div>
           <Link to={"/contact-us"} className="btn btn-primary btn-skew m-r15">
             {" "}
-            <span>GET IN TOUCH</span>
+            <span>PONERSE EN CONTACTO</span>
           </Link>{" "}
           <Link
             to={"#"}
@@ -171,7 +171,7 @@ const ComingSoon = () => {
             data-bs-target="#SubscribeModal"
             className="btn btn-skew btn-secondary ms-3"
           >
-            <span>SUBSCRIBE NOW</span>
+            <span>SUBSCRIBETE YA</span>
           </Link>
         </div>
         <img className="shape1 rotate-360" src={IMAGES.circlesvg1} alt="" />

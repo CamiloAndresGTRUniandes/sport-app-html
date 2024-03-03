@@ -7,18 +7,18 @@ import { IMAGES } from "../constants/theme";
 
 const dataBlog = [
   {
-    image: IMAGES.portfolio1,
-    title: "Fitness – Workout Exercises for Fat Loss",
+    image: IMAGES.aboutElisa2,
+    title: "Fitness – Ejercicios de entrenamiento para perder grasa",
     changestyle: "box-1",
   },
   {
-    image: IMAGES.portfolio2,
-    title: "The Worst Advices We've Heard For Health.",
+    image: IMAGES.boxpic2,
+    title: "Salud - Los mejores consejos que hemos escuchado para la salud.",
     changestyle: "box-2",
   },
   {
-    image: IMAGES.portfolio3,
-    title: "Fitness – Workout Exercises for Fat Loss",
+    image: IMAGES.vegetales,
+    title: "Fitness – Ejercicios de entrenamiento para perder grasa",
     changestyle: "box-3",
   },
 ];

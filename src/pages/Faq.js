@@ -50,7 +50,7 @@ const Faq = () => {
     return (
         <>
             <div className="page-content bg-white">
-                <PageTitle activePage="Faq" parentTitle="Pages" />
+                <PageTitle activePage="Preguntas" parentTitle="Pages" />
                 <section className="content-inner-1 overflow-hidden">
                     <div className="container">
                         <div className="row">                            

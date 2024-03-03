@@ -155,7 +155,7 @@ const ServicesDetails = () => {
                           to={"/contact-us"}
                           className="btn btn-dark btn-skew"
                         >
-                          <span>Contact Us</span>
+                          <span>Contactanos   </span>
                         </Link>
                       </div>
                     </div>
