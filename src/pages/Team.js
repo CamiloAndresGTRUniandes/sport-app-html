@@ -21,7 +21,7 @@ const Team = () => {
           <div className="container">
             <div className="row ">
               {mediaBlog.map((item, index) => (
-                <div className="col-lg-4 col-sm-6 m-b30" key={index}>
+                <div className="col-lg-6 col-sm-6 m-b30" key={index}>
                   <div className="dz-team style-1">
                     <div className="dz-media">
                       <Link to={"#"}>
