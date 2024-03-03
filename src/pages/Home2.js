@@ -109,7 +109,7 @@ const Home2 = () => {
           <div className="container">
             <div className="section-head style-1 text-center">
               <h2 className="title">
-                Latest <span className="text-primary">News Feed</span>
+                Ultimas <span className="text-primary">Noticias</span>
               </h2>
             </div>
             <OurBlog />
@@ -127,7 +127,7 @@ const Home2 = () => {
             <div className="inner-content wow fadeInUp" data-wow-delay="0.8s">
               <div className="row justify-content-between align-items-center">
                 <div className="text-center text-lg-start col-xl-6 m-lg-b20">
-                  <h2 className="title">Subscribe To Our Newsletter</h2>
+                  <h2 className="title">Subscribete a SPORTAPP</h2>
                   <p>
                     It is a long established fact that a reader will distracted.
                   </p>
@@ -158,7 +158,7 @@ const Home2 = () => {
                             onClick={(e) => e.preventDefault()}
                             className="btn btn-secondary btn-lg btn-skew"
                           >
-                            <span>Subscribe Now</span>
+                            <span>Subscribirse</span>
                           </button>
                         </div>
                       </div>

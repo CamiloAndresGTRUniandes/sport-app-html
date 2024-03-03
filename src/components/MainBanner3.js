@@ -6,13 +6,14 @@ const MainBanner3 = ({ open }) => {
   return (
     <>
       <h2 className="data-text style-2 anm wow fadeInUp">
-        <span>F</span>
-        <span>I</span>
+        <span>S</span>
+        <span>P</span>
+        <span>O</span>
+        <span>R</span>
         <span>T</span>
-        <span>N</span>
-        <span>E</span>
-        <span>S</span>
-        <span>S</span>
+        <span>A</span>
+        <span>P</span>
+        <span>P</span>
       </h2>
       <div className="container">
         <div className="row">

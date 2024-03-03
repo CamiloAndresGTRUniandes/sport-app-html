@@ -19,8 +19,10 @@ const DzInfo1 = ({title, subtitle}) =>{
                 <div className="clearfix text-white">
                     <span className="text-primary subtitle">{title}</span>
                     <h4 className="title text-white">{subtitle}</h4>
-                    <p>Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus maecenas</p>
-                    <Link to={"/services-details"} className="btn btn-primary btn-skew"><span>Read More</span></Link>
+                    <p>
+                    Mejora la aptitud física general de las personas. Esto se logra a través de un entrenamiento variado e intenso que trabaja diferentes capacidades física
+                    </p>
+                    <Link to={"/services-details"} className="btn btn-primary btn-skew"><span>Leer mas</span></Link>
                 </div>
             </div>
         </div>        
@@ -33,8 +35,8 @@ const DzInfo2 = ({title, subtitle}) =>{
                 <div className="clearfix theme-text-color">
                     <span className="subtitle">{title}</span>
                     <h4 className="title theme-text-color">{subtitle}</h4>
-                    <p>Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus maecenas</p>
-                    <Link to={"/services-details"} className="btn btn-secondary btn-skew"><span>Read More</span></Link>
+                    <p>Queremos que tengas un balance corporal es un estado de equilibrio entre la ingesta calórica y el gasto energético. Esto significa que consumes la misma cantidad de calorías que quemas, lo que te permite mantener un peso saludable.</p>
+                    <Link to={"/services-details"} className="btn btn-secondary btn-skew"><span>Leer mas</span></Link>
                 </div>
             </div>
         </div>
@@ -45,13 +47,13 @@ const FitnessTraining = () => {
     return (
         <>
             <div className="row g-0">
-                <DzInfo1 title="BODY SHAPE" subtitle="CROSSFIT" />
-                <DzMedia  Image = {IMAGES.services1 } />
-                <DzInfo2 title="RELAX PROGRAM" subtitle="BODY BALANCE"/>
-                <DzMedia  Image = {IMAGES.services3 } />
-                <DzMedia  Image = {IMAGES.services4 } />
+                <DzInfo1 title="FORMA TU CUERPO" subtitle="CROSSFIT" />
+                <DzMedia  Image = {IMAGES.aboutElisa } />
+                <DzInfo2 title="RELAX PROGRAM" subtitle="BALANCE CORPORAL"/>
+                <DzMedia  Image = {IMAGES.aboutElisa2 } />
+                <DzMedia  Image = {IMAGES.aboutElisa3 } />
                 <DzInfo2 title="CARDIO WORKFLOW" subtitle="CARDIO"/>
-                <DzMedia  Image = {IMAGES.services2 } />                
+                <DzMedia  Image = {IMAGES.aboutElisa4 } />                
                 <DzInfo1 title="POWER-PRO" subtitle="WEIGHT LIFTING" />
             </div>  
         </>

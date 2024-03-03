@@ -17,72 +17,60 @@ const ServicesDetails = () => {
             <div className="row">
               <div className="col-xl-8 col-lg-7 order-lg-1">
                 <div className="dz-media m-b30">
-                  <img src={IMAGES.bloglarg1} alt="" />
+                  <img src={IMAGES.aboutman} alt="" />
                 </div>
                 <div className="dz-content">
                   <div className="m-b40">
                     <h2 className="title m-b15">
-                      Providing world class services
+                      Servicios de alta calidad
                     </h2>
                     <p>
-                      We are an independent gym that is committed to working
-                      with you to gain the results you want. Whether your aim is
-                      to loose weight tone up build bulk or gain weight we can
-                      put together a gym programme or recommend the right
-                      classes for you to attend in our studios.
+                      "Explora SportApp: tu aliado digital en el camino hacia un estilo de vida saludable.
+                       Descubre servicios de calidad que te impulsarán a alcanzar tus metas fitness."
                     </p>
                     <p>
-                      We offer the best support and service you can imagine. Use
-                      our support forum if you have any questions and our team
-                      will respond. We have thousands of solved threads and a
-                      customer satisfaction of 97%. We do care that your site
-                      runs great!
+                    "Con SportApp, accede a un mundo de bienestar integral. 
+                    Desde entrenamientos personalizados hasta servicios, productos y planes alimentarios, 
+                    tenemos todo lo que necesitas para alcanzar tus metas saludables."
                     </p>
                   </div>
 
                   <div className="m-b40">
                     <h4 className="m-b15">
-                      Learn About Fitness From These Mistakes
+                      Plan de servicios
                     </h4>
+                    <p>
+                    "Explora SPORTAPP y descubre una amplia gama de servicios diseñados para potenciar tus actividades deportivas."
+                    </p>
+
+
                     <ul className="list-check-2 m-b30">
                       <li>
-                        We are an independent gym that is committed to working
+                        Gran variedad de eventos deportivos
                       </li>
                       <li>
-                        Whether your aim is to loose weight tone up build bulk
-                        or gain weight
+                        Planes de alimentacion de calidad
                       </li>
                       <li>
-                        We have thousands of solved threads and a customer
-                        satisfaction
+                        Complemetos en entrenamientos
                       </li>
                     </ul>
-                    <p>
-                      We offer the best support and service you can imagine. Use
-                      our support forum if you have any questions and our team
-                      will respond. We have thousands of solved threads and a
-                      customer satisfaction of 97%. We do care that your site
-                      runs great!
-                    </p>
+
                   </div>
                   <div className="row align-items-center">
                     <div className="col-xl-6 m-b30">
-                      <h4 className="m-b10">Start Online Courses ?</h4>
+                      <h4 className="m-b10">SportApp</h4>
                       <p>
-                        We are an independent gym that is committed to working
-                        with you to gain the results you want.
+                      "Transformamos tus metas deportivas en logros extraordinarios.
+                       Descubre la potencia de nuestros servicios,
+                       tu camino hacia el éxito atlético."
                       </p>
-                      <p className="m-b0">
-                        Whether your aim is to loose weight tone up build bulk
-                        or gain weight we can put together a gym programme or
-                        recommend the right classes for you to attend in our
-                        studios members benefit.
-                      </p>
+                      
                     </div>
                     <div className="col-xl-6 m-b30">
                       <div className="dz-media">
                         <img
-                          src={IMAGES.bloggrid1}
+                          src={IMAGES.aboutPic7}
                           className="img-cover"
                           alt=""
                         />
@@ -96,25 +84,25 @@ const ServicesDetails = () => {
                   <div className="widget service_menu_nav">
                     <ul>
                       <li className="active">
-                        <Link to={"#"}>Motivation</Link>{" "}
+                        <Link to={"#"}>SPORTAPP</Link>{" "}
                       </li>
                       <li>
-                        <Link to={"#"}>Workout</Link>
+                        <Link to={"#"}>Entrenamiento</Link>
                       </li>
                       <li>
-                        <Link to={"#"}>Online Courses</Link>{" "}
+                        <Link to={"#"}>Cursos Online</Link>{" "}
                       </li>
                       <li>
-                        <Link to={"#"}>Fat Loss</Link>{" "}
+                        <Link to={"#"}>Pedida de peso</Link>{" "}
                       </li>
                       <li>
-                        <Link to={"#"}>Perfect Diet</Link>{" "}
+                        <Link to={"#"}>Alimentacion balanceada</Link>{" "}
                       </li>
                       <li>
-                        <Link to={"#"}>Health Coach</Link>{" "}
+                        <Link to={"#"}>Entrenadores</Link>{" "}
                       </li>
                       <li>
-                        <Link to={"#"}>Weight Gain</Link>{" "}
+                        <Link to={"#"}>Aumento de peso</Link>{" "}
                       </li>
                     </ul>
                     <svg
@@ -147,15 +135,15 @@ const ServicesDetails = () => {
                       <div className="icon-bx">
                         <i className="flaticon-contact-center"></i>
                       </div>
-                      <h4>Do you need any help?</h4>
-                      <div className="phone-number">+91 12345 678 98</div>
-                      <h6 className="email">info@dexignzone.com</h6>
+                      <h4>Necesitas ayuda?</h4>
+                      <div className="phone-number">+57 315 000 0000</div>
+                      <h6 className="email">sportapp@app.com</h6>
                       <div className="link-btn">
                         <Link
                           to={"/contact-us"}
                           className="btn btn-dark btn-skew"
                         >
-                          <span>Contact Us</span>
+                          <span>Contactanos   </span>
                         </Link>
                       </div>
                     </div>

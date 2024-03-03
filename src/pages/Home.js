@@ -129,10 +129,10 @@ const Home = () => {
               <div className="col-md-9 col-lg-8 col-xl-7">
                 <div className="section-head side-line">
                   <h5 className="sub-title wow fadeInUp" data-wow-delay="0.2s">
-                    Our Services
+                    Nuestros servicios
                   </h5>
                   <h2 className="title wow fadeInUp" data-wow-delay="0.4s">
-                    Bring Your Fitness Ideas To Life
+                  Haga realidad sus ideas de fitness
                   </h2>
                 </div>
               </div>
@@ -141,7 +141,7 @@ const Home = () => {
                 data-wow-delay="0.6s"
               >
                 <Link to={"/services"} className="btn btn-primary btn-skew">
-                  <span>View All</span>
+                  <span>Ver todo</span>
                 </Link>
               </div>
             </div>
@@ -186,10 +186,10 @@ const Home = () => {
           <div className="container">
             <div className="section-head text-center">
               <h5 className="sub-title wow fadeInUp" data-wow-delay="0.2s">
-                TESTIMONIAL
+                TESTIMONIOS
               </h5>
               <h2 className="title wow fadeInUp" data-wow-delay="0.4s">
-                What Client Say’s
+              Opiniones de los clientes
               </h2>
             </div>
             <ClientSlider />

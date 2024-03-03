@@ -5,7 +5,7 @@ import NewsLetter from '../elements/NewsLetter';
 import PageTitle from '../elements/PageTitle';
 
 const pricingBlog = [
-    {rate: '49', title: 'Basic', prime: 'premium'},
+    {rate: '49', title: 'Basico', prime: 'premium'},
     {rate: '59', title: 'Ultra'},
     {rate: '69', title: 'Pro'},
 ];
@@ -15,7 +15,7 @@ const Pricing = () => {
     return (
         <>
             <div className="page-content bg-white">
-                <PageTitle activePage={'Pricing'} parentTitle="Pages" />
+                <PageTitle activePage={'Precios'} parentTitle="Pages" />
                 <section className="content-inner rounded-shape-top overflow-hidden" style={{backgroundImage: "url("+ IMAGES.BgImage1 +")"}}>
                     <div className="container">
                         <div className="row">
@@ -28,18 +28,18 @@ const Pricing = () => {
                                             <div className={`pricingtable-title ${data.prime}`} >{data.title}</div>
                                             
                                             <div className="pricingtable-price">
-                                                <h2 className="pricingtable-bx text-primary">${data.rate}<small>/ Month</small></h2>
-                                                <p>A good choice when working remotely With Your Clients</p>
+                                                <h2 className="pricingtable-bx text-primary">${data.rate}<small>/ Mes </small></h2>
+                                                <p>Una buena opción a la hora de trabajar remotamente con tus clientes</p>
                                             </div>
                                             <ul className="pricingtable-features">
-                                                <li>Review Your Question</li>
-                                                <li>Work with Resources</li>
-                                                <li>Social Media Marketing</li>
-                                                <li>Analysis of Your "I Have"</li>
-                                                <li>Support & Mentoring</li>
+                                                <li>Entrenador personalizado</li>
+                                                <li>Guia de alimentaci&oacute;n</li>
+                                                <li>Eventos</li>
+                                                <li>Clases  de baile </li>
+                                                <li>Seguimiento</li>
                                             </ul>
                                             <div className="pricingtable-footer"> 
-                                                <Link to={"/contact-us"} className="btn btn-primary btn-skew"><span>Contact Us</span></Link>
+                                                <Link to={"/contact-us"} className="btn btn-primary btn-skew"><span>Contactanos</span></Link>
                                             </div>
                                         </div>
                                     </div>

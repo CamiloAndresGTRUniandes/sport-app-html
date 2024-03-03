@@ -12,7 +12,7 @@ const AboutUs = () => {
     return (
         <>
             <div className="page-content bg-white">
-                <PageTitle activePage="About Us" parentTitle="Pages" /> 
+                <PageTitle activePage="Acerca de nosootros" parentTitle="Pages" /> 
                 <section className="content-inner" style={{backgroundImage: "url("+ IMAGES.BgImage1 +")"}}>
 			        <div className="container">
 				        <div className="row about-bx2 align-items-center">
@@ -28,8 +28,8 @@ const AboutUs = () => {
                 <section className="content-inner" style={{backgroundImage: "url(" + IMAGES.BgImage1 + ")"}}>
                     <div className="container">
                         <div className="section-head text-center">
-                            <span className="sub-title">Training Programmes</span>
-                            <h2 className="title">Our Training <span>Schedule</span></h2>
+                            <span className="sub-title">Programas de entrenamiento</span>
+                            <h2 className="title">Nuestros Entrenamientos <span>Calendario</span></h2>
                         </div>
                         <div className="schedule-table table-responsive">
                             <ScheduleTable />

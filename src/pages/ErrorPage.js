@@ -13,8 +13,8 @@ const ErrorPage = () => {
                         <div className="container">
                             <div className="inner-content text-center" data-text="">
                                 <div className="dz_error">404</div>
-                                <h2 className="error-head">We are sorry. But the page you are looking for cannot be found.</h2>
-                                <Link to={"/"} className="btn btn-primary btn-skew"><span>BACK TO HOMEPAGE</span></Link>
+                                <h2 className="error-head">Lo sentimos. Pero no se puede encontrar la página que buscas</h2>
+                                <Link to={"/"} className="btn btn-primary btn-skew"><span>Volver a home</span></Link>
                             </div>
                         </div>
                     </section>

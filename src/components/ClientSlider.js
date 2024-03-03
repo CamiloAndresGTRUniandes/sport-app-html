@@ -73,13 +73,9 @@ function ClientSlider() {
               </ul>
               <div className="testimonial-info">
                 <p className="testimonial-text">
-                  Taking seamless key performance indicators offline to maximise
-                  the long tail. Keeping your eye on the ball while performing a
-                  deep dive. Completely synergize resource taxing relationships
-                  via premier niche markets. Professionally cultivate one-to-one
-                  customer.
+                  SportApp mejoro la forma en la cual gestiono mis entrenamientos
                 </p>
-                <h4 className="testimonial-name">Richard Hartisona</h4>
+                <h4 className="testimonial-name">Elisa Angulo</h4>
                 <span className="testimonial-position text-primary">
                   Founder
                 </span>

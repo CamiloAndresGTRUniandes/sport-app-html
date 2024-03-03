@@ -15,10 +15,10 @@ const UnderConstruction = () => {
         >
           <div className="inner-construction">
             <img className="warning-img" src={IMAGES.watning} alt="" />
-            <h1 className="dz-head">UNDER CONSTRUCTION</h1>
+            <h1 className="dz-head">EN MANTENIMIENTO</h1>
             <p>
-              PLEASE SORRY FOR THE{" "}
-              <span className="text-primary">DISTURBANCES</span>
+              DISCULPANOS LO SENTIMOS POR LAS{" "}
+              <span className="text-primary">MOLESTIAS</span>
             </p>
           </div>
           <img className="shape1 rotate-360" src={IMAGES.circlesvg1} alt="" />
