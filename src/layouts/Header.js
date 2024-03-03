@@ -21,18 +21,18 @@ const Header = () => {
               <div className="dz-topbar-left">
                 <ul>
                   <li>
-                    <i className="fa-regular fa-envelope"></i> info@example.com
+                    <i className="fa-regular fa-envelope"></i> elisa@andes.com
                   </li>
                 </ul>
               </div>
               <div className="dz-topbar-right">
                 <ul>
                   <li>
-                    <i className="fa-regular fa-clock"></i> Time 06:00 AM To
+                    <i className="fa-regular fa-clock"></i> Hora 06:00 AM To
                     08:00 PM
                   </li>{" "}
                   <li>
-                    <i className="fa fa-phone"></i> +91-1234567890
+                    <i className="fa fa-phone"></i> +57 311 9669 69 96
                   </li>
                 </ul>
               </div>
@@ -147,7 +147,7 @@ export const Mainheader = () => {
                   to={"/appointment"}
                   className="btn btn-primary btn-skew appointment-btn"
                 >
-                  <span>Appointment</span>
+                  <span>Cita</span>
                 </Link>
               </div>
             </div>

@@ -94,13 +94,13 @@ const PortfolioDetails = () => {
                           </li>
                           <li>
                             <i className="fa-solid fa-phone"></i>
-                            <span>+91-1234567890</span>
+                            <span>+57 311 9669 69 96</span>
                           </li>
                         </ul>
                       </div>
                     </li>
                     <li>
-                      <h6 className="m-b15">Our Socials</h6>
+                      <h6 className="m-b15">Nuestras redes sociales</h6>
                       <div className="dz-social-icon style-3 m-t10">
                         <ul>
                           <li>

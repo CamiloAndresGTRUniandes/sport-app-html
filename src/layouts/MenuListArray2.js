@@ -3,45 +3,45 @@ export const MenuListArray2 = [
     title: "Home",
     classChange: "sub-menu-down",
     content: [
-      { title: "Athletics", to: "/" },
-      { title: "Trainer", to: "/home-2" },
+      { title: "Bienvenida", to: "/" },
+      { title: "Entrenamiento", to: "/home-2" },
       { title: "BodyBuilding", to: "/home-3" },
     ],
   },
   {
-    title: "Pages",
+    title: "Paginas",
     classChange: "sub-menu-down",
     content: [
       {
-        title: "About Us",
+        title: "Acerca de nosotros",
         to: "/about-us",
       },
       {
-        title: "Team",
+        title: "Equipo",
         to: "/team",
       },
       {
-        title: "FAQ",
+        title: "Preguntas",
         to: "/faq",
       },
       {
-        title: "Pricing",
+        title: "Precios",
         to: "/pricing",
       },
       {
-        title: "Weight Calculator",
+        title: "Calculadora de precios",
         to: "/weight-calculator",
       },
       {
-        title: "Appointment",
+        title: "Citas",
         to: "/appointment",
       },
       {
-        title: "Schedule",
+        title: "Cronograma",
         to: "/schedule",
       },
       {
-        title: "Coming Soon",
+        title: "Proximo evento",
         to: "/coming-soon",
       },
       {
@@ -49,7 +49,7 @@ export const MenuListArray2 = [
         to: "/error-404",
       },
       {
-        title: "Under Maintenance",
+        title: "Bajo de mantenimiento",
         to: "/under-maintenance",
       },
     ],
@@ -70,15 +70,15 @@ export const MenuListArray2 = [
   },
 
   {
-    title: "Services",
+    title: "Servicios",
     classChange: "sub-menu-down",
     content: [
       {
-        title: "Services",
+        title: "Servicios",
         to: "/services",
       },
       {
-        title: "Services Details",
+        title: "Detalles de servicios",
         to: "/services-details",
       },
     ],
@@ -106,7 +106,7 @@ export const MenuListArray2 = [
     ],
   },
   {
-    title: "Contact Us",
+    title: "Contactanos",
     to: "/contact-us",
   },
 ];

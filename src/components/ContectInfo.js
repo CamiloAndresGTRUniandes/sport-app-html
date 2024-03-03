@@ -14,7 +14,7 @@ const socialIcons = [
   },
   {
     icon: "fa-solid fa-envelope",
-    text: "Our Socials",
+    text: "Nuestras redes sociales",
   },
 ];
 const socialIcons2 = [

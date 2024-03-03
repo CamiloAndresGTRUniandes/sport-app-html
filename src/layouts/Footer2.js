@@ -76,10 +76,10 @@ const Footer2 = () => {
                       <div className="dz-info">
                         <h6 className="title">
                           <Link to={"/blog-details"}>
-                            The Philosophy Of Best Fitness.
+                           La filosofia del mejor entrenamiento
                           </Link>
                         </h6>
-                        <span className="post-date"> JUNE 18, 2023</span>
+                        <span className="post-date"> Febrero 24, 2024</span>
                       </div>
                     </div>
                     <div className="post-separator"></div>
@@ -87,10 +87,10 @@ const Footer2 = () => {
                       <div className="dz-info">
                         <h6 className="title">
                           <Link to={"/blog-details"}>
-                            Best 50 Tips For Heavy Fitness.
+                           Los mejores 50 Tips Saludables
                           </Link>
                         </h6>
-                        <span className="post-date"> AUGUST 22, 2023</span>
+                        <span className="post-date">AGOSTO 22, 2023</span>
                       </div>
                     </div>
                   </div>
@@ -98,36 +98,36 @@ const Footer2 = () => {
               </div>
               <div className="col-xl-3 col-md-4 wow fadeInUp">
                 <div className="widget widget_locations">
-                  <h4 className="footer-title">Locations</h4>
+                  <h4 className="footer-title">Localizaciones</h4>
                   <div className="clearfix">
-                    <h6>Washington</h6>
-                    <p>1559 Alabama Ave SE, DC 20032, Washington, USA</p>
+                    <h6>Puerto boyaca</h6>
+                    <p>Calle  96 , Puerto boyaca,Colombia</p>
                     {SVGICON.map}
                   </div>
                 </div>
               </div>
               <div className="col-xl-3 col-md-4 wow fadeInUp">
                 <div className="widget widget_working">
-                  <h4 className="footer-title">Working Hours</h4>
+                  <h4 className="footer-title">Horarios de trabajo</h4>
                   <ul>
                     <li>
-                      <span className="days">Monday – Friday:</span>
+                      <span className="days">Lunes – Viernes:</span>
                       <span className="time">
                         <Link to={"/schedule"}>07:00 – 21:00</Link>
                       </span>
                     </li>
                     <li>
-                      <span className="days">Saturday:</span>
+                      <span className="days">Sabado:</span>
                       <span className="time">
                         <Link to={"/schedule"}>07:00 – 16:00</Link>
                       </span>
                     </li>
                     <li>
-                      <span className="days">Sunday Closed:</span>
+                      <span className="days">Domingo Cerrado</span>
                     </li>
                   </ul>
                   <Link to={"/schedule"} className="btn-link">
-                    More Here <i className="fa-solid fa-arrow-right m-l10"></i>
+                    Mas informaci&oacute;n <i className="fa-solid fa-arrow-right m-l10"></i>
                   </Link>
                 </div>
               </div>

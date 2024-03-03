@@ -60,7 +60,7 @@ const ContactUs = () => {
                       </li>
                     </ul>
                   </div>
-                  <h6 className="m-b15 text-white">Our Socials</h6>
+                  <h6 className="m-b15 text-white">Nuestras redes sociales</h6>
                   <div className="dz-social-icon style-1 dark">
                     <ul>
                       <li>
