@@ -22,6 +22,7 @@ export const IMAGES = {
   SliderBg1: require("../assets/images/main-slider/slider1/bg1.jpg"),
   SliderBg2: require("../assets/images/main-slider/slider2/bg3.png"),
   Slide2Hero: require("../assets/images/main-slider/slider2/hero.png"),
+  Slide2eli: require("../assets/images/main-slider/slider2/eli.png"),
   Slide2Video: require("../assets/images/main-slider/slider2/video.jpg"),
   Slide2Starts: require("../assets/images/main-slider/slider2/stars.png"),
 
@@ -147,8 +148,10 @@ export const IMAGES = {
 
   aboutPic5: require("../assets/images/about/pic5.jpg"),
   aboutPic6: require("../assets/images/about/pic6.jpg"),
+  aboutdani: require("../assets/images/about/dani.jpg"),
   aboutPic7: require("../assets/images/about/pic7.png"),
   aboutPic: require("../assets/images/about/pic.png"),
+  aboutdani2: require("../assets/images/about/danielito.png"),
 
   overlayBoxpic1: require("../assets/images/overly-box/pic1.jpg"),
   overlayBoxpic2: require("../assets/images/overly-box/pic2.jpg"),

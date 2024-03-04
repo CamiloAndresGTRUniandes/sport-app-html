@@ -82,7 +82,7 @@ const Home2 = () => {
         </section>
         <section
           className="content-inner-1 overflow-hidden testimonial-wrapper1"
-          data-text="FEEDBACK"
+          data-text="CLIENTES"
           style={{
             backgroundImage: `url(${IMAGES.BgImage13})`,
             backgroundPosition: " center",
@@ -91,9 +91,9 @@ const Home2 = () => {
         >
           <div className="container">
             <div className="section-head style-1 text-center">
-              <h5 className="sub-title wow fadeInUp">TESTIMONIAL</h5>
+              <h5 className="sub-title wow fadeInUp">TESTIMONIOS</h5>
               <h2 className="title wow fadeInUp">
-                What <span> Client </span> Say’s
+                Que dicen <span> Nuestros </span> Clientes
               </h2>
             </div>
             <Testimonial />
@@ -106,22 +106,8 @@ const Home2 = () => {
             backgroundRepeat: "no-repeat",
           }}
         >
-          <div className="container">
-            <div className="section-head style-1 text-center">
-              <h2 className="title">
-                Ultimas <span className="text-primary">Noticias</span>
-              </h2>
-            </div>
-            <OurBlog />
-          </div>
+          
         </section>
-        <div className="half-shape-top-w theme-bg content-inner-1 ">
-          <div className="container">
-            <div className="clients-box">
-              <Clients />
-            </div>
-          </div>
-        </div>
         <section className="call-action style-1 footer-action">
           <div className="container">
             <div className="inner-content wow fadeInUp" data-wow-delay="0.8s">
@@ -129,7 +115,7 @@ const Home2 = () => {
                 <div className="text-center text-lg-start col-xl-6 m-lg-b20">
                   <h2 className="title">Subscribete a SPORTAPP</h2>
                   <p>
-                    It is a long established fact that a reader will distracted.
+                    La mejor aplicacion deportiva
                   </p>
                 </div>
                 <div className="text-center text-lg-end col-xl-6">
@@ -147,7 +133,7 @@ const Home2 = () => {
                             required="required"
                             type="email"
                             className="form-control"
-                            placeholder="Your Email Address"
+                            placeholder="Ingresa tu correo"
                           />
                         </div>
                         <div className="input-group-addon">

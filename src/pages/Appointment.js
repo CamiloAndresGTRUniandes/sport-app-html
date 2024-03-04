@@ -71,7 +71,7 @@ const Appointment = () => {
                 <footer className="site-footer style-1 bg-img-fix footer-action" id="footer">
                     <div className="footer-bottom">
                         <div className="text-center"> 
-                            <span className="copyright-text">Copyright © 2023 <Link to="https://uniandes.edu.co/" target="_blank" rel="noreferrer" >Grupo  13</Link>. Todos  los derechos reservados</span> 
+                            <span className="copyright-text">Copyright © 2024 <Link to="https://uniandes.edu.co/" target="_blank" rel="noreferrer" >Grupo-13</Link>. Todos  los derechos reservados</span> 
                         </div>
                     </div>
                 </footer>

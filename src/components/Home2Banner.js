@@ -35,7 +35,7 @@ const Home2Banner = ({ open }) => {
             </div>
           </div>
           <div className="banner-media media1 anm wow fadeInUp">
-            <img src={IMAGES.Slide2Hero} alt="" />
+            <img src={IMAGES.Slide2eli} alt="" />
           </div>
         </div>
         <div className="video-bx5">
@@ -46,13 +46,10 @@ const Home2Banner = ({ open }) => {
             className="popup-youtube"
             to="#"
           >
-            <img src={IMAGES.Slide2Video} alt="" />
-            <span className="video-btn popup-youtube">
-              <i className="fa fa-play"></i>
-            </span>
+            
           </Link>
         </div>
-        <img src={IMAGES.Slide2Starts} alt="" className="move-1" />
+
       </div>
     </>
   );

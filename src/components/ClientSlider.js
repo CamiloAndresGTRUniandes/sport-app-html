@@ -6,9 +6,9 @@ import { Navigation, Pagination } from "swiper";
 import { IMAGES } from "../constants/theme";
 
 const dataBlog = [
-  { image: IMAGES.avatarlarge1 },
-  { image: IMAGES.avatarlarge2 },
-  { image: IMAGES.avatarlarge3 },
+  { image: IMAGES.avatarlarge1, text: "SportApp mejoró la forma en la cual gestiono mis entrenamientos", name: "Elisa Angulo" },
+  { image: IMAGES.avatarlarge2, text: "SportApp permitio que mis rutinas fueran mas variadas y personalizadas a mis necesidades", name: "Camilo Guevara" },
+  { image: IMAGES.avatarlarge3, text: "SportApp me ayudo a mejorar mis planes alimenticios", name: "Daniel Bustos" },
 ];
 
 function ClientSlider() {
@@ -57,6 +57,7 @@ function ClientSlider() {
               <ul className="testimonial-rating">
                 <li>
                   <i className="fa-solid fa-star"></i>
+                  
                 </li>
                 <li>
                   <i className="fa-solid fa-star"></i>
@@ -72,15 +73,13 @@ function ClientSlider() {
                 </li>
               </ul>
               <div className="testimonial-info">
-                <p className="testimonial-text">
-                  SportApp mejoro la forma en la cual gestiono mis entrenamientos
-                </p>
-                <h4 className="testimonial-name">Elisa Angulo</h4>
-                <span className="testimonial-position text-primary">
-                  Founder
-                </span>
-              </div>
+                <p className="testimonial-text">{item.text}</p>
+                <h4 className="testimonial-name">{item.name}</h4>
+              </div>              
+
             </div>
+
+            
           </SwiperSlide>
         ))}
 
