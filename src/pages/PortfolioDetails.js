@@ -175,7 +175,7 @@ const PortfolioDetails = () => {
             <div className="container">
               <div className="row">
                 <div className="col-xl-6 col-md-7">
-                  <h3 className="title">Gym Fitness</h3>
+                  <h3 className="title">Gimnasio Fitness</h3>
                   <p className="text">
                     En el mundo del fitness, cada día es una oportunidad para
                     desafiarnos a nosotros mismos y alcanzar nuevas metas. Desde

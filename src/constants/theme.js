@@ -85,11 +85,11 @@ export const IMAGES = {
   bloggrid1: require("../assets/images/blog/blog-grid/pic1.png"),
   bloggrid2: require("../assets/images/blog/blog-grid/pic2.png"),
   bloggrid3: require("../assets/images/blog/blog-grid/pic3.png"),
-  bloggrid4: require("../assets/images/blog/blog-grid/pic4.jpg"),
-  bloggrid5: require("../assets/images/blog/blog-grid/pic5.jpg"),
-  bloggrid6: require("../assets/images/blog/blog-grid/pic6.jpg"),
-  bloggrid7: require("../assets/images/blog/blog-grid/pic7.jpg"),
-  bloggrid8: require("../assets/images/blog/blog-grid/pic8.jpg"),
+  bloggrid4: require("../assets/images/blog/blog-grid/pic4.png"),
+  bloggrid5: require("../assets/images/blog/blog-grid/pic5.png"),
+  bloggrid6: require("../assets/images/blog/blog-grid/pic6.png"),
+  bloggrid7: require("../assets/images/blog/blog-grid/pic7.png"),
+  bloggrid8: require("../assets/images/blog/blog-grid/pic8.png"),
   bloglarg1: require("../assets/images/blog/large/pic1.jpg"),
   bloglarg2: require("../assets/images/blog/large/pic2.jpg"),
   bloglarg5: require("../assets/images/blog/large/pic5.jpg"),
@@ -182,7 +182,6 @@ export const IMAGES = {
 
   //Acerca de nosotros
 
-
   aboutExcercise1: require("../assets/images/about/aboutExcercise1.PNG"),
   aboutElisa: require("../assets/images/about/aboutElisa.png"),
   aboutElisa2: require("../assets/images/about/aboutElisa2.png"),
@@ -197,7 +196,6 @@ export const IMAGES = {
   yonisTrainer: require("../assets/images/about/yonis.jpg"),
   camiloTrainer: require("../assets/images/about/camilo.jpg"),
 };
-
 
 export const SVGICON = {
   map: (
