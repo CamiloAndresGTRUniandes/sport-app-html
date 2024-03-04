@@ -5,13 +5,13 @@ import { IMAGES } from '../constants/theme'
 
 
 const serviceCards = [
-    { icon: 'flaticon-exercise', title: 'Cardio' },
-    { icon: 'flaticon-exercise-2', title: 'Chest' },
+    { icon: 'flaticon-exercise', title: 'Abdominales' },
+    { icon: 'flaticon-exercise-2', title: 'Pecho' },
 ];
 const serviceCards2 = [
-    { icon: 'flaticon-man', title: 'Muscles' },
-    { icon: 'flaticon-lifting', title: 'Shoulder' },
-    { icon: 'flaticon-athletics', title: 'Full Body' },
+    { icon: 'flaticon-man', title: 'Hombros' },
+    { icon: 'flaticon-lifting', title: 'Brazos' },
+    { icon: 'flaticon-athletics', title: 'Cuerpo completo' },
 ];
 const OurServices = () => {
     return (
@@ -21,9 +21,9 @@ const OurServices = () => {
                 <div className="row">
                     <div className="col-xl-12 col-lg-12 wow fadeInUp" data-wow-delay="0.2s">
                         <div className="section-head style-1">
-                            <h5 className="sub-title">Our Services</h5>
-                            <h2 className="title">Virtual <span> Training </span></h2>
-                            <p className="p-r50">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                            <h5 className="sub-title">Nuestros servicios</h5>
+                            <h2 className="title">Formacion<span> Virtual </span></h2>
+                            <p className="p-r50">"Descubre las mejores rutinas de ejercicio en SportApp, tu guía definitiva hacia la forma física ideal."</p>
                         </div>
                     </div>
                     {serviceCards.map((item, ind) => (
@@ -36,8 +36,8 @@ const OurServices = () => {
                                     <h4 className="dz-title m-b10"><Link to="/pricing">{item.title}</Link></h4>
                                 </div>
                                 <div className="icon-content">
-                                    <p className="m-b15">Lorem Ipsum is simply dummy of the printing and typesetting industry. Lorem Ipsum has</p>
-                                    <Link to="/pricing" className="read-more">Read More <i className="fa-solid fa-arrow-right"></i></Link>
+                                    <p className="m-b15">Entrenamientos</p>
+                                    <Link to="/pricing" className="read-more">Leer mas <i className="fa-solid fa-arrow-right"></i></Link>
                                 </div>
                             </div>
                         </div>
@@ -47,7 +47,7 @@ const OurServices = () => {
             </div>
             <div className="col-xl-4 col-lg-6 col-md-6 m-b30 order-md-1 order-2">
                 <div className="trainer wow fadeInUp" data-wow-delay="0.8s">
-                    <img src={IMAGES.aboutPic} alt="" className="anm" data-speed-x="-2" data-speed-scale="-2" />
+                    <img src={IMAGES.aboutdani2} alt="" className="anm" data-speed-x="-2" data-speed-scale="-2" />
                 </div>
             </div>
             <div className="col-xl-4 col-lg-6 col-md-6 right-grid order-md-2 order-1">
@@ -62,8 +62,8 @@ const OurServices = () => {
                                     <h4 className="dz-title m-b10"><Link to="/pricing">{item.title}</Link></h4>
                                 </div>
                                 <div className="icon-content">
-                                    <p className="m-b15">Lorem Ipsum is simply dummy of the printing and typesetting industry. Lorem Ipsum has</p>
-                                    <Link to="/pricing" className="read-more">Read More <i className="fa-solid fa-arrow-right"></i></Link>
+                                    <p className="m-b15">Entrenamientos</p>
+                                    <Link to="/pricing" className="read-more">Leer mas <i className="fa-solid fa-arrow-right"></i></Link>
                                 </div>
                             </div>
                         </div>

@@ -177,7 +177,7 @@ const Home = () => {
         </section>
         <section
           className="content-inner-1 testimonial-wrapper1"
-          data-text="FEEDBACK"
+          data-text="CLIENTES"
           style={{
             backgroundImage: "url(" + IMAGES.BgImage2 + ")",
             backgroundPosition: "center",
@@ -201,7 +201,7 @@ const Home = () => {
             <img src={IMAGES.avatarlarge2} alt="" />
           </div>
           <div className="avatar3">
-            <img src={IMAGES.avatar3} alt="" />
+            <img src={IMAGES.avatarlarge3} alt="" />
           </div>
           <div className="avatar4">
             <img src={IMAGES.avatarlarge1} alt="" />
@@ -210,7 +210,7 @@ const Home = () => {
             <img src={IMAGES.avatarlarge2} alt="" />
           </div>
           <div className="avatar6">
-            <img src={IMAGES.avatar3} alt="" />
+            <img src={IMAGES.avatarlarge3} alt="" />
           </div>
           <img
             className="svg-shape rotate-360"
