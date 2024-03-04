@@ -3,9 +3,9 @@ import React from 'react';
 import CountUp from 'react-countup';
 
 const counterData = [
-    {number: "987", title:"Happy Clients", styleChange:"col-6"},
-    {number: "845", title:"Cup Of Coffee", styleChange:"col-6"},
-    {number: "789", title:"Online Sessions Done", styleChange:"col-12"},
+    {number: "70", title:"Eventos", styleChange:"col-6"},
+    {number: "100", title:"Planes alimenticios", styleChange:"col-6"},
+    {number: "250", title:"Ejercicios", styleChange:"col-12"},
 ];
 
 const CounterBlog = () => {

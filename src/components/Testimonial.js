@@ -5,10 +5,11 @@ import circlebig from "../assets/images/pattern/circle-big.svg";
 import circlebig2 from "../assets/images/pattern/circle-2.svg";
 
 const carousel = [
-  { img: IMAGES.largeTestimonialPic7 },
-  { img: IMAGES.largeTestimonialPic7 },
-  { img: IMAGES.largeTestimonialPic7 },
+  { image: IMAGES.avatarlarge1, text: "SportApp mejoró la forma en la cual gestiono mis entrenamientos", name: "Elisa Angulo" },
+  { image: IMAGES.avatarlarge2, text: "SportApp permitio que mis rutinas fueran mas variadas y personalizadas a mis necesidades", name: "Camilo Guevara" },
+  { image: IMAGES.avatarlarge3, text: "SportApp me ayudo a mejorar mis planes alimenticios", name: "Daniel Bustos" },
 ];
+
 
 const avtarImg = [
   { img: IMAGES.avatarLargePic1, className: "avatar1" },
@@ -27,45 +28,41 @@ const Testimonial = () => {
           speed={1300}
           ref={swiperRef}
         >
+          
           {carousel.map((item, ind) => (
-            <SwiperSlide className="swiper-slide" key={ind}>
-              <div className="testimonial-1 testimonial-left">
-                <div className="testimonial-pic wow fadeInUp">
-                  <img src={item.img} alt="" />
-                </div>
-                <div className="testimonial-info wow fadeInUp">
-                  <ul className="testimonial-rating justify-content-start wow fadeInUp">
-                    <li>
-                      <i className="fa-solid fa-star"></i>
-                    </li>
-                    <li>
-                      <i className="fa-solid fa-star"></i>
-                    </li>
-                    <li>
-                      <i className="fa-solid fa-star"></i>
-                    </li>
-                    <li>
-                      <i className="fa-solid fa-star"></i>
-                    </li>
-                    <li>
-                      <i className="fa-solid fa-star"></i>
-                    </li>
-                  </ul>
-                  <p className="testimonial-text">
-                    Taking seamless key performance indicators offline to
-                    maximise the long tail. Keeping your eye on the ball while
-                    performing a deep dive. Completely synergize resource taxing
-                    relationships via premier niche markets. Professionally
-                    cultivate one-to-one customer.
-                  </p>
-                  <h4 className="testimonial-name">Richard Hartisona</h4>
-                  <span className="testimonial-position text-primary">
-                    Founder
-                  </span>
-                </div>
+          <SwiperSlide key={ind}>
+            <div className="testimonial-1">
+              <div className="testimonial-pic">
+                <img src={item.image} alt="" />
               </div>
-            </SwiperSlide>
-          ))}
+              <ul className="testimonial-rating">
+                <li>
+                  <i className="fa-solid fa-star"></i>
+                  
+                </li>
+                <li>
+                  <i className="fa-solid fa-star"></i>
+                </li>
+                <li>
+                  <i className="fa-solid fa-star"></i>
+                </li>
+                <li>
+                  <i className="fa-solid fa-star"></i>
+                </li>
+                <li>
+                  <i className="fa-solid fa-star"></i>
+                </li>
+              </ul>
+              <div className="testimonial-info">
+                <p className="testimonial-text">{item.text}</p>
+                <h4 className="testimonial-name">{item.name}</h4>
+              </div>              
+
+            </div>
+
+            
+          </SwiperSlide>
+        ))}
         </Swiper>
           <div
             onClick={() => {

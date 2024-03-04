@@ -12,7 +12,7 @@ const AboutUs = () => {
     return (
         <>
             <div className="page-content bg-white">
-                <PageTitle activePage="Acerca de nosootros" parentTitle="Pages" /> 
+                <PageTitle activePage="Acerca de nosotros" parentTitle="Pages" /> 
                 <section className="content-inner" style={{backgroundImage: "url("+ IMAGES.BgImage1 +")"}}>
 			        <div className="container">
 				        <div className="row about-bx2 align-items-center">

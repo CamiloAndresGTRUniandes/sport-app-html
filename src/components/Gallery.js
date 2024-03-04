@@ -6,17 +6,17 @@ import lgThumbnail from "lightgallery/plugins/thumbnail";
 import lgZoom from "lightgallery/plugins/zoom";
 
 const lightimg = [
-  { title: "Endurance", img: IMAGES.overlayBoxpic1 },
-  { title: "Conditioning", img: IMAGES.overlayBoxpic2 },
+  { title: "Brazos", img: IMAGES.overlayBoxpic1 },
+  { title: "Fuerza", img: IMAGES.overlayBoxpic2 },
 ];
 const lightimg2 = [
   { title: "Yoga", img: IMAGES.overlayBoxpic3 },
-  { title: "Performance", img: IMAGES.overlayBoxpic4 },
+  { title: "Rendimiento", img: IMAGES.overlayBoxpic4 },
 ];
 const progressDetails = [
-  { title: "SPECIFIC PREPARATION", process: "40%" },
-  { title: "NUTRITION SKILLS", process: "80%" },
-  { title: "75 CARDIO CONDITIONING", process: "60%" },
+  { title: "PREPARACIÓN ESPECÍFICA", process: "40%" },
+  { title: "HABILIDADES NUTRICIONALES", process: "80%" },
+  { title: "ACONDICIONAMIENTO FISICO", process: "60%" },
 ];
 const Gallery = () => {
   return (
@@ -54,29 +54,30 @@ const Gallery = () => {
         ))}
         <div className="col-lg-4 col-sm-6 d-none d-lg-block position-relative wow fadeInUp">
           <h2 className="bg-data-text style-3">
-            <span>F</span>
-            <span>I</span>
+            <span>S</span>
+            <span>P</span>
+            <span>O</span>
+            <span>R</span>
             <span>T</span>
-            <span>N</span>
-            <span>E</span>
-            <span>S</span>
-            <span>S</span>
+            <span>A</span>
+            <span>P</span>
+            <span>P</span>
+
           </h2>
         </div>
         <div className="col-lg-4 col-sm-6 align-self-center m-b30 wow fadeInUp">
           <div className="content-box h-100">
             <div className="section-head style-1 m-0">
               <h2 className="title">
-                My Fields Of<span> Expertise</span>
+                <span> SPORTAPP</span>
               </h2>
               <p className="p-big m-b25">
-                Loren ipsum Dolor Sit Amet, Consectelur Adipiscing Elit.
-                Suspendisse
+                Ejercicios
               </p>
             </div>
             <Link to="/about-us" className="btn btn-skew btn-primary">
               {" "}
-              <span> About Us </span>
+              <span> Nosotros </span>
             </Link>
           </div>
         </div>
@@ -95,7 +96,7 @@ const Gallery = () => {
                     </span>
                   </Link>
                   <Link className="title" to="/services-health-coach">
-                    <span>Yoga</span>
+                    <span>Brazos</span>
                   </Link>
                 </div>
               </div>
@@ -139,7 +140,7 @@ const Gallery = () => {
                   </span>
                 </Link>
                 <Link className="title" to="/services-fat-loss">
-                  <span>Strength</span>
+                  <span>Fuerza</span>
                 </Link>
               </div>
             </div>

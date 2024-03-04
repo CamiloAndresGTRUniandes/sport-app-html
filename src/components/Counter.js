@@ -7,9 +7,9 @@ import CountUp from 'react-countup'
 
 
 const counterBox = [
-    { title: 'Certificate', title2: 'Trainers',number:'3' },
-    { title: 'Years', title2: 'Experience',number:'8' },
-    { title: 'Local', title2: 'Clients' ,number:'47'},
+    { title: 'Nuestros', title2: 'Socios',number:'4' },
+    { title: 'Paises', title2: 'Latinoamericanos',number:'4' },
+    { title: 'Planes', title2: 'Alimenticios' ,number:'50'},
 ]
 const Counter = () => {
     return (
