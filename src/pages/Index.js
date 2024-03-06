@@ -33,6 +33,7 @@ import ContactUs from "./ContactUs";
 import Home2 from "./Home2";
 import Header2 from "../layouts/Header2";
 import Home3 from "./Home3";
+import UserProfile from "./UserProfile";
 
 function Index() {
   var baseName = "/";
@@ -48,6 +49,7 @@ function Index() {
       <Routes>
         <Route path="/error-404" exact element={<ErrorPage />} />
         <Route path="/under-maintenance" exact element={<UnderConstruction />}/>
+       
         <Route path="/appointment" exact element={<Appointment />} />
         <Route path="/coming-soon" exact element={<ComingSoon />} />
         <Route element={<MainLayout />}>
@@ -58,6 +60,7 @@ function Index() {
           <Route path="/pricing" exact element={<Pricing />} />
           <Route path="/schedule" exact element={<Schedule />} />
           <Route path="/portfolio" exact element={<Portfolio />} />
+          <Route path="/user-profile" exact element={<UserProfile />}/>
           <Route
             path="/portfolio-details"
             exact

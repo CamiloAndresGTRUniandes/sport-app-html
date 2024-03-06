@@ -52,6 +52,10 @@ export const MenuListArray2 = [
         title: "Bajo de mantenimiento",
         to: "/under-maintenance",
       },
+      {
+        title:'Perfil de usuario',
+        to:'/user-profile'
+      },
     ],
   },
   {
