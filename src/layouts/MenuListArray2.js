@@ -53,8 +53,12 @@ export const MenuListArray2 = [
         to: "/under-maintenance",
       },
       {
-        title:'Perfil de usuario',
-        to:'/user-profile'
+        title: "Perfil de usuario",
+        to: "/user-profile",
+      },
+      {
+        title: "Asociacion con terceros",
+        to: "/asociacion-terceros",
       },
     ],
   },
