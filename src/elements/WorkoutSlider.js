@@ -8,7 +8,7 @@ import { IMAGES } from "../constants/theme";
 const dataBlog = [
   {
     image: IMAGES.aboutman,
-    title: "Fitness – Workout Exercises for Fat Loss",
+    title: "Fitness – Ejercicios de perdida de peso",
     changestyle: "box-1",
   },
   {

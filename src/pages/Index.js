@@ -27,7 +27,9 @@ import BlogGrid from "./BlogGrid";
 import BlogLargeSidebar from "./BlogLargeSidebar";
 import BlogListSidebar from "./BlogListSidebar";
 import BlogDetail from "./BlogDetail";
-import Appointment from "./Appointment";
+import Appointment from "./appointment";
+import Login from "./Login";
+import Register from "./Register";
 import WeightCalculator from "./WeightCalculator";
 import ContactUs from "./ContactUs";
 import Home2 from "./Home2";
@@ -49,6 +51,8 @@ function Index() {
         <Route path="/error-404" exact element={<ErrorPage />} />
         <Route path="/under-maintenance" exact element={<UnderConstruction />}/>
         <Route path="/appointment" exact element={<Appointment />} />
+        <Route path="/Register" exact element={<Register />} />
+        <Route path="/Login" exact element={<Login />} />
         <Route path="/coming-soon" exact element={<ComingSoon />} />
         <Route element={<MainLayout />}>
           <Route path="/" exact element={<Home />} />

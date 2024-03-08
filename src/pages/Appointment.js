@@ -39,7 +39,7 @@ const Appointment = () => {
                         <div className="container">
                             <div className="section-head">
                                 <span className="sub-title">Get in Touch</span>
-                                <h2 className="title">Agenda una <span>Cita</span></h2>
+                                <h2 className="title">Registrate a  <span>SPORTAPP</span></h2>
                             </div>
                             <form className="appointment-form dzForm" ref={form} onSubmit={sendEmail}>
                                 

@@ -1,6 +1,6 @@
 export const MenuListArray2 = [
   {
-    title: "Home",
+    title: "Inicio",
     classChange: "sub-menu-down",
     content: [
       { title: "Bienvenida", to: "/" },
