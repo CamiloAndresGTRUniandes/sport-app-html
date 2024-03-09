@@ -1,13 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { BrowserRouter, Route, Routes, Outlet } from "react-router-dom";
 
-
 //layouts
 import Header, { Mainheader } from "./../layouts/Header";
 import Footer from "./../layouts/Footer";
 import Footer2 from "../layouts/Footer2";
 import ScrollToTop from "./../layouts/ScrollToTop";
-
 
 //Pages
 import Home from "./Home";
@@ -38,6 +36,7 @@ import ServicesDetailsTable from "./ServicesDetailsTable";
 import Recomendaciones from "./Recomendaciones";
 import RecomendacionDetail from "./RecomendacionDetail";
 import RecomendacionPlanDepor from "./RecomendacionPlanDepor";
+import AsociacionTerceros from "./AsociacionTerceros";
 
 function Index() {
   var baseName = "/";
@@ -52,8 +51,12 @@ function Index() {
     <BrowserRouter basename={baseName}>
       <Routes>
         <Route path="/error-404" exact element={<ErrorPage />} />
-        <Route path="/under-maintenance" exact element={<UnderConstruction />}/>
-       
+        <Route
+          path="/under-maintenance"
+          exact
+          element={<UnderConstruction />}
+        />
+
         <Route path="/appointment" exact element={<Appointment />} />
         <Route path="/coming-soon" exact element={<ComingSoon />} />
         <Route element={<MainLayout />}>
@@ -64,7 +67,12 @@ function Index() {
           <Route path="/pricing" exact element={<Pricing />} />
           <Route path="/schedule" exact element={<Schedule />} />
           <Route path="/portfolio" exact element={<Portfolio />} />
-          <Route path="/user-profile" exact element={<UserProfile />}/>
+          <Route path="/user-profile" exact element={<UserProfile />} />
+          <Route
+            path="/asociacion-terceros"
+            exact
+            element={<AsociacionTerceros />}
+          />
           <Route
             path="/portfolio-details"
             exact
