@@ -43,7 +43,7 @@ export const IMAGES = {
   boxlog6: require("../assets/images/icon-box/logo6.png"),
   boxlog7: require("../assets/images/icon-box/logo7.png"),
   boxlog8: require("../assets/images/icon-box/logo8.png"),
-
+  sports: require("../assets/images/icon-box/sports.png"),
   aboutlogo1: require("../assets/images/about/logo1.png"),
   aboutlogo2: require("../assets/images/about/logo2.png"),
   aboutlogo3: require("../assets/images/about/logo3.png"),

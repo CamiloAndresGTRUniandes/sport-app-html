@@ -15,12 +15,10 @@ const  wrapperBlog = [
     {title:"Corazon saludable", image:IMAGES.boxlog5},
     {title:"Planes alimentarios", image:IMAGES.boxlog6},
     {title:"Ejercicios ", image:IMAGES.boxlog7},
-    {title:"Planes deportivos", image:IMAGES.sports},
-    
-
+    {title:"Suplementos y dieta", image:IMAGES.boxlog8},
 ];
 
-const Services = () => {
+const ServicesUser = () => {
     const [hover, setHover] = useState(0);
     return (
         <>
@@ -95,4 +93,4 @@ const Services = () => {
     );
 };
 
-export default Services;
+export default ServicesUser;

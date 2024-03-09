@@ -7,6 +7,14 @@ const ScheduleTable = () => {
             <table className="table-responsive-md ck-table">
                 <thead>
                     <tr>
+                        <th colSpan={8}>
+                             <h2 className='text-white'> &le;  Marzo  del 4- 10  &ge;</h2>   
+                        </th>    
+
+
+                    </tr>
+
+                    <tr>
                         <th></th>
                         <th>Lunes</th>
                         <th>Martes</th>
@@ -26,8 +34,10 @@ const ScheduleTable = () => {
                         </td>
                         <td className="event" rowspan="2">
                             <Link to={"#"} className="title">Clase de Crossfit</Link>
-                            <span className="subtitle">Camilo Andres Guevara</span>
+                            <span className="subtitle">Dr  Camilo Hospital de Kenedy</span>
                             <div className="event-tag">Entrenamiento</div>
+                            <div className="subtitle">Plan Premium</div>
+                            <button className='btn btn-primary shadow-primary btn-skew  mt-2'>Inscribete</button>
                         </td>
                         <td></td>
                         <td></td>
@@ -36,6 +46,8 @@ const ScheduleTable = () => {
                         <td className="event" rowspan="4">
                             <Link to={"#"} className="title">Entrenamientos</Link>
                             <div className="event-tag">Gym</div>
+                            <div className="subtitle">Plan Premium</div>
+                            <button className='btn btn-primary shadow-primary btn-skew  mt-2'>Inscribete</button>
                         </td>
                     </tr>
                     <tr className="row_2">
@@ -44,17 +56,23 @@ const ScheduleTable = () => {
                             <Link to={"#"} className="title">Elevación eléctrica</Link>
                             <span className="subtitle">Camilo Andres Guevara</span>
                             <div className="event-tag">Fuerza</div>
+                            <div className="subtitle">Plan Premium</div>
+                            <button className='btn btn-primary shadow-primary btn-skew  mt-2'>Inscribete</button>
                         </td>
                         <td></td>
                         <td className="event" rowspan="3">
                             <Link to={"#"} className="title">Elevación eléctrica</Link>
                             <span className="subtitle">Camilo Andres Guevara</span>
                             <div className="event-tag">Fuerza</div>
+                            <div className="subtitle">Plan Premium</div>
+                            <button className='btn btn-primary shadow-primary btn-skew  mt-2'>Inscribete</button>
                         </td>
                         <td className="event">
                             <Link to={"#"} className="title">Cardio</Link>
                             <span className="subtitle">Elisa Mendel</span>
                             <div className="event-tag">Aerobicos</div>
+                            <div className="subtitle">Plan Premium</div>
+                            <button className='btn btn-primary shadow-primary btn-skew  mt-2'>Inscribete</button>
                         </td>
                     </tr>
                     <tr className="row_3">
@@ -63,6 +81,8 @@ const ScheduleTable = () => {
                         <td className="event" rowspan="4">
                             <Link to={"#"} className="title" >Entrenamientos</Link>
                             <div className="event-tag">Gym</div>
+                            <div className="subtitle">Plan Premium</div>
+                            <button className='btn btn-primary shadow-primary btn-skew  mt-2'>Inscribete</button>
                         </td>
                         <td></td>
                         <td></td>
@@ -74,6 +94,8 @@ const ScheduleTable = () => {
                             <Link to={"#"} className="title" >Clase de Crossfit</Link>
                             <span className="subtitle">Daniel Bustos</span>
                             <div className="event-tag">Entrenamiento</div>
+                            <div className="title">Free</div>
+                            <button className='btn btn-info shadow-info btn-skew  mt-2'>Inscribete</button>
                         </td>
                         <td></td>
                     </tr>

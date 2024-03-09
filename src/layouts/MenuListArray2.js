@@ -85,7 +85,22 @@ export const MenuListArray2 = [
         title: "Detalles de servicios",
         to: "/services-details",
       },
+      
+      {
+        title: "Detalles de servicios-Table",
+        to: "/services-details-table",
+      }
     ],
+  },
+  {
+    title: "Sugerencias",
+    classChange: "sub-menu-down",
+    content: [
+      {
+        title: "Tus recomendaciones",
+        to: "/recomendaciones",
+      }
+    ]
   },
   {
     title: "Blog",

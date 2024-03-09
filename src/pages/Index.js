@@ -34,6 +34,9 @@ import Home2 from "./Home2";
 import Header2 from "../layouts/Header2";
 import Home3 from "./Home3";
 import UserProfile from "./UserProfile";
+import ServicesDetailsTable from "./ServicesDetailsTable";
+import Recomendaciones from "./Recomendaciones";
+import RecomendacionDetail from "./RecomendacionDetail";
 
 function Index() {
   var baseName = "/";
@@ -68,7 +71,10 @@ function Index() {
           />
           <Route path="/services" exact element={<Services />} />
           <Route path="/services-details" exact element={<ServicesDetails />} />
+          <Route path="/services-details-table" exact element={<ServicesDetailsTable />} />
           <Route path="/blog-grid" exact element={<BlogGrid />} />
+          <Route path="/Recomendaciones" exact element={<Recomendaciones />} />
+          <Route path="/Recomendacion-Detail" exact element={<RecomendacionDetail />} />
           <Route
             path="/blog-large-sidebar"
             exact

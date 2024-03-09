@@ -4,18 +4,15 @@ import NewsLetter from "../elements/NewsLetter";
 import PageTitle from "../elements/PageTitle";
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
-import FloatingLabel from 'react-bootstrap/FloatingLabel';
-
+import 'animate.css';
 
 const UserProfile = () => {
-
   return (
     <>
       <div className="page-content bg-white">
         <PageTitle parentTitle="Pages" activePage="Perfil de usuario" />
-
         <div className="container">
-          <Card >
+          <Card className='animate__animated animate__fadeInRightBig' >
             <Card.Body>
               <Card.Title>Registro de perfil de usuario</Card.Title>
               <Card.Text className='mt-5'>
@@ -33,16 +30,10 @@ const UserProfile = () => {
                     <span className="input-group-text" id="apellidos">Apellidos</span>
                     <input type="text" className="form-control" placeholder="" aria-label="apellidos" aria-describedby="apellidos" />
                   </div>
-
-
                   <div className="input-group mb-3  input-line">
                     <span className="input-group-text" id="email">Email</span>
                     <input type="text" className="form-control" placeholder="" aria-label="email" aria-describedby="email" />
-
-
-
                   </div>
-
                   <div className="input-group mb-3  input-line">
                     <span className="input-group-text" id="telefono">Telefono</span>
                     <input type="text" className="form-control" placeholder="" aria-label="telefono" aria-describedby="telefono" />
@@ -51,7 +42,6 @@ const UserProfile = () => {
                     <span className="input-group-text" id="fechanacimiento">Fecha de nacimiento</span>
                     <input type="date" className="form-control" placeholder="" aria-label="fechanacimiento" aria-describedby="fechanacimiento" />
                   </div>
-
                   <div className="input-group mb-3  input-line">
                     <span className="input-group-text" id="genero">Genero</span>
                     <select class="form-control" aria-label="genero">
@@ -67,9 +57,6 @@ const UserProfile = () => {
                     <span className="input-group-text" id="peso">Peso</span>
                     <input type="number" className="form-control" placeholder="" aria-label="peso" aria-describedby="peso" />
                   </div>
-              
-
-
                   <div className="row d-flex justify-content-around" >
                     <button
                       name="submit"
@@ -79,11 +66,9 @@ const UserProfile = () => {
                     >
                       <span>Guardar</span>
                     </button>
-
                     <button
                       name="submit"
                       type="button"
-                      value="Submit"
                       className="col-4  btn btn-secondary btn-lg btn-skew"
                     >
                       <span>Cancelar</span>
@@ -91,45 +76,41 @@ const UserProfile = () => {
                   </div>
                 </div>
                 <div className='col-md-6 col-lg-6 col-sm-12'>
-
                   <Tabs
-                    defaultActiveKey="0
-                    "
+                    defaultActiveKey="0"
                     id="uncontrolled-tab-example"
                     className="mb-3"
                   >
                     <Tab eventKey="0" title="Perfil Geografico">
-                    <div className='row'>
+                      <div className='row  animate__animated animate__fadeInUpBig'>
                         <div className='col-md-12 col-lg-12 col-sm-12'>
-                        <div className="input-group mb-3  input-line">
-                    <span className="input-group-text" id="pais">Pais</span>
-                    <select class="form-control" aria-label="pais">
-                      <option value="1">Colombia</option>
-                      <option value="2">Ecuador</option>
-                    </select>
-                  </div>
-
-                  <div className="input-group mb-3  input-line">
-                    <span className="input-group-text" id="Estado">Estado</span>
-                    <select class="form-control" aria-label="Estado">
-                      <option value="1">Antioquia</option>
-                      <option value="2">Bogota</option>
-                    </select>
-                  </div>
-
-                  <div className="input-group mb-3  input-line">
-                    <span className="input-group-text" id="Ciudad">Ciudad</span>
-                     <select class="form-control" aria-label="Ciudad">
-                      <option value="1">Medellin</option>
-                      <option value="2">Bello</option>
-                    </select>
-                  </div>
+                          <div className="input-group mb-3  input-line">
+                            <span className="input-group-text" id="pais">Pais</span>
+                            <select class="form-control" aria-label="pais">
+                              <option value="1">Colombia</option>
+                              <option value="2">Ecuador</option>
+                            </select>
                           </div>
+
+                          <div className="input-group mb-3  input-line">
+                            <span className="input-group-text" id="Estado">Estado</span>
+                            <select class="form-control" aria-label="Estado">
+                              <option value="1">Antioquia</option>
+                              <option value="2">Bogota</option>
+                            </select>
                           </div>
+                          <div className="input-group mb-3  input-line">
+                            <span className="input-group-text" id="Ciudad">Ciudad</span>
+                            <select class="form-control" aria-label="Ciudad">
+                              <option value="1">Medellin</option>
+                              <option value="2">Bello</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
                     </Tab>
-
                     <Tab eventKey="1" title="Perfil alimenticio">
-                      <div className='row'>
+                      <div className='row animate__animated animate__fadeInUpBig'>
                         <div className='col-md-12 col-lg-12 col-sm-12'>
                           <div className="input-group mb-3  input-line">
                             <span className="input-group-text" id="verdurasSemana">Cuantas veces consumes verduras a la semana?</span>
@@ -149,18 +130,13 @@ const UserProfile = () => {
                               type="switch"
                               id="custom-switch"
                             />
-
-
                           </div>
-
-
-
                         </div>
-
                       </div>
                     </Tab>
                     <Tab eventKey="2" title="Perfil deportivo">
-                      <div className='row'>
+                      <div className='row  animate__animated animate__fadeInUpBig'>
+                      
                         <div className='col-md-12 col-lg-12 col-sm-12'>
                           <div className="input-group mb-3  input-line">
                             <span className="input-group-text" id="ejercicioSemana">Cuantas veces haces ejercicio por semana?</span>
@@ -229,31 +205,17 @@ const UserProfile = () => {
                                   id={`inline-${type}-2`}
                                 />
                               </div>
-
                             ))}
                           </div>
-
-
-
                         </div>
-
                       </div>
                     </Tab>
-                    {/* <Tab eventKey="3" title="Contact">
-                      Mi info
-                    </Tab> */}
                   </Tabs>
-
                 </div>
-
-
-
               </div>
-
             </Card.Body>
           </Card>
         </div>
-
         <section className="call-action style-1 footer-action">
           <div className="container">
             <NewsLetter />
