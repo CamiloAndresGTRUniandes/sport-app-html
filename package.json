@@ -25,6 +25,7 @@
     "react-scripts": "5.0.1",
     "react-scroll-to-top": "^3.0.0",
     "react-select": "^5.7.0",
+    "react-toastify": "^10.0.4",
     "sweetalert": "^2.1.2",
     "sweetalert2": "^11.7.3",
     "swiper": "^8.1.4",

@@ -99,6 +99,10 @@ export const MenuListArray2 = [
       {
         title: "Tus recomendaciones",
         to: "/recomendaciones",
+      },
+      {
+        title: "Tus planes  alimentarios, deportivos",
+        to: "/recomendaciones-personales",
       }
     ]
   },

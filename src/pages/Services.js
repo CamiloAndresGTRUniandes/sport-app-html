@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
-import {Link} from 'react-router-dom';
-import ClientSlider from '../components/ClientSlider';
-import { IMAGES, SVGICON } from '../constants/theme';
-import LatestSlider from '../elements/LatestSlider';
-import NewsLetter from '../elements/NewsLetter';
+import { Link } from 'react-router-dom';
+import { IMAGES } from '../constants/theme';
 import PageTitle from '../elements/PageTitle';
-import WorkoutSlider from '../elements/WorkoutSlider';
 
 const  wrapperBlog = [
     {title:"Nutricion", image:IMAGES.boxlog1},
@@ -25,7 +21,7 @@ const Services = () => {
     return (
         <>
             <div className="page-content bg-white">
-                <PageTitle activePage="Services" parentTitle="Services" />
+                <PageTitle activePage="Servicios" parentTitle="Servicios" />
                 <section className="content-inner overflow-hidden" style={{backgroundImage: "url("+ IMAGES.BgImage1 +")"}}>
                     <div className="container">
                         <div className="row">
@@ -51,45 +47,8 @@ const Services = () => {
                         </div>    
                     </div>
                 </section>
-                <section className="content-inner portfolio-wrapper">
-			        <div className="portfolio-wrapper-inner">
-				        <div className="container-fluid  p-0">
-                            <WorkoutSlider />                
-                        </div>  
-                    </div>
-                    <svg className="shape-up" width="635" height="107" viewBox="0 0 635 107" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M577 0L-16 107L635 45L577 0Z" fill="var(--primary-dark)"/>
-                    </svg>
-                    <svg className="shape-down" width="673" height="109" viewBox="0 0 673 109" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M682 0L0 56L682 109V0Z" fill="var(--primary)"/>
-                    </svg>      
-                </section>
-                <section className="content-inner-1 testimonial-wrapper1" data-text="FEEDBACK" style={{backgroundImage: "url("+ IMAGES.BgImage2 +")", backgroundPosition: "center"}}>
-                    <div className="container">
-                        <div className="section-head text-center">
-                            <h5 className="sub-title">TESTIMONIOS</h5>
-                            <h2 className="title">Opiniones</h2>
-                        </div>
-                        <ClientSlider />
-
-                    </div>
-                    <div className="avatar1"><img src={IMAGES.avatarlarge1} alt=""/></div>
-                    <div className="avatar2"><img src={IMAGES.avatarlarge2} alt=""/></div>
-                    <div className="avatar3"><img src={IMAGES.avatar3} alt=""/></div>
-                    <div className="avatar4"><img src={IMAGES.avatarlarge1} alt=""/></div>
-                    <div className="avatar5"><img src={IMAGES.avatarlarge2} alt=""/></div>
-                    <div className="avatar6"><img src={IMAGES.avatar3} alt=""/></div>
-                    <img className="svg-shape rotate-360" src={SVGICON.circlebigSvg1} alt=""/>
-                    <img className="svg-shape-2 rotate-360" src={SVGICON.circlebigSvg2} alt=""/>
-                </section>  
-                <section className="content-inner-1 overflow-hidden" style={{backgroundImage: "url("+ IMAGES.BgImage1 +")"}}>
-                    <LatestSlider />
-                </section>  
-                <section className="call-action style-1 footer-action">
-			        <div className="container">
-                        <NewsLetter />
-                    </div>
-                </section>
+   
+          
             </div>   
         </>
     );

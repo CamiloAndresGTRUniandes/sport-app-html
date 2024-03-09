@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { IMAGES } from '../constants/theme';
-import BlogSidebar from '../elements/BlogSidebar';
-import NewsLetter from '../elements/NewsLetter';
 import PageTitle from '../elements/PageTitle';
 
 const Comment = ({ image, title }) => {

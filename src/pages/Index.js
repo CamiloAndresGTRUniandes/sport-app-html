@@ -37,6 +37,7 @@ import UserProfile from "./UserProfile";
 import ServicesDetailsTable from "./ServicesDetailsTable";
 import Recomendaciones from "./Recomendaciones";
 import RecomendacionDetail from "./RecomendacionDetail";
+import RecomendacionPlanDepor from "./RecomendacionPlanDepor";
 
 function Index() {
   var baseName = "/";
@@ -75,6 +76,7 @@ function Index() {
           <Route path="/blog-grid" exact element={<BlogGrid />} />
           <Route path="/Recomendaciones" exact element={<Recomendaciones />} />
           <Route path="/Recomendacion-Detail" exact element={<RecomendacionDetail />} />
+          <Route path='/recomendaciones-personales' exact element={<RecomendacionPlanDepor/>}/>
           <Route
             path="/blog-large-sidebar"
             exact
