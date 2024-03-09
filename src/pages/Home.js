@@ -12,9 +12,7 @@ import FitnessGoal from "../components/FitnessGoal";
 import MainBanner from "../components/MainBanner";
 import PerfectTrainers from "../components/PerfectTrainers";
 import { IMAGES, SVGICON } from "../constants/theme";
-import NewsLetter from "../elements/NewsLetter";
 import WorkoutSlider from "../elements/WorkoutSlider";
-import LatestSlider from "../elements/LatestSlider";
 
 const Home = () => {
   const [isOpen, setOpen] = useState(false);
@@ -223,17 +221,7 @@ const Home = () => {
             alt=""
           />
         </section>
-        <section
-          className="content-inner-1 overflow-hidden"
-          style={{ backgroundImage: "url(" + IMAGES.BgImage1 + ")" }}
-        >
-          <LatestSlider />
-        </section>
-        <section className="call-action style-1 footer-action">
-          <div className="container">
-            <NewsLetter />
-          </div>
-        </section>
+        
       </div>
       <ModalVideo
         channel="youtube"

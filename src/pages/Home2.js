@@ -8,8 +8,6 @@ import VideoBox from "../elements/VideoBox";
 import Gallery from "../components/Gallery";
 import ModalVideo from "react-modal-video";
 import Testimonial from "../components/Testimonial";
-import OurBlog from "../components/OurBlog";
-import Clients from "../elements/Clients";
 import { useLocation } from "react-router-dom";
 
 const Home2 = () => {

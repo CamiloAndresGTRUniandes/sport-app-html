@@ -17,46 +17,46 @@ const options = [
 
 const Appointment = () => {
     const form = useRef();
-	const sendEmail = (e) => {
-		e.preventDefault();
-		//emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form.current, 'YOUR_USER_ID')
-		emailjs.sendForm('service_gfykn6i', 'template_iy1pb0b', e.target, 'HccoOtZS6GHw-N-m6')
-		  .then((result) => {
-			  console.log(result.text);
-		  }, (error) => {
-			  console.log(error.text);
-		  });
-		  e.target.reset()
-		  //swal('Good job!', 'We have received your message successfully.Thanks for Contact.', "success");
-	};
+    const sendEmail = (e) => {
+        e.preventDefault();
+        //emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form.current, 'YOUR_USER_ID')
+        emailjs.sendForm('service_gfykn6i', 'template_iy1pb0b', e.target, 'HccoOtZS6GHw-N-m6')
+            .then((result) => {
+                console.log(result.text);
+            }, (error) => {
+                console.log(error.text);
+            });
+        e.target.reset()
+        //swal('Good job!', 'We have received your message successfully.Thanks for Contact.', "success");
+    };
     return (
         <>
             <div className="page-wraper">
 
                 <Header />
                 <div className="page-content bg-white">
-                    <section className="appointment-page" data-text="HEALTH" style={{backgroundImage: "url("+ IMAGES.BgAppoint +")"}}>
+                    <section className="appointment-page" data-text="HEALTH" style={{ backgroundImage: "url(" + IMAGES.BgAppoint + ")" }}>
                         <div className="container">
                             <div className="section-head">
                                 <span className="sub-title">Get in Touch</span>
-                                <h2 className="title">Agenda una <span>Cita</span></h2>
+                                <h2 className="title">Registrate a  <span>SPORTAPP</span></h2>
                             </div>
                             <form className="appointment-form dzForm" ref={form} onSubmit={sendEmail}>
-                                
+
                                 <p className="appointment-text">
                                     Hola, Mi Nombre es{"  "}
                                     <input name="dzFirstName" required type="text" className="form-control" placeholder="Nombre" /> {" "}
                                     y estoy buscando
-                                    <Select 
-                                        options={options} 
+                                    <Select
+                                        options={options}
                                         defaultValue={options[0]}
-                                        isSearchable = {false}
-                                        
+                                        isSearchable={false}
+
                                         className="custom-react-select ms-2"
                                     />
-                                   
-                                   Ponte en contacto con nosotros en {" "}
-                                    <input name="dzEmail" required type="text"  className="form-control" placeholder="Tu  correo electrónico aquí"/> {" "}
+
+                                    Ponte en contacto con nosotros en {" "}
+                                    <input name="dzEmail" required type="text" className="form-control" placeholder="Tu  correo electrónico aquí" /> {" "}
                                     !
                                 </p>
                                 <div className="form-check">
@@ -70,8 +70,8 @@ const Appointment = () => {
                 </div>
                 <footer className="site-footer style-1 bg-img-fix footer-action" id="footer">
                     <div className="footer-bottom">
-                        <div className="text-center"> 
-                            <span className="copyright-text">Copyright © 2024 <Link to="https://uniandes.edu.co/" target="_blank" rel="noreferrer" >Grupo-13</Link>. Todos  los derechos reservados</span> 
+                        <div className="text-center">
+                            <span className="copyright-text">Copyright © 2024 <Link to="https://uniandes.edu.co/" target="_blank" rel="noreferrer" >Grupo-13</Link>. Todos  los derechos reservados</span>
                         </div>
                     </div>
                 </footer>

@@ -3,10 +3,10 @@ import {Link} from 'react-router-dom';
 import { IMAGES } from '../constants/theme';
 
 const boxWrapper = [
-    {image: IMAGES.boxlog1, title:"Right Nutrition"},
-    {image: IMAGES.boxlog2, title:"Health & Fitness"},
-    {image: IMAGES.boxlog3, title:"Gym & Exercise"},
-    {image: IMAGES.boxlog4, title:"Health Motivation"},
+    {image: IMAGES.boxlog1, title:"Planes nutricionales"},
+    {image: IMAGES.boxlog2, title:"Salud y bienestar"},
+    {image: IMAGES.boxlog3, title:"Planes de entrenamiento"},
+    {image: IMAGES.boxlog4, title:"Nutricion"},
 ];
 
 const FitnessIdeas = () => {
@@ -26,8 +26,7 @@ const FitnessIdeas = () => {
                             </div>
                             <div className="icon-content">
                                 <h5 className="dz-title m-b10"><Link to={"/services-details"}>{item.title}</Link></h5>
-                                <p className="m-b25">Aliquam sit amet volutpat sem, eget aliquet odio. Integer lobortis sed.</p>
-                                <Link to={"/services-details"} className="btn btn-primary shadow-primary btn-skew"><span>Read More</span></Link>
+                                <Link to={"/services-details"} className="btn btn-primary shadow-primary btn-skew"><span>Leer mas</span></Link>
                             </div>
                         </div>
                     </div>

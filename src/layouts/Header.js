@@ -136,18 +136,12 @@ export const Mainheader = () => {
             {/* <!-- Extra Nav --> */}
             <div className="extra-nav">
               <div className="extra-cell">
-                <button
-                  id="quik-search-btn"
-                  type="button"
-                  className="header-search-btn"
-                >
-                  <i className="fa-solid fa-magnifying-glass"></i>
-                </button>
+
                 <Link
-                  to={"/appointment"}
+                  to={"/Login"}
                   className="btn btn-primary btn-skew appointment-btn"
                 >
-                  <span>Cita</span>
+                  <span>Iniciar sesion</span>
                 </Link>
               </div>
             </div>
