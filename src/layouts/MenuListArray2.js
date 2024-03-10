@@ -89,7 +89,7 @@ export const MenuListArray2 = [
         title: "Detalles de servicios",
         to: "/services-details",
       },
-      
+
       {
         title: "Detalles de servicios-Table",
         to: "/services-details-table",
@@ -136,4 +136,21 @@ export const MenuListArray2 = [
     title: "Contactanos",
     to: "/contact-us",
   },
+  {
+    title: "Seguimientos",
+    to: "/seguimientos",
+  }
+  ,
+  {
+    title: "Socios-Yonathan",
+    classChange: "sub-menu-down",
+    content: [
+      {
+        title: "Registro de productos y servicios",
+        to: "/productos-servicios",
+      },
+     
+    ],
+  }
+
 ];

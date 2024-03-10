@@ -1,34 +1,28 @@
-import React,{useState} from 'react';
-import {Link} from 'react-router-dom';
-import ModalVideo from 'react-modal-video'
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import ModalVideo from 'react-modal-video';
 import 'react-modal-video/css/modal-video.min.css';
 import { IMAGES } from '../constants/theme';
-import BlogGridSlider from '../elements/BlogGridSlider';
-import NewsLetter from '../elements/NewsLetter';
 import PageTitle from '../elements/PageTitle';
 
 const cardBlog = [
-    {image1: IMAGES.bloggrid1, image2: IMAGES.avatar1, author: "Dr Camilo de Keneddy", title:"Entrenamientos de cadera", date:"01 Mar 2024", },
-    {image1: IMAGES.bloggrid2, image2: IMAGES.avatar2, author: "Maria Mendel", title:"Ejercicios para  tu estiramientos", date:"04 Mar 2024", },
-    {image1: IMAGES.bloggrid3, image2: IMAGES.avatar3, author: "Akira", title:"Solucion a tu aumento de peso", date:"22 May 2024", },
-    
-];
-const cardBlog2 = [
-    // {image1: IMAGES.bloggrid6, image2: IMAGES.avatar1, author: "Atrin", title:"14 Days To A Better Fitness.", date:"17 May 2023", },
-    // {image1: IMAGES.bloggrid7, image2: IMAGES.avatar2, author: "Deep", title:"3 Ways Create Better Fitness.", date:"16 May 2023", },
-    // {image1: IMAGES.bloggrid8, image2: IMAGES.avatar3, author: "Noare", title:"What Can You Do About Fitness.", date:"22 May 2023", },
+    { image1: IMAGES.bloggrid1, image2: IMAGES.avatar1, author: "Dr Camilo de Keneddy", title: "Ejercicios de Lunes", date: "01 Mar 2024", },
+    { image1: IMAGES.bloggrid2, image2: IMAGES.avatar2, author: "Dr Camilo de Keneddy", title: "Ejercicios de Martes", date: "02 Mar 2024", },
+    { image1: IMAGES.bloggrid3, image2: IMAGES.avatar3, author: "Dr Camilo de Keneddy", title: "Ejercicios de Miercoless", date: "03 Mar 2024", },
+
 ];
 
-const Recomendaciones = () => {
+
+const Seguimientos = () => {
     const [isOpen, setOpen] = useState(false);
     return (
         <>
-            <div className="page-content bg-white animate__animated animate__fadeInRightBig">
-                <PageTitle activePage="Tus Recomendaciones" parentTitle="Sugerencias" />    
-                <section className="content-inner">
+            <div className="page-content bg-white">
+                <PageTitle activePage="Tus Seguimientos" parentTitle="Seguimientos" />
+                <section className="animate__animated animate__fadeInRightBig">
                     <div className="container">
                         <div className="row">
-                            {cardBlog.map((data, index)=>(
+                            {cardBlog.map((data, index) => (
                                 <div className="col-md-6 col-xl-4 m-b30" key={index}>
                                     <div className="dz-card style-1 overlay-shine">
                                         <div className="dz-media">
@@ -39,7 +33,7 @@ const Recomendaciones = () => {
                                                 <ul>
                                                     <li className="post-author">
                                                         <Link to={"#"}>
-                                                            <img src={data.image2} alt="" />{" "} 
+                                                            <img src={data.image2} alt="" />{" "}
                                                             <span>By {data.author}</span>
                                                         </Link>
                                                     </li>{" "}
@@ -53,10 +47,9 @@ const Recomendaciones = () => {
                                     </div>
                                 </div>
                             ))}
-                      
                         </div>
-                        <div className="row">		
-                            <div className="col-xl-12 col-lg-12">		
+                        <div className="row">
+                            <div className="col-xl-12 col-lg-12">
                                 <nav aria-label="Blog Pagination">
                                     <ul className="pagination text-center m-b30 m-t50 m-lg-t10">
                                         <li className="page-item"><Link to={"#"} className="page-link prev"><i className="fas fa-chevron-left"></i></Link></li>
@@ -66,15 +59,15 @@ const Recomendaciones = () => {
                                     </ul>
                                 </nav>
                             </div>
-                        </div>	
+                        </div>
                     </div>
                 </section>
                 <section className="call-action style-1 footer-action">
-			   </section>
-            </div>   
+                </section>
+            </div>
             <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId="X_9VoqR5ojM" onClose={() => setOpen(false)} />
         </>
     );
 };
 
-export default Recomendaciones;
+export default Seguimientos;

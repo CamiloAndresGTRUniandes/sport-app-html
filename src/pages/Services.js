@@ -20,7 +20,7 @@ const Services = () => {
     const [hover, setHover] = useState(0);
     return (
         <>
-            <div className="page-content bg-white">
+            <div className="page-content bg-white animate__animated animate__fadeInRightBig">
                 <PageTitle activePage="Servicios" parentTitle="Servicios" />
                 <section className="content-inner overflow-hidden" style={{backgroundImage: "url("+ IMAGES.BgImage1 +")"}}>
                     <div className="container">

@@ -28,7 +28,7 @@ const Comment = ({ image, title }) => {
 const RecomendacionDetail = () => {
     return (
         <>
-            <div className="page-content bg-white">
+            <div className="page-content bg-white animate__animated animate__fadeInRightBig">
                 <PageTitle activePage="Ejercicios de cadera" parentTitle="Sugerencias" />
                 <section className="">
                     <div className="container">

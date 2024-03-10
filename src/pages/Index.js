@@ -39,6 +39,9 @@ import Recomendaciones from "./Recomendaciones";
 import RecomendacionDetail from "./RecomendacionDetail";
 import RecomendacionPlanDepor from "./RecomendacionPlanDepor";
 import AsociacionTerceros from "./AsociacionTerceros";
+import Seguimientos from "./Seguimientos";
+import ServiciosProductos from "./ServiciosProductos";
+import EdicionServiciosProductos from "./EdicionServiciosProductos";
 
 function Index() {
   var baseName = "/";
@@ -82,6 +85,7 @@ function Index() {
             exact
             element={<PortfolioDetails />}
           />
+            <Route path="/productos-servicios" exact element={<ServiciosProductos />} />
           <Route path="/services" exact element={<Services />} />
           <Route path="/services-details" exact element={<ServicesDetails />} />
           <Route path="/services-details-table" exact element={<ServicesDetailsTable />} />
@@ -89,6 +93,7 @@ function Index() {
           <Route path="/Recomendaciones" exact element={<Recomendaciones />} />
           <Route path="/Recomendacion-Detail" exact element={<RecomendacionDetail />} />
           <Route path='/recomendaciones-personales' exact element={<RecomendacionPlanDepor/>}/>
+          <Route path="/edicion-servicios-productos" exact element={<EdicionServiciosProductos />} />
           <Route
             path="/blog-large-sidebar"
             exact
@@ -106,6 +111,7 @@ function Index() {
             element={<WeightCalculator />}
           />
           <Route path="/contact-us" exact element={<ContactUs />} />
+          <Route path="/seguimientos" exact element={<Seguimientos />} />
         </Route>
         <Route element={<MainLayout2 />}>
           <Route path="/home-2" exact element={<Home2 />} />
