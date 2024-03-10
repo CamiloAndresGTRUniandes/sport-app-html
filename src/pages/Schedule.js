@@ -5,6 +5,7 @@ import PageTitle from '../elements/PageTitle';
 import ScheduleTable from '../elements/ScheduleTable';
 
 const Schedule = () => {
+ 
     return (
         <>
             <div className="page-content bg-white">
@@ -16,11 +17,7 @@ const Schedule = () => {
                         </div>
                     </div>
                 </div>
-                <section className="call-action style-1 footer-action">
-			        <div className="container">
-                        <NewsLetter />
-                    </div>
-                </section>
+               
             </div>   
         </>
     );
