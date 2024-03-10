@@ -9,10 +9,10 @@ const AdministrarSeguimiento = () => {
 
   // Datos de ejemplo (puedes reemplazarlos con tu lógica de obtención de datos)
   const data = [
-    { nombre: 'Yonathan', producto: 'Zumba', valor: '$ 150000', categoria: 'Ejercicios', tipoPlan: 'Plan Premium', contrato: 'Edit', recomendacion: 'Recomendacion' },
-    { nombre: 'Daniel', producto: 'Creatina', valor: '$ 10000', categoria: 'Ejercicios', tipoPlan: 'Free', contrato: 'Edit', recomendacion: 'Recomendacion' },
-    { nombre: 'Elisa', producto: 'Ciclas', valor: '$ 505000', categoria: 'Ejercicios', tipoPlan: 'Free', contrato: 'Edit', recomendacion: 'Recomendacion' },
-    { nombre: 'Camilo', producto: 'Nutricionistas', valor: '$ 70000', categoria: 'Salud', tipoPlan: 'Premium', contrato: 'Edit', recomendacion: 'Recomendacion' },
+    { nombre: 'Yonathan', producto: 'Zumba', valor: '$ 150000', categoria: 'Ejercicios', tipoPlan: 'Plan Premium', contrato: 'Al dia', recomendacion: 'Recomendacion' },
+    { nombre: 'Daniel', producto: 'Creatina', valor: '$ 10000', categoria: 'Ejercicios', tipoPlan: 'Free', contrato: 'Pendiente', recomendacion: 'Recomendacion' },
+    { nombre: 'Elisa', producto: 'Ciclas', valor: '$ 505000', categoria: 'Ejercicios', tipoPlan: 'Free', contrato: 'Al dia', recomendacion: 'Recomendacion' },
+    { nombre: 'Camilo', producto: 'Nutricionistas', valor: '$ 70000', categoria: 'Salud', tipoPlan: 'Premium', contrato: 'Pendiente', recomendacion: 'Recomendacion' },
     // Otros datos...
   ];
 
@@ -25,12 +25,14 @@ const AdministrarSeguimiento = () => {
     <>
       <div className="page-content bg-white">
         <PageTitle activePage="Administrar Seguimiento" parentTitle="AdministrarSeguimiento" />
-        <div className="content-inner" style={{ backgroundImage: `url(${IMAGES.BgImage1})` }}>
+        <div 
+         className="animate__animated animate__fadeInRightBig"
+        style={{ backgroundImage: `url(${IMAGES.BgImage1})` }}>
 
           <div className="container mt-5">
             <div className="section-head mt-5">
               <h2 className="title wow fadeInUp">
-                Dulce <span>Gatita</span>
+                Dulce  Gatita 
               </h2>
             </div>
 
@@ -77,12 +79,26 @@ const AdministrarSeguimiento = () => {
                         <td>{item.valor}</td>
                         <td>{item.categoria}</td>
                         <td>{item.tipoPlan}</td>
-                        <td>{item.contrato}</td>
+                        <td>{
+                              item.contrato=="Al dia"?
+                              (<Link 
+                              to="/seguimiento-contrato"
+                              className='col-10 btn btn-warning shadow-dark btn-skew  mt-2'
+                              >{item.contrato}</Link>)
+                              :
+                              (<Link 
+                                to="/seguimiento-contrato"
+                                className='col-10 btn btn-danger shadow-danger btn-skew  mt-2'
+                                >{item.contrato}</Link>)
+
+                          }
+                        
+                        </td>
                         <td>
                             <Link to="/Recomendacion" >
-                            <button className='btn btn-dark shadow-dark btn-skew  mt-2'>{item.recomendacion}</button>
+                            <button className='btn btn-dark shadow-dark btn-skew  mt-2'>{item.recomendacion}
+                            </button>
                             </Link>
-                            
                         </td>
                         
                       </tr>

@@ -44,6 +44,7 @@ import AsociacionTerceros from "./AsociacionTerceros";
 import Seguimientos from "./Seguimientos";
 import ServiciosProductos from "./ServiciosProductos";
 import EdicionServiciosProductos from "./EdicionServiciosProductos";
+import EdicionRecomendacion from "./EdicionRecomendacion";
 
 function Index() {
   var baseName = "/";
@@ -66,7 +67,6 @@ function Index() {
 
         <Route path="/appointment" exact element={<Appointment />} />
         <Route path="/Register" exact element={<Register />} />
-        <Route path="/Recomendacion" exact element={<Recomendacion />} />
         <Route path="/Login" exact element={<Login />} />
         <Route path="/coming-soon" exact element={<ComingSoon />} />
         <Route element={<MainLayout />}>
@@ -78,6 +78,9 @@ function Index() {
           <Route path="/schedule" exact element={<Schedule />} />
           <Route path="/portfolio" exact element={<Portfolio />} />
           <Route path="/user-profile" exact element={<UserProfile />} />
+          <Route path="/Recomendacion" exact element={<Recomendacion />} />
+          <Route path="/edicion-recomendacion" exact element={<EdicionRecomendacion />} />
+          
           <Route
             path="/asociacion-terceros"
             exact
