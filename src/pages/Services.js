@@ -22,7 +22,7 @@ const Services = () => {
         <>
             <div className="page-content bg-white animate__animated animate__fadeInRightBig">
                 <PageTitle activePage="Servicios" parentTitle="Servicios" />
-                <section className="content-inner overflow-hidden" style={{backgroundImage: "url("+ IMAGES.BgImage1 +")"}}>
+                <section className="" style={{backgroundImage: "url("+ IMAGES.BgImage1 +")"}}>
                     <div className="container">
                         <div className="row">
                             {wrapperBlog.map((item, index)=>(
@@ -38,7 +38,7 @@ const Services = () => {
                                         <div className="icon-content">
                                             <h5 className="dz-title m-b10"><Link to={"#"}>{item.title}</Link></h5>
                                             
-                                            <Link to={"/services-details"} className="btn btn-primary shadow-primary btn-skew"><span>Leer mas</span></Link>
+                                            <Link to={"/services-details-table"} className="btn btn-primary shadow-primary btn-skew"><span>Leer mas</span></Link>
                                         </div>
                                     </div>
                                 </div>

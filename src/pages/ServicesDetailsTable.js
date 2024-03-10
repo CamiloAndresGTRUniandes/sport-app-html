@@ -11,7 +11,7 @@ const ServicesDetailsTable = () => {
       <div className="page-content bg-white">
         <PageTitle activePage="Planes deportivos" parentTitle="Servicios" />
         <div
-          className="content-inner "
+          className="animate__animated animate__fadeInRightBig"
           style={{ backgroundImage: "url(" + IMAGES.BgImage1 + ")" }}
         >
           <div className="container">
