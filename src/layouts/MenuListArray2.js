@@ -96,6 +96,15 @@ export const MenuListArray2 = [
       }
     ],
   },
+
+  {
+    title: "Asociados",
+    classChange: "sub-menu-down",
+    content: [
+      { title: "Administrar seguimiento", to: "/AdministrarSeguimiento" },
+
+    ],
+  },
   {
     title: "Sugerencias",
     classChange: "sub-menu-down",
