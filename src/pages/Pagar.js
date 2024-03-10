@@ -4,6 +4,11 @@ import PageTitle from "../elements/PageTitle";
 import Card from 'react-bootstrap/Card';
 import { Link } from "react-router-dom";
 const Pagar = () => {
+  const irPasarela = (e) => {
+    e.preventDefault();
+    alert("ir a pasarela")
+  }
+
   return (
     <>
       <div className="page-content bg-white animate__animated animate__fadeInRightBig">
@@ -16,18 +21,20 @@ const Pagar = () => {
             <div className="row col-12 ">
               <Card className='animate__animated animate__fadeInRightBig' >
                 <Card.Body>
-                  <Card.Title>Edici&oacute;n producto o servicio</Card.Title>
+                  <Card.Title>Seleccion tu proveedor de producto</Card.Title>
                   <div className="Row">
                     <div className="input-group mb-3  input-line">
                       <span className="input-group-text" id="nombre">Nombre</span>
-                      <input type="text" className="form-control" placeholder="" aria-label="Username" aria-describedby="nombre" value="Zumba" />
+                      <input type="text" className="form-control" placeholder="" aria-label="Username" aria-describedby="nombre" value="Creatina" />
                     </div>
 
                     <div className="input-group mb-3  input-line">
-                      <span className="input-group-text" id="categoria">Categoria</span>
-                      <select class="form-control" aria-label="categoria">
-                        <option value="1">Servicio</option>
-                        <option value="2">Producto</option>
+                      <span className="input-group-text" id="categoria">Banco</span>
+                      <select className="form-control" aria-label="categoria">
+                        <option value="1">Bancolombia</option>
+                        <option value="2">Davivienda</option>
+                        <option value="3">BVVA</option>
+                        <option value="3">Banco de Bogota</option>
                       </select>
                     </div>
                     <div className="input-group mb-3  input-line">
@@ -35,35 +42,41 @@ const Pagar = () => {
                       <input type="text" className="form-control" placeholder="" aria-label="valor" aria-describedby="valor" value="$150.000" />
                     </div>
 
+
                     <div className="input-group mb-3  input-line">
-                      <span className="input-group-text" id="tipoPlan">Tipo de plan</span>
-                      <select class="form-control" aria-label="tipoPlan">
-                        <option value="1">Basico</option>
-                        <option value="2">Standar</option>
-                        <option value="3">Premium</option>
-                        <option value="4">Free</option>
-                      </select>
-                    </div>
-                    <div className="input-group mb-3  input-line">
-                      <span className="input-group-text" id="imagen" >imagen</span>
+                      <span className="input-group-text" id="email" >Email</span>
                       <input
                         type="text"
                         className="form-control"
                         placeholder=""
-                        aria-label="imagen"
-                        aria-describedby="imagen"
-                        value="image.png"
+                        aria-label="email"
+                        aria-describedby="email"
+                        value="elisamendel@gmail.com"
                       />
                     </div>
 
+                    <div className="input-group mb-3  input-line">
+                      <span className="input-group-text" id="email" >Pasarela de pago</span>
+                      <div className="btn-group" role="group" aria-label="Basic radio toggle button group">
+                        <input type="radio" className="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked />
+                        <label className="btn btn-outline-primary ml-2" for="btnradio1">PSE</label>
+
+                        <input type="radio" className="btn-check" name="btnradio" id="btnradio2" autocomplete="off" />
+                        <label className="btn btn-outline-secondary" for="btnradio2">Mis pagos</label>
+                        <input type="radio" className="btn-check" name="btnradio" id="btnradio3" autocomplete="off" />
+                        <label className="btn btn-outline-info" for="btnradio3">Tu pagos</label>
+                      </div>
+                    </div>
                   </div>
                   <div className="row d-flex justify-content-around" >
-                    <Link to={"/productos-servicios"}
+                    <Link onClick={irPasarela}
+
                       className="col-2  btn btn-primary shadow-primary btn-skew  mt-2">
-                      Guardar
+
+                      Ir a pagos
                     </Link>
 
-                    <Link to={"/productos-servicios"}
+                    <Link to={"/carrito-compras"}
                       className="col-2  btn btn-dark shadow-primary btn-skew  mt-2">
                       Cancelar
                     </Link>
