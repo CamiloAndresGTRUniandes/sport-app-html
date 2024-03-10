@@ -45,6 +45,9 @@ import Seguimientos from "./Seguimientos";
 import ServiciosProductos from "./ServiciosProductos";
 import EdicionServiciosProductos from "./EdicionServiciosProductos";
 import EdicionRecomendacion from "./EdicionRecomendacion";
+import CarritoCompras from "./CarritoCompras";
+import Pagar from "./Pagar";
+
 
 function Index() {
   var baseName = "/";
@@ -68,7 +71,7 @@ function Index() {
         <Route path="/appointment" exact element={<Appointment />} />
         <Route path="/Register" exact element={<Register />} />
         <Route path="/Login" exact element={<Login />} />
-        <Route path="/coming-soon" exact element={<ComingSoon />} />
+       
         <Route element={<MainLayout />}>
           <Route path="/" exact element={<Home />} />
           <Route path="/about-us" exact element={<AboutUs />} />
@@ -80,7 +83,7 @@ function Index() {
           <Route path="/user-profile" exact element={<UserProfile />} />
           <Route path="/Recomendacion" exact element={<Recomendacion />} />
           <Route path="/edicion-recomendacion" exact element={<EdicionRecomendacion />} />
-          
+          <Route path="/pagar" exact element={<Pagar />} />
           <Route
             path="/asociacion-terceros"
             exact
@@ -101,6 +104,8 @@ function Index() {
           <Route path="/Recomendacion-Detail" exact element={<RecomendacionDetail />} />
           <Route path='/recomendaciones-personales' exact element={<RecomendacionPlanDepor/>}/>
           <Route path="/edicion-servicios-productos" exact element={<EdicionServiciosProductos />} />
+          <Route path="/carrito-compras" exact element={<CarritoCompras />} />
+          <Route path="/coming-soon" exact element={<ComingSoon />} />
           <Route
             path="/blog-large-sidebar"
             exact

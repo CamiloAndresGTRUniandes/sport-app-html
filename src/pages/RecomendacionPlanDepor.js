@@ -18,7 +18,7 @@ const RecomendacionPlanDepor = () => {
         <>
             <div className="page-content bg-white">
                 <PageTitle activePage="Recomendaciones personales" parentTitle="Sugerencias" />
-                <section className="">
+                <section className="animate__animated animate__fadeInRightBig">
                
                     <div className="container">
                         <div className='row'>

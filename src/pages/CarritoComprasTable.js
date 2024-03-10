@@ -1,10 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const ServicesTable = () => {
+const CarritoComprasTable = () => {
   return (
     <>
-
       <table className="table-responsive-md ck-table">
         <thead>
 
@@ -14,8 +13,7 @@ const ServicesTable = () => {
             <th>Producto/Servicio</th>
             <th>Tipo de Plan</th>
             <th>Costo</th>
-            <th>Editar</th>
-            <th>Eliminar</th>
+             <th>Accion</th>
           </tr>
         </thead>
         <tbody>
@@ -28,15 +26,9 @@ const ServicesTable = () => {
             </td>
             <td> $ 80.000  Mes</td>
             <td>
-            <Link to={"/edicion-servicios-productos"} className="btn btn-primary shadow-primary btn-skew  mt-2"><span>
-                 <i className="fa-solid fa-pencil"></i>
-              </span></Link>
+                 Pagado  
             </td>
-            <td>
-              <button className='btn btn-dark shadow-danger btn-skew  mt-2'>
-              <i className="fa-solid fa-close"></i>
-              </button>
-            </td>
+          
 
           </tr>
           <tr className="row_2">
@@ -46,19 +38,17 @@ const ServicesTable = () => {
             <td className="event"><span to={"#"} className="title">Free</span></td>
             <td> $ 150.000  Mes</td>
             <td>
-              <Link to={"/edicion-servicios-productos"} className="btn btn-primary shadow-primary btn-skew  mt-2"><span>
-              <i className="fa-solid fa-pencil"></i>
-                </span></Link>
+              <Link to={"/pagar"} className="btn btn-warning shadow-warning btn-skew  mt-2"><span>
+              <i class="fa-solid fa-usd"></i>
+              &nbsp;
+                Por pagar
+              </span></Link>
             </td>
-            <td>
-              <button className='btn btn-dark shadow-danger btn-skew  mt-2'>
-              <i className="fa-solid fa-close"></i>
-              </button>
-            </td>
+          
           </tr>
         </tbody>
       </table>
     </>
   )
 };
-export default ServicesTable;
+export default CarritoComprasTable;

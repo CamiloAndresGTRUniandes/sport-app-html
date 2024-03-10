@@ -6,7 +6,9 @@ const DzMedia = ({Image}) =>{
     return(
         <div className="col-xl-3 col-md-6">
             <div className="dz-media">
-                <img src={Image} alt="" />
+                <img src={Image}  style={{
+                    maxHeight:'450px'
+                }}  alt="" />
             </div>
         </div>
     )
@@ -48,7 +50,7 @@ const FitnessTraining = () => {
         <>
             <div className="row g-0">
                 <DzInfo1 title="FORMA TU CUERPO" subtitle="CROSSFIT" />
-                <DzMedia  Image = {IMAGES.aboutElisa } />
+                <DzMedia  Image = {IMAGES.danielTrainer } />
                 <DzInfo2 title="RELAX PROGRAM" subtitle="BALANCE CORPORAL"/>
                 <DzMedia  Image = {IMAGES.aboutElisa2 } />
                 <DzMedia  Image = {IMAGES.aboutElisa3 } />

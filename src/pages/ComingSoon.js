@@ -82,16 +82,16 @@ const ComingSoon = () => {
   return (
     <>
       <div
-        className="coming-soon"
+        className="coming-soon animate__animated animate__fadeInRightBig"
         data-text="HEALTH"
         style={{ backgroundImage: "url(" + IMAGES.BgAppoint + ")" }}
       >
         <div className="inner-content">
-          <div className="logo-header logo-dark">
+          {/* <div className="logo-header logo-dark">
             <Link to={"/"}>
               <img src={IMAGES.logo} alt="" />
             </Link>
-          </div>
+          </div> */}
           <h1 className="dz-head">
             Estaremos en nuestro proximo evento <span className="text-primary">Pronto !</span>
           </h1>
@@ -187,7 +187,7 @@ const ComingSoon = () => {
         centered
       >
         <div className="inquiry-adv">
-          <img src={IMAGES.modalpic} alt="Image" />
+          {/* <img src={IMAGES.modalpic} alt="Image" /> */}
         </div>
         <div className="contact-modal">
           <div className="modal-header">

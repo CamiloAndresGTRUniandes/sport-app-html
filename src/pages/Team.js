@@ -17,7 +17,7 @@ const Team = () => {
     <>
       <div className="page-content bg-white">
         <PageTitle parentTitle="Pages" activePage="Nuestro equipoo" />
-        <section className="content-inner">
+        <section className="animate__animated animate__fadeInRightBig">
           <div className="container">
             <div className="row ">
               {mediaBlog.map((item, index) => (
@@ -67,11 +67,11 @@ const Team = () => {
             </div>
           </div>
         </section>
-        <section className="call-action style-1 footer-action">
+        {/* <section className="call-action style-1 footer-action">
           <div className="container">
             <NewsLetter />
           </div>
-        </section>
+        </section> */}
       </div>
     </>
   );

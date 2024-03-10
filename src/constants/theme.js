@@ -27,11 +27,11 @@ export const IMAGES = {
   Slide2Starts: require("../assets/images/main-slider/slider2/stars.png"),
 
   //logo
-  logo: require("../assets/images/sport2.png"),
+  logo: require("../assets/images/dog.png"),
   logo1: require("../assets/images/logo/logo1.png"),
   logo2: require("../assets/images/logo/logo2.png"),
   logo3: require("../assets/images/logo/logo3.png"),
-  logoWhite: require("../assets/images/logo-full-white.png"),
+  logoWhite: require("../assets/images/dog.png"),
   logoWhite2: require("../assets/images/logo-white-2.png"),
   imgLogo2: require("../assets/images/logo-2.png"),
 

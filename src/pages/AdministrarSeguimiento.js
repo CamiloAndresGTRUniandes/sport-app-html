@@ -29,15 +29,26 @@ const AdministrarSeguimiento = () => {
          className="animate__animated animate__fadeInRightBig"
         style={{ backgroundImage: `url(${IMAGES.BgImage1})` }}>
 
-          <div className="container mt-5">
-            <div className="section-head mt-5">
+          <div className="container ">
+            <div className="section-head ">
               <h2 className="title wow fadeInUp">
                 Dulce  Gatita 
               </h2>
             </div>
 
             <div className="row col-12 ">
-              <div className="col-lg-9 col-sm-1">
+
+                
+              <div className="col-lg-3 col-sm-1">
+              <Link to="/Recomendacion" >
+                              <button className='btn btn-dark shadow-dark btn-skew  mt-2'>
+                              <i className="fa-solid fa-plus mt-2"></i>   
+                              &nbsp;  Recomendaci&oacute;n  
+                            </button>
+                            </Link>
+              </div>
+              <div className='col-lg-6 col-sm-1' >
+
               </div>
               <div className="col-lg-3 col-sm-11 mb-3">
                 <div className="input-line input-group">
