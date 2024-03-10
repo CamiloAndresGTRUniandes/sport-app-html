@@ -9,7 +9,7 @@ const Schedule = () => {
         <>
             <div className="page-content bg-white">
                 <PageTitle activePage="Schedule" parentTitle="Pages" />    
-                <div className="content-inner-1">
+                <div className="animate__animated animate__fadeInRightBig">
                     <div className="container">
                         <div className="schedule-table table-responsive">
                             <ScheduleTable />

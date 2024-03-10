@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { IMAGES } from "../constants/theme";
-import NewsLetter from "../elements/NewsLetter";
 import PageTitle from "../elements/PageTitle";
 
 const ServicesDetails = () => {
@@ -153,11 +152,7 @@ const ServicesDetails = () => {
             </div>
           </div>
         </div>
-        <section className="call-action style-1 footer-action">
-          <div className="container">
-            <NewsLetter />
-          </div>
-        </section>
+
       </div>
     </>
   );

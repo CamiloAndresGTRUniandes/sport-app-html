@@ -110,10 +110,10 @@ const Header2 = () => {
                     <i className="fa-solid fa-magnifying-glass"></i>
                   </button>
                   <Link
-                    to={"/appointment"}
+                    to={"/login"}
                     className="btn btn-skew appointment-btn d-xl-block d-none"
                   >
-                    <span>Appointment</span>
+                    <span>Iniciar sesion</span>
                   </Link>
                 </div>
               </div>

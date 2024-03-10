@@ -26,7 +26,7 @@ const Registro = () => {
   };
 
   return (
-    <div>
+    <div  >
       {/* Navbar */}
       <MDBNavbar expand='lg' light bgColor='light'>
         <MDBContainer fluid>
@@ -41,7 +41,7 @@ const Registro = () => {
           </MDBNavbarNav>
         </MDBContainer>
       </MDBNavbar>
-      <MDBContainer fluid className='p-4 background-radial-gradient overflow-hidden'>
+      <MDBContainer fluid className='p-4 background-radial-gradient overflow-hidden w-80' style={{maxWidth:"80%" }}>
         <MDBRow>
           <MDBCol md='6' className='text-center text-md-start d-flex flex-column justify-content-center'>
             <MDBCardImage src={eliImage} alt="login form" className='rounded-start w-100' />

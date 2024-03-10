@@ -13,7 +13,7 @@ const AboutUs = () => {
         <>
             <div className="page-content bg-white">
                 <PageTitle activePage="Acerca de nosotros" parentTitle="Pages" /> 
-                <section className="content-inner" style={{backgroundImage: "url("+ IMAGES.BgImage1 +")"}}>
+                <section className="animate__animated animate__fadeInRightBig" style={{backgroundImage: "url("+ IMAGES.BgImage1 +")"}}>
 			        <div className="container">
 				        <div className="row about-bx2 align-items-center">
                             <FitnessGoal />        
@@ -52,11 +52,11 @@ const AboutUs = () => {
                 <section className="content-inner-1 overflow-hidden" style={{backgroundImage: "url("+IMAGES.BgImage1 +")"}}>			        
                     <LatestSlider />
                 </section>
-                <section className="call-action style-1 footer-action">
+                {/* <section className="call-action style-1 footer-action">
 			        <div className="container">
                         <NewsLetter />
                     </div>
-                </section>
+                </section> */}
             </div>   
         </>
     );

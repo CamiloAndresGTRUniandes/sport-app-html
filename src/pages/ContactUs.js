@@ -32,7 +32,9 @@ const ContactUs = () => {
     <>
       <div className="page-content bg-white">
         <PageTitle activePage="Contactanos" parentTitle="Home" />
-        <section className="content-inner-2 z-index-none">
+        <div className="animate__animated animate__fadeInRightBig">
+          ---
+          <section className=" z-index-none">
           <div className="container">
             <div className="row align-items-center">
               <div className="col-md-6 col-xl-5 m-sm-b30 m-xl-b0">
@@ -225,11 +227,14 @@ const ContactUs = () => {
             ></iframe>
           </div>
         </div>
-        <section className="call-action style-1 footer-action">
+      ---
+        </div>
+        
+        {/* <section className="call-action style-1 footer-action">
           <div className="container">
             <NewsLetter />
           </div>
-        </section>
+        </section> */}
       </div>
     </>
   );

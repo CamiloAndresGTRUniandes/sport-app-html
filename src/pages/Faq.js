@@ -51,7 +51,7 @@ const Faq = () => {
         <>
             <div className="page-content bg-white">
                 <PageTitle activePage="Preguntas" parentTitle="Pages" />
-                <section className="content-inner-1 overflow-hidden">
+                <section className="animate__animated animate__fadeInRightBig">
                     <div className="container">
                         <div className="row">                            
                             {accordBlog.map((data, index)=>{
@@ -80,11 +80,11 @@ const Faq = () => {
                         </div>
                     </div>
                 </section>
-                <section className="call-action style-1 footer-action">
+                {/* <section className="call-action style-1 footer-action">
 			        <div className="container">
                         <NewsLetter />
                     </div>
-                </section>
+                </section> */}
             </div>
         </>
     );
