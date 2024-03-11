@@ -216,11 +216,7 @@ const UserProfile = () => {
             </Card.Body>
           </Card>
         </div>
-        <section className="call-action style-1 footer-action">
-          <div className="container">
-            <NewsLetter />
-          </div>
-        </section>
+
       </div>
     </>
   );

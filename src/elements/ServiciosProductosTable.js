@@ -1,7 +1,22 @@
 import React from 'react';
 
 
+
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 const ServiciosProductosTable = () => {
+
+
+  const showSwal = () => {
+      withReactContent(Swal).fire({
+        title: 'Super lo hiciste quedaste inscrito :)!',
+        text: "Recuerda, este  evento es  pago",
+        icon: "success",
+        timer: 5000
+       
+      })
+    }
+
   return (
     <>
       <table className="table-responsive-md ck-table">
@@ -32,7 +47,7 @@ const ServiciosProductosTable = () => {
             </td>
             <td> $ 80.000  Mes</td>
             <td>
-              <button className='btn btn-dark shadow-dark btn-skew  mt-2'>Suscribete</button>
+              <button onClick={showSwal} className='btn btn-dark shadow-dark btn-skew  mt-2'>Suscribete</button>
             </td>
 
           </tr>
@@ -52,7 +67,7 @@ const ServiciosProductosTable = () => {
             </td>
             <td> $ 150.000  Mes</td>
             <td>
-              <button className='btn btn-primary shadow-primary btn-skew  mt-2'>Suscribete</button>
+              <button onClick={showSwal} className='btn btn-primary shadow-primary btn-skew  mt-2'>Suscribete</button>
             </td>
           </tr>
         </tbody>

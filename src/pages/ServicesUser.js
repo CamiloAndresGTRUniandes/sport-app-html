@@ -83,11 +83,7 @@ const ServicesUser = () => {
                 <section className="content-inner-1 overflow-hidden" style={{backgroundImage: "url("+ IMAGES.BgImage1 +")"}}>
                     <LatestSlider />
                 </section>  
-                <section className="call-action style-1 footer-action">
-			        <div className="container">
-                        <NewsLetter />
-                    </div>
-                </section>
+               
             </div>   
         </>
     );
