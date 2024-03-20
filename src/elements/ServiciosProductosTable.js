@@ -12,7 +12,7 @@ const ServiciosProductosTable = () => {
         title: 'Super lo hiciste quedaste inscrito :)!',
         text: "Recuerda, este  evento es  pago",
         icon: "success",
-        timer: 5000
+        timer: 25000
        
       })
     }
