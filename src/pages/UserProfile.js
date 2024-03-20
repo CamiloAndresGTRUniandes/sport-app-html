@@ -1,6 +1,6 @@
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
-import NewsLetter from "../elements/NewsLetter";
+
 import PageTitle from "../elements/PageTitle";
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
