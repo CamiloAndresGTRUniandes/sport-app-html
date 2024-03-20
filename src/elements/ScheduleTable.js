@@ -8,24 +8,19 @@ import withReactContent from 'sweetalert2-react-content'
 
 
 const ScheduleTable = () => {
-    const [showSweetAlert, setSweetAlert] = useState(false)
-    const [inputValue, setInputValue] = useState('')
     const showSwal = () => {
         withReactContent(Swal).fire({
           title: 'Super lo hiciste quedaste inscrito :)!',
           text: "Recuerda, este  evento es  pago",
           icon: "success",
-          timer: 5000,
-          preConfirm: () => {
-            setInputValue(Swal.getInput()?.value || '')
-          },
+          timer: 25000,
         })
       }
     return (
         <>
         
 
-            <table className="table-responsive-md ck-table">
+        <table className="table-responsive-md ck-table" style={{minWidth:"1024"}}>
                 <thead>
                     <tr>
                         <th colSpan={8}>
@@ -65,7 +60,7 @@ const ScheduleTable = () => {
                         <td></td>
                         <td></td>
                         <td className="event" rowspan="4">
-                            <Link to={"#"} className="title">Entrenamientos Holis</Link>
+                            <Link to={"#"} className="title">Entrenamientos</Link>
                             <div className="event-tag">Gym</div>
                             <div className="subtitle">Plan Premium</div>
                             <button className='btn btn-primary shadow-primary btn-skew  mt-2' onClick={showSwal} >Inscribete</button>

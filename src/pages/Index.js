@@ -84,7 +84,8 @@ function Index() {
           <Route path="/user-profile" exact element={<UserProfile />} />
           <Route path="/Recomendacion" exact element={<Recomendacion />} />
           <Route path="/edicion-recomendacion" exact element={<EdicionRecomendacion />} />
-         
+           {/* <Route path="/servicio-productos" exact element={<ServiciosProductosTable />} />  */}
+          
           <Route
             path="/asociacion-terceros"
             exact

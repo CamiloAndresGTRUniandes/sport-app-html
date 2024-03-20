@@ -53,10 +53,7 @@ const UserProfile = () => {
                     <span className="input-group-text" id="edad">Edad</span>
                     <input type="number" className="form-control" placeholder="" aria-label="edad" aria-describedby="edad" />
                   </div>
-                  <div className="input-group mb-3  input-line">
-                    <span className="input-group-text" id="peso">Peso</span>
-                    <input type="number" className="form-control" placeholder="" aria-label="peso" aria-describedby="peso" />
-                  </div>
+
                   <div className="row d-flex justify-content-around" >
                     <button
                       name="submit"
@@ -111,36 +108,99 @@ const UserProfile = () => {
                     </Tab>
                     <Tab eventKey="1" title="Perfil alimenticio">
                       <div className='row animate__animated animate__fadeInUpBig'>
-                        <div className='col-md-12 col-lg-12 col-sm-12'>
-                          <div className="input-group mb-3  input-line">
-                            <span className="input-group-text" id="verdurasSemana">Cuantas veces consumes verduras a la semana?</span>
-                            <input type="number" className="form-control" placeholder="" aria-label="verdurasSemana" aria-describedby="verdurasSemana" />
-                          </div>
-                          <div className="input-group mb-3  input-line">
-                            <span className="input-group-text" id="comidaRapidaSemana">Cuantas veces consumes comida rapida?</span>
-                            <input type="number" className="form-control" placeholder="" aria-label="comidaRapidaSemana" aria-describedby="comidaRapidaSemana" />
-                          </div>
-                          <div className="input-group mb-3  input-line">
-                            <span className="input-group-text" id="vasosAguaDia">Cuantas vasos de agua consumes al dia?</span>
-                            <input type="number" className="form-control" placeholder="" aria-label="vasosAguaDia" aria-describedby="vasosAguaDia" />
-                          </div>
-                          <div className="input-group mb-3  input-line">
-                            <span className="input-group-text" id="caloriasDias">Sabes cuantas calorias consumes al dia</span>
+                      <div className="input-group mb-3  input-line">
+                            <span className="input-group-text" id="tienesAlergias">Tienes alergias</span>
                             <Form.Check // prettier-ignore
                               type="switch"
                               id="custom-switch"
                             />
                           </div>
+
+                      <div className="input-group mb-3   ml-5 p-1 input-line">
+                            <span className="input-group-text ml-5"  id="cualesAlergias">Cuales alergias?</span>
+                            {['checkbox',].map((type) => (
+                              <div key={`inline-${type}`} className="mb-3">
+                                <Form.Check
+                                  inline
+                                  variant="dark"
+                                  label="Lacteos"
+                                  className='mt-3'
+                                  name="group1"
+                                  type={type}
+                                  id={`inline-${type}-1`}
+                                />
+                                <Form.Check
+                                  inline
+                                  variant="dark"
+                                  label="Gluten"
+                                  className='mt-3'
+                                  name="group1"
+                                  type={type}
+                                  id={`inline-${type}-2`}
+                                />
+                                <Form.Check
+                                  inline
+                                  variant="dark"
+                                  label="Frutos Secos"
+                                  className='mt-3'
+                                  name="group1"
+                                  type={type}
+                                  id={`inline-${type}-2`}
+                                />
+                             
+                            
+
+
+                              </div>
+
+
+
+                            ))}
+                          </div>
+
+                          <div className="input-group mb-3  input-line">
+                            <span className="input-group-text" id="alergiasMedicas">Tienes alergias medicas</span>
+                            <Form.Check // prettier-ignore
+                              type="switch"
+                              id="custom-switch"
+                            />
+                          </div>
+
+                          <div className="input-group mb-3  input-line">
+                            <span className="input-group-text" id="tipoDeDieta">Tipo de dieta?</span>
+                            <select class="form-control" aria-label="tipoDeDieta">
+                              <option value="1">Vegatariano</option>
+                              <option value="2">Vegano</option>
+                              <option value="3">Carnivoro</option>
+                              <option value="4">Omnivoro</option>
+                              <option value="5">Frutivoro</option>
+                            </select>
+                          </div>
+
+                        <div className='col-md-12 col-lg-12 col-sm-12'>
+                          <div className="input-group mb-3  input-line">
+                            <span className="input-group-text" id="promedioCaloriasDiarias">Promedio de consumo de calorias diarias?</span>
+                            <input type="number" className="form-control" placeholder="" aria-label="promedioCaloriasDiarias" aria-describedby="verdurasSemana" />
+                          </div>
+                      
                         </div>
                       </div>
                     </Tab>
                     <Tab eventKey="2" title="Perfil deportivo">
                       <div className='row  animate__animated animate__fadeInUpBig'>
-                      
+
                         <div className='col-md-12 col-lg-12 col-sm-12'>
                           <div className="input-group mb-3  input-line">
                             <span className="input-group-text" id="ejercicioSemana">Cuantas veces haces ejercicio por semana?</span>
                             <input type="number" className="form-control" placeholder="" aria-label="ejercicioSemana" aria-describedby="ejercicioSemana" />
+                          </div>
+                          <div className="input-group mb-3  input-line">
+                            <span className="input-group-text" id="nivelFisico">Nivel Fisico</span>
+                            <select class="form-control" aria-label="nivelFisico">
+                              <option value="1">Basico</option>
+                              <option value="2">Medio</option>
+                              <option value="3">Avanzado</option>
+                            </select>
                           </div>
                           <div className="input-group mb-3  input-line">
                             <span className="input-group-text" id="tienesLesiones">Tienes lesiones</span>
@@ -155,7 +215,16 @@ const UserProfile = () => {
                             <span className="input-group-text" id="lessiones">Que lessiones tienes?</span>
                             <textarea type="Area" className="form-control" placeholder="" aria-label="lessiones" aria-describedby="lessiones" />
                           </div>
-                          <div className="input-group mb-3  p-3 input-line">
+                          <div className="input-group mb-3  input-line">
+                            <span className="input-group-text" id="peso">Peso</span>
+                            <input type="number" className="form-control" placeholder="" aria-label="peso" aria-describedby="peso" />
+                          </div>
+
+                          <div className="input-group mb-3  input-line">
+                            <span className="input-group-text" id="Estatura">Estatura</span>
+                            <input type="number" className="form-control" placeholder="" aria-label="Estatura" aria-describedby="Estatura" />
+                          </div>
+                          <div className="input-group mb-1  p-3 input-line">
                             <span className="input-group-text" id="lessiones">Actividades deportivas favoritas</span>
                             {['checkbox',].map((type) => (
                               <div key={`inline-${type}`} className="mb-3">
@@ -204,23 +273,111 @@ const UserProfile = () => {
                                   type={type}
                                   id={`inline-${type}-2`}
                                 />
+
                               </div>
+
+
+
+                            ))}
+                          </div>
+                          <div className='col-md-12 col-lg-12 col-sm-12'>
+                          <div className="input-group mb-3  p-1 input-line">
+                            <span className="input-group-text" id="lessiones">Cuales son tus metas?</span>
+                            {['checkbox',].map((type) => (
+                              <div key={`inline-${type}`} className="mb-3">
+                                <Form.Check
+                                  inline
+                                  variant="dark"
+                                  label="Ganar peso"
+                                  className='mt-3'
+                                  name="group1"
+                                  type={type}
+                                  id={`inline-${type}-1`}
+                                />
+                                <Form.Check
+                                  inline
+                                  variant="dark"
+                                  label="Mejorar resistencia"
+                                  className='mt-3'
+                                  name="group1"
+                                  type={type}
+                                  id={`inline-${type}-2`}
+                                />
+                                <Form.Check
+                                  inline
+                                  variant="dark"
+                                  label="Construir musculo"
+                                  className='mt-3'
+                                  name="group1"
+                                  type={type}
+                                  id={`inline-${type}-2`}
+                                />
+                                <Form.Check
+                                  inline
+                                  label="Perder peso"
+                                  variant="dark"
+                                  className='mt-3'
+                                  name="group1"
+                                  type={type}
+                                  id={`inline-${type}-2`}
+                                />
+                                <Form.Check
+                                  inline
+                                  variant="dark"
+                                  label="Aumentar Frexibilidad"
+                                  className='mt-3'
+                                  name="group1"
+                                  type={type}
+                                  id={`inline-${type}-2`}
+
+
+                                />
+
+
+                                <Form.Check
+                                  inline
+                                  variant="dark"
+                                  label="Aumentar Fuerza"
+                                  className='mt-3'
+                                  name="group1"
+                                  type={type}
+                                  id={`inline-${type}-2`}
+
+
+                                />
+
+                                <Form.Check
+                                  inline
+                                  variant="dark"
+                                  label="Mejorar Flexibilidad"
+                                  className='mt-3'
+                                  name="group1"
+                                  type={type}
+                                  id={`inline-${type}-2`}
+
+
+                                />
+
+
+                              </div>
+
+
+
                             ))}
                           </div>
                         </div>
+                        </div>
                       </div>
                     </Tab>
+
+                   
                   </Tabs>
                 </div>
               </div>
             </Card.Body>
           </Card>
         </div>
-        <section className="call-action style-1 footer-action">
-          <div className="container">
-            <NewsLetter />
-          </div>
-        </section>
+
       </div>
     </>
   );

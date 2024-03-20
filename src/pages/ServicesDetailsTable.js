@@ -1,7 +1,7 @@
 import React from "react";
 import { IMAGES } from "../constants/theme";
 import PageTitle from "../elements/PageTitle";
-import ServicesTable from '../elements/ServicesTable';
+import ServiciosProductosTable from '../elements/ServiciosProductosTable';
 
 const ServicesDetailsTable = () => {
   return (
@@ -15,7 +15,7 @@ const ServicesDetailsTable = () => {
           <div className="container">
             <div className="row">
             <div className="schedule-table table-responsive">
-              <ServicesTable></ServicesTable>
+              <ServiciosProductosTable></ServiciosProductosTable>
             </div>
 
             </div>
