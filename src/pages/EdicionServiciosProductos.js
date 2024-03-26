@@ -39,7 +39,21 @@ const EdicionServiciosProductos = () => {
                             <option value="3">Alimento </option>
 
                           </select>
+
+
                         </div>
+                        <div className="input-group mb-3  input-line">
+                          <span className="input-group-text" id="tipoServicio"></span>
+                          <select class="form-control" aria-label="tipoServicio">
+                            <option value="1">Nutricion</option>
+                            <option value="2">Planes personalizados</option>
+                            <option value="3">Elementos Deeportivos </option>
+
+                          </select>
+
+                          
+                        </div>
+
                         <div className="input-group mb-3  input-line">
                           <span className="input-group-text" id="valor" >Valor</span>
                           <input type="text" className="form-control" placeholder="" aria-label="valor" aria-describedby="valor" value="$150.000" />

@@ -1,5 +1,5 @@
 import React from 'react';
-import eliImage from '../assets/images/about/pic7.png';
+import eliImage from '../../../assets/images/about/pic7.png';
 
 import { Link } from 'react-router-dom';
 
