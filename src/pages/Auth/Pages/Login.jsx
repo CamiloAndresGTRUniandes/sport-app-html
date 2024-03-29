@@ -1,11 +1,4 @@
-import { ErrorMessage, Form, Formik, Field } from "formik";
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import useLogin from "../Hooks/useLogin";
-import * as Yup from "yup";
-import getErrorBorder from "../../Utils/getErrorBorder";
-import modelImage from "../../../assets/images/main-slider/slider2/hero.png";
-
+import { ErrorMessage, Field, Form, Formik } from "formik";
 import {
   MDBCard,
   MDBCardBody,
@@ -13,38 +6,46 @@ import {
   MDBCol,
   MDBContainer,
   MDBInput,
-  MDBNavbar,
-  MDBNavbarItem,
-  MDBNavbarNav,
   MDBRow,
 } from "mdb-react-ui-kit";
+import { useEffect, useState } from "react";
+import * as Yup from "yup";
+import modelImage from "../../../assets/images/main-slider/slider2/hero.png";
+import { SpinnerSportApp } from "../../../components/SpinnerSportApp";
+import { GetErrorBorder } from "../../Utils/GetErrorBorder";
+import { FooterLogin, HeaderLogin } from "../components";
+import useLogin from "../hooks/useLogin";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [formValues, setFormValues] = useState(null);
-  const { LoginUser, loadingUser, credentials } = useLogin("x");
+  const navigation = useNavigate();
+  const [formValues, setformValues] = useState(null);
+  const { LoginUser, loadingUser, userLogged } = useLogin("");
 
   const initialValuesObject = {
     email: "",
     password: "",
   };
 
-  const savedValues = {
-    email: "",
-    password: "",
-  };
-
   const validationSchema = Yup.object({
-    password: Yup.string().required("Este campo es obligatorio."),
+    password: Yup.string().required("La contraseña es requerida."),
     email: Yup.string()
       .email("El email tiene un formato errado")
       .required("El email es requerido"),
   });
 
-  const onSubmit = (values) => {
-    LoginUser(values);
+  const onSubmit = async (values) => {
+    await LoginUser(values);
+ 
   };
 
- 
+  useEffect(() => {
+    if (userLogged) {
+      setformValues(initialValuesObject);
+      navigation("/");
+    }
+  }, [userLogged]);
+
   return (
     <Formik
       initialValues={formValues || initialValuesObject}
@@ -56,40 +57,22 @@ const Login = () => {
     >
       {(formik) => {
         return (
-          <div className="flex m-5">
+          <div className="flex m-1">
             <Form>
               <div>
-                <MDBNavbar expand="lg" light bgColor="light">
-                  <MDBContainer fluid>
-                    <MDBNavbarNav right className="d-flex flex-row">
-                      <MDBNavbarItem>
-                        <Link
-                          to="/"
-                          className="small text-muted"
-                          style={{ color: "#393f81" }}
-                        >
-                          <div className="section-head">
-                            <h2 className="title">
-                              <span>SPORTAPP</span>
-                            </h2>
-                          </div>
-                        </Link>
-                      </MDBNavbarItem>
-                    </MDBNavbarNav>
-                  </MDBContainer>
-                </MDBNavbar>
-                <MDBContainer className="my-5">
+                <HeaderLogin />
+                <MDBContainer className="animate__animated animate__fadeInRightBig">
                   <MDBCard>
                     <MDBRow className="g-0">
-                      <MDBCol md="6">
+                      <MDBCol md="5">
                         <MDBCardImage
                           src={modelImage}
                           alt="login form"
-                          className="rounded-start w-100"
+                          className="rounded-start w-80"
                         />
                       </MDBCol>
 
-                      <MDBCol md="6">
+                      <MDBCol md="7">
                         <MDBCardBody className="d-flex flex-column">
                           <div className="d-flex flex-row mt-2">
                             <div className="section-head">
@@ -100,20 +83,21 @@ const Login = () => {
                           </div>
 
                           <h5
-                            className="fw-normal my-4 pb-3"
+                            className="fw-normal my-1 pb-1"
                             style={{ letterSpacing: "1px" }}
                           >
                             Acceder a tu cuenta
                           </h5>
                           <div className="mb-4">
-                            <label htmlFor="name">Email</label>
+                            <label htmlFor="email">Email</label>
                             <Field
                               as={MDBInput}
                               id="email"
                               type="email"
                               name="email"
+                              placeholder="user@SportApp.com"
                               size="lg"
-                              style={getErrorBorder(formik.errors, "email")}
+                              style={GetErrorBorder(formik.errors, "email")}
                             />
                             <ErrorMessage className="text-red" name="email">
                               {(errorMsg) => (
@@ -128,8 +112,10 @@ const Login = () => {
                               as={MDBInput}
                               id="password"
                               type="password"
+                              name="password"
+                              placeholder="***********"
                               size="lg"
-                              style={getErrorBorder(formik.errors, "password")}
+                              style={GetErrorBorder(formik.errors, "password")}
                             />
                             <ErrorMessage className="text-red" name="password">
                               {(errorMsg) => (
@@ -137,69 +123,33 @@ const Login = () => {
                               )}
                             </ErrorMessage>
                           </div>
-                          <div className="d-flex justify-content-center mb-4">
-                            {!loadingUser && (
-                              <button
-                                name="submit"
-                                value="Submit"
-                                type="submit"
-                                disabled={!formik.isValid}
-                                className="btn btn-primary btn-lg btn-skew mt-3"
-                              >
-                                <span>Iniciar sesion</span>
-                              </button>
-                            )}
-                            {loadingUser && (
-                              <div class="spinner-border" role="status">
-                                <span class="visually-hidden">Loading...</span>
+                          <MDBRow className="mb-4">
+                            <MDBCol col="12">
+                              <div className="d-flex justify-content-lg-center gap-4">
+                                {!loadingUser && (
+                                  <button
+                                    name="submit"
+                                    value="Submit"
+                                    type="submit"
+                                    disabled={!formik.isValid}
+                                    className="btn btn-primary btn-lg btn-skew"
+                                  >
+                                    <span>Iniciar sesion</span>
+                                  </button>
+                                )}
+                                {loadingUser && <SpinnerSportApp />}
+                                <Link
+                                  to="/"
+                                  className="btn btn-secondary btn-lg btn-skew"
+                                >
+                                  Cancelar
+                                </Link>
                               </div>
-                            )}
-                          </div>
+                            </MDBCol>
+                          </MDBRow>
 
                           <div className="mb-5"></div>
-
-                          <p
-                            className="mb-5 pb-lg-2"
-                            style={{ color: "#393f81" }}
-                          >
-                            No tienes cuenta?{" "}
-                            <Link
-                              to="/register"
-                              className="small text-info"
-                             
-                            >
-                              Registrarse aquí
-                            </Link>
-                          </p>
-                          <div className="d-flex flex-row justify-content-start">
-                            <a href="#!" className="small text-info me-1">
-                              Términos de uso.
-                            </a>
-                            <a href="#!" className="small text-info">
-                              Política de privacidad
-                            </a>
-                          </div>
-
-                          <footer
-                            className="site-footer style-1 bg-img-fix footer-action"
-                            id="footer"
-                          >
-                            <div className="footer-bottom">
-                              <div className="text-center">
-                                <span className="copyright-text">
-                                  Copyright © 2024{" "}
-                                  <Link
-                                    to="https://uniandes.edu.co/"
-                                    target="_blank"
-                                    rel="noreferrer"
-                                  >
-                                    Grupo-13
-                                  </Link>
-                                  . Todos los derechos reservados
-                                </span>
-                              </div>
-                            </div>
-                          </footer>
+                          <FooterLogin />
                         </MDBCardBody>
                       </MDBCol>
                     </MDBRow>

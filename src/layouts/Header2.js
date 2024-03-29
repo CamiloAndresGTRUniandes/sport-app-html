@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { IMAGES } from "../constants/theme";
 
 import Collapse from "react-bootstrap/Collapse";
-import { MenuListArray2 } from "./MenuListArray2";
+import { MenuListUsuario } from "./MenuListArray2";
 
 const Header2 = () => {
   /* for sticky header */
@@ -52,7 +52,7 @@ const Header2 = () => {
   };
 
   function AddActiveMenu() {
-    MenuListArray2?.forEach((ell) => {
+    MenuListUsuario?.forEach((ell) => {
       if (ell.to === location.pathname) {
         setActiveMenu(ell.title);
       }
@@ -148,7 +148,7 @@ const Header2 = () => {
                   </Link>
                 </div>
                 <ul className="nav navbar-nav navbar navbar-left">
-                  {MenuListArray2.map((item, index) => {
+                  {MenuListUsuario.map((item, index) => {
                     let menuClass = item.classChange;
                     if (menuClass !== "sub-menu-down") {
                       return (

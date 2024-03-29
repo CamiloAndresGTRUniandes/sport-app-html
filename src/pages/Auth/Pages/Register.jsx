@@ -1,115 +1,283 @@
-import React from 'react';
-import eliImage from '../../../assets/images/about/pic7.png';
-
-import { Link } from 'react-router-dom';
-
+import { ErrorMessage, Field, Form, Formik } from "formik";
 import {
-  MDBBtn,
-  MDBContainer,
   MDBCard,
   MDBCardBody,
   MDBCardImage,
-  MDBRow,
   MDBCol,
+  MDBContainer,
   MDBInput,
-  MDBNavbar,
-  MDBNavbarNav,
-  MDBNavbarItem,
-  MDBIcon,
-  MDBCheckbox
+  MDBRow,
+} from "mdb-react-ui-kit";
+import  { useState } from "react";
+import * as Yup from "yup";
+import modelImage from "../../../assets/images/about/pic7.png";
+import useRegisterUser from "../hooks/useRegisterUser";
 
-} from 'mdb-react-ui-kit';
-
+import { SpinnerSportApp } from "../../../components/SpinnerSportApp";
+import { GetErrorBorder } from "../../Utils/GetErrorBorder";
+import { HeaderLogin, SocialNetwork } from "../components";
+import useEmailExists from "../hooks/useEmailExists";
+import { Link } from "react-router-dom";
 const Registro = () => {
-  const handleOlvidarContrasenaClick = () => {
-    console.log("Olvidaste tu contraseña?");
+  const { validateEmail, emailExists } = useEmailExists();
+  const [formValues] = useState(null);
+  const { createUser, loading } = useRegisterUser();
+  const initialValuesObject = {
+    firstName: "Andres",
+    lastName: "Romero",
+    password: "Andres123*",
+    email: "andres@test.com",
+    isUser: true,
+    confirmPassword: "Andres123*",
+  };
+
+  const validationSchema = Yup.object({
+    firstName: Yup.string().required("El nombre es requerido."),
+    lastName: Yup.string().required("Los apellidos son requeridos ."),
+    email: Yup.string()
+      .email("El email tiene un formato errado")
+      .required("El email es requerido")
+      .test("email-exists", "El email ya está registrado", async (value) => {
+        await validateEmail(value.trim());
+        console.log("response", emailExists);
+        return emailExists;
+      }),
+    password: Yup.string()
+      .required("La contraseña es requerida")
+      .matches(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+        "Debe contener 8 caracteres, letras mayusculas y minisculas, y un caracter especial"
+      ),
+    confirmPassword: Yup.string()
+      .required("La validacion contraseña es requerida")
+      .oneOf(
+        [Yup.ref("password")],
+        "La confirmacion debe ser igual al password"
+      ),
+  });
+
+  const onSubmit = async (values) => {
+    await createUser(values);
   };
 
   return (
-    <div  >
-      {/* Navbar */}
-      <MDBNavbar expand='lg' light bgColor='light'>
-        <MDBContainer fluid>
-          <MDBNavbarNav right className='d-flex flex-row'>
-            <MDBNavbarItem>
-              <Link to="/" className="small text-muted" onClick={handleOlvidarContrasenaClick} style={{ color: '#393f81' }}>
-                <div className="section-head">
-                  <h2 className="title"><span>SPORTAPP</span></h2>
-                </div>
-              </Link>
-            </MDBNavbarItem>
-          </MDBNavbarNav>
-        </MDBContainer>
-      </MDBNavbar>
-      <MDBContainer fluid className='p-4 background-radial-gradient overflow-hidden w-80' style={{maxWidth:"80%" }}>
-        <MDBRow>
-          <MDBCol md='6' className='text-center text-md-start d-flex flex-column justify-content-center'>
-            <MDBCardImage src={eliImage} alt="login form" className='rounded-start w-100' />
-          </MDBCol>
+    <Formik
+      initialValues={formValues || initialValuesObject}
+      enableReinitialize // decide  your form could be  change values after of loading
+      validationSchema={validationSchema}
+      onSubmit={onSubmit}
+      validateOnChange={true}
+      validateOnBlur={true}
+    >
+      {(formik) => {
+        return (
+          <div className="flex m-1 ">
+            <Form>
+              <div>
+                <HeaderLogin />
+                <MDBContainer
+                  fluid
+                  className="background-radial-gradient overflow-hidden w-80 animate__animated animate__fadeInRightBig"
+                  style={{ maxWidth: "80%" }}
+                >
+                  <MDBRow>
+                    <MDBCol
+                      md="5"
+                      className="text-center text-md-start d-flex flex-column justify-content-center"
+                    >
+                      <MDBCardImage
+                        src={modelImage}
+                        alt="login form"
+                        className="rounded-start w-100"
+                      />
+                    </MDBCol>
+                    <MDBCol md="7" className="position-relative">
+                      <div
+                        id="radius-shape-1"
+                        className="position-absolute rounded-circle shadow-5-strong"
+                      ></div>
+                      <div
+                        id="radius-shape-2"
+                        className="position-absolute shadow-5-strong"
+                      ></div>
 
-          <MDBCol md='6' className='position-relative'>
-            <div id="radius-shape-1" className="position-absolute rounded-circle shadow-5-strong"></div>
-            <div id="radius-shape-2" className="position-absolute shadow-5-strong"></div>
+                      <MDBCard className="my-5 bg-glass">
+                        <MDBCardBody className="">
+                          <div className="section-head">
+                            <h2 className="title">
+                              REGÍSTRATE EN <span>SPORTAPP</span>
+                            </h2>
+                          </div>
 
-            <MDBCard className='my-5 bg-glass'>
-              <MDBCardBody className='p-5'>
-                <div className="section-head">
-                  <h2 className="title">REGÍSTRATE EN <span>SPORTAPP</span></h2>
-                </div>
+                          <MDBRow className="mb-4">
+                            <MDBCol col="6">
+                              <label htmlFor="name">Nombre(s)</label>
+                              <Field
+                                as={MDBInput}
+                                id="firstName"
+                                type="text"
+                                name="firstName"
+                                size="lg"
+                                style={GetErrorBorder(
+                                  formik.errors,
+                                  "firstName"
+                                )}
+                              />
+                              <ErrorMessage
+                                className="text-red"
+                                name="firstName"
+                              >
+                                {(errorMsg) => (
+                                  <div className="text-red">{errorMsg}</div>
+                                )}
+                              </ErrorMessage>
+                            </MDBCol>
+                            <MDBCol col="6">
+                              <label htmlFor="name">Apellidos(s)</label>
+                              <Field
+                                as={MDBInput}
+                                id="lastName"
+                                type="text"
+                                name="lastName"
+                                size="lg"
+                                style={GetErrorBorder(
+                                  formik.errors,
+                                  "lastName"
+                                )}
+                              />
+                              <ErrorMessage
+                                className="text-red"
+                                name="lastName"
+                              >
+                                {(errorMsg) => (
+                                  <div className="text-red">{errorMsg}</div>
+                                )}
+                              </ErrorMessage>
+                            </MDBCol>
+                          </MDBRow>
+                          <MDBRow className="mb-4">
+                            <MDBCol col="12">
+                              <label htmlFor="name">Email</label>
+                              <Field
+                                as={MDBInput}
+                                id="email"
+                                type="email"
+                                name="email"
+                                size="lg"
+                                style={GetErrorBorder(formik.errors, "email")}
+                              />
+                              <ErrorMessage className="text-red" name="email">
+                                {(errorMsg) => (
+                                  <div className="text-red">{errorMsg}</div>
+                                )}
+                              </ErrorMessage>
+                            </MDBCol>
+                          </MDBRow>
+                          <MDBRow className="mb-4">
+                            <MDBCol col="12">
+                              <label htmlFor="password">Contraseña</label>
+                              <Field
+                                as={MDBInput}
+                                id="password"
+                                type="password"
+                                name="password"
+                                size="lg"
+                                style={GetErrorBorder(
+                                  formik.errors,
+                                  "password"
+                                )}
+                              />
+                              <ErrorMessage
+                                className="text-red"
+                                name="password"
+                              >
+                                {(errorMsg) => (
+                                  <div className="text-red">{errorMsg}</div>
+                                )}
+                              </ErrorMessage>
+                            </MDBCol>
+                          </MDBRow>
 
-                <MDBRow >
-                  <MDBCol col='6'>
-                    <MDBInput wrapperClass='mb-4' label='Nombres' id='form1' type='text' />
-                  </MDBCol>
-                  <MDBCol col='6'>
-                    <MDBInput wrapperClass='mb-4' label='Apellidos' id='form2' type='text' />
-                  </MDBCol>
-                </MDBRow>
+                          <MDBRow className="mb-4">
+                            <MDBCol col="12">
+                              <label htmlFor="confirmPassword">
+                                Validar Contraseña
+                              </label>
+                              <Field
+                                as={MDBInput}
+                                id="confirmPassword"
+                                type="password"
+                                name="confirmPassword"
+                                size="lg"
+                                style={GetErrorBorder(
+                                  formik.errors,
+                                  "confirmPassword"
+                                )}
+                              />
+                              <ErrorMessage
+                                className="text-red"
+                                name="confirmPassword"
+                              >
+                                {(errorMsg) => (
+                                  <div className="text-red">{errorMsg}</div>
+                                )}
+                              </ErrorMessage>
+                            </MDBCol>
+                          </MDBRow>
+                          <MDBRow className="mb-4">
+                            <MDBCol col="12">
+                              <div class="form-check form-switch">
+                                <label class="form-check-label" for="isUser">
+                                  Quieres ser asociado o usuario
+                                </label>
 
-                <MDBInput wrapperClass='mb-4' label='Usuario' id='form3' type='email' />
-                <MDBInput wrapperClass='mb-4' label='Email' id='form3' type='email' />
-                <MDBInput wrapperClass='mb-4' label='Contraseña' id='form4' type='password' />
-                <MDBInput wrapperClass='mb-4' label='Verificar contraseña' id='form4' type='password' />
-
-
-
-                <div className='d-flex justify-content-center mb-4'>
-                  <MDBCheckbox name='flexCheck' value='' id='flexCheckDefault' label='Aceptar términos y condiciones' />
-                </div>
-
-                <div className='d-flex justify-content-center mb-4'>
-                <button
-                name="submit"
-                value="Submit"
-                type="submit"
-                onClick={(e) => e.preventDefault()}
-                className='btn btn-primary btn-lg btn-skew' >
-                  <span>Registrarse</span>
-                </button>
-                </div>
-
-                <div className="text-center">
-                  <p>Regístrate con:</p>
-                  <MDBBtn tag='a' color='none' className='mx-3' style={{ color: '#1266f1' }}>
-                    <MDBIcon fab icon='facebook-f' size="sm" />
-                  </MDBBtn>
-                  <MDBBtn tag='a' color='none' className='mx-3' style={{ color: '#1266f1' }}>
-                    <MDBIcon fab icon='twitter' size="sm" />
-                  </MDBBtn>
-                  <MDBBtn tag='a' color='none' className='mx-3' style={{ color: '#1266f1' }}>
-                    <MDBIcon fab icon='google' size="sm" />
-                  </MDBBtn>
-                  <MDBBtn tag='a' color='none' className='mx-3' style={{ color: '#1266f1' }}>
-                    <MDBIcon fab icon='github' size="sm" />
-                  </MDBBtn>
-                </div>
-              </MDBCardBody>
-            </MDBCard>
-          </MDBCol>
-        </MDBRow>
-      </MDBContainer>
-    </div>
+                                <Field
+                                  className="form-check-input"
+                                  type="checkbox"
+                                  role="switch"
+                                  name="isUser"
+                                  id="isUser"
+                                />
+                              </div>
+                            </MDBCol>
+                          </MDBRow>
+                          <MDBRow className="mb-4">
+                            <MDBCol col="12">
+                              <div className="d-flex justify-content-lg-center gap-4">
+                                {!loading && (
+                                  <button
+                                    name="submit"
+                                    value="Submit"
+                                    type="submit"
+                                    disabled={!formik.isValid}
+                                    className="btn btn-primary btn-lg btn-skew "
+                                  >
+                                    <span>Registrarse</span>
+                                  </button>
+                                )}
+                                {loading && <SpinnerSportApp />}
+                                <Link
+                                  to="/login"
+                                  className="btn btn-secondary btn-lg btn-skew"
+                                >
+                                  Cancelar
+                                </Link>
+                              </div>
+                            </MDBCol>
+                          </MDBRow>
+                          <SocialNetwork />
+                        </MDBCardBody>
+                      </MDBCard>
+                    </MDBCol>
+                  </MDBRow>
+                </MDBContainer>
+              </div>
+            </Form>
+          </div>
+        );
+      }}
+    </Formik>
   );
-}
+};
 
 export default Registro;

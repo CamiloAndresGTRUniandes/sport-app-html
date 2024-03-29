@@ -1,57 +1,58 @@
-import { useState } from 'react';
-import axios from 'axios';
-import withReactContent from 'sweetalert2-react-content';
-import Swal from 'sweetalert2';
+import { useState } from "react";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { setUserState } from "../../../store/sessionUser";
+import { Alerts } from "../../Utils/Alerts";
 
-function useLogin(initial) {
-  console.log('initial=>', initial);
-
-  const [credentials, setCredentials] = useState(null);
+const useLogin = () => {
+  const { showAlertSuccess, showAlertError } = Alerts();
+  const dispatch = useDispatch();
   const [loadingUser, setLoadingUser] = useState(false);
-  const [error, setError] = useState(null); // Added for error handling
+  const [userLogged, setUserLogged] = useState(false);
+  const [error, setError] = useState(null);
   const urlAPI = process.env.REACT_APP_API_URL;
 
   const LoginUser = async (formCredentials) => {
-    setLoadingUser(true); // Set loading state before making request
-    setError(null); // Clear any previous errors
 
+    setLoadingUser(true);
+    setError(null);
+    setUserLogged(false);
     try {
-      const response = await axios.post(`${urlAPI}/api/V1/Account/Login`, formCredentials);
-      console.log('Login successful:', response.data);
-      setCredentials(response.data);
-      showSwal(response.data.name);
+      const response = await axios.post(
+        `${urlAPI}/api/V1/Account/Login`,
+        formCredentials
+      );
+      dispatch(setUserState(response.data));
+      sessionStorage.setItem('userLogin', JSON.stringify(response.data));
+      setUserLogged(true);
+      showMessageForLogin(response.data.name);
       
     } catch (error) {
-      errorSwal();
-      setError(error); // Store error for handling in the component
+      console.log("my error",error);
+      setUserLogged(false);
+      showErrorMessage();
+      setError(error);
     } finally {
-      setLoadingUser(false); // Ensure loading state is updated even on errors
+      setLoadingUser(false);
     }
   };
 
-  const showSwal = (name) => {
-    withReactContent(Swal).fire({
-      title: 'Bienvenido a sport App :)!',
-      text: `Hola ${name}`,
-      icon: "success",
-      timer: 25000,
-    })
-  }
-  const errorSwal = () => {
-    withReactContent(Swal).fire({
-      title: 'Inicio de session en sport App :(!',
-      text: `Trata  de  ingresar de nuevo tus credenciales`,
-      icon: "error",
-      timer: 25000,
-    })
-  }
+  const showMessageForLogin = (name) => {
+    showAlertSuccess("Bienvenido a sport App :)!",`Hola ${name}`);
+  };
 
+  const showErrorMessage = () => {
+    showAlertError(
+      "Inicio de session sport App",
+      `:( Credenciales erradas, trata de nuevo!`
+    );
+  };
   return {
     LoginUser,
     loadingUser,
-    credentials,
-    error, // Return error for handling
+    error,
+    userLogged,
   };
-}
+};
 
 export default useLogin;

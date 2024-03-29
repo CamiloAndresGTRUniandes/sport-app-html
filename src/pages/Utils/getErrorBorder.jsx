@@ -1,10 +1,9 @@
 import { getIn } from "formik";
 
-function getErrorBorder(errors, fieldName) {
+export const GetErrorBorder=(errors, fieldName)=> {
   if (getIn(errors, fieldName)) {
     return {
       border: "1px solid red",
     };
   }
 }
-export default getErrorBorder;
