@@ -33,7 +33,7 @@ const EdicionServiciosProductos = () => {
 
                         <div className="input-group mb-3  input-line">
                           <span className="input-group-text" id="categoria">Categoria</span>
-                          <select class="form-control" aria-label="categoria">
+                          <select className="form-control" aria-label="categoria">
                             <option value="1">Servicio</option>
                             <option value="2">Producto Gym  </option>
                             <option value="3">Alimento </option>
@@ -44,7 +44,7 @@ const EdicionServiciosProductos = () => {
                         </div>
                         <div className="input-group mb-3  input-line">
                           <span className="input-group-text" id="tipoServicio"></span>
-                          <select class="form-control" aria-label="tipoServicio">
+                          <select className="form-control" aria-label="tipoServicio">
                             <option value="1">Nutricion</option>
                             <option value="2">Planes personalizados</option>
                             <option value="3">Elementos Deeportivos </option>
@@ -61,7 +61,7 @@ const EdicionServiciosProductos = () => {
 
                         <div className="input-group mb-3  input-line">
                           <span className="input-group-text" id="tipoPlan">Tipo de plan</span>
-                          <select class="form-control" aria-label="tipoPlan">
+                          <select className="form-control" aria-label="tipoPlan">
                             <option value="1">Basico</option>
                             <option value="2">Standar</option>
                             <option value="3">Premium</option>
@@ -110,7 +110,7 @@ const EdicionServiciosProductos = () => {
                             <div className='col-md-12 col-lg-12 col-sm-12'>
                               <div className="input-group mb-3  input-line">
                                 <span className="input-group-text" id="pais">Pais</span>
-                                <select class="form-control" aria-label="pais">
+                                <select className="form-control" aria-label="pais">
                                   <option value="1">Colombia</option>
                                   <option value="2">Ecuador</option>
                                 </select>
@@ -118,14 +118,14 @@ const EdicionServiciosProductos = () => {
 
                               <div className="input-group mb-3  input-line">
                                 <span className="input-group-text" id="Estado">Estado</span>
-                                <select class="form-control" aria-label="Estado">
+                                <select className="form-control" aria-label="Estado">
                                   <option value="1">Antioquia</option>
                                   <option value="2">Bogota</option>
                                 </select>
                               </div>
                               <div className="input-group mb-3  input-line">
                                 <span className="input-group-text" id="Ciudad">Ciudad</span>
-                                <select class="form-control" aria-label="Ciudad">
+                                <select className="form-control" aria-label="Ciudad">
                                   <option value="1">Medellin</option>
                                   <option value="2">Bello</option>
                                 </select>
@@ -175,7 +175,7 @@ const EdicionServiciosProductos = () => {
                             </div>
                             <div className="input-group mb-3  input-line">
                               <span className="input-group-text" id="tipoDeDieta">Alimento orientado a ?</span>
-                              <select class="form-control" aria-label="tipoDeDieta">
+                              <select className="form-control" aria-label="tipoDeDieta">
                                 <option value="1">Vegatariano</option>
                                 <option value="2">Vegano</option>
                                 <option value="3">Carnivoro</option>
@@ -200,7 +200,7 @@ const EdicionServiciosProductos = () => {
 
                               <div className="input-group mb-3  input-line">
                                 <span className="input-group-text" id="nivelFisico">Nivel Fisico</span>
-                                <select class="form-control" aria-label="nivelFisico">
+                                <select className="form-control" aria-label="nivelFisico">
                                   <option value="1">Basico</option>
                                   <option value="2">Medio</option>
                                   <option value="3">Avanzado</option>

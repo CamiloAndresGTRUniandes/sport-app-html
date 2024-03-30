@@ -17,7 +17,7 @@ function App() {
 
   useEffect(() => {
     notify();
-    if (sessionUser.userInfo.name == "") {
+    if (sessionUser.userInfo?.name === "") {
       if (sessionStorage.getItem("userLogin")) {
         const userLogin = JSON.parse(localStorage.getItem("userLogin"));
         dispatch(setUserState(userLogin));

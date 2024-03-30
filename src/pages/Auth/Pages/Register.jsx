@@ -8,7 +8,7 @@ import {
   MDBInput,
   MDBRow,
 } from "mdb-react-ui-kit";
-import  { useState } from "react";
+import { useEffect, useState } from "react";
 import * as Yup from "yup";
 import modelImage from "../../../assets/images/about/pic7.png";
 import useRegisterUser from "../hooks/useRegisterUser";
@@ -17,11 +17,12 @@ import { SpinnerSportApp } from "../../../components/SpinnerSportApp";
 import { GetErrorBorder } from "../../Utils/GetErrorBorder";
 import { HeaderLogin, SocialNetwork } from "../components";
 import useEmailExists from "../hooks/useEmailExists";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const Registro = () => {
   const { validateEmail, emailExists } = useEmailExists();
   const [formValues] = useState(null);
-  const { createUser, loading } = useRegisterUser();
+  const { createUser, loading, userCreated } = useRegisterUser();
+  const navigate = useNavigate();
   const initialValuesObject = {
     firstName: "Andres",
     lastName: "Romero",
@@ -59,6 +60,10 @@ const Registro = () => {
   const onSubmit = async (values) => {
     await createUser(values);
   };
+
+  useEffect(() => {
+    if (userCreated) navigate("/login");
+  }, [userCreated]);
 
   return (
     <Formik
@@ -226,8 +231,8 @@ const Registro = () => {
                           </MDBRow>
                           <MDBRow className="mb-4">
                             <MDBCol col="12">
-                              <div class="form-check form-switch">
-                                <label class="form-check-label" for="isUser">
+                              <div className="form-check form-switch">
+                                <label className="form-check-label" for="isUser">
                                   Quieres ser asociado o usuario
                                 </label>
 
@@ -256,12 +261,14 @@ const Registro = () => {
                                   </button>
                                 )}
                                 {loading && <SpinnerSportApp />}
-                                <Link
-                                  to="/login"
-                                  className="btn btn-secondary btn-lg btn-skew"
-                                >
-                                  Cancelar
-                                </Link>
+                                {!loading && (
+                                  <Link
+                                    to="/login"
+                                    className="btn btn-secondary btn-lg btn-skew"
+                                  >
+                                    Cancelar
+                                  </Link>
+                                )}
                               </div>
                             </MDBCol>
                           </MDBRow>

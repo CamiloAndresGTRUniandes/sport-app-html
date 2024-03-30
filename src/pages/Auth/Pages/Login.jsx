@@ -36,7 +36,6 @@ const Login = () => {
 
   const onSubmit = async (values) => {
     await LoginUser(values);
- 
   };
 
   useEffect(() => {
@@ -138,12 +137,15 @@ const Login = () => {
                                   </button>
                                 )}
                                 {loadingUser && <SpinnerSportApp />}
-                                <Link
-                                  to="/"
-                                  className="btn btn-secondary btn-lg btn-skew"
-                                >
-                                  Cancelar
-                                </Link>
+
+                                {!loadingUser && (
+                                  <Link
+                                    to="/"
+                                    className="btn btn-secondary btn-lg btn-skew"
+                                  >
+                                    Cancelar
+                                  </Link>
+                                )}
                               </div>
                             </MDBCol>
                           </MDBRow>

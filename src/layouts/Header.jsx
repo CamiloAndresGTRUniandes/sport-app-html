@@ -1,10 +1,15 @@
 import React, { useState, useEffect, useReducer, useMemo } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { IMAGES } from "../constants/theme";
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from "react-redux";
 import Collapse from "react-bootstrap/Collapse";
-import { MenuListUsuario, MenuListAsociado, MenuListInvitado } from "./MenuListArray2";
-import {  setDefaultUser } from "../store/sessionUser";
+import { Alerts } from "../pages/Utils/Alerts";
+import {
+  MenuListUsuario,
+  MenuListAsociado,
+  MenuListInvitado,
+} from "./MenuListArray2";
+import { setDefaultUser } from "../store/sessionUser";
 const Header = () => {
   const [headerFix, setheaderFix] = React.useState(false);
   useEffect(() => {
@@ -40,8 +45,9 @@ const Header = () => {
           </div>
         </div>
         <div
-          className={`sticky-header main-bar-wraper navbar-expand-lg ${headerFix ? "is-fixed" : ""
-            }`}
+          className={`sticky-header main-bar-wraper navbar-expand-lg ${
+            headerFix ? "is-fixed" : ""
+          }`}
         >
           <Mainheader />
         </div>
@@ -55,33 +61,35 @@ export default Header;
 export const Mainheader = () => {
   /* for sticky header */
   const [mainMenuList, setMainMenuList] = useState(MenuListInvitado);
-  const { sessionUser } = useSelector(state => state);
+  const { showAlertSuccess } = Alerts();
+  const { sessionUser } = useSelector((state) => state);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState("");
   const location = useLocation();
   const dispatch = useDispatch();
-
-  const onCloseSession=(e)=> {
-
+  const navigate = useNavigate();
+  const onCloseSession = (e) => {
+    showAlertSuccess(
+      "Bye :)",
+      "Fue grandioso tenerte, te esperamos proximamente"
+    );
     e.preventDefault();
     dispatch(setDefaultUser());
     sessionStorage.clear();
-  }
+    navigate("/");
+  };
 
   useEffect(() => {
-    if (sessionUser.userInfo.role === "Usuario") {
-      setMainMenuList(MenuListUsuario);
-    }
-    else
-      if (sessionUser.userInfo.role === "Asociado") {
+    if (sessionUser?.userInfo) {
+      if (sessionUser.userInfo.role === "Usuario") {
+        setMainMenuList(MenuListUsuario);
+      } else if (sessionUser.userInfo.role === "Asociado") {
         setMainMenuList(MenuListAsociado);
-      }
-      else {
+      } else {
         setMainMenuList(MenuListInvitado);
-      }
-
-  }, [sessionUser.userInfo])
-
+      } 
+    }
+  }, [sessionUser.userInfo]);
 
   useEffect(() => {
     var mainMenu = document.getElementById("OpenMenu");
@@ -139,14 +147,14 @@ export const Mainheader = () => {
             {/* <!-- Website Logo --> */}
             <div className="logo-header mostion logo-dark">
               <Link to={"/"}>
-                
                 <img className="select_logo" src={IMAGES.logo} alt="" />
               </Link>
             </div>
 
             <button
-              className={`navbar-toggler navicon justify-content-end ${sidebarOpen ? "open" : "collapsed"
-                }`}
+              className={`navbar-toggler navicon justify-content-end ${
+                sidebarOpen ? "open" : "collapsed"
+              }`}
               type="button"
               onClick={() => setSidebarOpen(!sidebarOpen)}
             >
@@ -158,31 +166,23 @@ export const Mainheader = () => {
             {/* <!-- Extra Nav --> */}
             <div className="extra-nav">
               <div className="extra-cell">
-                {sessionUser.userInfo?.role === "Visitante"
-                  &&
-                  (
-                    <Link
-                      to={"/Login"}
-                      className="btn btn-primary btn-skew appointment-btn"
-                    >
-                      <span>Iniciar sesion</span>
-                    </Link>
-                  )
-                }
+                {sessionUser.userInfo?.role === "Visitante" && (
+                  <Link
+                    to={"/Login"}
+                    className="btn btn-primary btn-skew appointment-btn"
+                  >
+                    <span>Iniciar sesion</span>
+                  </Link>
+                )}
 
-              {
-              sessionUser?.userInfo?.role !== "Visitante"
-                  &&
-                  (
-                    <button
-                      onClick={onCloseSession}
-                      className="btn btn-dark btn-skew appointment-btn"
-                    >
-                      <span>Cerrar session</span>
-                    </button>
-                  )
-                }
-
+                {sessionUser?.userInfo?.role !== "Visitante" && (
+                  <button
+                    onClick={onCloseSession}
+                    className="btn btn-dark btn-skew appointment-btn"
+                  >
+                    <span>Cerrar session</span>
+                  </button>
+                )}
               </div>
             </div>
 
@@ -204,8 +204,9 @@ export const Mainheader = () => {
             {/* <!-- Header Nav --> */}
             <div
               id="navbarNavDropdown"
-              className={`header-nav navbar-collapse collapse justify-content-end ${sidebarOpen ? "show" : ""
-                }`}
+              className={`header-nav navbar-collapse collapse justify-content-end ${
+                sidebarOpen ? "show" : ""
+              }`}
             >
               <div className="logo-header logo-dark">
                 <Link to={"/"}>
@@ -218,8 +219,9 @@ export const Mainheader = () => {
                   if (menuClass !== "sub-menu-down") {
                     return (
                       <li
-                        className={`${menuClass} ${item.title === activeMenu ? "active" : ""
-                          }`}
+                        className={`${menuClass} ${
+                          item.title === activeMenu ? "active" : ""
+                        }`}
                         // className={`${ menuClass} ${ location.pathname == item.to ? 'active'  : '' }`}
 
                         key={index}
@@ -230,8 +232,9 @@ export const Mainheader = () => {
                   } else {
                     return (
                       <li
-                        className={`${menuClass} ${state.active === item.title ? "open active" : ""
-                          } ${item.title === activeMenu ? "active" : ""}`}
+                        className={`${menuClass} ${
+                          state.active === item.title ? "open active" : ""
+                        } ${item.title === activeMenu ? "active" : ""}`}
                         // <li className={`${ menuClass} ${ location.pathname == item.to ? 'active'  : '' }`}
                         key={index}
                       >
@@ -249,22 +252,24 @@ export const Mainheader = () => {
                               in={state.active === item.title ? true : false}
                             >
                               <ul
-                                className={`sub-menu ${menuClass === "mm-collapse" ? "open" : ""
-                                  }`}
+                                className={`sub-menu ${
+                                  menuClass === "mm-collapse" ? "open" : ""
+                                }`}
                               >
                                 {item.content &&
                                   item.content.map((data, index) => {
                                     return (
                                       <li
                                         key={index}
-                                        className={`${state.activeSubmenu === data.title
+                                        className={`${
+                                          state.activeSubmenu === data.title
                                             ? "open"
                                             : ""
-                                          }`}
-                                      //className={`${ menuClass} ${ location.pathname == data.to ? 'active'  : '' }`}
+                                        }`}
+                                        //className={`${ menuClass} ${ location.pathname == data.to ? 'active'  : '' }`}
                                       >
                                         {data.content &&
-                                          data.content.length > 0 ? (
+                                        data.content.length > 0 ? (
                                           <>
                                             <Link
                                               to={data.to}
@@ -278,16 +283,17 @@ export const Mainheader = () => {
                                             <Collapse
                                               in={
                                                 state.activeSubmenu ===
-                                                  data.title
+                                                data.title
                                                   ? true
                                                   : false
                                               }
                                             >
                                               <ul
-                                                className={`sub-menu ${menuClass === "mm-collapse"
+                                                className={`sub-menu ${
+                                                  menuClass === "mm-collapse"
                                                     ? "open"
                                                     : ""
-                                                  }`}
+                                                }`}
                                               >
                                                 {data.content &&
                                                   data.content.map(
