@@ -11,8 +11,7 @@ import {
 import { useEffect, useState } from "react";
 import * as Yup from "yup";
 import modelImage from "../../../assets/images/main-slider/slider2/hero.png";
-import { SpinnerSportApp } from "../../../components/SpinnerSportApp";
-import { GetErrorBorder } from "../../Utils/GetErrorBorder";
+import { GetErrorBorder, SpinnerSportApp } from "../../Utils";
 import { FooterLogin, HeaderLogin } from "../components";
 import useLogin from "../hooks/useLogin";
 import { Link, useNavigate } from "react-router-dom";

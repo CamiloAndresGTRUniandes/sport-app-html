@@ -1,15 +1,22 @@
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
-import { Field, Formik, Form } from "formik";
+import { Alerts } from "../../Utils/Alerts";
+
+import { Field, Form, Formik } from "formik";
 import * as Yup from "yup";
-import { TextBoxEditValidation } from "../../Utils/TextBoxEditValidation";
 import { useEditUserProfile } from "../Hooks/useEditUserProfile";
-import { SpinnerSportApp } from "../../../components/SpinnerSportApp";
+import { SpinnerSportApp } from "../../Utils/SpinnerSportApp";
 import { useEffect } from "react";
-import { SelectValidation } from "../../Utils/SelectValidation";
+import {
+  ArrayCheckBoxes,
+  CheckBoxValidation,
+  SelectValidation,
+  TextBoxEditValidation,
+} from "../../Utils";
+import { Link, useNavigate } from "react-router-dom";
 
 export const EditUserProfile = () => {
-  const classEditTextBox = " input-group mb-5  input-line";
+  const classEditTextBox = " input-group mb-3  input-line";
   const {
     GetUserProfile,
     userProfile,
@@ -20,11 +27,19 @@ export const EditUserProfile = () => {
     citiesUP,
     changeNewCountry,
     changeNewState,
+    typesOfNutritionUP,
+    nutricionalAllergiesUP,
+    physicalLevelsUP,
+    activitiesUP,
+    goalsUP,
+    updateUser,
+    loadingUpdateProfile,
+    userUpdated,
   } = useEditUserProfile();
   useEffect(() => {
     GetUserProfile();
   }, []);
-
+  const navigation = useNavigate();
   const validationSchema = Yup.object({
     userId: "",
     name: Yup.string().required("El nombre es requerido."),
@@ -38,506 +53,332 @@ export const EditUserProfile = () => {
     countryId: Yup.number().required("Selecciona tu pais").min(1),
     stateId: Yup.number().required("Selecciona tu estado").min(1),
     cityId: Yup.number().required("Selecciona tu ciudad").min(1),
+    nutrionalProfile: Yup.object().shape({
+      averagesCaloriesPerDay: Yup.number()
+        .required("Promedio de consumo de calorias diarias")
+        .min(1),
+      hasAllergies: Yup.boolean(),
+      hasMedicalAllergies: Yup.boolean(),
+      typeOfNutritionId: Yup.number()
+        .required("Selecciona tu tipo de dieta")
+        .min(1),
+    }),
+    sportProfile: Yup.object().shape({
+      excerciseByWeek: Yup.number().required("Campo requerido").min(0),
+      physicalLevelId: Yup.number().required("Selecciona tu nivel").min(1),
+      whatInjuries: Yup.string(),
+      hasInjuries: Yup.boolean(),
+      weight: Yup.number().required("Ingresa tu peso").min(1),
+      heigth: Yup.number().required("Ingresa tu altura").min(1),
+    }),
   });
 
-  const onSubmit = async (values) => {
-    console.log("my values", values);
+  const onSubmit =async (values) => {
+   await updateUser(values);
   };
 
+  useEffect(() => {
+    if (userUpdated) {
+      navigation("/");
+    }
+  }, [userUpdated]);
   return (
     <>
-      {!userLoading && (
+      {!userLoading &&  (
         <Formik
           initialValues={userProfile}
           enableReinitialize
-          validationSchema={validationSchema}
           onSubmit={onSubmit}
+          validationSchema={validationSchema}
           validateOnChange={true}
           validateOnBlur={true}
         >
           {(formik) => {
             return (
-              <div className="row">
-                <div className="col-md-6 col-lg-6 col-sm-12 mr-3">
-                  <TextBoxEditValidation
-                    classDiv={classEditTextBox}
-                    idText="name"
-                    label="Nombre(s)"
-                    type="text"
-                    formikForm={formik}
-                  />
+              <Form>
+                <div className="row">
+                  <div className="col-md-6 col-lg-6 col-sm-12 mr-3  animate__animated animate__backInLeft">
+                    <TextBoxEditValidation
+                      classDiv={classEditTextBox}
+                      idText="name"
+                      label="Nombre(s)"
+                      type="text"
+                      formikForm={formik}
+                    />
+                    <TextBoxEditValidation
+                      classDiv={classEditTextBox}
+                      idText="lastName"
+                      label="Apellidos"
+                      type="text"
+                      formikForm={formik}
+                    />
 
-                  <TextBoxEditValidation
-                    classDiv={classEditTextBox}
-                    idText="lastName"
-                    label="Apellidos"
-                    type="text"
-                    formikForm={formik}
-                  />
+                    <TextBoxEditValidation
+                      classDiv={classEditTextBox}
+                      idText="email"
+                      label="Email"
+                      type="email"
+                      formikForm={formik}
+                    />
+                    <TextBoxEditValidation
+                      classDiv={classEditTextBox}
+                      idText="phoneNumber"
+                      label="Telefono"
+                      type="phoneNumber"
+                      formikForm={formik}
+                    />
 
-                  <TextBoxEditValidation
-                    classDiv={classEditTextBox}
-                    idText="email"
-                    label="Email"
-                    type="email"
-                    formikForm={formik}
-                  />
-                  <TextBoxEditValidation
-                    classDiv={classEditTextBox}
-                    idText="phoneNumber"
-                    label="Telefono"
-                    type="phoneNumber"
-                    formikForm={formik}
-                  />
+                    <TextBoxEditValidation
+                      classDiv={classEditTextBox}
+                      idText="dateOfBirth"
+                      label="Fecha de nacimiento"
+                      type="date"
+                      formikForm={formik}
+                    />
+                    <SelectValidation
+                      classDiv="input-group mb-3  input-line"
+                      idSelect="genreId"
+                      label="Genero"
+                      formikForm={formik}
+                      data={genresUP}
+                      formFormik={formik}
+                    ></SelectValidation>
+                    {/* <div className={classEditTextBox}>
+                        <span>{formik.values.age}</span>  
+                    </div>   */}
+                    <TextBoxEditValidation
+                      classDiv={classEditTextBox}
+                      idText="age"
+                      label="Edad"
+                      type="number"
+                      formikForm={formik}
+                    />
+                    {!loadingUpdateProfile && (
+                      <div className="row d-flex justify-content-around mb-4">
+                        <button
+                          name="submit"
+                          value="Submit"
+                          type="submit"
+                          // onClick={() => {
+                          //   formik.touch();
+                          //   if (formik.isValid) {
+                          //     onSubmit(formik.values);
+                          //   }
+                          // }}
+                          disabled={formik.isInValid}
+                          className="col-4  btn btn-primary btn-lg btn-skew"
+                        >
+                          <span>Guardar</span>
+                        </button>
+                        <Link
+                          to="/"
+                          className="col-4  btn btn-secondary btn-lg btn-skew"
+                        >
+                          Cancelar
+                        </Link>
+                      </div>
+                    )}
 
-                  <TextBoxEditValidation
-                    classDiv={classEditTextBox}
-                    idText="dateOfBirth"
-                    label="Fecha de nacimiento"
-                    type="date"
-                    formikForm={formik}
-                  />
-
-                  <SelectValidation
-                    classDiv="input-group mb-3  input-line"
-                    idSelect="genreId"
-                    label="Genero"
-                    formikForm={formik}
-                    data={genresUP}
-                    formFormik={formik}
-                  ></SelectValidation>
-
-                  <TextBoxEditValidation
-                    classDiv={classEditTextBox}
-                    idText="age"
-                    label="Edad"
-                    type="number"
-                    formikForm={formik}
-                  />
-
-                  <div className="row d-flex justify-content-around">
-                    <button
-                      name="submit"
-                      type="button"
-                      value="Submit"
-                      className="col-4  btn btn-primary btn-lg btn-skew"
-                    >
-                      <span>Guardar</span>
-                    </button>
-                    <button
-                      name="submit"
-                      type="button"
-                      className="col-4  btn btn-secondary btn-lg btn-skew"
-                    >
-                      <span>Cancelar</span>
-                    </button>
+                    {loadingUpdateProfile && (
+                      <div className="row d-flex justify-content-around mb-4">
+                        <SpinnerSportApp />
+                      </div>
+                    )}
                   </div>
-                </div>
-                <div className="col-md-6 col-lg-6 col-sm-12">
-                  <Tabs
-                    defaultActiveKey="0"
-                    id="uncontrolled-tab-example"
-                    className="mb-3"
-                  >
-                    <Tab eventKey="0" title="Perfil Geografico">
-                      <div className="row  animate__animated animate__fadeInUpBig">
-                        <div className="col-md-12 col-lg-12 col-sm-12">
-                          <div className="input-group mb-3  input-line">
-                            <label
-                              className="input-group-text"
-                              htmlFor="stateId"
-                            >
-                              Pais
-                            </label>
-                            <Field
-                              id="countryId"
-                              as="select"
-                              name="countryId"
-                              className="form-control"
-                              size="lg"
-                              onChange={(e) => {
-                                formik.setFieldValue(
-                                  "countryId",
-                                  e.target.value
-                                );
-                                changeNewCountry(e.target.value);
-                                formik.setFieldValue("stateId", 0);
-                                formik.setFieldValue("cityId", 0);
-                              }}
-                            >
-                              <option value="0">Selecciona</option>
-                              {countriesUP.map((item) => (
-                                <option key={item.id} value={item.id}>
-                                  {item.name}
-                                </option>
-                              ))}
-                            </Field>
-                          </div>
+                  <div className="col-md-6 col-lg-6 col-sm-12">
+                    <Tabs
+                      defaultActiveKey="0"
+                      id="uncontrolled-tab-example"
+                      className="mb-3"
+                    >
+                      <Tab eventKey="0" title="Perfil Geografico">
+                        <div className="row  animate__animated animate__fadeInUpBig">
+                          <div className="col-md-12 col-lg-12 col-sm-12">
+                            <div className="input-group mb-3  input-line">
+                              <label
+                                className="input-group-text"
+                                htmlFor="stateId"
+                              >
+                                Pais
+                              </label>
+                              <Field
+                                id="countryId"
+                                as="select"
+                                name="countryId"
+                                className="form-control"
+                                size="lg"
+                                onChange={(e) => {
+                                  formik.setFieldValue(
+                                    "countryId",
+                                    e.target.value
+                                  );
+                                  changeNewCountry(e.target.value);
+                                  formik.setFieldValue("stateId", 0);
+                                  formik.setFieldValue("cityId", 0);
+                                }}
+                              >
+                                <option value="0">Selecciona</option>
+                                {countriesUP.map((item) => (
+                                  <option key={item.id} value={item.id}>
+                                    {item.name}
+                                  </option>
+                                ))}
+                              </Field>
+                            </div>
 
-                          <div className="input-group mb-3  input-line">
-                            <label
-                              className="input-group-text"
-                              htmlFor="stateId"
-                            >
-                              Estados
-                            </label>
-                            <Field
-                              id="stateId"
-                              as="select"
-                              name="stateId"
-                              className="form-control"
-                              size="lg"
-                              onChange={(e) => {
-                                formik.setFieldValue("stateId", e.target.value);
-                                changeNewState(e.target.value);
-                                formik.setFieldValue("cityId", 0);
-                              }}
-                            >
-                              <option value="0">Selecciona</option>
-                              {statesUP.map((item) => (
-                                <option key={item.id} value={item.id}>
-                                  {item.name}
-                                </option>
-                              ))}
-                            </Field>
-                          </div>
+                            <div className="input-group mb-3  input-line">
+                              <label
+                                className="input-group-text"
+                                htmlFor="stateId"
+                              >
+                                Estados
+                              </label>
+                              <Field
+                                id="stateId"
+                                as="select"
+                                name="stateId"
+                                className="form-control"
+                                size="lg"
+                                onChange={(e) => {
+                                  formik.setFieldValue(
+                                    "stateId",
+                                    e.target.value
+                                  );
+                                  changeNewState(e.target.value);
+                                  formik.setFieldValue("cityId", 0);
+                                }}
+                              >
+                                <option value="0">Selecciona</option>
+                                {statesUP.map((item) => (
+                                  <option key={item.id} value={item.id}>
+                                    {item.name}
+                                  </option>
+                                ))}
+                              </Field>
+                            </div>
 
+                            <SelectValidation
+                              classDiv="input-group mb-3  input-line"
+                              idSelect="cityId"
+                              label="Ciudad"
+                              formikForm={formik}
+                              data={citiesUP}
+                              formFormik={formik}
+                            ></SelectValidation>
+                          </div>
+                        </div>
+                      </Tab>
+                      <Tab eventKey="1" title="Perfil alimenticio">
+                        <div className="row animate__animated animate__fadeInUpBig">
+                          <CheckBoxValidation
+                            classDiv={classEditTextBox}
+                            formikForm={formik}
+                            idCheck="nutrionalProfile.hasMedicalAllergies"
+                            label="Tienes alergias medicas?"
+                          />
                           <SelectValidation
                             classDiv="input-group mb-3  input-line"
-                            idSelect="cityId"
-                            label="Ciudad"
+                            idSelect="nutrionalProfile.typeOfNutritionId"
+                            label="Tipo de dieta?"
                             formikForm={formik}
-                            data={citiesUP}
+                            data={typesOfNutritionUP}
                             formFormik={formik}
                           ></SelectValidation>
-                        </div>
-                      </div>
-                    </Tab>
-                    <Tab eventKey="1" title="Perfil alimenticio">
-                      <div className="row animate__animated animate__fadeInUpBig">
-                        <div className="input-group mb-3  input-line">
-                          <span
-                            className="input-group-text"
-                            id="tienesAlergias"
-                          >
-                            Tienes alergias
-                          </span>
-                          {
-                            <Field // prettier-ignore
-                            type="checkbox"
-                              id="custom-switch"
-                            />
-                          }
-                        </div>
 
-                        <div className="input-group mb-3   ml-5 p-1 input-line">
-                          <span
-                            className="input-group-text ml-5"
-                            id="cualesAlergias"
-                          >
-                            Cuales alergias?
-                          </span>
-                          {["checkbox"].map((type) => (
-                            <div key={`inline-${type}`} className="mb-3">
-                              {/* <Form.Check
-                            inline
-                            variant="dark"
-                            label="Lacteos"
-                            className="mt-3"
-                            name="group1"
-                            type={type}
-                            id={`inline-${type}-1`}
+                          <TextBoxEditValidation
+                            classDiv={classEditTextBox}
+                            idText="nutrionalProfile.averagesCaloriesPerDay"
+                            label="Promedio de consumo de calorias diarias"
+                            type="number"
+                            formikForm={formik}
                           />
-                          <Form.Check
-                            inline
-                            variant="dark"
-                            label="Gluten"
-                            className="mt-3"
-                            name="group1"
-                            type={type}
-                            id={`inline-${type}-2`}
+
+                          <CheckBoxValidation
+                            classDiv={classEditTextBox}
+                            formikForm={formik}
+                            idCheck="nutrionalProfile.hasAllergies"
+                            label="Tienes alergias alimenticias?"
                           />
-                          <Form.Check
-                            inline
-                            variant="dark"
-                            label="Frutos Secos"
-                            className="mt-3"
-                            name="group1"
-                            type={type}
-                            id={`inline-${type}-2`}
-                          /> */}
-                            </div>
-                          ))}
-                        </div>
 
-                        <div className="input-group mb-3  input-line">
-                          <span
-                            className="input-group-text"
-                            id="alergiasMedicas"
-                          >
-                            Tienes alergias medicas
-                          </span>
-                          {/* <Form.Check // prettier-ignore
-                        type="switch"
-                        id="custom-switch"
-                      /> */}
+                          <ArrayCheckBoxes
+                            data={nutricionalAllergiesUP}
+                            nameGroup="nutricionalAllergies"
+                            label="Cuales alergias?"
+                            classDivMain={classEditTextBox}
+                            values={formik.values}
+                          />
                         </div>
-
-                        <div className="input-group mb-3  input-line">
-                          <span className="input-group-text" id="tipoDeDieta">
-                            Tipo de dieta?
-                          </span>
-                          <select
-                            className="form-control"
-                            aria-label="tipoDeDieta"
-                          >
-                            <option value="1">Vegatariano</option>
-                            <option value="2">Vegano</option>
-                            <option value="3">Carnivoro</option>
-                            <option value="4">Omnivoro</option>
-                            <option value="5">Frutivoro</option>
-                          </select>
-                        </div>
-
-                        <div className="col-md-12 col-lg-12 col-sm-12">
-                          <div className="input-group mb-3  input-line">
-                            <span
-                              className="input-group-text"
-                              id="promedioCaloriasDiarias"
-                            >
-                              Promedio de consumo de calorias diarias?
-                            </span>
-                            <input
-                              type="number"
-                              className="form-control"
-                              placeholder=""
-                              aria-label="promedioCaloriasDiarias"
-                              aria-describedby="verdurasSemana"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </Tab>
-                    <Tab eventKey="2" title="Perfil deportivo">
-                      <div className="row  animate__animated animate__fadeInUpBig">
-                        <div className="col-md-12 col-lg-12 col-sm-12">
-                          <div className="input-group mb-3  input-line">
-                            <span
-                              className="input-group-text"
-                              id="ejercicioSemana"
-                            >
-                              Cuantas veces haces ejercicio por semana?
-                            </span>
-                            <input
-                              type="number"
-                              className="form-control"
-                              placeholder=""
-                              aria-label="ejercicioSemana"
-                              aria-describedby="ejercicioSemana"
-                            />
-                          </div>
-                          <div className="input-group mb-3  input-line">
-                            <span className="input-group-text" id="nivelFisico">
-                              Nivel Fisico
-                            </span>
-                            <select
-                              className="form-control"
-                              aria-label="nivelFisico"
-                            >
-                              <option value="1">Basico</option>
-                              <option value="2">Medio</option>
-                              <option value="3">Avanzado</option>
-                            </select>
-                          </div>
-                          <div className="input-group mb-3  input-line">
-                            <span
-                              className="input-group-text"
-                              id="tienesLesiones"
-                            >
-                              Tienes lesiones
-                            </span>
-                            {/* <Form.Check // prettier-ignore
-                          type="switch"
-                          id="custom-switch"
-                          className="mt-2 secondary"
-                          aria-label="tienesLesiones"
-                          aria-describedby="tienesLesiones"
-                        /> */}
-                          </div>
-                          <div className="input-group mb-3  input-line">
-                            <span className="input-group-text" id="lessiones">
-                              Que lessiones tienes?
-                            </span>
-                            <textarea
-                              type="Area"
-                              className="form-control"
-                              placeholder=""
-                              aria-label="lessiones"
-                              aria-describedby="lessiones"
-                            />
-                          </div>
-                          <div className="input-group mb-3  input-line">
-                            <span className="input-group-text" id="peso">
-                              Peso
-                            </span>
-                            <input
-                              type="number"
-                              className="form-control"
-                              placeholder=""
-                              aria-label="peso"
-                              aria-describedby="peso"
-                            />
-                          </div>
-
-                          <div className="input-group mb-3  input-line">
-                            <span className="input-group-text" id="Estatura">
-                              Estatura
-                            </span>
-                            <input
-                              type="number"
-                              className="form-control"
-                              placeholder=""
-                              aria-label="Estatura"
-                              aria-describedby="Estatura"
-                            />
-                          </div>
-                          <div className="input-group mb-1  p-3 input-line">
-                            <span className="input-group-text" id="lessiones">
-                              Actividades deportivas favoritas
-                            </span>
-                            {["checkbox"].map((type) => (
-                              <div key={`inline-${type}`} className="mb-3">
-                                {/* <Form.Check
-                              inline
-                              variant="dark"
-                              label="Futbol"
-                              className="mt-3"
-                              name="group1"
-                              type={type}
-                              id={`inline-${type}-1`}
-                            />
-                            <Form.Check
-                              inline
-                              variant="dark"
-                              label="Basket"
-                              className="mt-3"
-                              name="group1"
-                              type={type}
-                              id={`inline-${type}-2`}
-                            />
-                            <Form.Check
-                              inline
-                              variant="dark"
-                              label="Ciclismo"
-                              className="mt-3"
-                              name="group1"
-                              type={type}
-                              id={`inline-${type}-2`}
-                            />
-                            <Form.Check
-                              inline
-                              label="Zumba"
-                              variant="dark"
-                              className="mt-3"
-                              name="group1"
-                              type={type}
-                              id={`inline-${type}-2`}
-                            />
-                            <Form.Check
-                              inline
-                              variant="dark"
-                              label="Correr"
-                              className="mt-3"
-                              name="group1"
-                              type={type}
-                              id={`inline-${type}-2`}
-                            /> */}
-                              </div>
-                            ))}
-                          </div>
+                      </Tab>
+                      <Tab eventKey="2" title="Perfil deportivo">
+                        <div className="row  animate__animated animate__fadeInUpBig">
                           <div className="col-md-12 col-lg-12 col-sm-12">
-                            <div className="input-group mb-3  p-1 input-line">
-                              <span className="input-group-text" id="lessiones">
-                                Cuales son tus metas?
-                              </span>
-                              {["checkbox"].map((type) => (
-                                <div key={`inline-${type}`} className="mb-3">
-                                  {/* <Form.Check
-                                inline
-                                variant="dark"
-                                label="Ganar peso"
-                                className="mt-3"
-                                name="group1"
-                                type={type}
-                                id={`inline-${type}-1`}
-                              />
-                              <Form.Check
-                                inline
-                                variant="dark"
-                                label="Mejorar resistencia"
-                                className="mt-3"
-                                name="group1"
-                                type={type}
-                                id={`inline-${type}-2`}
-                              />
-                              <Form.Check
-                                inline
-                                variant="dark"
-                                label="Construir musculo"
-                                className="mt-3"
-                                name="group1"
-                                type={type}
-                                id={`inline-${type}-2`}
-                              />
-                              <Form.Check
-                                inline
-                                label="Perder peso"
-                                variant="dark"
-                                className="mt-3"
-                                name="group1"
-                                type={type}
-                                id={`inline-${type}-2`}
-                              />
-                              <Form.Check
-                                inline
-                                variant="dark"
-                                label="Aumentar Frexibilidad"
-                                className="mt-3"
-                                name="group1"
-                                type={type}
-                                id={`inline-${type}-2`}
-                              />
+                            <TextBoxEditValidation
+                              classDiv={classEditTextBox}
+                              idText="sportProfile.excerciseByWeek"
+                              label="Cuantas veces haces ejercicio por semana?"
+                              type="number"
+                              formikForm={formik}
+                            />
 
-                              <Form.Check
-                                inline
-                                variant="dark"
-                                label="Aumentar Fuerza"
-                                className="mt-3"
-                                name="group1"
-                                type={type}
-                                id={`inline-${type}-2`}
-                              />
+                            <SelectValidation
+                              classDiv="input-group mb-3  input-line"
+                              idSelect="sportProfile.physicalLevelId"
+                              label="Cual es tu nivel Fisico?"
+                              formFormik={formik}
+                              data={physicalLevelsUP}
+                              formikForm={formik}
+                            ></SelectValidation>
 
-                              <Form.Check
-                                inline
-                                variant="dark"
-                                label="Mejorar Flexibilidad"
-                                className="mt-3"
-                                name="group1"
-                                type={type}
-                                id={`inline-${type}-2`}
-                              /> */}
-                                </div>
-                              ))}
-                            </div>
+                            <CheckBoxValidation
+                              classDiv={classEditTextBox}
+                              formikForm={formik}
+                              idCheck="sportProfile.hasInjuries"
+                              label="Tienes lesiones?"
+                            />
+                            <TextBoxEditValidation
+                              classDiv={classEditTextBox}
+                              idText="sportProfile.whatInjuries"
+                              label="Que lessiones tienes?"
+                              type="area"
+                              formikForm={formik}
+                            />
+
+                            <TextBoxEditValidation
+                              classDiv={classEditTextBox}
+                              idText="sportProfile.weight"
+                              label="Cual es tu peso (Kilos)? "
+                              type="number"
+                              formikForm={formik}
+                            />
+                            <TextBoxEditValidation
+                              classDiv={classEditTextBox}
+                              idText="sportProfile.heigth"
+                              label="Cual es tu altura (cms)? "
+                              type="number"
+                              formikForm={formik}
+                            />
+
+                            <ArrayCheckBoxes
+                              data={activitiesUP}
+                              nameGroup="activities"
+                              label="Cuales son tus actividades deportivas favoritas?"
+                              classDivMain={classEditTextBox}
+                              values={formik.values}
+                            />
+                            <ArrayCheckBoxes
+                              data={goalsUP}
+                              nameGroup="goals"
+                              label="Cuales son tus metas en sport App?"
+                              classDivMain={classEditTextBox}
+                              values={formik.values}
+                            />
                           </div>
                         </div>
-                      </div>
-                    </Tab>
-                  </Tabs>
-                  <pre>{JSON.stringify(formik.values, null, 2)}</pre>
+                      </Tab>
+                    </Tabs>
+                  </div>
                 </div>
-              </div>
+              </Form>
             );
           }}
         </Formik>

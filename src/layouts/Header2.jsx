@@ -192,7 +192,7 @@ const Header2 = () => {
                                 >
                                   {item.content &&
                                     item.content.map((data, index) => {
-                                      //console.log('path loc', data.to );
+                                   
                                       return (
                                         <li
                                           key={index}

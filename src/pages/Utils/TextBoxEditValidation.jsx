@@ -11,7 +11,7 @@ export const TextBoxEditValidation = ({
 
 
   return (
-    <div >
+
     <div className={classDiv}>
       <label className="input-group-text" htmlFor={idText}>
         {label}{" "}
@@ -26,7 +26,7 @@ export const TextBoxEditValidation = ({
         aria-describedby={idText}
          style={GetErrorBorderBottom(formikForm.errors, idText)}
       />
-    </div>
+
     {/* <ErrorMessage className=" input-group-text text-red" name={idText}>
         {(errorMsg) => <div className="text-red">{errorMsg}</div>}
       </ErrorMessage> */}

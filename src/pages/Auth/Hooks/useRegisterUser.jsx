@@ -3,7 +3,6 @@ import { useState } from "react";
 import { Alerts } from "../../Utils/Alerts";
 
 const useRegisterUser = (initial) => {
-  console.log('initial=>', initial);
   const urlAPI = process.env.REACT_APP_API_URL;
   const [loading, setLoading] = useState(false);
   const [userCreated, setUserCreated] = useState(false);
@@ -22,7 +21,7 @@ const useRegisterUser = (initial) => {
         `Hola ${newUser.firstName},  tu usuario ha sido creado `
       );
       setLoading(false);
-      console.log("register user", response);
+
     } catch (error) {
       showAlertError(
         "Ups, Sorry :(",

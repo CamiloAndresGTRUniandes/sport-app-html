@@ -28,7 +28,6 @@ const useLogin = () => {
       showMessageForLogin(response.data.name);
       
     } catch (error) {
-      console.log("my error",error);
       setUserLogged(false);
       showErrorMessage();
       setError(error);

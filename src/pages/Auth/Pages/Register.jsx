@@ -12,9 +12,7 @@ import { useEffect, useState } from "react";
 import * as Yup from "yup";
 import modelImage from "../../../assets/images/about/pic7.png";
 import useRegisterUser from "../hooks/useRegisterUser";
-
-import { SpinnerSportApp } from "../../../components/SpinnerSportApp";
-import { GetErrorBorder } from "../../Utils/GetErrorBorder";
+import { GetErrorBorder, SpinnerSportApp } from "../../Utils";
 import { HeaderLogin, SocialNetwork } from "../components";
 import useEmailExists from "../hooks/useEmailExists";
 import { Link, useNavigate } from "react-router-dom";
@@ -40,7 +38,6 @@ const Registro = () => {
       .required("El email es requerido")
       .test("email-exists", "El email ya está registrado", async (value) => {
         await validateEmail(value.trim());
-        console.log("response", emailExists);
         return emailExists;
       }),
     password: Yup.string()
@@ -233,7 +230,7 @@ const Registro = () => {
                             <MDBCol col="12">
                               <div className="form-check form-switch">
                                 <label className="form-check-label" for="isUser">
-                                  Quieres ser asociado o usuario
+                                  Quieres ser usuario?
                                 </label>
 
                                 <Field
