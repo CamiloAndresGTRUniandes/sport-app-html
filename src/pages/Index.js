@@ -48,6 +48,7 @@ import EdicionRecomendacion from "./EdicionRecomendacion";
 import CarritoCompras from "./CarritoCompras";
 
 import Pagar from "./Pagar";
+import { CloseSession } from "./Auth/pages";
 
 
 function Index() {
@@ -82,6 +83,7 @@ function Index() {
           <Route path="/schedule" exact element={<Schedule />} />
           <Route path="/portfolio" exact element={<Portfolio />} />
           <Route path="/user-profile" exact element={<UserProfile />} />
+          <Route path="close-session" exact element={<CloseSession/>}/>
           <Route path="/Recomendacion" exact element={<Recomendacion />} />
           <Route path="/edicion-recomendacion" exact element={<EdicionRecomendacion />} />
            {/* <Route path="/servicio-productos" exact element={<ServiciosProductosTable />} />  */}

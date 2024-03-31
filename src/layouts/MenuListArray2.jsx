@@ -142,7 +142,10 @@ const miPerfil=
         title: "Tu compras",
         to: "/carrito-compras",
       },
-
+      {
+        title: "Cerrar session",
+        to: "/close-session",
+      }
       
     ]
   }
@@ -156,8 +159,8 @@ export const MenuListUsuario = [
   calendario,
   servicios,
   sugerencias,
-  miPerfil,
   contactanos,
+  miPerfil,
 ];
 export const MenuListAsociado = [
   inicio,

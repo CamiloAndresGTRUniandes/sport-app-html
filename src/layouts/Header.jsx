@@ -175,14 +175,14 @@ export const Mainheader = () => {
                   </Link>
                 )}
 
-                {sessionUser?.userInfo?.role !== "Visitante" && (
+                {/* {sessionUser?.userInfo?.role !== "Visitante" && (
                   <button
                     onClick={onCloseSession}
                     className="btn btn-dark btn-skew appointment-btn"
                   >
                     <span>Cerrar session</span>
                   </button>
-                )}
+                )} */}
               </div>
             </div>
 
