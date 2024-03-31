@@ -26,6 +26,7 @@ export const useEditUserProfile = () => {
     headers: { Authorization: `Bearer ${getToken()}` },
   };
 
+  const GuidEmpty="00000000-0000-0000-0000-000000000000";
   const updateUser = async (updUser) => {
     try {
       setLoadingUpdateProfile(true);
@@ -96,6 +97,13 @@ export const useEditUserProfile = () => {
       const activities$ = axios.get(`${urlAPI}/api/V1/Activity`, tokenPayload);
 
       const goals$ = axios.get(`${urlAPI}/api/V1/Goal`, tokenPayload);
+
+      const cities$=  axios
+      .get(
+        `${urlAPI}/api/Geography/StatesByCountry/${user.cityId}`,
+        tokenPayload
+      );
+
       await axios
         .all([
           genres$,
@@ -105,10 +113,11 @@ export const useEditUserProfile = () => {
           physicalLevel$,
           activities$,
           goals$,
+          cities$
         ])
         .then(
           axios.spread(
-            (gen, cou, typNut, nutAllergies, phyLevels, activities, goals) => {
+            (gen, cou, typNut, nutAllergies, phyLevels, activities, goals, cities) => {
               setGenresUP(gen.data);
               setCountriesUP(cou.data);
               setTypesOfNutritionUP(typNut.data);
@@ -118,7 +127,7 @@ export const useEditUserProfile = () => {
               setGoalsUp(goals.data);
               setNewCountryId(user.countryId);
               setNewStateId(user.stateId);
-              if(user.cityId==0)
+              if(user.cityId===GuidEmpty || user.cityId==="")
               {
                 setUserLoading(false);
               }
@@ -136,7 +145,9 @@ export const useEditUserProfile = () => {
   const changeNewCountry = (countryId) => setNewCountryId(countryId);
 
   useEffect(() => {
-    if (newCountryId === 0 && !userLoading) {
+
+    
+    if (newCountryId === "" && !userLoading) {
       setStatesUP([]);
       setCitiesUP([]);
     } else if (newCountryId) {
@@ -155,27 +166,28 @@ export const useEditUserProfile = () => {
   const changeNewState = (stateId) => setNewStateId(stateId);
   useEffect(() => {
     async function getCities() {
-      if (newStateId === 0 && !userLoading) {
+      if ((newStateId === "" || newStateId===GuidEmpty) && !userLoading) {
       
         setCitiesUP([]);
         setTimeout(() => {
           enabledUserLoading();
-        }, 200);
-      } else if (newStateId) {
-        axios
+        }, 250);
+      } 
+      else 
+      if (newStateId) {
+       var  response= await  axios
           .get(
             `${urlAPI}/api/Geography/CitiesByState/${newStateId}`,
             tokenPayload
-          )
-          .then((response) => {
+          );
+
             setCitiesUP(response.data);
-            
             setTimeout(() => {
               enabledUserLoading();
-            }, 200);
-          });
+            }, 250);
+          }
       }
-    }
+    
     async function enabledUserLoading() {
       setUserLoading(false);
     }

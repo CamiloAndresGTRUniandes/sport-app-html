@@ -1,6 +1,5 @@
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
-import { Alerts } from "../../Utils/Alerts";
 
 import { Field, Form, Formik } from "formik";
 import * as Yup from "yup";
@@ -49,23 +48,23 @@ export const EditUserProfile = () => {
       .required("El email es requerido"),
     phoneNumber: Yup.string(),
     dateOfBirth: Yup.date().required("Tu fecha de nacimiento es requerida"),
-    genreId: Yup.number().required("Selecciona tu género").min(1),
-    countryId: Yup.number().required("Selecciona tu pais").min(1),
-    stateId: Yup.number().required("Selecciona tu estado").min(1),
-    cityId: Yup.number().required("Selecciona tu ciudad").min(1),
+    genreId: Yup.string().required("Selecciona tu género"),
+    countryId: Yup.string().required("Selecciona tu pais"),
+    stateId: Yup.string().required("Selecciona tu estado"),
+    cityId: Yup.string().required("Selecciona tu ciudad"),
     nutrionalProfile: Yup.object().shape({
       averagesCaloriesPerDay: Yup.number()
         .required("Promedio de consumo de calorias diarias")
         .min(1),
       hasAllergies: Yup.boolean(),
       hasMedicalAllergies: Yup.boolean(),
-      typeOfNutritionId: Yup.number()
+      typeOfNutritionId: Yup.string()
         .required("Selecciona tu tipo de dieta")
-        .min(1),
+        
     }),
     sportProfile: Yup.object().shape({
       excerciseByWeek: Yup.number().required("Campo requerido").min(0),
-      physicalLevelId: Yup.number().required("Selecciona tu nivel").min(1),
+      physicalLevelId: Yup.string().required("Selecciona tu nivel"),
       whatInjuries: Yup.string(),
       hasInjuries: Yup.boolean(),
       weight: Yup.number().required("Ingresa tu peso").min(1),
@@ -213,8 +212,8 @@ export const EditUserProfile = () => {
                                     e.target.value
                                   );
                                   changeNewCountry(e.target.value);
-                                  formik.setFieldValue("stateId", 0);
-                                  formik.setFieldValue("cityId", 0);
+                                  formik.setFieldValue("stateId", "");
+                                  formik.setFieldValue("cityId", "");
                                 }}
                               >
                                 <option value="0">Selecciona</option>
@@ -245,7 +244,7 @@ export const EditUserProfile = () => {
                                     e.target.value
                                   );
                                   changeNewState(e.target.value);
-                                  formik.setFieldValue("cityId", 0);
+                                  formik.setFieldValue("cityId", "");
                                 }}
                               >
                                 <option value="0">Selecciona</option>

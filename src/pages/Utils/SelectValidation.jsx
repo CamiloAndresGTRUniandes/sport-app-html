@@ -46,7 +46,7 @@ export const SelectValidation = ({
             style={GetErrorBorderBottom(errors, idSelect)}
             onChange={handleChange}
           >
-            <option value="0">Selecciona</option>
+            <option value="">Selecciona</option>
             {data.map((item) => (
               <option key={item.id} value={item.id}>
                 {item.name}
