@@ -1,11 +1,5 @@
 /*
-    =========================
-	Template Name 	 : BodyShape
-	Author			 : DexignZone
-	Version			 : 2.0
-	Author Portfolio : https://themeforest.net/user/dexignzone
-	=========================
-	
+    
 	[Table of Contents] 
 
 	=== SCSS Start ===
@@ -50,7 +44,8 @@
 		5.7 event-detail.scss
 		5.8 pages.scss
 		5.9 under-construction.scss
-		
+    6.0 Calendar
+	
 	=== SCSS Start ===
 */
 /*=== Abstract ===*/
@@ -24852,5 +24847,26 @@ pre {
     background-color: transparent;
     position: relative;
     outline: none; }
+/*6.0 Calendar*/
+/* .rbc-timeslot-group:nth-child(1), .rbc-timeslot-group:nth-child(2), .rbc-timeslot-group:nth-child(3), .rbc-timeslot-group:nth-child(23), .rbc-timeslot-group:nth-child(24)
+{height: 100%; } */
+
+.rbc-header
+{
+  background-color: var( --primary);
+  color: white;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  /*padding-bottom: 20px;*/
+  text-transform: capitalize;
+}
+.rbc-label
+{
+    background-color: #000;
+    color: white;
+}
 
 /*# sourceMappingURL=style.css.map */
+

@@ -173,7 +173,5 @@ export const MenuListInvitado = [
   inicio,
   otras,
   calendario,
-  servicios,
-  sugerencias,
   contactanos
 ];
