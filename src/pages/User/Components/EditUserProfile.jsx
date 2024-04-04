@@ -175,6 +175,7 @@ export const EditUserProfile = () => {
                         >
                           Cancelar
                         </Link>
+                        <pre>{JSON.stringify(formik.values, null, 2)}</pre>
                       </div>
                     )}
 
@@ -380,9 +381,12 @@ export const EditUserProfile = () => {
               </Form>
             );
           }}
+
+            
         </Formik>
       )}
       {userLoading && <SpinnerSportApp />}
+    
     </>
   );
 };
