@@ -1,23 +1,17 @@
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import { format } from "date-fns";
 
 export const Alerts = () => {
-
-  const showClassAnimation={
+  const showClassAnimation = {
     popup: `
       animate__animated
       animate__fadeInUp
       animate__faster
-    `
+    `,
   };
 
-  const hideClassAnimation={
-    popup: `
-      animate__animated
-      animate__fadeInUp
-      animate__faster
-    `
-  };
+
 
   const showAlertSuccess = (title, message) => {
     withReactContent(Swal).fire({
@@ -35,52 +29,45 @@ export const Alerts = () => {
       text: message,
       icon: "error",
       timer: 2500,
-      showClass: showClassAnimation
-    },
-    
-    );
+      showClass: showClassAnimation,
+    });
   };
 
-  const showAlertHtml=(title, description, event, onConfirm)=>
-  {
+  const showAlertSuscription = (title, description, event, onConfirm) => {
     Swal.fire({
-      title: `<strong><u>${title}</u></strong>`,
       showClass: showClassAnimation,
-      icon: "info",
+      //icon: "info",
       html: `
+      <p><b>${title} </b></p>
+        <br>
+        <img src='${
+          event.picture
+        }' width='300px'  class='img-fluid img-thumbnail'/>
         <p>${description}</p>
+        <p>Fecha inicio: ${format(event.start, "yyyy-MM-dd HH:mm")} </p>
+        <p>Fecha fin: ${format(event.end, "yyyy-MM-dd HH:mm")} </p>
       `,
       showCloseButton: true,
+      timer: 5500,
       showCancelButton: true,
       focusConfirm: false,
       confirmButtonText: `
-        <i class="fa fa-thumbs-up"></i> Great!
+        <i class="fa fa-thumbs-up"></i> Suscribete!
       `,
-      confirmButtonAriaLabel: "Thumbs up, great!",
+      confirmButtonAriaLabel: " Suscribete!",
       cancelButtonText: `
         <i class="fa fa-thumbs-down"></i>
       `,
-      cancelButtonAriaLabel: "Thumbs down"
+      cancelButtonAriaLabel: "Thumbs down",
     }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-      
         onConfirm(event);
-      
-        /*
-        Swal.fire({title:"Evento registrado", text:"Suscripcion de evento", icon:"success",
-        showClass: showClassAnimation,
-    
-      });*/
-      
       }
     });
-    ;
-
-  }
+  };
   return {
     showAlertSuccess,
     showAlertError,
-    showAlertHtml
+    showAlertSuscription
   };
 };

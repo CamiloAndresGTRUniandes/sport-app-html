@@ -36960,12 +36960,13 @@ pre {
   justify-content: center;
   text-transform: capitalize;
   text-align: center;
+  height: 50px;
 }
 
-.rbc-label> .rbc-time-header-gutter
+.rbc-label
 {
 
-  min-width: 100px;
+  min-width: 100px !important;
   background-color: #00537a;
 }
 .rbc-event {
@@ -36996,19 +36997,31 @@ pre {
 .rbc-month-view {
   
   animation: zoomIn; /* referring directly to the animation's @keyframe declaration */
-  animation-duration: 2s; 
+  animation-duration: 0.5s; 
 }
 .rbc-time-view  {
   
   animation: zoomIn; /* referring directly to the animation's @keyframe declaration */
-  animation-duration: 2s; /* don't forget to set a duration! */
+  animation-duration: 0.5s; /* don't forget to set a duration! */
 }
 
 .rbc-agenda-view  {
   
   animation: zoomIn; /* referring directly to the animation's @keyframe declaration */
-  animation-duration: 2s; /* don't forget to set a duration! */
+  animation-duration: 0.5s; /* don't forget to set a duration! */
 }
+
+.rbc-btn-group> button:contains("Mes") {
+ visibility: hidden;
+}
+.rbc-btn-group> button:contains("Month") {
+  visibility: hidden;
+ }
+
+
+ span.rbc-btn-group:nth-child(3) > button:nth-child(1) {
+  visibility: hidden;
+ }
 
 /* .rbc-btn-group > button
 {

@@ -13,7 +13,7 @@ import AboutUs from "./AboutUs";
 import Team from "./Team";
 import Pricing from "./Pricing";
 import Faq from "./Faq";
-import Schedule from "./Schedule";
+import {Schedule} from "./Schedules/Pages/Schedule";
 import ErrorPage from "./ErrorPage";
 import UnderConstruction from "./UnderConstruction";
 import ComingSoon from "./ComingSoon";
