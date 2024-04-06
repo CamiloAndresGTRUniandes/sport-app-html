@@ -27,8 +27,8 @@ import BlogLargeSidebar from "./BlogLargeSidebar";
 import BlogListSidebar from "./BlogListSidebar";
 import BlogDetail from "./BlogDetail";
 import Appointment from "./Appointment";
-import Login from "./Auth/pages/Login";
-import Register from "./Auth/pages/Register";
+import Login from "./Auth/Pages/Login";
+import Register from "./Auth/Pages/Register";
 import WeightCalculator from "./WeightCalculator";
 import ContactUs from "./ContactUs";
 import Home2 from "./Home2";
@@ -48,7 +48,7 @@ import EdicionRecomendacion from "./EdicionRecomendacion";
 import CarritoCompras from "./CarritoCompras";
 
 import Pagar from "./Pagar";
-import { CloseSession } from "./Auth/pages";
+import { CloseSession } from "./Auth/Pages";
 
 
 function Index() {
