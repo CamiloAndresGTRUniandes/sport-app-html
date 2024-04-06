@@ -14,13 +14,13 @@ export const ScheduleEvents = () => {
     format(new Date(), "MMM dd, yyyy")
   );
   const [lastDateWeek, setLastDateWeek] = useState(
-    addDays(endOfWeek(new Date()), 0)
+    addDays(endOfWeek(new Date()), 360)
   );
 
   const [lastView, setLastView] = useState(
     localStorage.getItem("lastView") || "week"
   );
-  const { eventsByUser, loadEvents, errorInEvents, getEvents } =
+  const { eventsByUser, loadEvents, getEvents } =
   useCalendarEvents(getUser().id, getUser().name);
  
   useEffect(() => {

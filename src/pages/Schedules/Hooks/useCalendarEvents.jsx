@@ -3,7 +3,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { Alerts } from "../../Utils";
-import { addSpecialFields } from "../Helpers"; // Importa la función addSpecialFields
+import { addSpecialFields } from "../Helpers";
 
 export const useCalendarEvents = (userId, name) => {
   const urlAPI = process.env.REACT_APP_API_URL_SERVICE;
@@ -16,7 +16,7 @@ export const useCalendarEvents = (userId, name) => {
     setLoadEvents(true);
     const queryEvents = {
       user: userId,
-      serviceTypes: ["3fa85f64-5717-4562-b3fc-2c963f66afa6"],
+      serviceTypes: ["93fc91b3-47dd-49e8-9589-01671491cc73"],
       startDateTime: new Date(start),
       endDateTime: new Date(end),
     };
