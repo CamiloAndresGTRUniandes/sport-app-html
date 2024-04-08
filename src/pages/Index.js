@@ -46,6 +46,7 @@ import ServiciosProductos from "./ServiciosProductos";
 import EdicionServiciosProductos from "./EdicionServiciosProductos";
 import EdicionRecomendacion from "./EdicionRecomendacion";
 import CarritoCompras from "./CarritoCompras";
+import ProductServiceDetail from "./ProductServices/Pages/ProductServiceDetail";
 
 import Pagar from "./Pagar";
 import { CloseSession } from "./Auth/Pages";
@@ -98,7 +99,8 @@ function Index() {
             exact
             element={<PortfolioDetails />}
           />
-            <Route path="/productos-servicios" exact element={<ServiciosProductos />} />
+          <Route path="/productos-servicios" exact element={<ServiciosProductos />} />
+          <Route path="/create-product-services" exact element={<ProductServiceDetail  />} />
           <Route path="/services" exact element={<Services />} />
           <Route path="/AdministrarSeguimiento" exact element={<AdministrarSeguimiento />} />
           <Route path="/services-details" exact element={<ServicesDetails />} />
