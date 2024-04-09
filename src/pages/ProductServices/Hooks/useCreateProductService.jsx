@@ -17,6 +17,7 @@ export const useCreateProductService = () => {
     const [nutritionalAllergiesUP, setNutritionalAllergiesUP] = useState([]);
     const [loadingUpdateProfile, setLoadingUpdateProduct] = useState(false);
     const [productCreated, setProductCreated] = useState(false);
+    const [eventSelected, setEventSelected] = useState(false);
     const { showAlertSuccess, showAlertError } = Alerts();
     const [productLoading, setProductLoading] = useState(true);
     const [physicalLevelsUP, setPhysicalLevels] = useState([]);
@@ -53,26 +54,29 @@ export const useCreateProductService = () => {
     };
     const GetInitialInformation = async () => {
         try {
+            let date = new Date(Date.now());
+            let dateString = new Date(date.getTime() - (date.getTimezoneOffset() * 60000))
+                .toISOString()
+                .split("T")[0];
             const product = {
                 productId: "",
+                user: "3BFC0E87-E3BB-46B4-9F0A-B0D264FCD6B6",
                 name: "",
                 description: "",
                 price: 0,
                 picture: "",
-                user: "3bfc0e87-e3bb-46b4-9f0a-b0d264fcd6b6",
+                planId: "",
                 countryId: "",
                 stateId: "",
                 cityId: "",
-                planId: "",
                 typeOfNutritionId: "",
-                sportLevel: "",
                 serviceTypeId: "",
-                activities: [
-                ],
-                goals: [
-                ],
-                nutritionalAllergies: [
-                ]
+                sportLevel: 0,
+                activities: [],
+                goals: [],
+                allergies: [],
+                startDateTime: dateString,
+                endDateTime: dateString
             }
             setInitialProduct(product);
             await fetchAllReferencial();
@@ -93,13 +97,13 @@ export const useCreateProductService = () => {
                 `${urlAPI}/api/v1/productService/NutritionalAllergy`);
 
             const physicalLevel$ = [
-                {"id": "1", "name" : "Básico"},
-                {"id": "2", "name" : "Intermedio"},
-                {"id": "3", "name" : "Avanzado"}
+                { "id": "1", "name": "Básico" },
+                { "id": "2", "name": "Intermedio" },
+                { "id": "3", "name": "Avanzado" }
             ]
-            
+
             const plans$ = axios.get(`${urlAPI}/api/v1/productService/Plan`);
-            
+
             const categories$ = axios.get(`${urlAPI}/api/v1/productService/Category`);
             const activities$ = axios.get(`${urlAPI}/api/v1/activities`);
 
@@ -191,7 +195,6 @@ export const useCreateProductService = () => {
     useEffect(() => {
         async function getServiceTypes() {
             if ((newCategoryId === "" || newCategoryId === GuidEmpty) && !productLoading) {
-
                 setServiceTypesUP([]);
                 setTimeout(() => {
                     enabledUserLoading();
@@ -199,13 +202,17 @@ export const useCreateProductService = () => {
             }
             else
                 if (newCategoryId) {
-                    
+
                     var response = await axios
                         .get(
                             `${urlAPI}/api/v1/productService/ServiceTypeByCategory/${newCategoryId}`
                         );
-
-                        setServiceTypesUP(response.data);
+                    if (newCategoryId === 'be8e2306-8bc9-49cc-8d43-a76820370994') {
+                        setEventSelected(true);
+                    } else {
+                        setEventSelected(false);
+                    }
+                    setServiceTypesUP(response.data);
                     setTimeout(() => {
                         enabledUserLoading();
                     }, 250);
@@ -238,6 +245,7 @@ export const useCreateProductService = () => {
         categoriesUp,
         serviceTypesUP,
         changeNewCategory,
-        plansUp
+        plansUp,
+        eventSelected
     };
 };
