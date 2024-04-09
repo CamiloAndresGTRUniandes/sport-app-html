@@ -1,0 +1,124 @@
+{
+    "personas": [
+      {
+        "ID": 1,
+        "Nombre": "Juan Perez",
+        "CC": "123456789",
+        "Fecha_de_nacimiento": "1990-05-15",
+        "pais": "Colombia",
+        "ciudad": "Bogotá",
+        "hijos": [
+          {
+            "nombre": "María",
+            "edad": 5
+          },
+          {
+            "nombre": "Pedro",
+            "edad": 8
+          }
+        ]
+      },
+      {
+        "ID": 2,
+        "Nombre": "Ana Gomez",
+        "CC": "987654321",
+        "Fecha_de_nacimiento": "1985-10-20",
+        "pais": "Colombia",
+        "ciudad": "Medellín",
+        "hijos": []
+      },
+      {
+        "ID": 3,
+        "Nombre": "Carlos Rodriguez",
+        "CC": "456789123",
+        "Fecha_de_nacimiento": "1978-03-12",
+        "pais": "Brasil",
+        "ciudad": "RJ",
+        "hijos": [
+          {
+            "nombre": "Andrés",
+            "edad": 10
+          },
+          {
+            "nombre": "Laura",
+            "edad": 12
+          }
+        ]
+      },
+      {
+        "ID": 4,
+        "Nombre": "María Lopez",
+        "CC": "321654987",
+        "Fecha_de_nacimiento": "1995-08-25",
+        "pais": "Brasil",
+        "ciudad": "SP",
+        "hijos": [
+          {
+            "nombre": "Sofía",
+            "edad": 3
+          }
+        ]
+      }
+    ],
+  
+    "paises": [
+      { "id": 1, "nombre": "Argentina" },
+      { "id": 2, "nombre": "Brasil" },
+      { "id": 3, "nombre": "Chile" },
+      { "id": 4, "nombre": "Colombia" },
+      { "id": 5, "nombre": "Ecuador" }
+    ],
+    "departamentos": [
+      { "id": 1, "nombre": "Buenos Aires", "pais_id": 1 },
+      { "id": 6, "nombre": "Buenos Aires2", "pais_id": 1 },
+      { "id": 2, "nombre": "São Paulo", "pais_id": 2 },
+      { "id": 3, "nombre": "Santiago", "pais_id": 3 },
+      { "id": 4, "nombre": "Bogotá", "pais_id": 4 },
+      { "id": 5, "nombre": "Quito", "pais_id": 5 }
+    ],
+    "ciudades": [
+      { "id": 1, "nombre": "La Plata", "departamento_id": 1 },
+      { "id": 6, "nombre": "La Plata2", "departamento_id": 6 },
+      { "id": 7, "nombre": "La Plata3", "departamento_id": 6 },
+      { "id": 2, "nombre": "Campinas", "departamento_id": 2 },
+      { "id": 3, "nombre": "Viña del Mar", "departamento_id": 3 },
+      { "id": 4, "nombre": "Medellín", "departamento_id": 4 },
+      { "id": 5, "nombre": "Cuenca", "departamento_id": 5 },
+      { "id": 8, "nombre": "Cuenca2", "departamento_id": 5 }
+    ],
+
+    "ciudades": [
+      { "id": 1, "nombre": "La Plata", "departamento_id": 1 },
+      { "id": 6, "nombre": "La Plata2", "departamento_id": 6 },
+      { "id": 7, "nombre": "La Plata3", "departamento_id": 6 },
+      { "id": 2, "nombre": "Campinas", "departamento_id": 2 },
+      { "id": 3, "nombre": "Viña del Mar", "departamento_id": 3 },
+      { "id": 4, "nombre": "Medellín", "departamento_id": 4 },
+      { "id": 5, "nombre": "Cuenca", "departamento_id": 5 },
+      { "id": 8, "nombre": "Cuenca2", "departamento_id": 5 }
+    ],
+
+    "alergias": [
+      { "id": 1, "nombre": "Lacteos"},
+      { "id": 2, "nombre": "Gluten" },
+      { "id": 3, "nombre": "Frutos Secos"},
+      { "id": 4, "nombre": "Mariscos"},
+      { "id": 5, "nombre": "Grasas" }
+
+    ],
+
+    "alimento": [
+      { "id": 1, "nombre": "Vegetariano"},
+      { "id": 2, "nombre": "Vegano" },
+      { "id": 3, "nombre": "Carnivoro"},
+      { "id": 4, "nombre": "Omnivoro"},
+      { "id": 5, "nombre": "Frutivoro" }
+
+    ]
+
+
+
+
+    
+  }
+  
