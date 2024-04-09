@@ -19,7 +19,7 @@ import UnderConstruction from "./UnderConstruction";
 import ComingSoon from "./ComingSoon";
 import Portfolio from "./Portfolio";
 import PortfolioDetails from "./PortfolioDetails";
-import Services from "./Services";
+import Services from "./ServicePage/Pages/Service";
 import ServicesDetails from "./ServicesDetails";
 import BlogGrid from "./BlogGrid";
 import Recomendacion from "./Recomendacion";
@@ -43,7 +43,7 @@ import RecomendacionPlanDepor from "./RecomendacionPlanDepor";
 import AsociacionTerceros from "./AsociacionTerceros";
 import Seguimientos from "./Seguimientos";
 import ServiciosProductos from "./ServiciosProductos";
-import EdicionServiciosProductos from "./EdicionServiciosProductos";
+import EdicionServiciosProductos from "./EdicionServiciosPage/Pages/EdicionServiciosProductos";
 import EdicionRecomendacion from "./EdicionRecomendacion";
 import CarritoCompras from "./CarritoCompras";
 
