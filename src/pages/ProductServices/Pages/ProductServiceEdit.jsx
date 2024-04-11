@@ -4,7 +4,7 @@ import Card from 'react-bootstrap/Card';
 import 'animate.css';
 import { CreateProductService } from "../Components";
 
-const ProductServiceDetail = () => {
+const ProductServiceEdit = () => {
     return(<>
         <div className="page-content bg-white">
           <PageTitle parentTitle="Pages" activePage="Perfil de usuario" />
@@ -24,4 +24,4 @@ const ProductServiceDetail = () => {
       </>)
     
 };
-export default ProductServiceDetail
+export default ProductServiceEdit

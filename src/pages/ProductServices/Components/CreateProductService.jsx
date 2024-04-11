@@ -11,10 +11,11 @@ import {
   SelectValidation,
   TextBoxEditValidation,
 } from "../../Utils";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 import { useCreateProductService } from "../Hooks/useCreateProductService";
 export const CreateProductService = () => {
+  const product = useParams();
   const classEditTextBox = " input-group mb-3  input-line";
   const {
     initialProduct,
@@ -42,25 +43,20 @@ export const CreateProductService = () => {
   } = useCreateProductService();
   const navigation = useNavigate();
   useEffect(() => {
-    GetInitialInformation();
+    GetInitialInformation(product);
   }, []);
 
   const validationSchema = Yup.object().shape({
     //userId: "",
     name: Yup.string().required("El nombre es requerido."),
     description: Yup.string().required("La descripción es requerida."),
-    //price: Yup.number().required("Campo requerido").min(0),
     picture: Yup.string().required("La imagen es requerida."),
-    //countryId: Yup.string().required("Selecciona tu pais"),
-    //stateId: Yup.string().required("Selecciona tu estado"),
     cityId: Yup.string().required("Selecciona tu ciudad"),
     planId: Yup.string().required("Selecciona tu plan"),
-    //typeOfNutritionId: Yup.string().required("Selecciona tu tipo de dieta"),
     sportLevel: Yup.string().required("Selecciona tu nivel")
   });
 
   const onSubmit = async (values) => {
-    console.log(values);
     await createProduct(values);
   };
   useEffect(() => {

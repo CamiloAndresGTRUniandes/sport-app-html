@@ -23,6 +23,7 @@ export const useCreateProductService = () => {
     const [physicalLevelsUP, setPhysicalLevels] = useState([]);
     const [newCountryId, setNewCountryId] = useState(null);
     const [newStateId, setNewStateId] = useState(null);
+    const [newCityId, setNewCityId] = useState(null);
     const [newCategoryId, setNewCategoryId] = useState(null);
     const GuidEmpty = "00000000-0000-0000-0000-000000000000";
 
@@ -52,41 +53,57 @@ export const useCreateProductService = () => {
             setLoadingUpdateProduct(false);
         }
     };
-    const GetInitialInformation = async () => {
+    const GetInitialInformation = async (product) => {
+        const productId = product.productId;
         try {
-            let date = new Date(Date.now());
-            let dateString = new Date(date.getTime() - (date.getTimezoneOffset() * 60000))
-                .toISOString()
-                .split("T")[0];
-            const product = {
-                productId: "",
-                user: "3BFC0E87-E3BB-46B4-9F0A-B0D264FCD6B6",
-                name: "",
-                description: "",
-                price: 0,
-                picture: "",
-                planId: "",
-                countryId: "",
-                stateId: "",
-                cityId: "",
-                typeOfNutritionId: "",
-                serviceTypeId: "",
-                sportLevel: 0,
-                activities: [],
-                goals: [],
-                allergies: [],
-                startDateTime: dateString,
-                endDateTime: dateString
+            await fetchAllReferencial(productId);
+            if (initialProduct.countryId != null && initialProduct.countryId != ""){
+                changeNewCountry(initialProduct.countryId);
+                if (initialProduct.stateId != null && initialProduct.stateId != ""){
+                    changeNewState(initialProduct.stateId);
+                    if (initialProduct.cityId != null && initialProduct.cityId != ""){
+                        initialProduct.cityId = initialProduct.cityId;
+                    }
+                }
             }
-            setInitialProduct(product);
-            await fetchAllReferencial();
             setProductLoading(false);
         } catch (error) {
             setProductLoading(false);
         }
     };
-    const fetchAllReferencial = async () => {
+    const fetchAllReferencial = async (productId) => {
         try {
+            let product = {};
+            if (productId) {
+                product = axios.get(`${urlAPI}/api/v1/productService/${productId}`);
+            } else {
+                let date = new Date(Date.now());
+                let dateString = new Date(date.getTime() - (date.getTimezoneOffset() * 60000))
+                    .toISOString()
+                    .split("T")[0];
+                product = {
+                    data: {
+                        productId: "",
+                        user: "3BFC0E87-E3BB-46B4-9F0A-B0D264FCD6B6",
+                        name: "",
+                        description: "",
+                        price: 0,
+                        picture: "",
+                        planId: "",
+                        countryId: "",
+                        stateId: "",
+                        cityId: "",
+                        typeOfNutritionId: "",
+                        serviceTypeId: "",
+                        sportLevel: 0,
+                        activities: [],
+                        goals: [],
+                        allergies: [],
+                        startDateTime: dateString,
+                        endDateTime: dateString
+                    }
+                }
+            }
             const countries$ = axios.get(
                 `${urlAPI}/api/v1/productService/AllCountries`
             );
@@ -118,11 +135,12 @@ export const useCreateProductService = () => {
                     activities$,
                     goals$,
                     categories$,
-                    plans$
+                    plans$,
+                    product
                 ])
                 .then(
                     axios.spread(
-                        (cou, typNut, nutAllergies, sportLevel, activities, goals, categories, plan) => {
+                        (cou, typNut, nutAllergies, sportLevel, activities, goals, categories, plan, product) => {
                             setCountriesUP(cou.data);
                             setTypesOfNutritionUP(typNut.data);
                             setNutritionalAllergiesUP(nutAllergies.data);
@@ -131,6 +149,7 @@ export const useCreateProductService = () => {
                             setGoalsUp(goals.data);
                             setCategoriesUp(categories.data);
                             setPlansUp(plan.data);
+                            setInitialProduct(product.data);
                         }
                     )
                 )
@@ -169,7 +188,7 @@ export const useCreateProductService = () => {
                 setCitiesUP([]);
                 setTimeout(() => {
                     enabledUserLoading();
-                }, 250);
+                }, 300);
             }
             else
                 if (newStateId) {
