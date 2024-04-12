@@ -2,7 +2,6 @@
   "name": "sportapp",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://danielcbustos.github.io/sport-app-html",
   "dependencies": {
     "@emailjs/browser": "^3.10.0",
     "@emotion/react": "^11.11.4",
@@ -81,7 +80,6 @@
   "license": "ISC",
   "devDependencies": {
     "cypress": "^13.7.2",
-    "cypress-xpath": "^2.0.1",
-    "gh-pages": "^6.1.1"
+    "cypress-xpath": "^2.0.1"
   }
 }
