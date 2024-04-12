@@ -34,8 +34,8 @@ const ServicesTable = () => {
         {Array.isArray(initialData) && initialData.map((item, index) => (
           <tr className="row_1" key={index}>
             <td className='highlighted-cell'>{item.name}</td>
-            <td>{item.serviceType}</td>
-            <td>{item.plan}</td>
+            <td>{item.serviceType.name}</td>
+            <td>{item.plan.name}</td>
             <td>{item.price}</td>
             <td>
               <Link to={`/edit-product-services/${item.productId}`} className="btn btn-primary shadow-primary btn-skew  mt-2"><span>

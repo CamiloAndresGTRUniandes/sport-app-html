@@ -57,15 +57,6 @@ export const useCreateProductService = () => {
         const productId = product.productId;
         try {
             await fetchAllReferencial(productId);
-            if (initialProduct.countryId != null && initialProduct.countryId != ""){
-                changeNewCountry(initialProduct.countryId);
-                if (initialProduct.stateId != null && initialProduct.stateId != ""){
-                    changeNewState(initialProduct.stateId);
-                    if (initialProduct.cityId != null && initialProduct.cityId != ""){
-                        initialProduct.cityId = initialProduct.cityId;
-                    }
-                }
-            }
             setProductLoading(false);
         } catch (error) {
             setProductLoading(false);
@@ -77,6 +68,7 @@ export const useCreateProductService = () => {
             if (productId) {
                 product = axios.get(`${urlAPI}/api/v1/productService/${productId}`);
             } else {
+                const currentUser = JSON.parse(sessionStorage.getItem("userLogin"));
                 let date = new Date(Date.now());
                 let dateString = new Date(date.getTime() - (date.getTimezoneOffset() * 60000))
                     .toISOString()
@@ -84,7 +76,7 @@ export const useCreateProductService = () => {
                 product = {
                     data: {
                         productId: "",
-                        user: "3BFC0E87-E3BB-46B4-9F0A-B0D264FCD6B6",
+                        user: currentUser.id,
                         name: "",
                         description: "",
                         price: 0,
@@ -160,6 +152,36 @@ export const useCreateProductService = () => {
             console.log("use Create Prodcut", error);
         }
     };
+    useEffect(() => {
+        if (initialProduct) {
+            if (initialProduct.productId != '' && initialProduct.productId != GuidEmpty && initialProduct.productId != null) {
+                if (initialProduct.categoryId){
+                    setNewCategoryId(initialProduct.categoryId);
+                }
+                if (initialProduct.categoryId === 'be8e2306-8bc9-49cc-8d43-a76820370994') {
+                    const startDate = new Date(initialProduct.startDateTime);
+                    const startDateString = new Date(startDate.getTime() - (startDate.getTimezoneOffset() * 60000))
+                        .toISOString()
+                        .split("T")[0];
+                    const endDate = new Date(initialProduct.endDateTime);
+                    const endDateString = new Date(endDate.getTime() - (endDate.getTimezoneOffset() * 60000))
+                        .toISOString()
+                        .split("T")[0];
+                    initialProduct.startDateTime = startDateString;
+                    initialProduct.endDateTime = endDateString;
+                    setEventSelected(true);
+                } else {
+                    setEventSelected(false);
+                }
+                if (initialProduct.countryId) {
+                    setNewCountryId(initialProduct.countryId);
+                    if (initialProduct.stateId) {
+                        setNewStateId(initialProduct.stateId);
+                    }
+                }
+            }
+        }
+    }, [initialProduct]);
     const changeNewCountry = (countryId) => setNewCountryId(countryId);
 
     useEffect(() => {
@@ -188,7 +210,7 @@ export const useCreateProductService = () => {
                 setCitiesUP([]);
                 setTimeout(() => {
                     enabledUserLoading();
-                }, 300);
+                }, 250);
             }
             else
                 if (newStateId) {
