@@ -36,7 +36,7 @@ import AdministrarSeguimiento from "./AdministrarSeguimiento";
 import Header2 from "../layouts/Header2";
 import Home3 from "./Home3";
 import UserProfile from "./User/Pages/UserProfile";
-import ServicesDetailsTable from "./ServicesDetailsTable";
+import ServicesDetailsTable from "../pages/RegistrationMealPlans/Pages/ServicesDetailsTableMealPage";
 import Recomendaciones from "./Recomendaciones";
 import RecomendacionDetail from "./RecomendacionDetail";
 import RecomendacionPlanDepor from "./RecomendacionPlanDepor";

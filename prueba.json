@@ -1,0 +1,18 @@
+{
+    "productsService": [
+        {
+            "usuario": "Maria Angel",
+            "servicio": "Jooging",
+            "description": "Corre como si de este dependiera tu vida..",
+            "plan": "Plan Basico",
+            "valor": "$ 80.000 Mes"
+        },
+        {
+            "usuario": "Dr Camilo de Keneddy",
+            "servicio": "Crossfit  en Keneddy",
+            "description": "Crossfit es una disciplina fitness creada  ...",
+            "plan": "Plan Premium",
+            "valor": "$ 150.000  Mes"
+        }
+    ]
+}
