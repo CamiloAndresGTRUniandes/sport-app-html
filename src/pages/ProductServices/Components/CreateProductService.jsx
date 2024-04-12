@@ -61,7 +61,7 @@ export const CreateProductService = () => {
   };
   useEffect(() => {
     if (productCreated) {
-      navigation("/");
+      navigation("/product-services");
     }
   }, [productCreated]);
   return (

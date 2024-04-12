@@ -97,7 +97,7 @@ const asociados=
     { title: "Administrar seguimiento", to: "/AdministrarSeguimiento" },
     {
       title: "Registro de productos y servicios",
-      to: "/productos-servicios",
+      to: "/product-services",
     }
   ],
 
