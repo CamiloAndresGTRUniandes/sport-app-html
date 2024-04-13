@@ -26,6 +26,7 @@ export const useCreateProductService = () => {
     const [newCityId, setNewCityId] = useState(null);
     const [newCategoryId, setNewCategoryId] = useState(null);
     const GuidEmpty = "00000000-0000-0000-0000-000000000000";
+    const currentUser = JSON.parse(sessionStorage.getItem("userLogin"));
 
     const createProduct = async (updProduct) => {
         try {
@@ -68,14 +69,13 @@ export const useCreateProductService = () => {
             if (productId) {
                 product = axios.get(`${urlAPI}/api/v1/productService/${productId}`);
             } else {
-                const currentUser = JSON.parse(sessionStorage.getItem("userLogin"));
                 let date = new Date(Date.now());
                 let dateString = new Date(date.getTime() - (date.getTimezoneOffset() * 60000))
                     .toISOString()
                     .split("T")[0];
                 product = {
                     data: {
-                        productId: "",
+                        productId: GuidEmpty,
                         user: currentUser.id,
                         name: "",
                         description: "",
@@ -155,6 +155,7 @@ export const useCreateProductService = () => {
     useEffect(() => {
         if (initialProduct) {
             if (initialProduct.productId != '' && initialProduct.productId != GuidEmpty && initialProduct.productId != null) {
+                initialProduct.user = currentUser.id;
                 if (initialProduct.categoryId){
                     setNewCategoryId(initialProduct.categoryId);
                 }
