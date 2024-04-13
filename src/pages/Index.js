@@ -43,7 +43,7 @@ import RecomendacionPlanDepor from "./RecomendacionPlanDepor";
 import AsociacionTerceros from "./AsociacionTerceros";
 import Seguimientos from "./Seguimientos";
 import ServiciosProductos from "./ServiciosProductos";
-import EdicionServiciosProductos from "./EdicionServiciosPage/Pages/EdicionServiciosProductos";
+import EdicionServiciosProductos from "./EdicionServiciosProductos";
 import EdicionRecomendacion from "./EdicionRecomendacion";
 import CarritoCompras from "./CarritoCompras";
 
