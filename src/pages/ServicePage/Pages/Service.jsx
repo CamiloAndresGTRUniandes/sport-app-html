@@ -14,7 +14,7 @@ export const Services = () => {
 
     return (
         <div className="page-content bg-white">
-          <PageTitle activePage="Servicios" parentTitle="Servicios" />
+          <PageTitle activePage="Servicios" parentTitle="ServiciosNew" />
           <section
             className="content-inner overflow-hidden"
             style={{ backgroundImage: `url(${IMAGES.BgImage1})` }}

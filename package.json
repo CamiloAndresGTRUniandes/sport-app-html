@@ -10,12 +10,9 @@
     "@faker-js/faker": "^8.4.1",
     "@mui/material": "^5.15.12",
     "@reduxjs/toolkit": "^2.2.2",
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "@trimbleinc/modus-react-bootstrap": "^1.2.4",
     "animate.css": "^4.1.1",
-    "axios": "^1.6.8",
     "bootstrap": "^5.3.3",
     "caniuse-lite": "^1.0.30001591",
     "chart.js": "^4.2.1",
@@ -52,7 +49,7 @@
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --transformIgnorePatterns 'node_modules/(?!axios)/'",
     "eject": "react-scripts eject",
     "sass": "node-sass --watch src/assets/scss/main.scss src/assets/css/style.css --source-map src/assets/css/style.css.map"
   },
@@ -79,8 +76,15 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.4.2",
+    "@testing-library/react": "^15.0.2",
+    "@testing-library/react-hooks": "^8.0.1",
+    "@types/jest": "^29.5.12",
+    "axios": "^1.6.8",
     "cypress": "^13.7.2",
     "cypress-xpath": "^2.0.1",
-    "gh-pages": "^6.1.1"
+    "gh-pages": "^6.1.1",
+    "jest": "^27.5.1",
+    "react-test-renderer": "^18.2.0"
   }
 }

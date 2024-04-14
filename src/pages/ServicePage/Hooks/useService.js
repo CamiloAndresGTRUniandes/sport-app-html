@@ -14,7 +14,7 @@ const useService = () => {
 
                 setService(dataservices.data);
             } catch (error) {
-                console.error('Error al cargar los datos:', error);
+                console.log('Error al cargar los datos:', error);
             }
         };
 
