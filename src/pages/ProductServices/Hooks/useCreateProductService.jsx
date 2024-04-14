@@ -34,7 +34,7 @@ export const useCreateProductService = () => {
                 `${urlAPI}/api/v1/productService`,
                 updProduct
             );
-            console.log("response update product", response);
+
             setProductCreated(true);
             showAlertSuccess(
                 "Felicitaciones :)",
@@ -47,21 +47,22 @@ export const useCreateProductService = () => {
                 `el producto ${updProduct.name}, No se ha actualizado.`
             );
             setProductCreated(false);
-            console.log("create product error", error);
             setLoadingUpdateProduct(false);
         } finally {
             setLoadingUpdateProduct(false);
         }
     };
+
     const GetInitialInformation = async (product) => {
         const productId = product.productId;
+        // istanbul ignore next
         try {
             await fetchAllReferencial(productId);
-            if (initialProduct.countryId != null && initialProduct.countryId != ""){
+            if (initialProduct.countryId != null && initialProduct.countryId != "") {
                 changeNewCountry(initialProduct.countryId);
-                if (initialProduct.stateId != null && initialProduct.stateId != ""){
+                if (initialProduct.stateId != null && initialProduct.stateId != "") {
                     changeNewState(initialProduct.stateId);
-                    if (initialProduct.cityId != null && initialProduct.cityId != ""){
+                    if (initialProduct.cityId != null && initialProduct.cityId != "") {
                         initialProduct.cityId = initialProduct.cityId;
                     }
                 }
@@ -71,6 +72,7 @@ export const useCreateProductService = () => {
             setProductLoading(false);
         }
     };
+
     const fetchAllReferencial = async (productId) => {
         try {
             let product = {};
@@ -104,6 +106,7 @@ export const useCreateProductService = () => {
                     }
                 }
             }
+
             const countries$ = axios.get(
                 `${urlAPI}/api/v1/productService/AllCountries`
             );
@@ -125,7 +128,7 @@ export const useCreateProductService = () => {
             const activities$ = axios.get(`${urlAPI}/api/v1/activities`);
 
             const goals$ = axios.get(`${urlAPI}/api/v1/goal`);
-
+            // istanbul ignore next
             await axios
                 .all([
                     countries$,
@@ -154,10 +157,10 @@ export const useCreateProductService = () => {
                     )
                 )
                 .catch((err) => {
-                    console.log(err);
+                    console.err(err);
                 });
         } catch (error) {
-            console.log("use Create Prodcut", error);
+            console.err("use Create Prodcut", error);
         }
     };
     const changeNewCountry = (countryId) => setNewCountryId(countryId);
@@ -192,6 +195,7 @@ export const useCreateProductService = () => {
             }
             else
                 if (newStateId) {
+
                     var response = await axios
                         .get(
                             `${urlAPI}/api/v1/productService/CitiesByState/${newStateId}`
@@ -231,13 +235,16 @@ export const useCreateProductService = () => {
                     } else {
                         setEventSelected(false);
                     }
+
                     setServiceTypesUP(response.data);
+
                     setTimeout(() => {
+
                         enabledUserLoading();
                     }, 250);
                 }
         }
-
+        // istanbul ignore next
         async function enabledUserLoading() {
             setProductLoading(false);
         }

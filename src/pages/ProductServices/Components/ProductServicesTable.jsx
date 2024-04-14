@@ -17,39 +17,39 @@ const ServicesTable = () => {
   }, []);
   return (
     <>
-      {!productsLoading &&(
-      <Table className="table-responsive-md ck-table mb-5">
-        <thead>
+      {!productsLoading && (
+        <Table data-testid="product-services-table" className="table-responsive-md ck-table mb-5">
+          <thead>
 
-          <tr>
-            <th>Nombre</th>
-            <th>Producto/Servicio</th>
-            <th>Tipo de Plan</th>
-            <th>Costo</th>
-            <th>Editar</th>
-            <th>Eliminar</th>
-          </tr>
-        </thead>
-        <tbody>
-        {Array.isArray(initialData) && initialData.map((item, index) => (
-          <tr className="row_1" key={index}>
-            <td className='highlighted-cell'>{item.name}</td>
-            <td>{item.serviceType}</td>
-            <td>{item.plan}</td>
-            <td>{item.price}</td>
-            <td>
-              <Link to={`/edit-product-services/${item.productId}`} className="btn btn-primary shadow-primary btn-skew  mt-2"><span>
-              <i className="fa-solid fa-pencil"></i>
-                </span></Link>
-            </td>
-            <td>
-              <button className='btn btn-dark shadow-danger btn-skew  mt-2'>
-              <i className="fa-solid fa-close"></i>
-              </button>
-            </td>
-          </tr>
-        ))}
-          {/* <tr className="row_1">
+            <tr>
+              <th>Nombre</th>
+              <th>Producto/Servicio</th>
+              <th>Tipo de Plan</th>
+              <th>Costo</th>
+              <th>Editar</th>
+              <th>Eliminar</th>
+            </tr>
+          </thead>
+          <tbody>
+            {Array.isArray(initialData) && initialData.map((item, index) => (
+              <tr className="row_1" key={index}>
+                <td className='highlighted-cell'>{item.name}</td>
+                <td>{item.serviceType}</td>
+                <td>{item.plan}</td>
+                <td>{item.price}</td>
+                <td>
+                  <Link to={`/edit-product-services/${item.productId}`} className="btn btn-primary shadow-primary btn-skew  mt-2"><span>
+                    <i className="fa-solid fa-pencil"></i>
+                  </span></Link>
+                </td>
+                <td>
+                  <button className='btn btn-dark shadow-danger btn-skew  mt-2'>
+                    <i className="fa-solid fa-close"></i>
+                  </button>
+                </td>
+              </tr>
+            ))}
+            {/* <tr className="row_1">
             <td className="event-time"> Zumba </td>
             <td className="event" >Servicio</td>
             <td>$ 150.000 </td>
@@ -86,8 +86,8 @@ const ServicesTable = () => {
               </button>
             </td>
           </tr> */}
-        </tbody>
-      </Table>)}
+          </tbody>
+        </Table>)}
       {productsLoading && <SpinnerSportApp />}
     </>
   )
