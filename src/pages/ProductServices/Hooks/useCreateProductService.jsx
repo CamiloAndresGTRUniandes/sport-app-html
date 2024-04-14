@@ -81,12 +81,12 @@ export const useCreateProductService = () => {
                         description: "",
                         price: 0,
                         picture: "",
-                        planId: "",
-                        countryId: "",
-                        stateId: "",
-                        cityId: "",
-                        typeOfNutritionId: "",
-                        serviceTypeId: "",
+                        planId: GuidEmpty,
+                        countryId: GuidEmpty,
+                        stateId: GuidEmpty,
+                        cityId: GuidEmpty,
+                        typeOfNutritionId: GuidEmpty,
+                        serviceTypeId: GuidEmpty,
                         sportLevel: 0,
                         activities: [],
                         goals: [],
@@ -158,6 +158,7 @@ export const useCreateProductService = () => {
                 initialProduct.user = currentUser.id;
                 if (initialProduct.categoryId){
                     setNewCategoryId(initialProduct.categoryId);
+                    initialProduct.serviceTypeId = initialProduct.serviceTypeId;
                 }
                 if (initialProduct.categoryId === 'be8e2306-8bc9-49cc-8d43-a76820370994') {
                     const startDate = new Date(initialProduct.startDateTime);
@@ -178,8 +179,15 @@ export const useCreateProductService = () => {
                     setNewCountryId(initialProduct.countryId);
                     if (initialProduct.stateId) {
                         setNewStateId(initialProduct.stateId);
+                        initialProduct.cityId = initialProduct.cityId;
                     }
                 }
+            }
+            if (initialProduct.typeOfNutritionId === null) {
+                initialProduct.typeOfNutritionId = GuidEmpty;
+            }
+            if (initialProduct.serviceTypeId){
+                initialProduct.serviceTypeId = GuidEmpty; 
             }
         }
     }, [initialProduct]);
