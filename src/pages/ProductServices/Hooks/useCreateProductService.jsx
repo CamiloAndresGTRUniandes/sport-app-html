@@ -26,6 +26,7 @@ export const useCreateProductService = () => {
     const [newCityId, setNewCityId] = useState(null);
     const [newCategoryId, setNewCategoryId] = useState(null);
     const GuidEmpty = "00000000-0000-0000-0000-000000000000";
+    const currentUser = JSON.parse(sessionStorage.getItem("userLogin"));
 
     const createProduct = async (updProduct) => {
         try {
@@ -58,15 +59,6 @@ export const useCreateProductService = () => {
         // istanbul ignore next
         try {
             await fetchAllReferencial(productId);
-            if (initialProduct.countryId != null && initialProduct.countryId != "") {
-                changeNewCountry(initialProduct.countryId);
-                if (initialProduct.stateId != null && initialProduct.stateId != "") {
-                    changeNewState(initialProduct.stateId);
-                    if (initialProduct.cityId != null && initialProduct.cityId != "") {
-                        initialProduct.cityId = initialProduct.cityId;
-                    }
-                }
-            }
             setProductLoading(false);
         } catch (error) {
             setProductLoading(false);
@@ -85,18 +77,18 @@ export const useCreateProductService = () => {
                     .split("T")[0];
                 product = {
                     data: {
-                        productId: "",
-                        user: "3BFC0E87-E3BB-46B4-9F0A-B0D264FCD6B6",
+                        productId: GuidEmpty,
+                        user: currentUser.id,
                         name: "",
                         description: "",
                         price: 0,
                         picture: "",
-                        planId: "",
-                        countryId: "",
-                        stateId: "",
-                        cityId: "",
-                        typeOfNutritionId: "",
-                        serviceTypeId: "",
+                        planId: GuidEmpty,
+                        countryId: GuidEmpty,
+                        stateId: GuidEmpty,
+                        cityId: GuidEmpty,
+                        typeOfNutritionId: GuidEmpty,
+                        serviceTypeId: GuidEmpty,
                         sportLevel: 0,
                         activities: [],
                         goals: [],
@@ -160,9 +152,48 @@ export const useCreateProductService = () => {
                     console.err(err);
                 });
         } catch (error) {
-            console.err("use Create Prodcut", error);
+            console.log("use Create Prodcut", error);
         }
     };
+    useEffect(() => {
+        if (initialProduct) {
+            if (initialProduct.productId != '' && initialProduct.productId != GuidEmpty && initialProduct.productId != null) {
+                initialProduct.user = currentUser.id;
+                if (initialProduct.categoryId) {
+                    setNewCategoryId(initialProduct.categoryId);
+                    initialProduct.serviceTypeId = initialProduct.serviceTypeId;
+                }
+                if (initialProduct.categoryId === 'be8e2306-8bc9-49cc-8d43-a76820370994') {
+                    const startDate = new Date(initialProduct.startDateTime);
+                    const startDateString = new Date(startDate.getTime() - (startDate.getTimezoneOffset() * 60000))
+                        .toISOString()
+                        .split("T")[0];
+                    const endDate = new Date(initialProduct.endDateTime);
+                    const endDateString = new Date(endDate.getTime() - (endDate.getTimezoneOffset() * 60000))
+                        .toISOString()
+                        .split("T")[0];
+                    initialProduct.startDateTime = startDateString;
+                    initialProduct.endDateTime = endDateString;
+                    setEventSelected(true);
+                } else {
+                    setEventSelected(false);
+                }
+                if (initialProduct.countryId) {
+                    setNewCountryId(initialProduct.countryId);
+                    if (initialProduct.stateId) {
+                        setNewStateId(initialProduct.stateId);
+                        initialProduct.cityId = initialProduct.cityId;
+                    }
+                }
+            }
+            if (initialProduct.typeOfNutritionId === null) {
+                initialProduct.typeOfNutritionId = GuidEmpty;
+            }
+            if (initialProduct.serviceTypeId) {
+                initialProduct.serviceTypeId = GuidEmpty;
+            }
+        }
+    }, [initialProduct]);
     const changeNewCountry = (countryId) => setNewCountryId(countryId);
 
     useEffect(() => {
@@ -191,7 +222,7 @@ export const useCreateProductService = () => {
                 setCitiesUP([]);
                 setTimeout(() => {
                     enabledUserLoading();
-                }, 300);
+                }, 250);
             }
             else
                 if (newStateId) {

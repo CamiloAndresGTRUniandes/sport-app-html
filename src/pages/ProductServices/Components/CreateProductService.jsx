@@ -24,7 +24,6 @@ export const CreateProductService = () => {
     countriesUP,
     statesUP,
     citiesUP,
-    setProductCreated,
     changeNewCountry,
     changeNewState,
     typesOfNutritionUP,
@@ -62,7 +61,7 @@ export const CreateProductService = () => {
 
   useEffect(() => {
     if (productCreated) {
-      navigation("/");
+      navigation("/product-services");
     }
   }, [productCreated]);
   return (
@@ -183,7 +182,7 @@ export const CreateProductService = () => {
                           <span>Guardar</span>
                         </button>
                         <Link
-                          to="/"
+                          to="/product-services"
                           className="col-4  btn btn-secondary btn-lg btn-skew"
                         >
                           Cancelar
