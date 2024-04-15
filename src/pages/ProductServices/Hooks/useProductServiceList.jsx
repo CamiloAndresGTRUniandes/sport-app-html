@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect } from "react";
-import { Alerts } from "../../Utils";
 import axios from "axios";
 
 export const useProductServiceList = () => {
