@@ -19,7 +19,7 @@ import UnderConstruction from "./UnderConstruction";
 import ComingSoon from "./ComingSoon";
 import Portfolio from "./Portfolio";
 import PortfolioDetails from "./PortfolioDetails";
-import Services from "./Services";
+import Services from "./ServicePage/Pages/Service";
 import ServicesDetails from "./ServicesDetails";
 import BlogGrid from "./BlogGrid";
 import Recomendacion from "./Recomendacion";
