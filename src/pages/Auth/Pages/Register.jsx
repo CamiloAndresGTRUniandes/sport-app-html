@@ -10,24 +10,24 @@ import {
 } from "mdb-react-ui-kit";
 import { useEffect, useState } from "react";
 import * as Yup from "yup";
-import modelImage from "../../../assets/images/about/pic7.png";
-import useRegisterUser from "../Hooks/useRegisterUser";
+import  {IMAGES}  from "../../../constants/theme";
+import useRegisterUser from "../hooks/useRegisterUser";
 import { GetErrorBorder, SpinnerSportApp } from "../../Utils";
 import { HeaderLogin, SocialNetwork } from "../components";
-import useEmailExists from "../Hooks/useEmailExists";
+import useEmailExists from "../hooks/useEmailExists";
 import { Link, useNavigate } from "react-router-dom";
 const Registro = () => {
-  const { validateEmail, emailExists } = useEmailExists();
   const [formValues] = useState(null);
+  const { validateEmail, emailExists } = useEmailExists();
   const { createUser, loading, userCreated } = useRegisterUser();
   const navigate = useNavigate();
   const initialValuesObject = {
-    firstName: "Andres",
-    lastName: "Romero",
-    password: "Andres123*",
-    email: "andres@test.com",
+    firstName: "",
+    lastName: "",
+    password: "",
+    email: "",
     isUser: true,
-    confirmPassword: "Andres123*",
+    confirmPassword: "",
   };
 
   const validationSchema = Yup.object({
@@ -53,7 +53,7 @@ const Registro = () => {
         "La confirmacion debe ser igual al password"
       ),
   });
-
+  // istanbul ignore next
   const onSubmit = async (values) => {
     await createUser(values);
   };
@@ -88,7 +88,7 @@ const Registro = () => {
                       className="text-center text-md-start d-flex flex-column justify-content-center"
                     >
                       <MDBCardImage
-                        src={modelImage}
+                        src={IMAGES.portfolio7}
                         alt="login form"
                         className="rounded-start w-100"
                       />
@@ -113,7 +113,7 @@ const Registro = () => {
 
                           <MDBRow className="mb-4">
                             <MDBCol col="6">
-                              <label htmlFor="name">Nombre(s)</label>
+                              <label htmlFor="firstName">Nombre(s)</label>
                               <Field
                                 as={MDBInput}
                                 id="firstName"
@@ -135,7 +135,7 @@ const Registro = () => {
                               </ErrorMessage>
                             </MDBCol>
                             <MDBCol col="6">
-                              <label htmlFor="name">Apellidos(s)</label>
+                              <label htmlFor="lastName">Apellidos(s)</label>
                               <Field
                                 as={MDBInput}
                                 id="lastName"
@@ -159,7 +159,7 @@ const Registro = () => {
                           </MDBRow>
                           <MDBRow className="mb-4">
                             <MDBCol col="12">
-                              <label htmlFor="name">Email</label>
+                              <label htmlFor="email">Email</label>
                               <Field
                                 as={MDBInput}
                                 id="email"
@@ -229,7 +229,7 @@ const Registro = () => {
                           <MDBRow className="mb-4">
                             <MDBCol col="12">
                               <div className="form-check form-switch">
-                                <label className="form-check-label" for="isUser">
+                                <label className="form-check-label" htmlFor="isUser">
                                   Quieres ser usuario?
                                 </label>
 

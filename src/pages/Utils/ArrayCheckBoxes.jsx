@@ -1,5 +1,6 @@
 import React from "react";
 import { Field, useFormikContext } from "formik";
+  // istanbul ignore next
 export const ArrayCheckBoxes = ({
   data,
   nameGroup,

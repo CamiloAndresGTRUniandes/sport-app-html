@@ -1,12 +1,11 @@
 {
   "elements": [
-
     {
-      "modulo":"login",
+      "modulo": "login",
       "elemento": "main page",
       "dirpath": "http://localhost:3000",
       "tipo": "page",
-      "evento": "load page"  
+      "evento": "load page"
     },
     {
       "modulo": "login",
@@ -30,7 +29,7 @@
       "tipo": "password",
       "evento": "type"
     },
-    
+
     {
       "modulo": "login",
       "elemento": "btnLogin",
@@ -39,7 +38,235 @@
       "evento": "click"
     },
 
-      
+    {
+      "modulo": "register",
+      "elemento": "lnkRegister",
+      "dirpath": "/html/body/div/div[1]/form/div/div/div/div/div[2]/div/div[6]/p/a",
+      "tipo": "a",
+      "evento": "click"
+    },
+    {
+      "modulo": "user-profile",
+      "elemento": "txtName",
+      "dirpath": "/html/body/div/div[1]/div/div[2]/div/div/form/div/div[1]/div[1]/input",
+      "tipo": "name",
+      "evento": "type"
+    },
+    {
+      "modulo": "user-profile",
+      "elemento": "txtLastName",
+      "dirpath": "/html/body/div/div[1]/div/div[2]/div/div/form/div/div[1]/div[2]/input",
+      "tipo": "lastName",
+      "evento": "type"
+    },
+    {
+      "modulo": "user-profile",
+      "elemento": "txtPhone",
+      "dirpath": "/html/body/div/div[1]/div/div[2]/div/div/form/div/div[1]/div[4]/input",
+      "tipo": "phone",
+      "evento": "type"
+    },
+    {
+      "modulo": "user-profile",
+      "elemento": "txtBirthDate",
+      "dirpath": "/html/body/div/div[1]/div/div[2]/div/div/form/div/div[1]/div[5]/input",
+      "tipo": "date",
+      "evento": "type"
+    },
+
+    {
+      "modulo": "user-profile",
+      "elemento": "cboGender",
+      "dirpath": "/html/body/div/div[1]/div/div[2]/div/div/form/div/div[1]/div[6]/select",
+      "tipo": "select",
+      "evento": "click"
+    },
+    {
+      "modulo": "user-profile",
+      "elemento": "cboGender-select",
+      "dirpath": "/html/body/div/div[1]/div/div[2]/div/div/form/div/div[1]/div[6]/select",
+      "tipo": "select",
+      "evento": "select"
+    },
+    {
+      "modulo": "user-profile-geography",
+      "elemento": "cboCountry",
+      "dirpath": "/html/body/div/div[1]/div/div[2]/div/div/form/div/div[2]/div/div[1]/div/div/div[1]/select",
+      "tipo": "select",
+      "evento": "select"
+    },
+    {
+      "modulo": "user-profile-geography",
+      "elemento": "cboState",
+      "dirpath": "/html/body/div/div[1]/div/div[2]/div/div/form/div/div[2]/div/div[1]/div/div/div[2]/select",
+      "tipo": "select",
+      "evento": "select"
+    },
+
+    {
+      "modulo": "user-profile-geography",
+      "elemento": "cboCity",
+      "dirpath": "/html/body/div/div[1]/div/div[2]/div/div/form/div/div[2]/div/div[1]/div/div/div[3]/select",
+      "tipo": "select",
+      "evento": "select"
+    },
+
+    {
+      "modulo": "user-nutritional-profile",
+      "elemento": "tab-nutritional-profile",
+      "dirpath": "/html/body/div/div[1]/div/div[2]/div/div/form/div/div[2]/ul/li[2]/button",
+      "tipo": "button",
+      "evento": "click"
+    },
+
+    {
+      "modulo": "user-nutritional-profile",
+      "elemento": "checkHasAllergies",
+      "dirpath": "/html/body/div/div[1]/div/div[2]/div/div/form/div/div[2]/div/div[2]/div/div[1]/input",
+      "tipo": "check",
+      "evento": "click"
+    },
+    {
+      "modulo": "user-nutritional-profile",
+      "elemento": "cboNutritionType",
+      "dirpath": "/html/body/div/div[1]/div/div[2]/div/div/form/div/div[2]/div/div[2]/div/div[2]/select",
+      "tipo": "select",
+      "evento": "select"
+    },
+    {
+      "modulo": "user-nutritional-profile",
+      "elemento": "txtCaloriesNumber",
+      "dirpath": "/html/body/div/div[1]/div/div[2]/div/div/form/div/div[2]/div/div[2]/div/div[3]/input",
+      "tipo": "year",
+      "evento": "type"
+    },
+    {
+      "modulo": "user-nutritional-profile",
+      "elemento": "checkLacteos",
+      "dirpath": "/html/body/div/div[1]/div/div[2]/div/div/form/div/div[2]/div/div[2]/div/div[5]/div/label[1]/input",
+      "tipo": "check",
+      "evento": "click"
+    },
+    {
+      "modulo": "user-nutritional-profile",
+      "elemento": "checkFrutosSecos",
+      "dirpath": "/html/body/div/div[1]/div/div[2]/div/div/form/div/div[2]/div/div[2]/div/div[5]/div/label[2]/input",
+      "tipo": "check",
+      "evento": "click"
+    },
+
+    {
+      "modulo": "user-nutritional-profile",
+      "elemento": "checkGluten",
+      "dirpath": "/html/body/div/div[1]/div/div[2]/div/div/form/div/div[2]/div/div[2]/div/div[5]/div/label[3]/input",
+      "tipo": "check",
+      "evento": "click"
+    },
+    {
+      "modulo":"user-sport-profile",
+      "elemento":"tab-sport-profile",
+      "dirpath":"/html/body/div/div[1]/div/div[2]/div/div/form/div/div[2]/ul/li[3]/button",
+      "tipo":"button",
+      "evento": "click"
+    },
+    {
+      "modulo":"user-sport-profile",
+      "elemento":"txtExercisesByWeek",
+      "dirpath":"/html/body/div/div[1]/div/div[2]/div/div/form/div/div[2]/div/div[3]/div/div/div[1]/input",
+      "tipo":"year",
+      "evento": "type"
+
+    },
+
+    {
+      "modulo":"user-sport-profile",
+      "elemento":"cboPhysicalLevel",
+      "dirpath":"/html/body/div/div[1]/div/div[2]/div/div/form/div/div[2]/div/div[3]/div/div/div[2]/select",
+      "tipo":"select",
+      "evento": "select"
+    },
+
+    {
+      "modulo" : "user-sport-profile",
+      "elemento" : "txtInjuries", 
+      "dirpath":"/html/body/div/div[1]/div/div[2]/div/div/form/div/div[2]/div/div[3]/div/div/div[4]/input",
+      "tipo":"description",
+      "evento": "type"
+    },
+    {
+      "modulo":"user-sport-profile",
+      "elemento":"txtWeight",
+      "dirpath":"/html/body/div/div[1]/div/div[2]/div/div/form/div/div[2]/div/div[3]/div/div/div[5]/input",
+      "tipo":"number",
+      "evento": "type"
+    },
+    {
+      "modulo":"user-profile",  
+      "elemento":"btnGuardar",
+      "dirpath":"/html/body/div/div[1]/div/div[2]/div/div/form/div/div[1]/div[8]/button",
+      "tipo":"button",
+      "evento": "click"
+    },
+
+    {
+      "modulo": "main-usuario",
+      "elemento": "lnkMiPerfil",
+      "dirpath": "/html/body/div/div[1]/header/div[2]/div/div/div/div[4]/ul/li[7]/a",
+      "tipo": "a",
+      "evento": "click"
+    },
+    {
+      "modulo": "main-usuario",
+      "elemento": "lnkPerfilUsuario",
+      "dirpath": "/html/body/div/div[1]/header/div[2]/div/div/div/div[4]/ul/li[7]/ul/li[1]/a",
+      "tipo": "a",
+      "evento": "click"
+    },
+    {
+      "modulo": "register",
+      "elemento": "txtName",
+      "dirpath": "/html/body/div/div[1]/form/div/div/div/div[2]/div[3]/div/div[2]/div[1]/div/input",
+      "tipo": "name",
+      "evento": "type"
+    },
+    {
+      "modulo": "register",
+      "elemento": "txtLastName",
+      "dirpath": "/html/body/div/div[1]/form/div/div/div/div[2]/div[3]/div/div[2]/div[2]/div/input",
+      "tipo": "lastName",
+      "evento": "type"
+    },
+    {
+      "modulo": "register",
+      "elemento": "txtEmail",
+      "dirpath": "/html/body/div/div[1]/form/div/div/div/div[2]/div[3]/div/div[3]/div/div[1]/input",
+      "tipo": "email",
+      "evento": "type"
+    },
+
+    {
+      "modulo": "register",
+      "elemento": "txtPassword",
+      "dirpath": "/html/body/div/div[1]/form/div/div/div/div[2]/div[3]/div/div[4]/div/div/input",
+      "tipo": "description",
+      "evento": "type"
+    },
+
+    {
+      "modulo": "register",
+      "elemento": "txtConfirmPassword",
+      "dirpath": "/html/body/div/div[1]/form/div/div/div/div[2]/div[3]/div/div[5]/div/div/input",
+      "tipo": "description",
+      "evento": "type"
+    },
+
+    {
+      "modulo": "register",
+      "elemento": "btnRegister",
+      "dirpath": "/html/body/div/div[1]/form/div/div/div/div[2]/div[3]/div/div[7]/div/div/button",
+      "tipo": "a",
+      "evento": "click"
+    },
 
     {
       "modulo": "main",
@@ -629,10 +856,5 @@
       "tipo": "item",
       "evento": "click"
     }
-
-
-    
-
-    
   ]
 }
