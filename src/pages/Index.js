@@ -13,7 +13,7 @@ import AboutUs from "./AboutUs";
 import Team from "./Team";
 import Pricing from "./Pricing";
 import Faq from "./Faq";
-import Schedule from "./Schedule";
+import {Schedule} from "./Schedules/Pages/Schedule";
 import ErrorPage from "./ErrorPage";
 import UnderConstruction from "./UnderConstruction";
 import ComingSoon from "./ComingSoon";
@@ -27,15 +27,15 @@ import BlogLargeSidebar from "./BlogLargeSidebar";
 import BlogListSidebar from "./BlogListSidebar";
 import BlogDetail from "./BlogDetail";
 import Appointment from "./Appointment";
-import Login from "./Login";
-import Register from "./Register";
+import Login from "./Auth/Pages/Login";
+import Register from "./Auth/Pages/Register";
 import WeightCalculator from "./WeightCalculator";
 import ContactUs from "./ContactUs";
 import Home2 from "./Home2";
 import AdministrarSeguimiento from "./AdministrarSeguimiento";
 import Header2 from "../layouts/Header2";
 import Home3 from "./Home3";
-import UserProfile from "./UserProfile";
+import UserProfile from "./User/Pages/UserProfile";
 import ServicesDetailsTable from "./ServicesDetailsTable";
 import Recomendaciones from "./Recomendaciones";
 import RecomendacionDetail from "./RecomendacionDetail";
@@ -48,6 +48,7 @@ import EdicionRecomendacion from "./EdicionRecomendacion";
 import CarritoCompras from "./CarritoCompras";
 
 import Pagar from "./Pagar";
+import { CloseSession } from "./Auth/Pages";
 
 
 function Index() {
@@ -82,6 +83,7 @@ function Index() {
           <Route path="/schedule" exact element={<Schedule />} />
           <Route path="/portfolio" exact element={<Portfolio />} />
           <Route path="/user-profile" exact element={<UserProfile />} />
+          <Route path="close-session" exact element={<CloseSession/>}/>
           <Route path="/Recomendacion" exact element={<Recomendacion />} />
           <Route path="/edicion-recomendacion" exact element={<EdicionRecomendacion />} />
            {/* <Route path="/servicio-productos" exact element={<ServiciosProductosTable />} />  */}

@@ -21,7 +21,7 @@ const MainBanner = ({isOpenModal}) => {
 
     return (
         <>
-            <div className="banner-inner" style={{backgroundImage: "url("+ IMAGES.SliderBg1 +")"}}>
+            <div className="banner-inner animate__animated animate__fadeInRightBig" style={{backgroundImage: "url("+ IMAGES.SliderBg1 +")"}}>
                 <h2 className="data-text">
                     <span>S</span>
                     <span>P</span>

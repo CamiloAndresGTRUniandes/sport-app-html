@@ -39,7 +39,7 @@ const CarritoComprasTable = () => {
             <td> $ 150.000  Mes</td>
             <td>
               <Link to={"/pagar"} className="btn btn-warning shadow-warning btn-skew  mt-2"><span>
-              <i class="fa-solid fa-usd"></i>
+              <i className="fa-solid fa-usd"></i>
               &nbsp;
                 Por pagar
               </span></Link>
