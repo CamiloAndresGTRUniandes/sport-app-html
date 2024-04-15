@@ -98,6 +98,10 @@ const asociados=
     {
       title: "Registro de productos y servicios",
       to: "/product-services",
+    },
+    {
+      title: "Cerrar session",
+      to: "/close-session",
     }
   ],
 
