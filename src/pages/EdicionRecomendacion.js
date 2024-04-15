@@ -34,7 +34,7 @@ const EdicionRecomendacion = () => {
                   </div>
                   <div className="input-group mb-3  input-line">
                     <span className="input-group-text" id="tiporecomendacion">Tipo de recomendaci&oacute;n</span>
-                    <select class="form-control" aria-label="tiporecomendacion">
+                    <select className="form-control" aria-label="tiporecomendacion">
                       <option value="1">Alimentaria</option>
                       <option value="2">Deportiva</option>
                     </select>

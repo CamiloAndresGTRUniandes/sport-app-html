@@ -13,13 +13,13 @@ import AboutUs from "./AboutUs";
 import Team from "./Team";
 import Pricing from "./Pricing";
 import Faq from "./Faq";
-import Schedule from "./Schedule";
+import { Schedule } from "./Schedules/Pages/Schedule";
 import ErrorPage from "./ErrorPage";
 import UnderConstruction from "./UnderConstruction";
 import ComingSoon from "./ComingSoon";
 import Portfolio from "./Portfolio";
 import PortfolioDetails from "./PortfolioDetails";
-import Services from "./Services";
+import Services from "./ServicePage/Pages/Service";
 import ServicesDetails from "./ServicesDetails";
 import BlogGrid from "./BlogGrid";
 import Recomendacion from "./Recomendacion";
@@ -27,15 +27,15 @@ import BlogLargeSidebar from "./BlogLargeSidebar";
 import BlogListSidebar from "./BlogListSidebar";
 import BlogDetail from "./BlogDetail";
 import Appointment from "./Appointment";
-import Login from "./Login";
-import Register from "./Register";
+import Login from "./Auth/Pages/Login";
+import Register from "./Auth/Pages/Register";
 import WeightCalculator from "./WeightCalculator";
 import ContactUs from "./ContactUs";
 import Home2 from "./Home2";
 import AdministrarSeguimiento from "./AdministrarSeguimiento";
 import Header2 from "../layouts/Header2";
 import Home3 from "./Home3";
-import UserProfile from "./UserProfile";
+import UserProfile from "./User/Pages/UserProfile";
 import ServicesDetailsTable from "./ServicesDetailsTable";
 import Recomendaciones from "./Recomendaciones";
 import RecomendacionDetail from "./RecomendacionDetail";
@@ -46,9 +46,11 @@ import ServiciosProductos from "./ServiciosProductos";
 import EdicionServiciosProductos from "./EdicionServiciosProductos";
 import EdicionRecomendacion from "./EdicionRecomendacion";
 import CarritoCompras from "./CarritoCompras";
+import ProductServiceEdit from "./ProductServices/Pages/ProductServiceEdit";
+import ProductServices from "./ProductServices/Pages/ProductServiceList";
 
 import Pagar from "./Pagar";
-
+import { CloseSession } from "./Auth/Pages";
 
 function Index() {
   var baseName = "/";
@@ -72,7 +74,7 @@ function Index() {
         <Route path="/appointment" exact element={<Appointment />} />
         <Route path="/Register" exact element={<Register />} />
         <Route path="/Login" exact element={<Login />} />
-       
+
         <Route element={<MainLayout />}>
           <Route path="/" exact element={<Home />} />
           <Route path="/about-us" exact element={<AboutUs />} />
@@ -82,10 +84,15 @@ function Index() {
           <Route path="/schedule" exact element={<Schedule />} />
           <Route path="/portfolio" exact element={<Portfolio />} />
           <Route path="/user-profile" exact element={<UserProfile />} />
+          <Route path="close-session" exact element={<CloseSession />} />
           <Route path="/Recomendacion" exact element={<Recomendacion />} />
-          <Route path="/edicion-recomendacion" exact element={<EdicionRecomendacion />} />
-           {/* <Route path="/servicio-productos" exact element={<ServiciosProductosTable />} />  */}
-          
+          <Route
+            path="/edicion-recomendacion"
+            exact
+            element={<EdicionRecomendacion />}
+          />
+          {/* <Route path="/servicio-productos" exact element={<ServiciosProductosTable />} />  */}
+
           <Route
             path="/asociacion-terceros"
             exact
@@ -96,16 +103,51 @@ function Index() {
             exact
             element={<PortfolioDetails />}
           />
-            <Route path="/productos-servicios" exact element={<ServiciosProductos />} />
+          <Route
+            path="/productos-servicios"
+            exact
+            element={<ServiciosProductos />}
+          />
+          <Route path="/product-services" exact element={<ProductServices />} />
+          <Route
+            path="/edit-product-services/:productId"
+            exact
+            element={<ProductServiceEdit />}
+          />
+          <Route
+            path="/edit-product-services/"
+            exact
+            element={<ProductServiceEdit />}
+          />
           <Route path="/services" exact element={<Services />} />
-          <Route path="/AdministrarSeguimiento" exact element={<AdministrarSeguimiento />} />
+          <Route
+            path="/AdministrarSeguimiento"
+            exact
+            element={<AdministrarSeguimiento />}
+          />
           <Route path="/services-details" exact element={<ServicesDetails />} />
-          <Route path="/services-details-table" exact element={<ServicesDetailsTable />} />
+          <Route
+            path="/services-details-table"
+            exact
+            element={<ServicesDetailsTable />}
+          />
           <Route path="/blog-grid" exact element={<BlogGrid />} />
           <Route path="/Recomendaciones" exact element={<Recomendaciones />} />
-          <Route path="/Recomendacion-Detail" exact element={<RecomendacionDetail />} />
-          <Route path='/recomendaciones-personales' exact element={<RecomendacionPlanDepor/>}/>
-          <Route path="/edicion-servicios-productos" exact element={<EdicionServiciosProductos />} />
+          <Route
+            path="/Recomendacion-Detail"
+            exact
+            element={<RecomendacionDetail />}
+          />
+          <Route
+            path="/recomendaciones-personales"
+            exact
+            element={<RecomendacionPlanDepor />}
+          />
+          <Route
+            path="/edicion-servicios-productos"
+            exact
+            element={<EdicionServiciosProductos />}
+          />
           <Route path="/carrito-compras" exact element={<CarritoCompras />} />
           <Route path="/pagar" exact element={<Pagar />} />
           <Route path="/coming-soon" exact element={<ComingSoon />} />

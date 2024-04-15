@@ -81,7 +81,7 @@ const AsociacionTerceros = () => {
                             <span className="input-group-text" id="pais">
                               Pais
                             </span>
-                            <select class="form-control" aria-label="pais">
+                            <select className="form-control" aria-label="pais">
                               <option value="1">Colombia</option>
                               <option value="2">Ecuador</option>
                             </select>
@@ -91,7 +91,7 @@ const AsociacionTerceros = () => {
                             <span className="input-group-text" id="Estado">
                               Estado
                             </span>
-                            <select class="form-control" aria-label="Estado">
+                            <select className="form-control" aria-label="Estado">
                               <option value="1">Antioquia</option>
                               <option value="2">Bogota</option>
                             </select>
@@ -101,7 +101,7 @@ const AsociacionTerceros = () => {
                             <span className="input-group-text" id="Ciudad">
                               Ciudad
                             </span>
-                            <select class="form-control" aria-label="Ciudad">
+                            <select className="form-control" aria-label="Ciudad">
                               <option value="1">Medellin</option>
                               <option value="2">Bello</option>
                             </select>
