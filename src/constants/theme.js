@@ -185,7 +185,7 @@ export const IMAGES = {
 
   //Acerca de nosotros
 
-  aboutExcercise1: require("../assets/images/about/aboutExcercise1.PNG"),
+  aboutExcercise1: require("../assets/images/about/aboutExcercise1.png"),
   aboutElisa: require("../assets/images/about/aboutElisa.png"),
   aboutElisa2: require("../assets/images/about/aboutElisa2.png"),
   aboutElisa3: require("../assets/images/about/aboutElisa3.png"),

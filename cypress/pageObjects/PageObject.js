@@ -33,10 +33,11 @@ class PageObject {
     });
   }
 
-  generateAction(modulo, elemento, evento) {
+  generateAction(modulo, elemento, evento, valor='') {
     Cypress.on("uncaught:exception", (err, runnable) => {
       return false;
     });
+    var value="";
     switch (evento) {
       case "click":
         this.eventoClick(modulo, elemento);
@@ -45,10 +46,10 @@ class PageObject {
         this.eventLoadPage(modulo, elemento);
         break;
       case "type":
-        this.eventType(modulo, elemento);
+        value=this.eventType(modulo, elemento);
         break;
       case "select":
-        this.eventSelect(modulo, elemento);
+        this.eventSelect(modulo, elemento, valor);
         break;
       case "containt movement":
         this.eventContaintMovement();
@@ -70,10 +71,13 @@ class PageObject {
         this.eventHover(modulo, elemento);
         break;
     }
+    return value;
   }
 
 
-  generateActionTypeValue(modulo, elemento,value) {
+
+
+  generateActionTypeValue(modulo, elemento,value='') {
     this.eventTypeValue(modulo, elemento, value);
   }
   eventHover(modulo, elemento){
@@ -99,8 +103,9 @@ class PageObject {
     console.log("valor", valorFake);
     cy.xpath(elem.dirpath).clear();
     cy.xpath(elem.dirpath).type(valorFake);
+    return valorFake;
   }
-  eventTypeValue(modulo, elemento, value) {
+  eventTypeValue(modulo, elemento, value='') {
     let elem = this.getElement(elemento, modulo);
     console.log("valor", value);
     cy.xpath(elem.dirpath).clear();
@@ -108,9 +113,15 @@ class PageObject {
   }
 
 
-  eventSelect(modulo, elemento) {
+  eventSelect(modulo, elemento, value='') {
     let elem = this.getElement(elemento, modulo);
-    cy.xpath(elem.dirpath).select("100").should("have.value", "100");
+    if(value=='')
+    {
+      cy.xpath(elem.dirpath).select("100").should("have.value", "100");
+    }
+    else{
+      cy.xpath(elem.dirpath).select(value).should("have.value", value);
+    }
   }
 
   eventContaintMovement() {
@@ -142,7 +153,9 @@ class PageObject {
   fakerValue(tipo) {
     switch (tipo) {
       case "name":
-        return faker.name.fullName();
+        return faker.name.firstName();
+      case "lastName":
+          return faker.name.lastName();  
       case "description":
         return faker.lorem.paragraph();
       case "country":
@@ -153,6 +166,8 @@ class PageObject {
         return faker.address.city();
       case "year":
         return faker.datatype.number({ min: 1950, max: 2022 });
+      case "phone":
+           return faker.datatype.number({ min: 3002001010, max: 3242001010 });
       case "type":
         return faker.music.genre();
       case "search movement":
@@ -161,6 +176,9 @@ class PageObject {
         return this.artistName;
       case "website":
         return faker.internet.url();
+
+      case "email":
+          return faker.internet.email();
       case "date":
         let year = faker.datatype.number({ min: 1950, max: 2022 });
         let month = faker.datatype.number({ min: 1, max: 12 });
@@ -168,6 +186,7 @@ class PageObject {
         return `${year}-${month<10 ? "0"+ month : month}-${day<10 ? "0"+day : day}`;
       case "size":
         return faker.datatype.number({ min: 300, max: 1024 });
+
     }
   }
 
