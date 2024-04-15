@@ -100,7 +100,7 @@ export const useEditUserProfile = () => {
 
       const cities$=  axios
       .get(
-        `${urlAPI}/api/Geography/StatesByCountry/${user.cityId}`,
+        `${urlAPI}/api/Geography/StatesByCountry/${user.stateId}`,
         tokenPayload
       );
 

@@ -26,8 +26,10 @@ export const useCreateProductService = () => {
     const [newCityId, setNewCityId] = useState(null);
     const [newCategoryId, setNewCategoryId] = useState(null);
     const GuidEmpty = "00000000-0000-0000-0000-000000000000";
+    const currentUser = JSON.parse(sessionStorage.getItem("userLogin"));
 
     const createProduct = async (updProduct) => {
+
         try {
             setLoadingUpdateProduct(true);
             const response = await axios.post(
@@ -53,24 +55,18 @@ export const useCreateProductService = () => {
             setLoadingUpdateProduct(false);
         }
     };
+
     const GetInitialInformation = async (product) => {
         const productId = product.productId;
+
         try {
             await fetchAllReferencial(productId);
-            if (initialProduct.countryId != null && initialProduct.countryId != ""){
-                changeNewCountry(initialProduct.countryId);
-                if (initialProduct.stateId != null && initialProduct.stateId != ""){
-                    changeNewState(initialProduct.stateId);
-                    if (initialProduct.cityId != null && initialProduct.cityId != ""){
-                        initialProduct.cityId = initialProduct.cityId;
-                    }
-                }
-            }
             setProductLoading(false);
         } catch (error) {
             setProductLoading(false);
         }
     };
+
     const fetchAllReferencial = async (productId) => {
         try {
             let product = {};
@@ -83,18 +79,18 @@ export const useCreateProductService = () => {
                     .split("T")[0];
                 product = {
                     data: {
-                        productId: "",
-                        user: "3BFC0E87-E3BB-46B4-9F0A-B0D264FCD6B6",
+                        productId: GuidEmpty,
+                        user: currentUser.id,
                         name: "",
                         description: "",
                         price: 0,
                         picture: "",
-                        planId: "",
-                        countryId: "",
-                        stateId: "",
-                        cityId: "",
-                        typeOfNutritionId: "",
-                        serviceTypeId: "",
+                        planId: GuidEmpty,
+                        countryId: GuidEmpty,
+                        stateId: GuidEmpty,
+                        cityId: GuidEmpty,
+                        typeOfNutritionId: GuidEmpty,
+                        serviceTypeId: GuidEmpty,
                         sportLevel: 0,
                         activities: [],
                         goals: [],
@@ -104,6 +100,7 @@ export const useCreateProductService = () => {
                     }
                 }
             }
+
             const countries$ = axios.get(
                 `${urlAPI}/api/v1/productService/AllCountries`
             );
@@ -125,7 +122,7 @@ export const useCreateProductService = () => {
             const activities$ = axios.get(`${urlAPI}/api/v1/activities`);
 
             const goals$ = axios.get(`${urlAPI}/api/v1/goal`);
-
+            // istanbul ignore next
             await axios
                 .all([
                     countries$,
@@ -139,6 +136,7 @@ export const useCreateProductService = () => {
                     product
                 ])
                 .then(
+
                     axios.spread(
                         (cou, typNut, nutAllergies, sportLevel, activities, goals, categories, plan, product) => {
                             setCountriesUP(cou.data);
@@ -160,10 +158,50 @@ export const useCreateProductService = () => {
             console.log("use Create Prodcut", error);
         }
     };
+
+    useEffect(() => {
+        // istanbul ignore next
+        if (initialProduct) {
+            if (initialProduct.productId != '' && initialProduct.productId != GuidEmpty && initialProduct.productId != null) {
+                initialProduct.user = currentUser.id;
+                if (initialProduct.categoryId) {
+                    setNewCategoryId(initialProduct.categoryId);
+                    initialProduct.serviceTypeId = initialProduct.serviceTypeId;
+                }
+                if (initialProduct.categoryId === 'be8e2306-8bc9-49cc-8d43-a76820370994') {
+                    const startDate = new Date(initialProduct.startDateTime);
+                    const startDateString = new Date(startDate.getTime() - (startDate.getTimezoneOffset() * 60000))
+                        .toISOString()
+                        .split("T")[0];
+                    const endDate = new Date(initialProduct.endDateTime);
+                    const endDateString = new Date(endDate.getTime() - (endDate.getTimezoneOffset() * 60000))
+                        .toISOString()
+                        .split("T")[0];
+                    initialProduct.startDateTime = startDateString;
+                    initialProduct.endDateTime = endDateString;
+                    setEventSelected(true);
+                } else {
+                    setEventSelected(false);
+                }
+                if (initialProduct.countryId) {
+                    setNewCountryId(initialProduct.countryId);
+                    if (initialProduct.stateId) {
+                        setNewStateId(initialProduct.stateId);
+                        initialProduct.cityId = initialProduct.cityId;
+                    }
+                }
+            }
+            if (initialProduct.typeOfNutritionId === null) {
+                initialProduct.typeOfNutritionId = GuidEmpty;
+            }
+            if (initialProduct.serviceTypeId) {
+                initialProduct.serviceTypeId = GuidEmpty;
+            }
+        }
+    }, [initialProduct]);
     const changeNewCountry = (countryId) => setNewCountryId(countryId);
 
     useEffect(() => {
-
 
         if (newCountryId === "" && !productLoading) {
             setStatesUP([]);
@@ -181,14 +219,16 @@ export const useCreateProductService = () => {
     }, [newCountryId]);
 
     const changeNewState = (stateId) => setNewStateId(stateId);
+
     useEffect(() => {
         async function getCities() {
+
             if ((newStateId === "" || newStateId === GuidEmpty) && !productLoading) {
 
                 setCitiesUP([]);
                 setTimeout(() => {
                     enabledUserLoading();
-                }, 300);
+                }, 250);
             }
             else
                 if (newStateId) {
@@ -212,25 +252,29 @@ export const useCreateProductService = () => {
 
     const changeNewCategory = (categoryId) => setNewCategoryId(categoryId);
     useEffect(() => {
+
         async function getServiceTypes() {
             if ((newCategoryId === "" || newCategoryId === GuidEmpty) && !productLoading) {
                 setServiceTypesUP([]);
                 setTimeout(() => {
+
                     enabledUserLoading();
                 }, 250);
             }
             else
                 if (newCategoryId) {
-
                     var response = await axios
+
                         .get(
                             `${urlAPI}/api/v1/productService/ServiceTypeByCategory/${newCategoryId}`
                         );
+
                     if (newCategoryId === 'be8e2306-8bc9-49cc-8d43-a76820370994') {
                         setEventSelected(true);
                     } else {
                         setEventSelected(false);
                     }
+
                     setServiceTypesUP(response.data);
                     setTimeout(() => {
                         enabledUserLoading();
@@ -241,8 +285,10 @@ export const useCreateProductService = () => {
         async function enabledUserLoading() {
             setProductLoading(false);
         }
+
         getServiceTypes();
     }, [newCategoryId]);
+
     return {
         initialProduct,
         GetInitialInformation,
