@@ -13,7 +13,7 @@ import AboutUs from "./AboutUs";
 import Team from "./Team";
 import Pricing from "./Pricing";
 import Faq from "./Faq";
-import {Schedule} from "./Schedules/Pages/Schedule";
+import { Schedule } from "./Schedules/Pages/Schedule";
 import ErrorPage from "./ErrorPage";
 import UnderConstruction from "./UnderConstruction";
 import ComingSoon from "./ComingSoon";
@@ -46,6 +46,8 @@ import ServiciosProductos from "./ServiciosProductos";
 import EdicionServiciosProductos from "./EdicionServiciosProductos";
 import EdicionRecomendacion from "./EdicionRecomendacion";
 import CarritoCompras from "./CarritoCompras";
+import ProductServiceEdit from "./ProductServices/Pages/ProductServiceEdit";
+import ProductServices from './ProductServices/Pages/ProductServiceList'
 
 import Pagar from "./Pagar";
 import { CloseSession } from "./Auth/Pages";
@@ -73,7 +75,7 @@ function Index() {
         <Route path="/appointment" exact element={<Appointment />} />
         <Route path="/Register" exact element={<Register />} />
         <Route path="/Login" exact element={<Login />} />
-       
+
         <Route element={<MainLayout />}>
           <Route path="/" exact element={<Home />} />
           <Route path="/about-us" exact element={<AboutUs />} />
@@ -83,11 +85,11 @@ function Index() {
           <Route path="/schedule" exact element={<Schedule />} />
           <Route path="/portfolio" exact element={<Portfolio />} />
           <Route path="/user-profile" exact element={<UserProfile />} />
-          <Route path="close-session" exact element={<CloseSession/>}/>
+          <Route path="close-session" exact element={<CloseSession />} />
           <Route path="/Recomendacion" exact element={<Recomendacion />} />
           <Route path="/edicion-recomendacion" exact element={<EdicionRecomendacion />} />
-           {/* <Route path="/servicio-productos" exact element={<ServiciosProductosTable />} />  */}
-          
+          {/* <Route path="/servicio-productos" exact element={<ServiciosProductosTable />} />  */}
+
           <Route
             path="/asociacion-terceros"
             exact
@@ -98,7 +100,10 @@ function Index() {
             exact
             element={<PortfolioDetails />}
           />
-            <Route path="/productos-servicios" exact element={<ServiciosProductos />} />
+          {/* <Route path="/productos-servicios" exact element={<ServiciosProductos />} /> */}
+          <Route path="/product-services" exact element={<ProductServices />} />
+          <Route path="/edit-product-services/:productId" exact element={<ProductServiceEdit />} />
+          <Route path="/edit-product-services/" exact element={<ProductServiceEdit />} />
           <Route path="/services" exact element={<Services />} />
           <Route path="/AdministrarSeguimiento" exact element={<AdministrarSeguimiento />} />
           <Route path="/services-details" exact element={<ServicesDetails />} />
@@ -106,7 +111,7 @@ function Index() {
           <Route path="/blog-grid" exact element={<BlogGrid />} />
           <Route path="/Recomendaciones" exact element={<Recomendaciones />} />
           <Route path="/Recomendacion-Detail" exact element={<RecomendacionDetail />} />
-          <Route path='/recomendaciones-personales' exact element={<RecomendacionPlanDepor/>}/>
+          <Route path='/recomendaciones-personales' exact element={<RecomendacionPlanDepor />} />
           <Route path="/edicion-servicios-productos" exact element={<EdicionServiciosProductos />} />
           <Route path="/carrito-compras" exact element={<CarritoCompras />} />
           <Route path="/pagar" exact element={<Pagar />} />
@@ -182,9 +187,8 @@ function MainLayout3() {
     <div className="page-wraper">
       <header className="site-header mo-left header header-transparent style-1">
         <div
-          className={`sticky-header mt-3 main-bar-wraper navbar-expand-lg ${
-            headerFix ? "is-fixed" : ""
-          }`}
+          className={`sticky-header mt-3 main-bar-wraper navbar-expand-lg ${headerFix ? "is-fixed" : ""
+            }`}
         >
           <Mainheader />
         </div>

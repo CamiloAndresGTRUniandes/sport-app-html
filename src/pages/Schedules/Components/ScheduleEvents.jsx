@@ -9,7 +9,9 @@ import { CalendarEvent } from "./";
 
 export const ScheduleEvents = () => {
   const { showAlertSuscription, showAlertSuccess } = Alerts();
-  const { getUser } = GetUserInfo();
+  // const { getUser } = GetUserInfo();
+  const getUser  = JSON.parse(sessionStorage.getItem("userLogin"));
+  console.log(getUser);
   const [firstDateWeek, setFirstDateWeek] = useState(
     format(new Date(), "MMM dd, yyyy")
   );
@@ -21,7 +23,7 @@ export const ScheduleEvents = () => {
     localStorage.getItem("lastView") || "week"
   );
   const { eventsByUser, loadEvents, getEvents } =
-  useCalendarEvents(getUser().id, getUser().name);
+  useCalendarEvents(getUser.id, getUser.name);
  
   useEffect(() => {
     getEvents(firstDateWeek, lastDateWeek);

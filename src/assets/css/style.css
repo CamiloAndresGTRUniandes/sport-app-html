@@ -37087,3 +37087,7 @@ pre {
 }
 
 /*# sourceMappingURL=style.css.map */
+.highlighted-cell {
+  background-color: #232323 !important;
+  color: white;
+}

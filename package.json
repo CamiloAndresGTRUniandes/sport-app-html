@@ -2,7 +2,6 @@
   "name": "sportapp",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://danielcbustos.github.io/sport-app-html",
   "dependencies": {
     "@babel/plugin-syntax-jsx": "^7.24.1",
     "@emailjs/browser": "^3.10.0",
@@ -38,6 +37,7 @@
     "react-scripts": "5.0.1",
     "react-scroll-to-top": "^3.0.0",
     "react-select": "^5.7.0",
+    "react-table": "^7.8.0",
     "react-toastify": "^10.0.4",
     "redux-mock-store": "^1.5.4",
     "styled-components": "^6.1.8",

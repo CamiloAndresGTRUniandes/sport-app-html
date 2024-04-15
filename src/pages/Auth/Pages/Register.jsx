@@ -11,10 +11,10 @@ import {
 import { useEffect, useState } from "react";
 import * as Yup from "yup";
 import  {IMAGES}  from "../../../constants/theme";
-import useRegisterUser from "../hooks/useRegisterUser";
+import useRegisterUser from "../Hooks/useRegisterUser";
 import { GetErrorBorder, SpinnerSportApp } from "../../Utils";
 import { HeaderLogin, SocialNetwork } from "../components";
-import useEmailExists from "../hooks/useEmailExists";
+import useEmailExists from "../Hooks/useEmailExists";
 import { Link, useNavigate } from "react-router-dom";
 const Registro = () => {
   const [formValues] = useState(null);
