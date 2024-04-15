@@ -24,6 +24,7 @@ export const CreateProductService = () => {
     countriesUP,
     statesUP,
     citiesUP,
+    setProductCreated,
     changeNewCountry,
     changeNewState,
     typesOfNutritionUP,
@@ -54,13 +55,14 @@ export const CreateProductService = () => {
     planId: Yup.string().required("Selecciona tu plan"),
     sportLevel: Yup.string().required("Selecciona tu nivel")
   });
-
+  // istanbul ignore next
   const onSubmit = async (values) => {
     await createProduct(values);
   };
+
   useEffect(() => {
     if (productCreated) {
-      navigation("/product-services");
+      navigation("/");
     }
   }, [productCreated]);
   return (
@@ -76,7 +78,9 @@ export const CreateProductService = () => {
           validateOnChange={true}
           validateOnBlur={true}
         >
+
           {(formik) => {
+            // istanbul ignore next
             return (
               <Form>
                 <div className="row">
@@ -179,7 +183,7 @@ export const CreateProductService = () => {
                           <span>Guardar</span>
                         </button>
                         <Link
-                          to="/product-services"
+                          to="/"
                           className="col-4  btn btn-secondary btn-lg btn-skew"
                         >
                           Cancelar

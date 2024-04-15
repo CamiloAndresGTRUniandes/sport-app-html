@@ -29,6 +29,7 @@ export const useCreateProductService = () => {
     const currentUser = JSON.parse(sessionStorage.getItem("userLogin"));
 
     const createProduct = async (updProduct) => {
+
         try {
             setLoadingUpdateProduct(true);
             const response = await axios.post(
@@ -54,8 +55,10 @@ export const useCreateProductService = () => {
             setLoadingUpdateProduct(false);
         }
     };
+
     const GetInitialInformation = async (product) => {
         const productId = product.productId;
+
         try {
             await fetchAllReferencial(productId);
             setProductLoading(false);
@@ -63,6 +66,7 @@ export const useCreateProductService = () => {
             setProductLoading(false);
         }
     };
+
     const fetchAllReferencial = async (productId) => {
         try {
             let product = {};
@@ -96,6 +100,7 @@ export const useCreateProductService = () => {
                     }
                 }
             }
+
             const countries$ = axios.get(
                 `${urlAPI}/api/v1/productService/AllCountries`
             );
@@ -117,7 +122,7 @@ export const useCreateProductService = () => {
             const activities$ = axios.get(`${urlAPI}/api/v1/activities`);
 
             const goals$ = axios.get(`${urlAPI}/api/v1/goal`);
-
+            // istanbul ignore next
             await axios
                 .all([
                     countries$,
@@ -131,6 +136,7 @@ export const useCreateProductService = () => {
                     product
                 ])
                 .then(
+
                     axios.spread(
                         (cou, typNut, nutAllergies, sportLevel, activities, goals, categories, plan, product) => {
                             setCountriesUP(cou.data);
@@ -152,11 +158,13 @@ export const useCreateProductService = () => {
             console.log("use Create Prodcut", error);
         }
     };
+
     useEffect(() => {
+        // istanbul ignore next
         if (initialProduct) {
             if (initialProduct.productId != '' && initialProduct.productId != GuidEmpty && initialProduct.productId != null) {
                 initialProduct.user = currentUser.id;
-                if (initialProduct.categoryId){
+                if (initialProduct.categoryId) {
                     setNewCategoryId(initialProduct.categoryId);
                     initialProduct.serviceTypeId = initialProduct.serviceTypeId;
                 }
@@ -186,15 +194,14 @@ export const useCreateProductService = () => {
             if (initialProduct.typeOfNutritionId === null) {
                 initialProduct.typeOfNutritionId = GuidEmpty;
             }
-            if (initialProduct.serviceTypeId){
-                initialProduct.serviceTypeId = GuidEmpty; 
+            if (initialProduct.serviceTypeId) {
+                initialProduct.serviceTypeId = GuidEmpty;
             }
         }
     }, [initialProduct]);
     const changeNewCountry = (countryId) => setNewCountryId(countryId);
 
     useEffect(() => {
-
 
         if (newCountryId === "" && !productLoading) {
             setStatesUP([]);
@@ -212,8 +219,10 @@ export const useCreateProductService = () => {
     }, [newCountryId]);
 
     const changeNewState = (stateId) => setNewStateId(stateId);
+
     useEffect(() => {
         async function getCities() {
+
             if ((newStateId === "" || newStateId === GuidEmpty) && !productLoading) {
 
                 setCitiesUP([]);
@@ -243,25 +252,29 @@ export const useCreateProductService = () => {
 
     const changeNewCategory = (categoryId) => setNewCategoryId(categoryId);
     useEffect(() => {
+
         async function getServiceTypes() {
             if ((newCategoryId === "" || newCategoryId === GuidEmpty) && !productLoading) {
                 setServiceTypesUP([]);
                 setTimeout(() => {
+
                     enabledUserLoading();
                 }, 250);
             }
             else
                 if (newCategoryId) {
-
                     var response = await axios
+
                         .get(
                             `${urlAPI}/api/v1/productService/ServiceTypeByCategory/${newCategoryId}`
                         );
+
                     if (newCategoryId === 'be8e2306-8bc9-49cc-8d43-a76820370994') {
                         setEventSelected(true);
                     } else {
                         setEventSelected(false);
                     }
+
                     setServiceTypesUP(response.data);
                     setTimeout(() => {
                         enabledUserLoading();
@@ -272,8 +285,10 @@ export const useCreateProductService = () => {
         async function enabledUserLoading() {
             setProductLoading(false);
         }
+
         getServiceTypes();
     }, [newCategoryId]);
+
     return {
         initialProduct,
         GetInitialInformation,

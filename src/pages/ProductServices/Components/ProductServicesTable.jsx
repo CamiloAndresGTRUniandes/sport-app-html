@@ -17,9 +17,9 @@ const ServicesTable = () => {
   }, []);
   return (
     <>
-      {!productsLoading &&(
-      <Table className="table-responsive-md ck-table mb-5">
-        <thead>
+      {!productsLoading && (
+        <Table data-testid="product-services-table" className="table-responsive-md ck-table mb-5">
+          <thead>
 
           <tr>
             <th>Nombre</th>
