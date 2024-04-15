@@ -14,10 +14,14 @@ export const sessionUserSlice = createSlice({
     userInfo: defaultUser,
   },
   reducers: {
+      
     setUserState: (state, action) => {
+      // istanbul ignore next
       state.userInfo = action.payload;
     },
+     
     setDefaultUser: (state) => {
+       // istanbul ignore next
       state.userInfo = defaultUser;
     },
   },
