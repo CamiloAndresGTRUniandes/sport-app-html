@@ -33,10 +33,10 @@ const ServicesTable = () => {
         <tbody>
         {Array.isArray(initialData) && initialData.map((item, index) => (
           <tr className="row_1" key={index}>
-            <td className='highlighted-cell'>{item.name}</td>
-            <td>{item.serviceType.name}</td>
-            <td>{item.plan.name}</td>
-            <td>{item.price}</td>
+            <td className='highlighted-cell event'>{item.name}</td>
+            <td className='event'>{item.serviceType.name}</td>
+            <td className='event'>{item.plan.name}</td>
+            <td className='event'>{item.price}</td>
             <td>
               <Link to={`/edit-product-services/${item.productId}`} className="btn btn-primary shadow-primary btn-skew  mt-2"><span>
               <i className="fa-solid fa-pencil"></i>
@@ -49,43 +49,6 @@ const ServicesTable = () => {
             </td>
           </tr>
         ))}
-          {/* <tr className="row_1">
-            <td className="event-time"> Zumba </td>
-            <td className="event" >Servicio</td>
-            <td>$ 150.000 </td>
-            <td className="event">
-              <span to={"#"} className="title">Plan Basico</span>
-            </td>
-            <td> $ 80.000  Mes</td>
-            <td>
-            <Link to={"/edicion-servicios-productos"} className="btn btn-primary shadow-primary btn-skew  mt-2"><span>
-                 <i className="fa-solid fa-pencil"></i>
-              </span></Link>
-            </td>
-            <td>
-              <button className='btn btn-dark shadow-danger btn-skew  mt-2'>
-              <i className="fa-solid fa-close"></i>
-              </button>
-            </td>
-
-          </tr>
-          <tr className="row_2">
-            <td className="event-time"> Creatina </td>
-            <td className="event" >Producto</td>
-            <td>25.000 </td>
-            <td className="event"><span to={"#"} className="title">Free</span></td>
-            <td> $ 150.000  Mes</td>
-            <td>
-              <Link to={"/edicion-servicios-productos"} className="btn btn-primary shadow-primary btn-skew  mt-2"><span>
-              <i className="fa-solid fa-pencil"></i>
-                </span></Link>
-            </td>
-            <td>
-              <button className='btn btn-dark shadow-danger btn-skew  mt-2'>
-              <i className="fa-solid fa-close"></i>
-              </button>
-            </td>
-          </tr> */}
         </tbody>
       </Table>)}
       {productsLoading && <SpinnerSportApp />}

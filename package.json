@@ -2,7 +2,6 @@
   "name": "sportapp",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://danielcbustos.github.io/sport-app-html",
   "dependencies": {
     "@babel/plugin-syntax-jsx": "^7.24.1",
     "@emailjs/browser": "^3.10.0",
