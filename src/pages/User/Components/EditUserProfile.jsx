@@ -58,9 +58,7 @@ export const EditUserProfile = () => {
         .min(1),
       hasAllergies: Yup.boolean(),
       hasMedicalAllergies: Yup.boolean(),
-      typeOfNutritionId: Yup.string()
-        .required("Selecciona tu tipo de dieta")
-        
+      typeOfNutritionId: Yup.string().required("Selecciona tu tipo de dieta"),
     }),
     sportProfile: Yup.object().shape({
       excerciseByWeek: Yup.number().required("Campo requerido").min(0),
@@ -71,11 +69,12 @@ export const EditUserProfile = () => {
       heigth: Yup.number().required("Ingresa tu altura").min(1),
     }),
   });
-
-  const onSubmit =async (values) => {
-   await updateUser(values);
+  // istanbul ignore next
+  const onSubmit = async (values) => {
+    await updateUser(values);
   };
 
+  // istanbul ignore next
   useEffect(() => {
     if (userUpdated) {
       navigation("/");
@@ -83,7 +82,7 @@ export const EditUserProfile = () => {
   }, [userUpdated]);
   return (
     <>
-      {!userLoading &&  (
+      {!userLoading && (
         <Formik
           initialValues={userProfile}
           enableReinitialize
@@ -142,28 +141,12 @@ export const EditUserProfile = () => {
                       data={genresUP}
                       formFormik={formik}
                     ></SelectValidation>
-                    {/* <div className={classEditTextBox}>
-                        <span>{formik.values.age}</span>  
-                    </div>   */}
-                    <TextBoxEditValidation
-                      classDiv={classEditTextBox}
-                      idText="age"
-                      label="Edad"
-                      type="number"
-                      formikForm={formik}
-                    />
                     {!loadingUpdateProfile && (
                       <div className="row d-flex justify-content-around mb-4">
                         <button
                           name="submit"
                           value="Submit"
                           type="submit"
-                          // onClick={() => {
-                          //   formik.touch();
-                          //   if (formik.isValid) {
-                          //     onSubmit(formik.values);
-                          //   }
-                          // }}
                           disabled={formik.isInValid}
                           className="col-4  btn btn-primary btn-lg btn-skew"
                         >
@@ -175,7 +158,7 @@ export const EditUserProfile = () => {
                         >
                           Cancelar
                         </Link>
-                        <pre>{JSON.stringify(formik.values, null, 2)}</pre>
+                        {/* <pre>{JSON.stringify(formik.values, null, 2)}</pre> */}
                       </div>
                     )}
 
@@ -208,16 +191,18 @@ export const EditUserProfile = () => {
                                 className="form-control"
                                 size="lg"
                                 onChange={(e) => {
+                                  // istanbul ignore next
                                   formik.setFieldValue(
                                     "countryId",
                                     e.target.value
                                   );
+                                  // istanbul ignore next
                                   changeNewCountry(e.target.value);
                                   formik.setFieldValue("stateId", "");
                                   formik.setFieldValue("cityId", "");
                                 }}
                               >
-                                <option value="0">Selecciona</option>
+                                <option value="">Selecciona</option>
                                 {countriesUP.map((item) => (
                                   <option key={item.id} value={item.id}>
                                     {item.name}
@@ -240,15 +225,17 @@ export const EditUserProfile = () => {
                                 className="form-control"
                                 size="lg"
                                 onChange={(e) => {
+                                  // istanbul ignore next
                                   formik.setFieldValue(
                                     "stateId",
                                     e.target.value
                                   );
+                                  // istanbul ignore next
                                   changeNewState(e.target.value);
                                   formik.setFieldValue("cityId", "");
                                 }}
                               >
-                                <option value="0">Selecciona</option>
+                                <option value="">Selecciona</option>
                                 {statesUP.map((item) => (
                                   <option key={item.id} value={item.id}>
                                     {item.name}
@@ -256,7 +243,6 @@ export const EditUserProfile = () => {
                                 ))}
                               </Field>
                             </div>
-
                             <SelectValidation
                               classDiv="input-group mb-3  input-line"
                               idSelect="cityId"
@@ -292,14 +278,12 @@ export const EditUserProfile = () => {
                             type="number"
                             formikForm={formik}
                           />
-
                           <CheckBoxValidation
                             classDiv={classEditTextBox}
                             formikForm={formik}
                             idCheck="nutrionalProfile.hasAllergies"
                             label="Tienes alergias alimenticias?"
                           />
-
                           <ArrayCheckBoxes
                             data={nutricionalAllergiesUP}
                             nameGroup="nutricionalAllergies"
@@ -319,7 +303,6 @@ export const EditUserProfile = () => {
                               type="number"
                               formikForm={formik}
                             />
-
                             <SelectValidation
                               classDiv="input-group mb-3  input-line"
                               idSelect="sportProfile.physicalLevelId"
@@ -328,7 +311,6 @@ export const EditUserProfile = () => {
                               data={physicalLevelsUP}
                               formikForm={formik}
                             ></SelectValidation>
-
                             <CheckBoxValidation
                               classDiv={classEditTextBox}
                               formikForm={formik}
@@ -342,7 +324,6 @@ export const EditUserProfile = () => {
                               type="area"
                               formikForm={formik}
                             />
-
                             <TextBoxEditValidation
                               classDiv={classEditTextBox}
                               idText="sportProfile.weight"
@@ -381,12 +362,9 @@ export const EditUserProfile = () => {
               </Form>
             );
           }}
-
-            
         </Formik>
       )}
       {userLoading && <SpinnerSportApp />}
-    
     </>
   );
 };

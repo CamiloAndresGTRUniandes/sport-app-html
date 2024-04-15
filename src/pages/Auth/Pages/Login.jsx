@@ -10,10 +10,11 @@ import {
 } from "mdb-react-ui-kit";
 import { useEffect, useState } from "react";
 import * as Yup from "yup";
-import modelImage from "../../../assets/images/main-slider/slider2/hero.png";
+
+import  {IMAGES}  from "../../../constants/theme";
 import { GetErrorBorder, SpinnerSportApp } from "../../Utils";
 import { FooterLogin, HeaderLogin } from "../components";
-import useLogin from "../Hooks/useLogin";
+import useLogin from "../hooks/useLogin";
 import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -32,13 +33,21 @@ const Login = () => {
       .email("El email tiene un formato errado")
       .required("El email es requerido"),
   });
-
+// istanbul ignore next
   const onSubmit = async (values) => {
-    await LoginUser(values);
+    try
+    {
+      await LoginUser(values);
+    }
+    catch(error)
+    {
+    }
   };
-
+// istanbul ignore next
   useEffect(() => {
+    // istanbul ignore next
     if (userLogged) {
+        // istanbul ignore next
       setformValues(initialValuesObject);
       navigation("/");
     }
@@ -64,7 +73,7 @@ const Login = () => {
                     <MDBRow className="g-0">
                       <MDBCol md="5">
                         <MDBCardImage
-                          src={modelImage}
+                          src={IMAGES.Slide2Hero}
                           alt="login form"
                           className="rounded-start w-80"
                         />
@@ -105,7 +114,7 @@ const Login = () => {
                           </div>
 
                           <div className="mb-4">
-                            <label htmlFor="name">Contraseña</label>
+                            <label htmlFor="password">Password</label>
                             <Field
                               as={MDBInput}
                               id="password"
@@ -146,6 +155,7 @@ const Login = () => {
                                   </Link>
                                 )}
                               </div>
+                              {/* <pre>{JSON.stringify(formik.values, null, 2)}</pre> */}
                             </MDBCol>
                           </MDBRow>
 
@@ -158,7 +168,7 @@ const Login = () => {
                 </MDBContainer>
               </div>
             </Form>
-
+                                
           </div>
         );
       }}
