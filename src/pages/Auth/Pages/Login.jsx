@@ -84,7 +84,7 @@ const Login = () => {
                           <div className="d-flex flex-row mt-2">
                             <div className="section-head">
                               <h2 className="title">
-                                Bienvenido a <span>SPORTAPP</span>
+                                Bienvenida a <span>SPORTAPP</span>
                               </h2>
                             </div>
                           </div>
