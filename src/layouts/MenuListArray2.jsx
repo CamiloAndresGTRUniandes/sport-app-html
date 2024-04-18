@@ -25,10 +25,10 @@ const inicio=
         title: "Preguntas",
         to: "/faq",
       },
-      // {
-      //   title: "Precios",
-      //   to: "/pricing",
-      // },
+      {
+        title: "Precios",
+        to: "/pricing",
+      },
       // {
       //   title: "Calculadora de precios",
       //   to: "/weight-calculator",
