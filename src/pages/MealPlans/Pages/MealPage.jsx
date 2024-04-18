@@ -1,28 +1,29 @@
+
 import { IMAGES } from '../../../constants/theme';
 import PageTitle from '../../../elements/PageTitle';
-import useService from '../Hooks/useService'
-import ServiceCard from "../Components/ServiceCard";
+import useMeal from '../Hooks/useMeal';
+import MealCard from '../Components/MealCards';
 
-export const Services = () => {
+export const MealPage = () => {
     const {
-        services,
+        meal,
         hover,
         setHover,
        
-    } = useService();
+    } = useMeal();
   
 
     return (
         <div className="page-content bg-white">
-          <PageTitle activePage="Servicios" parentTitle="ServiciosNew" />
+          <PageTitle activePage="Planes Alimenticios" parentTitle="Planes Alimenticios" />
           <section
             className="content-inner overflow-hidden"
             style={{ backgroundImage: `url(${IMAGES.BgImage1})` }}
           >
             <div className="container">
               <div className="row">
-                {services.map((item) => (
-                  <ServiceCard
+                {meal.map((item) => (
+                  <MealCard
                     key={item.id}
                     item={item}
                     hover={hover}
@@ -38,4 +39,4 @@ export const Services = () => {
     };
     
 
-export default Services;
+export default MealPage;

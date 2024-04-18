@@ -1,7 +1,18 @@
 import { Link } from "react-router-dom";
+import React, { useState } from 'react';
 
 
-const ServiceCard = ({ item, hover, setHover,to }) => {
+
+
+const MealCard = ({ item, hover, setHover }) => {
+  const [selectedPlan, setSelectedPlan] = useState(null);
+
+  const handlePlanSelect = (tipo) => {
+    setSelectedPlan(tipo);
+  };
+
+
+
   return (
     <div className="col-xl-3 col-md-6 m-b30" key={item.id}>
       <div
@@ -12,18 +23,21 @@ const ServiceCard = ({ item, hover, setHover,to }) => {
       >
         <div className="icon-bx m-b30">
           <span className="icon-cell">
-            <img src={item.picture} alt="" />
+            <img src={item.imagen} alt="" />
           </span>
         </div>
         <div className="icon-content">
+          <h3 className="dz-title m-b10">
+            <Link to={"#"}>{item.tipo}</Link>
+          </h3>
           <h5 className="dz-title m-b10">
-            <Link to={"#"}>{item.name}</Link>
+            <Link to={"#"}>{item.descripcion}</Link>
           </h5>
           <Link
-            to={`/services/${item.name}`}
+            to={`/services/Alimento/${item.id}`}
             className="btn btn-primary shadow-primary btn-skew"
           >
-            <span>Leer más</span>
+            <span>Leer Mas...</span>
           </Link>
         </div>
       </div>
@@ -31,4 +45,6 @@ const ServiceCard = ({ item, hover, setHover,to }) => {
   );
 };
 
-export default ServiceCard;
+export default MealCard;
+
+
