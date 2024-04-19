@@ -37091,3 +37091,33 @@ pre {
   background-color: #232323 !important;
   color: white;
 }
+
+
+.service-card{
+  width: '100%';
+  height:'200px';
+  object-fit: cover;
+}
+
+.service-position{
+position: absolute;
+top: 0;
+bottom: 0;
+left: 0;
+right: 0}
+
+.service-img{
+width: '40px';
+height: '40px';
+object-fit: 'cover'; 
+border-radius: '50%';
+margin-right: '10px';
+
+
+}
+
+.service-contenedor{
+  position: relative;
+  width: "100%";
+  height: "100%";
+}
