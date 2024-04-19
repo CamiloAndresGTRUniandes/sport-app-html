@@ -22,7 +22,7 @@ import PortfolioDetails from "./PortfolioDetails";
 import Services from "./ServicePage/Pages/Service";
 import ServicesDetails from "./ServicesDetails";
 import BlogGrid from "./BlogGrid";
-import Recomendacion from "./Recomendacion";
+import RecommendationPage from "./Recommendations/Pages/RecommendationPage";
 import BlogLargeSidebar from "./BlogLargeSidebar";
 import BlogListSidebar from "./BlogListSidebar";
 import BlogDetail from "./BlogDetail";
@@ -85,7 +85,7 @@ function Index() {
           <Route path="/portfolio" exact element={<Portfolio />} />
           <Route path="/user-profile" exact element={<UserProfile />} />
           <Route path="close-session" exact element={<CloseSession />} />
-          <Route path="/Recomendacion" exact element={<Recomendacion />} />
+          <Route path="/Recomendaciones" exact element={<RecommendationPage />} />
           <Route
             path="/edicion-recomendacion"
             exact
@@ -132,7 +132,7 @@ function Index() {
             element={<ServicesDetailsTable />}
           />
           <Route path="/blog-grid" exact element={<BlogGrid />} />
-          <Route path="/Recomendaciones" exact element={<Recomendaciones />} />
+          <Route path="/Recomendacion" exact element={<Recomendaciones />} />
           <Route
             path="/Recomendacion-Detail"
             exact

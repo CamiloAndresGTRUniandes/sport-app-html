@@ -37091,3 +37091,30 @@ pre {
   background-color: #232323 !important;
   color: white;
 }
+
+
+
+
+.recommendationimg {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.recommendation-card {
+  min-height: '300px'
+}
+
+.img-recommendation {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.recommendation {
+  margin-top: auto;
+}
+
+
