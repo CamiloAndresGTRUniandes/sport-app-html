@@ -1,10 +1,13 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import '../../../assets/css/style.css';
 
-const RecommendationCard = ({ item }) => {
+const RecommendationCard = ({ item, onCardClick }) => {
+
+
+
   return (
-    <div className="col-md-6 col-xl-4 m-b30" key={item.id}>
+    <div className="col-md-6 col-xl-4 m-b30"  key={item.id} onClick={() => onCardClick(item.id)}>
+      
       <div className="dz-card style-1 overlay-shine">
         <div className="dz-media recommendationimg">
           <Link to="/Recomendacion-Detail">

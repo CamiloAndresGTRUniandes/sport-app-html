@@ -1,31 +1,31 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import PageTitle from '../../../elements/PageTitle';
+import { IMAGES } from '../../../constants/theme';
 import axios from 'axios';
 
-const useRecommendationDetail = () => {
-    const [recommendationdetail, setRecommendationDetail] = useState([]);
-    const [hover, setHover] = useState(0);
-    const [selectedTitle, setSelectedTitle] = useState(''); // Nuevo estado para almacenar el título de la tarjeta seleccionada
+// Custom hook para obtener los detalles de la recomendación
+const useRecommendationDetail = (id) => {
+  const [recommendationDetail, setRecommendationDetail] = useState({});
+  const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const datarecommendationdetail = await axios.get('http://localhost:3003/ejercicios');
-                setRecommendationDetail(datarecommendationdetail.data);
-            } catch (error) {
-                console.log('Error al cargar los datos:', error);
-            }
-        };
-
-        fetchData();
-    }, []);
-
-    return {
-        recommendationdetail,
-        hover,
-        setHover,
-        selectedTitle, // Retornar el título de la tarjeta seleccionada
-        setSelectedTitle, // Retornar la función setSelectedTitle
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const { data } = await axios.get(`http://localhost:3003/ejercicios/${id}`);
+        setRecommendationDetail(data);
+        setLoading(false);
+      } catch (error) {
+        console.log('Error al cargar los datos:', error);
+        setLoading(false);
+      }
     };
+
+    fetchData();
+  }, [id]);
+
+  return { recommendationDetail, loading };
 };
+
 
 export default useRecommendationDetail;
