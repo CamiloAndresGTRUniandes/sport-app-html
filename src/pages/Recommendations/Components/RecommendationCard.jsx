@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../../../assets/css/style.css';
 
-const RecommendationCard = ({ item, onPageChange }) => {
+const RecommendationCard = ({ item }) => {
   return (
     <div className="col-md-6 col-xl-4 m-b30" key={item.id}>
       <div className="dz-card style-1 overlay-shine">
@@ -25,11 +25,11 @@ const RecommendationCard = ({ item, onPageChange }) => {
             </ul>
           </div>
           <h4 className="dz-title">
-            <Link to="/Recomendacion-Detail">{item.titulo}</Link>
+            <Link to={`/Recomendacion-Detail/${item.id}`}>{item.titulo}</Link>
           </h4>
           <p>{item.comentario}</p>
           <div className="dz-button recommendation">
-            <Link to="/Recomendacion-Detail" className="btn btn-primary btn-skew">
+            <Link to={`/Recomendacion-Detail/${item.id}`} className="btn btn-primary btn-skew">
               <span>Leer más</span>
             </Link>
           </div>

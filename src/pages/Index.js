@@ -23,6 +23,7 @@ import Services from "./ServicePage/Pages/Service";
 import ServicesDetails from "./ServicesDetails";
 import BlogGrid from "./BlogGrid";
 import RecommendationPage from "./Recommendations/Pages/RecommendationPage";
+import RecomendacionDetailPage from "./Recommendations/Pages/RecommendationDetailPage";
 import BlogLargeSidebar from "./BlogLargeSidebar";
 import BlogListSidebar from "./BlogListSidebar";
 import BlogDetail from "./BlogDetail";
@@ -113,6 +114,11 @@ function Index() {
             path="/edit-product-services/:productId"
             exact
             element={<ProductServiceEdit />}
+          />
+           <Route
+            path="/Recomendacion-Detail/:recommendationId"
+            exact
+            element={<RecomendacionDetailPage />}
           />
           <Route
             path="/edit-product-services/"
