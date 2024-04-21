@@ -30,7 +30,7 @@ const RecommendationDetailPresentation = ({ recommendationDetail }) => {
                   </ul>
                 </div>
                 <h2 className="dz-title">{recommendationDetail.title}</h2>
-                <div className="dz-post-text">
+                <div className="dz-post-text recommendation-descripcion">
                   <p>{recommendationDetail.description}</p>
                 </div>
               </div>
