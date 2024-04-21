@@ -36,7 +36,6 @@ export const useCreateProductService = () => {
                 `${urlAPI}/api/v1/productService`,
                 updProduct
             );
-            console.log("response update product", response);
             setProductCreated(true);
             showAlertSuccess(
                 "Felicitaciones :)",
@@ -75,8 +74,7 @@ export const useCreateProductService = () => {
             } else {
                 let date = new Date(Date.now());
                 let dateString = new Date(date.getTime() - (date.getTimezoneOffset() * 60000))
-                    .toISOString()
-                    .split("T")[0];
+                    .toISOString();
                 product = {
                     data: {
                         productId: GuidEmpty,
@@ -164,21 +162,13 @@ export const useCreateProductService = () => {
         if (initialProduct) {
             if (initialProduct.productId != '' && initialProduct.productId != GuidEmpty && initialProduct.productId != null) {
                 initialProduct.user = currentUser.id;
-                if (initialProduct.categoryId) {
-                    setNewCategoryId(initialProduct.categoryId);
-                    initialProduct.serviceTypeId = initialProduct.serviceTypeId;
+                initialProduct.planId = initialProduct.plan.id;
+                if (initialProduct.category.id) {
+                    initialProduct.categoryId = initialProduct.category.id;
+                    setNewCategoryId(initialProduct.category.id);
+                    initialProduct.serviceTypeId = initialProduct.serviceType.id;
                 }
-                if (initialProduct.categoryId === 'be8e2306-8bc9-49cc-8d43-a76820370994') {
-                    const startDate = new Date(initialProduct.startDateTime);
-                    const startDateString = new Date(startDate.getTime() - (startDate.getTimezoneOffset() * 60000))
-                        .toISOString()
-                        .split("T")[0];
-                    const endDate = new Date(initialProduct.endDateTime);
-                    const endDateString = new Date(endDate.getTime() - (endDate.getTimezoneOffset() * 60000))
-                        .toISOString()
-                        .split("T")[0];
-                    initialProduct.startDateTime = startDateString;
-                    initialProduct.endDateTime = endDateString;
+                if (initialProduct.category.id === 'be8e2306-8bc9-49cc-8d43-a76820370994') {
                     setEventSelected(true);
                 } else {
                     setEventSelected(false);
@@ -186,16 +176,13 @@ export const useCreateProductService = () => {
                 if (initialProduct.countryId) {
                     setNewCountryId(initialProduct.countryId);
                     if (initialProduct.stateId) {
-                        setNewStateId(initialProduct.stateId);
+                        changeNewState(initialProduct.stateId);
                         initialProduct.cityId = initialProduct.cityId;
                     }
                 }
             }
             if (initialProduct.typeOfNutritionId === null) {
                 initialProduct.typeOfNutritionId = GuidEmpty;
-            }
-            if (initialProduct.serviceTypeId) {
-                initialProduct.serviceTypeId = GuidEmpty;
             }
         }
     }, [initialProduct]);
