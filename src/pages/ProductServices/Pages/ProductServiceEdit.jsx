@@ -7,7 +7,7 @@ import { CreateProductService } from "../Components";
 const ProductServiceEdit = () => {
   return (<>
     <div className="page-content bg-white">
-      <PageTitle parentTitle="Pages" activePage="Perfil de usuario" />
+      <PageTitle parentTitle="Socios" activePage="Productos y Servicios" />
       <div className="container">
         <Card data-testid="create-product-service" className='animate__animated animate__fadeInRightBig' >
           <Card.Body>
