@@ -163,14 +163,14 @@ export const CreateProductService = () => {
                       classDiv={classEditTextBox}
                       idText="startDateTime"
                       label="Fecha de inicio"
-                      type="date"
+                      type="datetime-local"
                       formikForm={formik}
                     />)}
                     {eventSelected && (<TextBoxEditValidation
                       classDiv={classEditTextBox}
                       idText="endDateTime"
                       label="Fecha de Finalización"
-                      type="date"
+                      type="datetime-local"
                       formikForm={formik}
                     />)}
                     {!loadingUpdateProfile && (
@@ -188,7 +188,7 @@ export const CreateProductService = () => {
                         >
                           Cancelar
                         </Link>
-                        {/* <pre>{JSON.stringify(formik.values, null, 2)}</pre> */}
+                        <pre>{JSON.stringify(formik.values, null, 2)}</pre>
                       </div>
                     )}
 
