@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const useMealTable = () => {
     const mealApi = axios.create({
-      baseURL:'http://localhost:3000/planes_alimenticios'
+      baseURL:'http://localhost:3003/planes_alimenticios'
     });
     const [meals, setMeals] = useState([]);
     const [loading, setLoading] = useState(true);

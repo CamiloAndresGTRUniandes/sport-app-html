@@ -1,9 +1,9 @@
 import { IMAGES } from "../../../constants/theme";
 import PageTitle from "../../../elements/PageTitle";
-import MealTable from "../Components/MealTable"
+import DetailMealTable from "../Components/DetailMealTable";
 
 
-const MealTablePage = () => {
+const DetailMealTablePage = () => {
   return (
     <>
       <div className="page-content bg-white">
@@ -15,7 +15,7 @@ const MealTablePage = () => {
           <div className="container">
             <div className="row">
             <div className="schedule-table table-responsive">
-              <MealTable></MealTable>
+              <DetailMealTable></DetailMealTable>
             </div>
 
             </div>
@@ -28,4 +28,4 @@ const MealTablePage = () => {
   );
 };
 
-export default MealTablePage;
+export default DetailMealTablePage;

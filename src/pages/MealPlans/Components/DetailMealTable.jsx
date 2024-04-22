@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-import { useMealTable } from '../Hooks/useMealTable';
+import { useMealTable } from '../Hooks/useDetailMealTable';
 import { useParams } from 'react-router-dom';
 
 const MySwal = withReactContent(Swal);
