@@ -113,7 +113,7 @@ const sugerencias=
   content: [
     {
       title: "Tus recomendaciones",
-      to: "/recomendaciones",
+      to: "/RecomendacionesPage",
     },
     {
       title: "Tus planes  alimentarios, deportivos",

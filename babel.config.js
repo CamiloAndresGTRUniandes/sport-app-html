@@ -1,6 +1,8 @@
 module.exports = {
   presets: [
-      [ '@babel/preset-env', { targets: { esmodules:  false } } ],
-      [ '@babel/preset-react', { runtime: 'automatic' } ],
+    ['@babel/preset-env', { targets: { esmodules: false } }],
+    ['@babel/preset-react', { runtime: 'automatic' }],
   ],
+  plugins: ['@babel/plugin-syntax-jsx'],
+
 };
