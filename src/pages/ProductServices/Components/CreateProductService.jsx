@@ -41,7 +41,8 @@ export const CreateProductService = () => {
     changeNewCategory,
     plansUp,
     eventSelected,
-    planSelected
+    planSelected,
+    GuidEmpty
   } = useCreateProductService();
   const navigation = useNavigate();
   useEffect(() => {
@@ -441,7 +442,7 @@ export const CreateProductService = () => {
                                                         className="col-4  btn btn-primary btn-sm btn-skew"
                                                         type="button"
                                                         onClick={() =>
-                                                          pushMeal({ id: '', name: '', description: '', calories: '', dishType: '', picture: '' })}>
+                                                          pushMeal({ id: GuidEmpty, name: '', description: '', calories: '', dishType: '', picture: '' })}>
                                                         Add Meal
                                                       </button>
                                                       <button
@@ -466,7 +467,7 @@ export const CreateProductService = () => {
                                         <button
                                           className="col-4  btn btn-primary btn-sm btn-skew"
                                           type="button"
-                                          onClick={() => pushDay({ id: '', name: '', meals: [{ id: '', name: '', description: '', calories: '', dishType: '', picture: '' }] })}>
+                                          onClick={() => pushDay({ id: GuidEmpty, name: '', meals: [{ id: GuidEmpty, name: '', description: '', calories: '', dishType: '', picture: '' }] })}>
                                           Add Day
                                         </button>
                                         <button

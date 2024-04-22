@@ -324,6 +324,7 @@ export const useCreateProductService = () => {
         changeNewCategory,
         plansUp,
         eventSelected,
-        planSelected
+        planSelected,
+        GuidEmpty
     };
 };
