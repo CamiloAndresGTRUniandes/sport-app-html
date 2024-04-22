@@ -1,4 +1,5 @@
 export * from "./TextError";
+export * from "./GetErrorBorderBottom";
 export * from "./GetErrorBorder";
 export * from "./Alerts";
 export * from "./TextBoxEditValidation";
