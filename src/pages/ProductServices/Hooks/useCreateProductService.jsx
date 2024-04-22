@@ -18,6 +18,7 @@ export const useCreateProductService = () => {
     const [loadingUpdateProfile, setLoadingUpdateProduct] = useState(false);
     const [productCreated, setProductCreated] = useState(false);
     const [eventSelected, setEventSelected] = useState(false);
+    const [planSelected, setPlanSelected] = useState(false);
     const { showAlertSuccess, showAlertError } = Alerts();
     const [productLoading, setProductLoading] = useState(true);
     const [physicalLevelsUP, setPhysicalLevels] = useState([]);
@@ -94,7 +95,26 @@ export const useCreateProductService = () => {
                         goals: [],
                         allergies: [],
                         startDateTime: dateString,
-                        endDateTime: dateString
+                        endDateTime: dateString,
+                        nutritionalPlan: {
+                            days: [
+                                {
+                                    id: GuidEmpty,
+                                    name: "",
+                                    meals: [
+                                        {
+                                            id: GuidEmpty,
+                                            name: "",
+                                            description: "",
+                                            calories: "",
+                                            dishType: "",
+                                            picture: ""
+                                        }
+                                    ]
+                                }
+
+                            ]
+                        }
                     }
                 }
             }
@@ -185,8 +205,7 @@ export const useCreateProductService = () => {
                 initialProduct.typeOfNutritionId = GuidEmpty;
             }
         }
-    }, [initialProduct]);
-    const changeNewCountry = (countryId) => setNewCountryId(countryId);
+    }, [initialProduct]); const changeNewCountry = (countryId) => setNewCountryId(countryId);
 
     useEffect(() => {
 
@@ -258,8 +277,15 @@ export const useCreateProductService = () => {
 
                     if (newCategoryId === 'be8e2306-8bc9-49cc-8d43-a76820370994') {
                         setEventSelected(true);
-                    } else {
+                        setPlanSelected(false);
+                    }
+                    else if (newCategoryId === '03388722-321f-4b6a-963e-104eb73d17c2') {
+                        setPlanSelected(true);
                         setEventSelected(false);
+                    }
+                    else {
+                        setEventSelected(false);
+                        setPlanSelected(false);
                     }
 
                     setServiceTypesUP(response.data);
@@ -275,7 +301,6 @@ export const useCreateProductService = () => {
 
         getServiceTypes();
     }, [newCategoryId]);
-
     return {
         initialProduct,
         GetInitialInformation,
@@ -298,6 +323,7 @@ export const useCreateProductService = () => {
         serviceTypesUP,
         changeNewCategory,
         plansUp,
-        eventSelected
+        eventSelected,
+        planSelected
     };
 };
