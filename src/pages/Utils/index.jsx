@@ -8,3 +8,4 @@ export * from "./CheckBoxValidation";
 export * from "./SelectValidation";
 export * from "./SpinnerSportApp";
 export * from "./GetUserInfo";
+export * from "./ParagraphLarge";

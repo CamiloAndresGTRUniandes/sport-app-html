@@ -94,7 +94,7 @@ const asociados=
   title: "Asociados",
   classChange: "sub-menu-down",
   content: [
-    { title: "Administrar seguimiento", to: "/AdministrarSeguimiento" },
+    { title: "Administrar seguimiento", to: "/user-tracking" },
     {
       title: "Registro de productos y servicios",
       to: "/product-services",
