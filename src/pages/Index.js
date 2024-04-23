@@ -124,9 +124,9 @@ function Index() {
             element={<MealTablePlanPage />}
           />
 
-   
+
           <Route
-            path="services/Alimento/:mealId"
+            path="/DetailMealTable/:productId"
             exact
             element={<DetailMealTablePage />}
           />

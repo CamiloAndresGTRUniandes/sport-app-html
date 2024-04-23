@@ -24,42 +24,43 @@ const MealTablePlan = () => {
     }
 
     return (
+      
         <Table className="table-responsive-md ck-table mb-5">
+          
             <thead>
                 <tr>
                     <th>Nombre</th>
                     <th>Imagen</th>
                     <th>Objetivo</th>
-                    <th>Precio</th>
                     <th>Descripción</th>
                     <th>Plan</th>
                     <th>Suscripción</th>
                 </tr>
             </thead>
             <tbody>
-                {Array.isArray(initialData) &&
-                    initialData.map((item, index) => (
-                        <tr key={index}>
-                            <td className="highlighted-cell event">{item.name}</td>
-                            <td className="event">
-                                <img src={item.picture} alt={item.name} width={150} height={150} />
-                            </td>
-                            <td className="event">{goal.name}</td> {/* Muestra el nombre del objetivo */}
-                            <td className="event">{item.price}</td>
-                            <td className="event">{item.description}</td>
-                            <td className="event">{item.plan.name}</td>
-                            <td>
-                                <button
-                                    className="btn btn-primary shadow-primary btn-skew mt-2"
-                                    onClick={() => navigate(`/subscribe/${item.id}`)}
-                                >
-                                    Suscribirse
-                                </button>
-                            </td>
-                        </tr>
-                    ))}
+                {Array.isArray(initialData) && initialData.map((item, index) => (
+                    <tr key={index}>
+                        <td className="highlighted-cell event" onClick={() => navigate(`/DetailMealTable/${item.productId}`)}>{item.name}</td>
+                        <td className="event">
+                            <img src={item.picture} alt={item.name} width={150} height={150} />
+                        </td>
+                        <td className="event">{goal.name}</td> {/* Muestra el nombre del objetivo */}
+                        <td className="event">{item.description}</td>
+                        <td className="event">{item.plan.name}</td>
+                        <td>
+                            <button
+                                className="btn btn-primary shadow-primary btn-skew mt-2"
+                                onClick={() => navigate(`/subscribe/${item.productId}`)}
+                            >
+                                Suscribirse
+                            </button>
+                        </td>
+                    </tr>
+                ))}
             </tbody>
         </Table>
+        
+
     );
 };
 

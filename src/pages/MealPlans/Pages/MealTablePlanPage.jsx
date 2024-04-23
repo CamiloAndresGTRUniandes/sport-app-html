@@ -1,9 +1,12 @@
-import { Link } from 'react-router-dom';
+
 import { IMAGES } from '../../../constants/theme';
 import PageTitle from "../../../elements/PageTitle";
 import MealTablePlan from '../Components/MealTablePlan';
 
+
+
 const MealTablePlanPage = () => {
+
   return (
     <>
       <div className="page-content bg-white animate__animated animate__fadeInRightBig">
