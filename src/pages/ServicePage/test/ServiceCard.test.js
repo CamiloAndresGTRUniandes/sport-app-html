@@ -1,31 +1,32 @@
-import { render, screen, fireEvent } from "@testing-library/react";
-import { BrowserRouter as Router } from "react-router-dom";
+import { render, fireEvent } from "@testing-library/react";
+import { BrowserRouter } from "react-router-dom";
+import "@testing-library/jest-dom"; // Para usar métodos como `toBeInTheDocument`
 import ServiceCard from "../Components/ServiceCard";
 
-describe("ServiceCard component", () => {
-  const item = {
-    id: 1,
-    name: "Test Service",
-    picture: "test-picture.jpg",
-  };
+// Mock data para las pruebas
+const mockItem = {
+  id: 1,
+  picture: "https://example.com/image.jpg",
+  name: "Test Service",
+};
 
-  test("renders service card correctly", () => {
-    render(
-      <Router>
-        <ServiceCard item={item} hover={0} setHover={() => {}} />
-      </Router>
+describe("ServiceCard - onMouseEnter", () => {
+  test("should call setHover with item.id on mouse enter", () => {
+    const setHoverMock = jest.fn(); // Mock para la función setHover
+
+    const { getByTestId } = render(
+      <BrowserRouter>
+        <ServiceCard item={mockItem} hover={null} setHover={setHoverMock} />
+      </BrowserRouter>
     );
 
-    // Verificar que el nombre del servicio esté presente
-    expect(screen.getByText("Test Service")).toBeInTheDocument();
+    // Elemento al que se aplicará el evento 'mouseEnter'
+    const cardWrapper = getByTestId("service-card-wrapper");
 
-    // Verificar que el enlace de "Leer más" esté presente
-    expect(screen.getByText("Leer más")).toBeInTheDocument();
+    // Simula el evento 'onMouseEnter'
+    fireEvent.mouseEnter(cardWrapper);
 
-    // Simular el evento de mouse entrar para activar el hover
-    fireEvent.mouseEnter(screen.getByText("Test Service"));
-
- 
-
+    // Verifica que se llamó a la función setHover con el ID correcto
+    expect(setHoverMock).toHaveBeenCalledWith(mockItem.id); // Debería ser `1`
   });
 });
