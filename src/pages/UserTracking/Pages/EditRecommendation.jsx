@@ -52,8 +52,8 @@ export const EditRecommendation = () => {
   const onSubmit = async (values, e, valid) => {
     e.preventDefault();
     if (valid) {
-      values.userId=recommendationUsers.user.id;
-      values.userAsociateId=recommendationUsers.userAsociateId;
+      values.userId = recommendationUsers.userId;
+      values.userAsociateId = recommendationUsers.userAsociateId;
       saveRecommendation(values);
     }
   };
@@ -131,18 +131,21 @@ export const EditRecommendation = () => {
                               formikForm={formik}
                             />
                             <div className="row d-flex justify-content-around">
-                              <button
-                                name="submit"
-                                value="Submit"
-                                type="submit"
-                                disabled={formik.isInValid}
-                                onClick={(e) =>
-                                  onSubmit(formik.values, e, formik.isValid)
-                                }
-                                className="col-4  btn btn-primary btn-lg btn-skew"
-                              >
-                                <span>Guardar</span>
-                              </button>
+                              {!loadingSaveRecommendation && (
+                                <button
+                                  name="submit"
+                                  value="Submit"
+                                  type="submit"
+                                  disabled={formik.isInValid}
+                                  onClick={(e) =>
+                                    onSubmit(formik.values, e, formik.isValid)
+                                  }
+                                  className="col-4  btn btn-primary btn-lg btn-skew"
+                                >
+                                  <span>Guardar</span>
+                                </button>
+                              )}
+                              {loadingSaveRecommendation && <SpinnerSportApp />}
                               <Link
                                 to={"/user-tracking/" + id}
                                 className="col-4  btn btn-secondary btn-lg btn-skew"
@@ -158,10 +161,6 @@ export const EditRecommendation = () => {
                   </Card>
                 </div>
               )}
-
-              <pre>{JSON.stringify(formik.values, null, 2)}</pre>}
-              <pre>{JSON.stringify(recommendationUsers, null, 2)}</pre>}
-              
             </div>
           </Form>
         );

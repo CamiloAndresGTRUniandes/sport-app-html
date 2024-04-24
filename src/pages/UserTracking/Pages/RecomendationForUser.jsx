@@ -105,7 +105,7 @@ export const RecommendationForUser = () => {
           </div>
         </div>
       </div>
-      <pre>{JSON.stringify(recommendationUsers, null, 2)}</pre>
+    
     </>
   );
 };

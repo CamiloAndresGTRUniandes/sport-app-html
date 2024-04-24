@@ -84,14 +84,13 @@ const ListUserTracking = () => {
                           <td>
                             {item.wasPayed == true? (
                               <Link
-                                to="/seguimiento-contrato"
+                                
                                 className="col-10 btn btn-warning shadow-dark btn-skew  mt-2"
                               >
                                 Al dia
                               </Link>
                             ) : (
                               <Link
-                                to="/seguimiento-contrato"
                                 className="col-10 btn btn-danger shadow-danger btn-skew  mt-2"
                               >
                                 Pendiente
