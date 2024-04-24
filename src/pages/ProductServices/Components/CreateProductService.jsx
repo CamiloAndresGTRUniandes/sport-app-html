@@ -444,7 +444,7 @@ export const CreateProductService = () => {
                                                         type="button"
                                                         onClick={() =>
                                                           pushMeal({ id: GuidEmpty, name: '', description: '', calories: '', dishType: '', picture: '' })}>
-                                                        Add Meal
+                                                        Agregar Plato
                                                       </button>
                                                       <button
                                                         className="col-4  btn btn-secondary btn-sm btn-skew"
@@ -454,7 +454,7 @@ export const CreateProductService = () => {
                                                             removeMeal(mealIndex)
                                                           }
                                                         }}>
-                                                        Remove Meal
+                                                        Remover Plato
                                                       </button>
                                                     </div>}
                                                   </div>
@@ -469,7 +469,7 @@ export const CreateProductService = () => {
                                           className="col-4  btn btn-primary btn-sm btn-skew"
                                           type="button"
                                           onClick={() => pushDay({ id: GuidEmpty, name: '', meals: [{ id: GuidEmpty, name: '', description: '', calories: '', dishType: '', picture: '' }] })}>
-                                          Add Day
+                                          Agregar Dia
                                         </button>
                                         <button
                                           className="col-4  btn btn-secondary btn-sm btn-skew"
@@ -480,7 +480,7 @@ export const CreateProductService = () => {
                                             }
                                           }
                                           }>
-                                          Remove Day
+                                          Remover Dia
                                         </button>
                                       </div>}
                                     </div>
