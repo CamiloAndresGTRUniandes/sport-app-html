@@ -52,6 +52,9 @@ import ProductServices from "./ProductServices/Pages/ProductServiceList";
 
 import Pagar from "./Pagar";
 import { CloseSession } from "./Auth/Pages";
+import ListUserTracking from "./UserTracking/Pages/ListUserTracking";
+import { RecommendationForUser, EditRecommendation  } from "./UserTracking/Pages";
+
 
 function Index() {
   var baseName = "/";
@@ -87,6 +90,9 @@ function Index() {
           <Route path="/user-profile" exact element={<UserProfile />} />
           <Route path="close-session" exact element={<CloseSession />} />
           <Route path="/RecomendacionesPage" exact element={<RecommendationPage />} />
+          <Route path="/user-tracking/:id" exact element={<RecommendationForUser />} />
+          <Route path="/edit-recommendation/:id" exact element={<EditRecommendation />} />
+
           <Route
             path="/edicion-recomendacion"
             exact
@@ -127,9 +133,9 @@ function Index() {
           />
           <Route path="/services" exact element={<Services />} />
           <Route
-            path="/AdministrarSeguimiento"
+            path="/user-tracking"
             exact
-            element={<AdministrarSeguimiento />}
+            element={<ListUserTracking />}
           />
           <Route path="/services-details" exact element={<ServicesDetails />} />
           <Route

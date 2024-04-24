@@ -1,1 +1,2 @@
-export *  from './CalculateAge'
+export *  from './CalculateAge';
+export *   from './SignalConnector';
