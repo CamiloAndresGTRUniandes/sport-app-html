@@ -8,6 +8,7 @@ export const useEditRecommendation = () => {
   const[loadingSaveRecommendation, setLoadingSaveRecommendation]=useState(false);
   const [userRecommendationSave, setUserRecommendationSave] = useState(false);
   const { showAlertSuccess, showAlertError } = Alerts();
+  const [userTracking, setUserTracking] = useState(null);
 
   const { getToken} = GetUserInfo();
   let tokenPayload = {
@@ -15,7 +16,7 @@ export const useEditRecommendation = () => {
   };
   
 
-  const getTypeOfRecommendation=  async () => {
+  const getDataTracking=  async () => {
       const response = await axios.get(
       `${urlAPI}/api/V1/TypeOfRecomendations`,
       tokenPayload
@@ -33,6 +34,11 @@ export const useEditRecommendation = () => {
       await axios.post(
         `${urlAPI}/api/V1/UserRecommendation/CreateUserRecommendation`,
         valuesRecommendation,
+        tokenPayload
+      );
+      await axios.post(
+        `${urlAPI}/api/V1/UserGoalTracking/Save`,
+        valuesRecommendation.tracking,
         tokenPayload
       );
       setUserRecommendationSave(true);
@@ -56,7 +62,7 @@ export const useEditRecommendation = () => {
   return {
     listRecommendations,
     loadingTypeOfRecommendation,
-    getTypeOfRecommendation,
+    getDataTracking,
     loadingSaveRecommendation,
     userRecommendationSave,
     saveRecommendation
