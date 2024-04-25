@@ -42,7 +42,8 @@ export const CreateProductService = () => {
     plansUp,
     eventSelected,
     planSelected,
-    GuidEmpty
+    GuidEmpty,
+    isEdit
   } = useCreateProductService();
   const navigation = useNavigate();
   useEffect(() => {
@@ -121,6 +122,7 @@ export const CreateProductService = () => {
                         name="categoryId"
                         className="form-control"
                         size="lg"
+                        disabled = {isEdit}
                         onChange={(e) => {
                           formik.setFieldValue(
                             "categoryId",
@@ -197,7 +199,7 @@ export const CreateProductService = () => {
                         >
                           Cancelar
                         </Link>
-                        {/* <pre>{JSON.stringify(formik.values, null, 2)}</pre> */}
+                        <pre>{JSON.stringify(formik.values, null, 2)}</pre>
                       </div>
                     )}
 
@@ -443,7 +445,7 @@ export const CreateProductService = () => {
                                                         className="col-4  btn btn-primary btn-sm btn-skew"
                                                         type="button"
                                                         onClick={() =>
-                                                          pushMeal({ id: GuidEmpty, name: '', description: '', calories: '', dishType: '', picture: '' })}>
+                                                          pushMeal({ id: GuidEmpty, name: '', description: '', calories: 0, dishType: '', picture: '' })}>
                                                         Agregar Plato
                                                       </button>
                                                       <button
@@ -468,7 +470,7 @@ export const CreateProductService = () => {
                                         <button
                                           className="col-4  btn btn-primary btn-sm btn-skew"
                                           type="button"
-                                          onClick={() => pushDay({ id: GuidEmpty, name: '', meals: [{ id: GuidEmpty, name: '', description: '', calories: '', dishType: '', picture: '' }] })}>
+                                          onClick={() => pushDay({ id: GuidEmpty, name: '', meals: [{ id: GuidEmpty, name: '', description: '', calories: 0, dishType: '', picture: '' }] })}>
                                           Agregar Dia
                                         </button>
                                         <button

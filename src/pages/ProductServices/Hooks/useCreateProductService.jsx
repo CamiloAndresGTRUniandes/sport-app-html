@@ -24,6 +24,7 @@ export const useCreateProductService = () => {
     const [physicalLevelsUP, setPhysicalLevels] = useState([]);
     const [newCountryId, setNewCountryId] = useState(null);
     const [newStateId, setNewStateId] = useState(null);
+    const [isEdit, setIsEdit] = useState(false);
     const [newCityId, setNewCityId] = useState(null);
     const [newCategoryId, setNewCategoryId] = useState(null);
     const GuidEmpty = "00000000-0000-0000-0000-000000000000";
@@ -72,6 +73,7 @@ export const useCreateProductService = () => {
             let product = {};
             if (productId) {
                 product = axios.get(`${urlAPI}/api/v1/productService/${productId}`);
+                setIsEdit(true);
             } else {
                 let date = new Date(Date.now());
                 let dateString = new Date(date.getTime() - (date.getTimezoneOffset() * 60000))
@@ -106,7 +108,7 @@ export const useCreateProductService = () => {
                                             id: GuidEmpty,
                                             name: "",
                                             description: "",
-                                            calories: "",
+                                            calories: 0,
                                             dishType: "",
                                             picture: ""
                                         }
@@ -301,6 +303,7 @@ export const useCreateProductService = () => {
 
         getServiceTypes();
     }, [newCategoryId]);
+    
     return {
         initialProduct,
         GetInitialInformation,
@@ -325,6 +328,7 @@ export const useCreateProductService = () => {
         plansUp,
         eventSelected,
         planSelected,
-        GuidEmpty
+        GuidEmpty,
+        isEdit
     };
 };
