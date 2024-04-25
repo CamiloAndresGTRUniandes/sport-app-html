@@ -8,7 +8,8 @@ const ServicesTable = () => {
   const {
     initialData,
     GetDataAsync,
-    productsLoading
+    productsLoading,
+    deleteProductService
   } = useProductServiceList();
   const navigation = useNavigate();
 
@@ -43,7 +44,7 @@ const ServicesTable = () => {
                 </span></Link>
             </td>
             <td>
-              <button className='btn btn-dark shadow-danger btn-skew  mt-2'>
+              <button className='btn btn-dark shadow-danger btn-skew  mt-2' key={item.index} onClick={() => {deleteProductService(item.productId)}}>
               <i className="fa-solid fa-close"></i>
               </button>
             </td>
