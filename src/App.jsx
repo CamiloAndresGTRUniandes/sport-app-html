@@ -24,7 +24,6 @@ function App() {
   );
 
   const notify = (values) => {
-    console.log("Notify"  );
     toast.success(values.title, {
       closeButton: CloseButton,
     });

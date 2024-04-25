@@ -47,7 +47,6 @@ export const useEditRecommendation = () => {
         `Hola no hemos podido crear la recomendacion`
       );
       setLoadingSaveRecommendation(false);
-      console.log("save recommendation error", error);
       setUserRecommendationSave(false);
     } finally {
       setLoadingSaveRecommendation(false); // Ensure loading state is updated even on errors

@@ -1,16 +1,20 @@
-
-
 import axios from "axios";
 import { useState } from "react";
-import { Alerts } from "../../Utils";
+import { Alerts, GetUserInfo } from "../../Utils";
 import { addSpecialFields } from "../Helpers";
 
 export const useCalendarEvents = (userId, name) => {
   const urlAPI = process.env.REACT_APP_API_URL_SERVICE;
-  const { showAlertError } = Alerts();
+  const urlAPIUsers = process.env.REACT_APP_API_URL;
+  const { showAlertError, showAlertSuccess } = Alerts();
   const [eventsByUser, setEventsByUser] = useState([]);
   const [loadEvents, setLoadEvents] = useState(true);
   const [errorInEvents, setErrorInEvents] = useState(false);
+
+  const { getToken, getUser } = GetUserInfo();
+  let tokenPayload = {
+    headers: { Authorization: `Bearer ${getToken()}` },
+  };
 
   const getEvents = (start, end) => {
     setLoadEvents(true);
@@ -25,7 +29,7 @@ export const useCalendarEvents = (userId, name) => {
       .post(`${urlAPI}/api/v1/productService/getFilteredList`, queryEvents)
       .then((response) => {
         const events = addSpecialFields(response.data, name);
-        setEventsByUser(events); 
+        setEventsByUser(events);
         setLoadEvents(false);
         setErrorInEvents(false);
       })
@@ -39,10 +43,29 @@ export const useCalendarEvents = (userId, name) => {
       });
   };
 
+  const suscribeEvent = async (event) => {
+    event.userId = getUser().id;
+    axios
+      .post(`${urlAPIUsers}/api/V1/EventSuscription`, event, tokenPayload)
+      .then((response) => {
+        showAlertSuccess(
+          `Tu inscripcion en el evento ${event.name} `,
+          response.data.message
+        );
+      })
+      .catch((error) => {
+         showAlertError(
+          `Problemas en tu inscripcion ${event.name}  :(`,
+          "Lo sentimos no pudimos hacerla , intentalo de nuevo mas tarde."
+        );
+      });
+  };
+
   return {
     eventsByUser,
     loadEvents,
     errorInEvents,
     getEvents,
+    suscribeEvent,
   };
 };
