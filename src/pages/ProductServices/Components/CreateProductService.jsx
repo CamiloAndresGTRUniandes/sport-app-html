@@ -199,7 +199,7 @@ export const CreateProductService = () => {
                         >
                           Cancelar
                         </Link>
-                        <pre>{JSON.stringify(formik.values, null, 2)}</pre>
+                        {/* <pre>{JSON.stringify(formik.values, null, 2)}</pre> */}
                       </div>
                     )}
 
