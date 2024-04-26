@@ -51,10 +51,17 @@ export const useProductServiceList = () => {
             }
         }
     };
+    const formatCurrency = (amount) => {
+        return amount.toLocaleString('en-US', {
+          style: 'currency',
+          currency: 'USD'
+        });
+      };
     return {
         initialData,
         GetDataAsync,
         productsLoading,
-        deleteProductService
+        deleteProductService,
+        formatCurrency
     };
 };
