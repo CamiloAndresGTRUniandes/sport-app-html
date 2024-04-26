@@ -9,7 +9,8 @@ const ServicesTable = () => {
     initialData,
     GetDataAsync,
     productsLoading,
-    deleteProductService
+    deleteProductService,
+    formatCurrency
   } = useProductServiceList();
   const navigation = useNavigate();
 
@@ -37,7 +38,7 @@ const ServicesTable = () => {
             <td className='highlighted-cell event'>{item.name}</td>
             <td className='event'>{item.serviceType.name}</td>
             <td className='event'>{item.plan.name}</td>
-            <td className='event'>{item.price}</td>
+            <td className='event'>{formatCurrency(item.price)}</td>
             <td>
               <Link to={`/edit-product-services/${item.productId}`} className="btn btn-primary shadow-primary btn-skew  mt-2"><span>
               <i className="fa-solid fa-pencil"></i>
