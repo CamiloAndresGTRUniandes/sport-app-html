@@ -137,7 +137,7 @@ export const EditRecommendation = () => {
                             <SelectValidation
                               classDiv="input-group mb-3  input-line"
                               idSelect="typeOfRecommendationId"
-                              label="Tipo de recomendacion here"
+                              label="Tipo de recomendacion"
                               formikForm={formik}
                               data={listRecommendations}
                               formFormik={formik}

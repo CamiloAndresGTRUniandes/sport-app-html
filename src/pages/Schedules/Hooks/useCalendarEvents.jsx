@@ -19,7 +19,7 @@ export const useCalendarEvents = (userId, name) => {
   const getEvents = (start, end) => {
     setLoadEvents(true);
     const queryEvents = {
-      user: userId,
+      //user: userId,
       serviceTypes: ["ffcbaf64-3ffa-4b28-8dc7-838532ca0274"],
       startDateTime: new Date(start),
       endDateTime: new Date(end),
