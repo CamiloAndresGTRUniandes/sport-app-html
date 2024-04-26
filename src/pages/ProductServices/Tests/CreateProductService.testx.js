@@ -3,7 +3,7 @@ import { CreateProductService } from "../Components/CreateProductService";
 import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import { render, screen, waitFor, fireEvent } from "@testing-library/react";
-
+import '@testing-library/jest-dom'
 // jest.mock("../Hooks/useCreateProductService"); // Mockear el hook useCreateProductService
 
 describe("CreateProductService component", () => {
