@@ -52,11 +52,12 @@ const useRecommendation = () => {
   // Uso de useEffect para obtener recomendaciones al cargar el componente.
   useEffect(() => {
     const fetchData = async () => {
+      const user = getUser();
       try {
         const response = await axios.post(
           `${urlAPI}/api/V1/UserRecommendation/ByUser`,
           {
-            "userId": "016b514b-911a-4af4-abe1-696372c71bd7",
+            "userId": user.id,
             "typeOfRecommendation": "0037fc1b-5414-449c-8f68-ff9d7365f1a0"
           },
           tokenPayload

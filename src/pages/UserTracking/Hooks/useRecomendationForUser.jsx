@@ -20,12 +20,8 @@ export const useRecomendationForUser = () => {
     );
     setNameAsociate(user.name);
     setRecommendationUsers(response.data);
-    console.log("Recommendation user", response.data);
     setLoadingRecommendationUser(false);
-  
   };
-  
-  
   return {
     recommendationUsers,
     loadingRecommendationUser,

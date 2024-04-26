@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
-
+import Tab from "react-bootstrap/Tab";
+import Tabs from "react-bootstrap/Tabs";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import PageTitle from "../../../elements/PageTitle";
 import Card from "react-bootstrap/Card";
@@ -21,11 +22,19 @@ export const EditRecommendation = () => {
   let inititializeData = {
     userId: "",
     userAsociateId: "",
-    title: "title",
-    image: "imag",
-    description: "Desc",
+    title: "",
+    image: "",
+    description: "",
     enrollServiceUserId: id,
     typeOfRecommendationId: "",
+    tracking: {
+      kgOfMuscleGained: 0,
+      prInFlatBenchPress: 0,
+      cmsInArm:0,
+      prInSquad:0,
+      userId: "",
+      userAsociateId: ""
+    },
   };
 
   const { recommendationUsers, getRecommendationUser } =
@@ -38,12 +47,19 @@ export const EditRecommendation = () => {
     typeOfRecommendationId: Yup.string().required(
       "Ingresa el tipo de recomendacion"
     ),
+    tracking: Yup.object().shape({
+      kgOfMuscleGained: Yup.number().required().min(0).max(50),
+      prInFlatBenchPress: Yup.number().required().min(0).max(200),
+      cmsInArm:Yup.number().min(0).required().max(70), 
+      prInSquad:Yup.number().min(0).required().max(200)
+
+    }),
   });
 
   const {
     listRecommendations,
     loadingTypeOfRecommendation,
-    getTypeOfRecommendation,
+    getDataTracking,
     loadingSaveRecommendation,
     userRecommendationSave,
     saveRecommendation,
@@ -54,12 +70,14 @@ export const EditRecommendation = () => {
     if (valid) {
       values.userId = recommendationUsers.userId;
       values.userAsociateId = recommendationUsers.userAsociateId;
+      values.tracking.userId = recommendationUsers.userId;
+      values.tracking.userAsociateId = recommendationUsers.userAsociateId;
       saveRecommendation(values);
     }
   };
   useEffect(() => {
     getRecommendationUser(id);
-    getTypeOfRecommendation();
+    getDataTracking();
   }, [id]); //
 
   useEffect(() => {
@@ -87,7 +105,7 @@ export const EditRecommendation = () => {
               />
               {!loadingTypeOfRecommendation && (
                 <div className="container">
-                  <Card className="animate__animated animate__fadeInRightBig">
+                  <Card className="">
                     <Card.Body>
                       <Card.Title>Registro de perfil de usuario</Card.Title>
                       <Card.Text className="mt-5">
@@ -97,7 +115,8 @@ export const EditRecommendation = () => {
                       </Card.Text>
 
                       <div className="row ">
-                        <div className="col-6">
+                        <div className="col-6 animate__animated animate__fadeInLeftBig">
+                        
                           <div className="col-md-6 col-lg-12 col-sm-12 mr-3">
                             <TextBoxEditValidation
                               classDiv={classEditTextBox}
@@ -118,7 +137,7 @@ export const EditRecommendation = () => {
                             <SelectValidation
                               classDiv="input-group mb-3  input-line"
                               idSelect="typeOfRecommendationId"
-                              label="Tipo de recomendacion here"
+                              label="Tipo de recomendacion"
                               formikForm={formik}
                               data={listRecommendations}
                               formFormik={formik}
@@ -155,13 +174,54 @@ export const EditRecommendation = () => {
                             </div>
                           </div>
                         </div>
-                        <div className="col-6">2</div>
+                        <div className="col-6 animate__animated animate__fadeInRightBig">
+                          <Tabs
+                            defaultActiveKey="0"
+                            id="uncontrolled-tab-example"
+                            className="mb-3"
+                          >
+                            <Tab eventKey="0" title="Seguimiento  al usuario">
+                              <div className="row">
+                                <TextBoxEditValidation
+                                  classDiv={classEditTextBox}
+                                  idText="tracking.kgOfMuscleGained"
+                                  label="Kgs de musculo ganado"
+                                  type="text"
+                                  formikForm={formik}
+                                />
+                                <TextBoxEditValidation
+                                  classDiv={classEditTextBox}
+                                  idText="tracking.prInFlatBenchPress"
+                                  label="Pr en press banca plana"
+                                  type="text"
+                                  formikForm={formik}
+                                />
+                                 <TextBoxEditValidation
+                                  classDiv={classEditTextBox}
+                                  idText="tracking.cmsInArm"
+                                  label="Cms en brazo"
+                                  type="text"
+                                  formikForm={formik}
+                                />
+                                    <TextBoxEditValidation
+                                  classDiv={classEditTextBox}
+                                  idText="tracking.prInSquad"
+                                  label="PR en sentadilla"
+                                  type="text"
+                                  formikForm={formik}
+                                />
+                              </div>
+                              
+                            </Tab>
+                          </Tabs>
+                        </div>
                       </div>
                     </Card.Body>
                   </Card>
                 </div>
               )}
             </div>
+            {/* <pre> {JSON.stringify(formik.values, null, 2)} </pre> */}
           </Form>
         );
       }}

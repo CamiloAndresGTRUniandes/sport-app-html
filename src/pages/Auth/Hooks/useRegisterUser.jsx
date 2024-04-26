@@ -28,7 +28,6 @@ const useRegisterUser = (initial) => {
         `Hola ${newUser.firstName}, No se ha creado tu usuario `
       );
       setUserCreated(false);
-      console.log("register user error", error);
       setLoading(false);
     } finally {
       setLoading(false); // Ensure loading state is updated even on errors

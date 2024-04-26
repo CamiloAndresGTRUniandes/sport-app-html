@@ -8,6 +8,7 @@ export const useEditRecommendation = () => {
   const[loadingSaveRecommendation, setLoadingSaveRecommendation]=useState(false);
   const [userRecommendationSave, setUserRecommendationSave] = useState(false);
   const { showAlertSuccess, showAlertError } = Alerts();
+  const [userTracking, setUserTracking] = useState(null);
 
   const { getToken} = GetUserInfo();
   let tokenPayload = {
@@ -15,7 +16,7 @@ export const useEditRecommendation = () => {
   };
   
 
-  const getTypeOfRecommendation=  async () => {
+  const getDataTracking=  async () => {
       const response = await axios.get(
       `${urlAPI}/api/V1/TypeOfRecomendations`,
       tokenPayload
@@ -35,6 +36,11 @@ export const useEditRecommendation = () => {
         valuesRecommendation,
         tokenPayload
       );
+      await axios.post(
+        `${urlAPI}/api/V1/UserGoalTracking/Save`,
+        valuesRecommendation.tracking,
+        tokenPayload
+      );
       setUserRecommendationSave(true);
       showAlertSuccess(
         "Felicitaciones :)",
@@ -47,7 +53,6 @@ export const useEditRecommendation = () => {
         `Hola no hemos podido crear la recomendacion`
       );
       setLoadingSaveRecommendation(false);
-      console.log("save recommendation error", error);
       setUserRecommendationSave(false);
     } finally {
       setLoadingSaveRecommendation(false); // Ensure loading state is updated even on errors
@@ -57,7 +62,7 @@ export const useEditRecommendation = () => {
   return {
     listRecommendations,
     loadingTypeOfRecommendation,
-    getTypeOfRecommendation,
+    getDataTracking,
     loadingSaveRecommendation,
     userRecommendationSave,
     saveRecommendation
