@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
-import Table from "react-bootstrap/Table";
+import { Table, Alert } from "react-bootstrap";
 import { useMealTablePlan } from "../Hooks/useMealTablePlan";
 import { useNavigate } from "react-router-dom";
 import { SpinnerSportApp } from "../../Utils/SpinnerSportApp";
-import { Alert } from "react-bootstrap";
 
 const goalId = "9bd21ea0-4fe6-46b4-b974-ba594883ffe0"; // ID del objetivo
 
 const MealTablePlan = () => {
-    const { initialData, goal, GetDataAsync, mealLoading, error } = useMealTablePlan(goalId);
+    // Obtiene `handleSubscribe` del Hook para usarlo en el componente.
+    const { initialData, goal, GetDataAsync, mealLoading, error, handleSubscribe } = useMealTablePlan(goalId);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -24,9 +24,7 @@ const MealTablePlan = () => {
     }
 
     return (
-      
         <Table className="table-responsive-md ck-table mb-5">
-          
             <thead>
                 <tr>
                     <th>Nombre</th>
@@ -40,17 +38,27 @@ const MealTablePlan = () => {
             <tbody>
                 {Array.isArray(initialData) && initialData.map((item, index) => (
                     <tr key={index}>
-                        <td className="highlighted-cell event" onClick={() => navigate(`/DetailMealTable/${item.productId}`)}>{item.name}</td>
+                        <td
+                            className="highlighted-cell event"
+                            onClick={() => navigate(`/DetailMealTable/${item.productId}`)}
+                        >
+                            {item.name}
+                        </td>
                         <td className="event">
                             <img src={item.picture} alt={item.name} width={150} height={150} />
                         </td>
-                        <td className="event">{goal.name}</td> {/* Muestra el nombre del objetivo */}
-                        <td className="event">{item.description}</td>
-                        <td className="event">{item.plan.name}</td>
+                        <td className="event">{goal?.name}</td>
+                        <td>{item.description}</td>
+                        <td>{item.plan?.name}</td>
                         <td>
                             <button
                                 className="btn btn-primary shadow-primary btn-skew mt-2"
-                                onClick={() => navigate(`/subscribe/${item.productId}`)}
+                                onClick={() => handleSubscribe(
+                                    item.productId,
+                                    item.plan?.planId,
+                                    item.plan?.name,
+                                    item.plan?.description
+                                )}
                             >
                                 Suscribirse
                             </button>
@@ -59,8 +67,6 @@ const MealTablePlan = () => {
                 ))}
             </tbody>
         </Table>
-        
-
     );
 };
 
