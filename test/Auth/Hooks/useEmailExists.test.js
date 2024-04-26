@@ -1,8 +1,6 @@
 import axios from 'axios'; // Mock for external API calls
-import useEmailExists from '../../../src/pages/Auth/hooks/useEmailExists'; // Assuming the hook is in the same directory
+import useEmailExists from '../../../src/pages/Auth/Hooks/useEmailExists'; // Assuming the hook is in the same directory
 import 'intersection-observer';
-import React from 'react'; 
-jest.mock('axios'); // Mock the axios library
 import { renderHook, act } from '@testing-library/react';
 
 jest.mock('axios');

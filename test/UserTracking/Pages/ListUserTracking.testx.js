@@ -8,7 +8,7 @@ jest.mock('../../../src/pages/UserTracking/Hooks/useListUsersEnroll'); // Apply 
 describe('ListUserTracking component', () => {
   test('renders loading state while users are being fetched', () => {
     const { getByText } = render(<ListUserTracking />);
-     // expect(getByText(/Loading/i)).toBeDefined(); // Improved loading state check
+    screen.debug();
   });
 
   // it('renders user data and search functionality when data is available', async () => {
