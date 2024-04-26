@@ -221,7 +221,7 @@ export const EditRecommendation = () => {
                 </div>
               )}
             </div>
-            <pre> {JSON.stringify(formik.values, null, 2)} </pre>
+            {/* <pre> {JSON.stringify(formik.values, null, 2)} </pre> */}
           </Form>
         );
       }}
