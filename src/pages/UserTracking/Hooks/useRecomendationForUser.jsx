@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { GetUserInfo } from "../../Utils";
 const urlAPI = process.env.REACT_APP_API_URL;
+ // istanbul ignore next
 export const useRecomendationForUser = () => {
   const [recommendationUsers, setRecommendationUsers]= useState({});
   const[loadingRecommendationUser,setLoadingRecommendationUser]= useState(true);

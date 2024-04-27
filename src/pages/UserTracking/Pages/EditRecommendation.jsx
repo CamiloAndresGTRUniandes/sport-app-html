@@ -30,10 +30,10 @@ export const EditRecommendation = () => {
     tracking: {
       kgOfMuscleGained: 0,
       prInFlatBenchPress: 0,
-      cmsInArm:0,
-      prInSquad:0,
+      cmsInArm: 0,
+      prInSquad: 0,
       userId: "",
-      userAsociateId: ""
+      userAsociateId: "",
     },
   };
 
@@ -50,9 +50,8 @@ export const EditRecommendation = () => {
     tracking: Yup.object().shape({
       kgOfMuscleGained: Yup.number().required().min(0).max(50),
       prInFlatBenchPress: Yup.number().required().min(0).max(200),
-      cmsInArm:Yup.number().min(0).required().max(70), 
-      prInSquad:Yup.number().min(0).required().max(200)
-
+      cmsInArm: Yup.number().min(0).required().max(70),
+      prInSquad: Yup.number().min(0).required().max(200),
     }),
   });
 
@@ -116,7 +115,6 @@ export const EditRecommendation = () => {
 
                       <div className="row ">
                         <div className="col-6 animate__animated animate__fadeInLeftBig">
-                        
                           <div className="col-md-6 col-lg-12 col-sm-12 mr-3">
                             <TextBoxEditValidation
                               classDiv={classEditTextBox}
@@ -196,14 +194,14 @@ export const EditRecommendation = () => {
                                   type="text"
                                   formikForm={formik}
                                 />
-                                 <TextBoxEditValidation
+                                <TextBoxEditValidation
                                   classDiv={classEditTextBox}
                                   idText="tracking.cmsInArm"
                                   label="Cms en brazo"
                                   type="text"
                                   formikForm={formik}
                                 />
-                                    <TextBoxEditValidation
+                                <TextBoxEditValidation
                                   classDiv={classEditTextBox}
                                   idText="tracking.prInSquad"
                                   label="PR en sentadilla"
@@ -211,7 +209,6 @@ export const EditRecommendation = () => {
                                   formikForm={formik}
                                 />
                               </div>
-                              
                             </Tab>
                           </Tabs>
                         </div>

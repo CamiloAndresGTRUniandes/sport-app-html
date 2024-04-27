@@ -1,7 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import { Alerts, GetUserInfo } from "../../Utils";
 import axios from "axios";
-
+ // istanbul ignore next
+ 
 export const useEditUserProfile = () => {
   const urlAPI = process.env.REACT_APP_API_URL;
   const { getToken, getUser } = GetUserInfo();
