@@ -52,7 +52,7 @@ export const RecommendationForUser = () => {
                   {!loadingRecommendationUser  &&(
                     <>
                   <div className="schedule-table table-responsive">
-                    <table className="table table-bordered table-striped">
+                    <table className="table table-bordered table-striped" name="tblUser" id="tblUser">
                       <thead>
                         <tr>
                           <th>Usuario</th>
@@ -72,7 +72,7 @@ export const RecommendationForUser = () => {
                     </table>
                   </div>
                   <div className="schedule-table table-responsive">
-                    <table className="table table-bordered table-striped mt-4">
+                    <table className="table table-bordered table-striped mt-4" name="tblRecommendation" id="tblRecommendation">
                       <thead>
                         <tr>
                           <th>Recomendacion</th>
