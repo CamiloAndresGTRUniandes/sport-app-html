@@ -1,73 +1,122 @@
 import React, { useEffect } from "react";
-import { Table, Alert } from "react-bootstrap";
+import { Table, Alert, Button } from "react-bootstrap";
 import { useMealTablePlan } from "../Hooks/useMealTablePlan";
 import { useNavigate } from "react-router-dom";
 import { SpinnerSportApp } from "../../Utils/SpinnerSportApp";
+import { Alerts } from "../../Utils";
 
-const goalId = "9bd21ea0-4fe6-46b4-b974-ba594883ffe0"; // ID del objetivo
+const goalId = "9bd21ea0-4fe6-46b4-b974-ba594883ffe0";
+const { showAlertError } = Alerts();
 
 const MealTablePlan = () => {
-    // Obtiene `handleSubscribe` del Hook para usarlo en el componente.
-    const { initialData, goal, GetDataAsync, mealLoading, error, handleSubscribe } = useMealTablePlan(goalId);
-    const navigate = useNavigate();
+  const {
+    initialData,
+    goal,
+    GetDataAsync,
+    mealLoading,
+    error,
+    handleSubscribe,
+    subscribedUsers,
+  } = useMealTablePlan(goalId);
 
-    useEffect(() => {
-        GetDataAsync();
-    }, []);
+  const navigate = useNavigate();
 
-    if (mealLoading) {
-        return <SpinnerSportApp />;
-    }
+  useEffect(() => {
+    GetDataAsync();
+  }, []);
 
-    if (error) {
-        return <Alert variant="danger">{error}</Alert>;
-    }
+  if (mealLoading) {
+    return <SpinnerSportApp />;
+  }
 
-    return (
-        <Table className="table-responsive-md ck-table mb-5">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Imagen</th>
-                    <th>Objetivo</th>
-                    <th>Descripción</th>
-                    <th>Plan</th>
-                    <th>Suscripción</th>
-                </tr>
-            </thead>
-            <tbody>
-                {Array.isArray(initialData) && initialData.map((item, index) => (
-                    <tr key={index}>
-                        <td
-                            className="highlighted-cell event"
-                            onClick={() => navigate(`/DetailMealTable/${item.productId}`)}
-                        >
-                            {item.name}
-                        </td>
-                        <td className="event">
-                            <img src={item.picture} alt={item.name} width={150} height={150} />
-                        </td>
-                        <td className="event">{goal?.name}</td>
-                        <td>{item.description}</td>
-                        <td>{item.plan?.name}</td>
-                        <td>
-                            <button
-                                className="btn btn-primary shadow-primary btn-skew mt-2"
-                                onClick={() => handleSubscribe(
-                                    item.productId,
-                                    item.plan?.planId,
-                                    item.plan?.name,
-                                    item.plan?.description
-                                )}
-                            >
-                                Suscribirse
-                            </button>
-                        </td>
-                    </tr>
-                ))}
-            </tbody>
-        </Table>
+  if (error) {
+    return <Alert variant="danger">{error}</Alert>;
+  }
+
+  const currentUserStr = sessionStorage.getItem("userLogin");
+  let currentUser = null;
+
+  if (currentUserStr) {
+    currentUser = JSON.parse(currentUserStr);
+  }
+
+  const isSubscribed = (userId, productId) => {
+    return subscribedUsers.some(
+      (user) => user.userId === userId && user.serviceId === productId
     );
+  };
+
+  return (
+    <Table className="table-responsive-md ck-table mb-5">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Imagen</th>
+          <th>Objetivo</th>
+          <th>Descripción</th>
+          <th>Plan</th>
+          <th>Suscripción</th>
+        </tr>
+      </thead>
+      <tbody>
+        {Array.isArray(initialData) &&
+          initialData.map((item, index) => (
+            <tr key={index}>
+              <td
+                className="highlighted-cell event"
+                onClick={() => navigate(`/DetailMealTable/${item.productId}`)}
+              >
+                {item.name}
+              </td>
+              <td>
+                <img
+                  src={item.picture}
+                  alt={item.name}
+                  width={150}
+                  height={150}
+                />
+              </td>
+              <td>{goal?.name}</td>
+              <td>{item.description}</td>
+              <td>{item.plan?.name}</td>
+              <td>
+                <Button
+                  variant="primary"
+                  onClick={() => {
+                    if (currentUser) {
+                      const userId = currentUser.id;
+                      const productId = item.productId;
+
+                      if (isSubscribed(userId, productId)) {
+                        showAlertError(
+                          "Ya estás suscrito",
+                          "No puedes suscribirte nuevamente a este plan."
+                        );
+                      } else {
+                        handleSubscribe({
+                          userId,
+                          userAsociateId: item?.associateUserId || "",
+                          serviceId: productId,
+                          serviceName: item.name,
+                          description: item.description,
+                          planId: item.plan?.id,
+                          categoryId: item.category?.id,
+                          categoryName: item.category?.name,
+                        });
+                      }
+                    } else {
+                      console.error("Usuario no autenticado");
+                    }
+                  }}
+                >
+                  Suscribirse
+                </Button>
+              </td>
+            </tr>
+          ))}
+      </tbody>
+    </Table>
+  );
 };
 
 export default MealTablePlan;

@@ -1,81 +1,92 @@
-import { useState, useEffect } from "react";
+import { useState, useRef } from "react";
 import axios from "axios";
+import { Alerts, GetUserInfo } from "../../Utils";
 
 export const useMealTablePlan = (goalId) => {
-    const urlAPI = process.env.REACT_APP_API_URL_SERVICE;
-    const [initialData, setInitialData] = useState([]);
-    const [goal, setGoal] = useState(null); // Para un solo objetivo
-    const [mealLoading, setMealsLoading] = useState(true);
-    const [error, setError] = useState(null);
+  const urlAPI = process.env.REACT_APP_API_URL_SERVICE;
+  const urlAPI2 = process.env.REACT_APP_API_URL;
+  const { getToken } = GetUserInfo();
+  const token = useRef(getToken());
 
-    const GetDataAsync = async () => {
-        try {
-            setMealsLoading(true);
-            setError(null);
+  const [initialData, setInitialData] = useState([]);
+  const [goal, setGoal] = useState(null);
+  const [mealLoading, setMealsLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const { showAlertSuccess, showAlertError } = Alerts();
+  const [subscribedUsers, setSubscribedUsers] = useState([]);
 
-            const currentUser = JSON.parse(sessionStorage.getItem("userLogin"));
-            const requestData = {
-                serviceTypes: ["01B50F0D-3226-4DF2-B912-4DA4B37D9BD9"],
-            };
+  const GetDataAsync = async () => {
+    try {
+      setMealsLoading(true);
+      setError(null);
 
-            // Solicitud POST para obtener servicios
-            const productServicesResponse = await axios.post(
-                `${urlAPI}/api/v1/productService/getFilteredList`,
-                requestData
-            );
+      const requestData = {
+        serviceTypes: ["01B50F0D-3226-4DF2-B912-4DA4B37D9BD9"],
+      };
 
+      const productServicesResponse = await axios.post(
+        `${urlAPI}/api/v1/productService/getFilteredList`,
+        requestData
+      );
 
-            // Solicitud GET para obtener el objetivo
-            const goalResponse = await axios.get(`${urlAPI}/api/v1/goal/${goalId}`);
-            
+      const goalResponse = await axios.get(`${urlAPI}/api/v1/goal/${goalId}`);
 
-            setInitialData(productServicesResponse.data);
-            console.log(productServicesResponse.data);
-            setGoal(goalResponse.data);
-        } catch (error) {
-            console.error("Error fetching data:", error);
-            setError("Ocurrió un error al cargar datos.");
-        } finally {
-            setMealsLoading(false);
+      setInitialData(productServicesResponse.data);
+      setGoal(goalResponse.data);
+    } catch (error) {
+      console.error("Error al obtener datos:", error);
+      setError("Ocurrió un error al cargar datos.");
+    } finally {
+      setMealsLoading(false);
+    }
+  };
+
+  const handleSubscribe = async (item) => {
+    try {
+      // Verificar si el usuario está suscrito al mismo plan
+      const alreadySubscribed = subscribedUsers.some(
+        (user) => user.userId === item.userId && user.serviceId === item.serviceId
+      );
+
+      if (alreadySubscribed) {
+        showAlertError(
+          "Ya estás suscrito",
+          "No puedes suscribirte nuevamente a este plan."
+        );
+        return; // No procedas con la suscripción
+      }
+
+      const response = await axios.post(
+        `${urlAPI2}/api/V1/EnrollServiceUser`,
+        item,
+        {
+          headers: { Authorization: `Bearer ${token.current}` },
         }
-    };
+      );
 
+      // Agregar al usuario a la lista de suscritos, vinculando el plan y el usuario
+      setSubscribedUsers((prev) => [...prev, { userId: item.userId, serviceId: item.serviceId }]);
 
+      showAlertSuccess(
+        "Suscripción exitosa",
+        "Te has suscrito correctamente."
+      );
 
+    } catch (error) {
+      console.error("Error al suscribirse:", error);
+      showAlertError("Ups :(", "No se pudo suscribir. Inténtalo de nuevo.");
+    }
+  };
 
-    const handleSubscribe = async (productId, planId, serviceName, serviceDescription) => {
-        const currentUser = JSON.parse(sessionStorage.getItem("userLogin"));
-
-        const data = {
-            userId: currentUser.id,
-            userAsociateId: "16cb6738-26d4-4ead-b40b-629a3054bed6",
-            serviceId: productId,
-            serviceName: serviceName,
-            description: serviceDescription,
-            planId: planId,
-            categoryId: "03388722-321f-4b6a-963e-104eb73d17c2", 
-            categoryName: "Planes",
-        };
-
-        try {
-            await axios.post(`${urlAPI}/api/V1/EnrollServiceUser`, data);
-            alert("Suscripción exitosa");
-        } catch (err) {
-            console.error("Error during subscription:", err);
-            alert("Error al suscribirse");
-        }
-    };
-
-
-    return {
-        initialData,
-        goal, // Devuelve un solo objetivo
-        GetDataAsync,
-        mealLoading,
-        error,
-        handleSubscribe
-    };
+  return {
+    initialData,
+    goal,
+    GetDataAsync,
+    mealLoading,
+    error,
+    handleSubscribe,
+    subscribedUsers,
+  };
 };
-
 
 export default useMealTablePlan;
