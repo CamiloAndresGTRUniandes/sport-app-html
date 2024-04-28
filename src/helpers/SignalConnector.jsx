@@ -20,7 +20,7 @@ export const SignalConnector = (showInfo, userId) => {
           console.log("Connection started");
         })
         .catch((err) => console.log("Error while starting connection: " + err));
-      hubConnection.on(`ReceiveMessage${userId}`, (data) => {
+      hubConnection.on(`ReceiveMessageWeb${userId}`, (data) => {
         setDataSignal(data);
       });
     };

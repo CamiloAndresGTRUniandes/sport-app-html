@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Table from "react-bootstrap/Table";
 import { useProductServiceList } from '../Hooks/useProductServiceList';
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { SpinnerSportApp } from "../../Utils/SpinnerSportApp";
 
-const ServicesTable = () => {
+const ServicesTable = ({ searchTerm }) => {
   const {
     initialData,
     GetDataAsync,
@@ -12,17 +12,18 @@ const ServicesTable = () => {
     deleteProductService,
     formatCurrency
   } = useProductServiceList();
-  const navigation = useNavigate();
-
+  const filteredData = initialData.filter(item =>
+    item.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
   useEffect(() => {
     GetDataAsync();
   }, []);
+
   return (
     <>
       {!productsLoading && (
         <Table data-testid="product-services-table" className="table-responsive-md ck-table mb-5">
           <thead>
-
           <tr>
             <th>Nombre</th>
             <th>Producto/Servicio</th>
@@ -33,7 +34,7 @@ const ServicesTable = () => {
           </tr>
         </thead>
         <tbody>
-        {Array.isArray(initialData) && initialData.map((item, index) => (
+        {Array.isArray(filteredData) && filteredData.map((item, index) => (
           <tr className="row_1" key={index}>
             <td className='highlighted-cell event'>{item.name}</td>
             <td className='event'>{item.serviceType.name}</td>

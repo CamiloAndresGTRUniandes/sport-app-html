@@ -207,7 +207,8 @@ export const useCreateProductService = () => {
                 initialProduct.typeOfNutritionId = GuidEmpty;
             }
         }
-    }, [initialProduct]); const changeNewCountry = (countryId) => setNewCountryId(countryId);
+    }, [initialProduct]); 
+    const changeNewCountry = (countryId) => setNewCountryId(countryId);
 
     useEffect(() => {
 

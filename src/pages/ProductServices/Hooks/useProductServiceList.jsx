@@ -8,7 +8,8 @@ export const useProductServiceList = () => {
     const [productsLoading, setProductsLoading] = useState(true);
     const { showAlertSuccess, showAlertError } = Alerts();
     const GuidEmpty = "00000000-0000-0000-0000-000000000000";
-
+    
+    
     const GetDataAsync = async () => {
         try {
             const currentUser = JSON.parse(sessionStorage.getItem("userLogin"));
@@ -57,6 +58,7 @@ export const useProductServiceList = () => {
           currency: 'USD'
         });
       };
+
     return {
         initialData,
         GetDataAsync,
