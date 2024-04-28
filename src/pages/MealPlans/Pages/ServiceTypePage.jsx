@@ -1,16 +1,34 @@
 
 import { IMAGES } from '../../../constants/theme';
 import PageTitle from "../../../elements/PageTitle";
-import MealTablePlan from '../Components/MealTablePlan';
+import MealTablePlan from '../Components/NutritionalPlan/MealTablePlan';
+import { useState,useEffect} from 'react';
+import { useParams } from 'react-router-dom';
 
 
 
-const MealTablePlanPage = () => {
+const ServiceTypePage = () => {
+  
+  const [isNutritionalPlan, setIsNutritionaPlan] = useState(false);
+  const [pageTitle, setPageTitle] = useState('');
+  const {serviceTypeId} = useParams();
+
+  useEffect(() => {
+    switch(serviceTypeId) {
+      case "01b50f0d-3226-4df2-b912-4da4b37d9bd9":
+        setIsNutritionaPlan(true);
+        setPageTitle("Planes alimenticios");
+        break;
+      default:
+        setIsNutritionaPlan(false);
+        setPageTitle("Otros Planes");
+        break;
+    }}, []);
 
   return (
     <>
       <div className="page-content bg-white animate__animated animate__fadeInRightBig">
-        <PageTitle activePage="Planes alimenticios" parentTitle="Planes" />
+        <PageTitle activePage={pageTitle} parentTitle="Servicios" />
         <div
           className=""
           style={{ backgroundImage: "url(" + IMAGES.BgImage1 + ")" }}
@@ -32,7 +50,7 @@ const MealTablePlanPage = () => {
             </div>
             <div className="row">
               <div className="schedule-table table-responsive">
-                <MealTablePlan></MealTablePlan>
+                {isNutritionalPlan && <MealTablePlan></MealTablePlan>}
               </div>
             </div>
           </div>
@@ -42,4 +60,4 @@ const MealTablePlanPage = () => {
   );
 };
 
-export default MealTablePlanPage;
+export default ServiceTypePage;

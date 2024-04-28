@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { Table, Alert, Button } from "react-bootstrap";
-import { useMealTablePlan } from "../Hooks/useMealTablePlan";
+import { useMealTablePlan } from "../../Hooks/NutritionalPlan/useMealTablePlan";
 import { useNavigate } from "react-router-dom";
-import { SpinnerSportApp } from "../../Utils/SpinnerSportApp";
-import { Alerts } from "../../Utils";
+import { SpinnerSportApp } from "../../../Utils/SpinnerSportApp";
+import { Alerts } from "../../../Utils";
 
 const goalId = "9bd21ea0-4fe6-46b4-b974-ba594883ffe0";
 const { showAlertError } = Alerts();

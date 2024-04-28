@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import axios from "axios";
-import { Alerts, GetUserInfo } from "../../Utils";
+import { Alerts, GetUserInfo } from "../../../Utils";
 
 export const useMealTablePlan = (goalId) => {
   const urlAPI = process.env.REACT_APP_API_URL_SERVICE;

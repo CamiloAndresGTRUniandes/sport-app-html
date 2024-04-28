@@ -21,7 +21,7 @@ const ServiceCard = ({ item, hover, setHover,to }) => {
             <Link to={"#"}>{item.name}</Link>
           </h5>
           <Link
-            to={`/services/${item.id}`}
+            to={`/services/serviceType/${item.id}`}
             className="btn btn-primary shadow-primary btn-skew"
           >
             <span>Leer más</span>

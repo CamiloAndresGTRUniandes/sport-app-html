@@ -1,9 +1,9 @@
 import { useParams } from 'react-router-dom';
-import { IMAGES } from "../../../constants/theme";
-import PageTitle from "../../../elements/PageTitle";
-import DetailMealTable from "../Components/DetailMealTable";
+import { IMAGES } from "../../../../constants/theme";
+import PageTitle from "../../../../elements/PageTitle";
+import DetailMealTable from "../../Components/NutritionalPlan/DetailMealTable";
 import React, { useEffect } from "react";
-import { useDetailMealTable } from "../Hooks/useDetailMealTable";
+import { useDetailMealTable } from "../../Hooks/NutritionalPlan/useDetailMealTable";
 import { Alert, Spinner } from "react-bootstrap"; // Agregar Spinner y Alert
 
 const DetailMealTablePage = () => {

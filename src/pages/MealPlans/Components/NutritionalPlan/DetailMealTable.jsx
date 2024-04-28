@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Table from "react-bootstrap/Table";
-import { useDetailMealTable } from "../Hooks/useDetailMealTable";
-import { SpinnerSportApp } from "../../Utils/SpinnerSportApp";
+import { useDetailMealTable } from "../../Hooks/NutritionalPlan/useDetailMealTable";
+import { SpinnerSportApp } from "../../../Utils/SpinnerSportApp";
 import { Alert } from "react-bootstrap";
 
 const DetailMealTable = () => {

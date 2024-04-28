@@ -15,7 +15,7 @@ import Pricing from "./Pricing";
 import Faq from "./Faq";
 import { Schedule } from "./Schedules/Pages/Schedule";
 import ErrorPage from "./ErrorPage";
-import DetailMealTablePage from './MealPlans/Pages/DetailMealTablePage';
+import DetailMealTablePage from './MealPlans/Pages/NutritionalPlan/DetailMealTablePage';
 import UnderConstruction from "./UnderConstruction";
 import ComingSoon from "./ComingSoon";
 import Portfolio from "./Portfolio";
@@ -23,7 +23,7 @@ import PortfolioDetails from "./PortfolioDetails";
 import Services from "./ServicePage/Pages/Service";
 import ServicesDetails from "./ServicesDetails";
 import BlogGrid from "./BlogGrid";
-import MealTablePlanPage from "./MealPlans/Pages/MealTablePlanPage";
+
 import RecomendacionDetailPage from "./Recommendations/Pages/RecommendationDetailPage";
 import BlogLargeSidebar from "./BlogLargeSidebar";
 import BlogListSidebar from "./BlogListSidebar";
@@ -56,6 +56,7 @@ import Pagar from "./Pagar";
 import { CloseSession } from "./Auth/Pages";
 import ListUserTracking from "./UserTracking/Pages/ListUserTracking";
 import { RecommendationForUser, EditRecommendation  } from "./UserTracking/Pages";
+import ServiceTypePage from "./MealPlans/Pages/ServiceTypePage";
 
 
 function Index() {
@@ -125,9 +126,9 @@ function Index() {
           />
           
           <Route
-            path="/services/01b50f0d-3226-4df2-b912-4da4b37d9bd9"
+            path="/services/serviceType/:serviceTypeId"
             exact
-            element={<MealTablePlanPage />}
+            element={<ServiceTypePage />}
           />
 
 
