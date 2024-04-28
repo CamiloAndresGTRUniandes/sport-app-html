@@ -25,10 +25,10 @@ const inicio=
         title: "Preguntas",
         to: "/faq",
       },
-      // {
-      //   title: "Precios",
-      //   to: "/pricing",
-      // },
+      {
+        title: "Precios",
+        to: "/pricing",
+      },
       // {
       //   title: "Calculadora de precios",
       //   to: "/weight-calculator",
@@ -94,7 +94,7 @@ const asociados=
   title: "Asociados",
   classChange: "sub-menu-down",
   content: [
-    { title: "Administrar seguimiento", to: "/AdministrarSeguimiento" },
+    { title: "Administrar seguimiento", to: "/user-tracking" },
     {
       title: "Registro de productos y servicios",
       to: "/product-services",
@@ -113,7 +113,7 @@ const sugerencias=
   content: [
     {
       title: "Tus recomendaciones",
-      to: "/recomendaciones",
+      to: "/RecomendacionesPage",
     },
     {
       title: "Tus planes  alimentarios, deportivos",

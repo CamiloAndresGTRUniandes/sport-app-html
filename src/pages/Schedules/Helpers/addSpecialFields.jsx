@@ -14,7 +14,15 @@ export const addSpecialFields = (events, userId, name) => {
       bgColor: "red",
       className: "event",
       picture:elem.picture,
-
+      productId: elem.productId,
+      name: elem.name,
+      categoryId: elem.category.id,
+      categoryName: elem.category.name,
+      userId:userId,
+      planId: elem.plan.id,
+      planName: elem.plan.name,
+      startDateTime: new Date(elem.startDateTime),
+      endDateTime: new Date(elem.endDateTime),
       user: {
         _id: userId,
         name: name,

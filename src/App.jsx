@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Index from "./pages/Index";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -10,13 +10,28 @@ import "./assets/css/style.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserState, setDefaultUser } from "./store/sessionUser";
 import { useEffect } from "react";
+import { SignalConnector } from "./helpers";
 
 function App() {
   const dispatch = useDispatch();
   const { sessionUser } = useSelector((state) => state);
+  const [userId, setUserId] = useState("");
+
+  const CloseButton = ({ closeToast }) => (
+    <span className=" ml-5 mt-2" onClick={myAlert}>
+      Ir
+    </span>
+  );
+
+  const notify = (values) => {
+    toast.success(values.title, {
+      closeButton: CloseButton,
+    });
+  };
+  const { dataSignal } = SignalConnector(notify, userId);
 
   useEffect(() => {
-    notify();
+    //notify();
     if (sessionUser.userInfo?.name === "") {
       if (sessionStorage.getItem("userLogin")) {
         const userLogin = JSON.parse(localStorage.getItem("userLogin"));
@@ -27,24 +42,22 @@ function App() {
     }
   }, []);
 
+  useEffect(() => {
+    console.log("userInfo useEffect APP", sessionUser);
+    if (
+      sessionUser.userInfo?.id != "" 
+    ) {
+      console.log("new Connection  useEffect APP");
+      setUserId(sessionUser.userInfo?.id);
+    }
+  }, [sessionUser.userInfo?.id]);
+
   const myAlert = (e) => {
     e.preventDefault();
     alert("Go to recomedacion");
   };
 
-  const CloseButton = ({ closeToast }) => (
-    <span className=" ml-5 mt-2" onClick={myAlert}>
-      Ir
-    </span>
-  );
-
-  const notify = () => {
-    toast.success("Tienes una nueva notificacion", {
-      closeButton: CloseButton,
-    });
-  };
-
-
+  console.log("Notify data signal", dataSignal  );
 
   return (
     <>

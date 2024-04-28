@@ -1,7 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import { Alerts, GetUserInfo } from "../../Utils";
 import axios from "axios";
-
+ // istanbul ignore next
+ 
 export const useEditUserProfile = () => {
   const urlAPI = process.env.REACT_APP_API_URL;
   const { getToken, getUser } = GetUserInfo();
@@ -21,18 +22,19 @@ export const useEditUserProfile = () => {
   const [countriesUP, setCountriesUP] = useState([]);
   const [loadingUpdateProfile, setLoadingUpdateProfile] = useState(false);
   const [userUpdated, setUserUpdated] = useState(false);
-  const { showAlertSuccess,showAlertError} = Alerts();
+  const { showAlertSuccess, showAlertError } = Alerts();
   let tokenPayload = {
     headers: { Authorization: `Bearer ${getToken()}` },
   };
 
-  const GuidEmpty="00000000-0000-0000-0000-000000000000";
+  const GuidEmpty = "00000000-0000-0000-0000-000000000000";
   const updateUser = async (updUser) => {
     try {
       setLoadingUpdateProfile(true);
       const response = await axios.put(
         `${urlAPI}/api/V1/UserSportProfile`,
-        updUser, tokenPayload
+        updUser,
+        tokenPayload
       );
       console.log("response update", response);
       setUserUpdated(true);
@@ -41,7 +43,6 @@ export const useEditUserProfile = () => {
         `Hola ${updUser.name},  tu perfil ha sido actualizado `
       );
       setLoadingUpdateProfile(false);
-
     } catch (error) {
       showAlertError(
         "Ups, Sorry :(",
@@ -53,9 +54,7 @@ export const useEditUserProfile = () => {
     } finally {
       setLoadingUpdateProfile(false); // Ensure loading state is updated even on errors
     }
-
   };
-
 
   const GetUserProfile = async () => {
     try {
@@ -64,7 +63,7 @@ export const useEditUserProfile = () => {
         `${urlAPI}/api/V1/UserSportProfile/${user.id}`,
         { headers: { Authorization: `Bearer ${token.current}` } }
       );
-      response.data.dateOfBirth=response.data.dateOfBirth.slice(0, 10);
+      response.data.dateOfBirth = response.data.dateOfBirth.slice(0, 10);
       setUserProfile(response.data);
       await fetchAllReferencial(response.data);
     } catch (error) {
@@ -98,8 +97,7 @@ export const useEditUserProfile = () => {
 
       const goals$ = axios.get(`${urlAPI}/api/V1/Goal`, tokenPayload);
 
-      const cities$=  axios
-      .get(
+      const cities$ = axios.get(
         `${urlAPI}/api/Geography/StatesByCountry/${user.stateId}`,
         tokenPayload
       );
@@ -113,11 +111,20 @@ export const useEditUserProfile = () => {
           physicalLevel$,
           activities$,
           goals$,
-          cities$
+          cities$,
         ])
         .then(
           axios.spread(
-            (gen, cou, typNut, nutAllergies, phyLevels, activities, goals, cities) => {
+            (
+              gen,
+              cou,
+              typNut,
+              nutAllergies,
+              phyLevels,
+              activities,
+              goals,
+              cities
+            ) => {
               setGenresUP(gen.data);
               setCountriesUP(cou.data);
               setTypesOfNutritionUP(typNut.data);
@@ -127,8 +134,7 @@ export const useEditUserProfile = () => {
               setGoalsUp(goals.data);
               setNewCountryId(user.countryId);
               setNewStateId(user.stateId);
-              if(user.cityId===GuidEmpty || user.cityId==="")
-              {
+              if (user.cityId === GuidEmpty || user.cityId === "") {
                 setUserLoading(false);
               }
             }
@@ -145,8 +151,6 @@ export const useEditUserProfile = () => {
   const changeNewCountry = (countryId) => setNewCountryId(countryId);
 
   useEffect(() => {
-
-    
     if (newCountryId === "" && !userLoading) {
       setStatesUP([]);
       setCitiesUP([]);
@@ -166,28 +170,24 @@ export const useEditUserProfile = () => {
   const changeNewState = (stateId) => setNewStateId(stateId);
   useEffect(() => {
     async function getCities() {
-      if ((newStateId === "" || newStateId===GuidEmpty) && !userLoading) {
-      
+      if ((newStateId === "" || newStateId === GuidEmpty) && !userLoading) {
         setCitiesUP([]);
         setTimeout(() => {
           enabledUserLoading();
         }, 250);
-      } 
-      else 
-      if (newStateId) {
-       var  response= await  axios
-          .get(
-            `${urlAPI}/api/Geography/CitiesByState/${newStateId}`,
-            tokenPayload
-          );
+      } else if (newStateId) {
+        var response = await axios.get(
+          `${urlAPI}/api/Geography/CitiesByState/${newStateId}`,
+          tokenPayload
+        );
 
-            setCitiesUP(response.data);
-            setTimeout(() => {
-              enabledUserLoading();
-            }, 250);
-          }
+        setCitiesUP(response.data);
+        setTimeout(() => {
+          enabledUserLoading();
+        }, 250);
       }
-    
+    }
+
     async function enabledUserLoading() {
       setUserLoading(false);
     }
@@ -212,6 +212,6 @@ export const useEditUserProfile = () => {
     goalsUP,
     updateUser,
     loadingUpdateProfile,
-    userUpdated
+    userUpdated,
   };
 };

@@ -5,6 +5,7 @@ const ServiceCard = ({ item, hover, setHover,to }) => {
   return (
     <div className="col-xl-3 col-md-6 m-b30" key={item.id}>
       <div
+        data-testid="service-card-wrapper"
         className={`icon-bx-wraper style-1 box-hover ${
           hover === item.id ? "active" : ""
         }`}

@@ -18,11 +18,13 @@ export const useCreateProductService = () => {
     const [loadingUpdateProfile, setLoadingUpdateProduct] = useState(false);
     const [productCreated, setProductCreated] = useState(false);
     const [eventSelected, setEventSelected] = useState(false);
+    const [planSelected, setPlanSelected] = useState(false);
     const { showAlertSuccess, showAlertError } = Alerts();
     const [productLoading, setProductLoading] = useState(true);
     const [physicalLevelsUP, setPhysicalLevels] = useState([]);
     const [newCountryId, setNewCountryId] = useState(null);
     const [newStateId, setNewStateId] = useState(null);
+    const [isEdit, setIsEdit] = useState(false);
     const [newCityId, setNewCityId] = useState(null);
     const [newCategoryId, setNewCategoryId] = useState(null);
     const GuidEmpty = "00000000-0000-0000-0000-000000000000";
@@ -36,7 +38,6 @@ export const useCreateProductService = () => {
                 `${urlAPI}/api/v1/productService`,
                 updProduct
             );
-            console.log("response update product", response);
             setProductCreated(true);
             showAlertSuccess(
                 "Felicitaciones :)",
@@ -72,11 +73,11 @@ export const useCreateProductService = () => {
             let product = {};
             if (productId) {
                 product = axios.get(`${urlAPI}/api/v1/productService/${productId}`);
+                setIsEdit(true);
             } else {
                 let date = new Date(Date.now());
                 let dateString = new Date(date.getTime() - (date.getTimezoneOffset() * 60000))
-                    .toISOString()
-                    .split("T")[0];
+                    .toISOString();
                 product = {
                     data: {
                         productId: GuidEmpty,
@@ -96,7 +97,26 @@ export const useCreateProductService = () => {
                         goals: [],
                         allergies: [],
                         startDateTime: dateString,
-                        endDateTime: dateString
+                        endDateTime: dateString,
+                        nutritionalPlan: {
+                            days: [
+                                {
+                                    id: GuidEmpty,
+                                    name: "",
+                                    meals: [
+                                        {
+                                            id: GuidEmpty,
+                                            name: "",
+                                            description: "",
+                                            calories: 0,
+                                            dishType: "",
+                                            picture: ""
+                                        }
+                                    ]
+                                }
+
+                            ]
+                        }
                     }
                 }
             }
@@ -164,21 +184,13 @@ export const useCreateProductService = () => {
         if (initialProduct) {
             if (initialProduct.productId != '' && initialProduct.productId != GuidEmpty && initialProduct.productId != null) {
                 initialProduct.user = currentUser.id;
-                if (initialProduct.categoryId) {
-                    setNewCategoryId(initialProduct.categoryId);
-                    initialProduct.serviceTypeId = initialProduct.serviceTypeId;
+                initialProduct.planId = initialProduct.plan.id;
+                if (initialProduct.category.id) {
+                    initialProduct.categoryId = initialProduct.category.id;
+                    setNewCategoryId(initialProduct.category.id);
+                    initialProduct.serviceTypeId = initialProduct.serviceType.id;
                 }
-                if (initialProduct.categoryId === 'be8e2306-8bc9-49cc-8d43-a76820370994') {
-                    const startDate = new Date(initialProduct.startDateTime);
-                    const startDateString = new Date(startDate.getTime() - (startDate.getTimezoneOffset() * 60000))
-                        .toISOString()
-                        .split("T")[0];
-                    const endDate = new Date(initialProduct.endDateTime);
-                    const endDateString = new Date(endDate.getTime() - (endDate.getTimezoneOffset() * 60000))
-                        .toISOString()
-                        .split("T")[0];
-                    initialProduct.startDateTime = startDateString;
-                    initialProduct.endDateTime = endDateString;
+                if (initialProduct.category.id === 'be8e2306-8bc9-49cc-8d43-a76820370994') {
                     setEventSelected(true);
                 } else {
                     setEventSelected(false);
@@ -186,7 +198,7 @@ export const useCreateProductService = () => {
                 if (initialProduct.countryId) {
                     setNewCountryId(initialProduct.countryId);
                     if (initialProduct.stateId) {
-                        setNewStateId(initialProduct.stateId);
+                        changeNewState(initialProduct.stateId);
                         initialProduct.cityId = initialProduct.cityId;
                     }
                 }
@@ -194,11 +206,8 @@ export const useCreateProductService = () => {
             if (initialProduct.typeOfNutritionId === null) {
                 initialProduct.typeOfNutritionId = GuidEmpty;
             }
-            if (initialProduct.serviceTypeId) {
-                initialProduct.serviceTypeId = GuidEmpty;
-            }
         }
-    }, [initialProduct]);
+    }, [initialProduct]); 
     const changeNewCountry = (countryId) => setNewCountryId(countryId);
 
     useEffect(() => {
@@ -271,8 +280,15 @@ export const useCreateProductService = () => {
 
                     if (newCategoryId === 'be8e2306-8bc9-49cc-8d43-a76820370994') {
                         setEventSelected(true);
-                    } else {
+                        setPlanSelected(false);
+                    }
+                    else if (newCategoryId === '03388722-321f-4b6a-963e-104eb73d17c2') {
+                        setPlanSelected(true);
                         setEventSelected(false);
+                    }
+                    else {
+                        setEventSelected(false);
+                        setPlanSelected(false);
                     }
 
                     setServiceTypesUP(response.data);
@@ -288,7 +304,7 @@ export const useCreateProductService = () => {
 
         getServiceTypes();
     }, [newCategoryId]);
-
+    
     return {
         initialProduct,
         GetInitialInformation,
@@ -311,6 +327,9 @@ export const useCreateProductService = () => {
         serviceTypesUP,
         changeNewCategory,
         plansUp,
-        eventSelected
+        eventSelected,
+        planSelected,
+        GuidEmpty,
+        isEdit
     };
 };
