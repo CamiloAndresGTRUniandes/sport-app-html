@@ -15,7 +15,7 @@ const RecomendacionDetail = () => {
       <PageTitle activePage={recommendationDetail.title} parentTitle={recommendationDetail.title}  />
   
       {loading ? (
-        <p>Cargando...</p>
+        <p>Cargando....</p>
       ) : (
         <RecommendationDetailPresentation recommendationDetail={recommendationDetail} />
       )}
