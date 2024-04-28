@@ -40,25 +40,26 @@ const RecommendationCard = ({ item, onCardClick }) => {
             <ul>
               <li className="post-author img-recommendation">
                 <Link to="#">
-                  <img src={item.image} alt="" /> <span>Por {item.name}</span>
+                  <img src={item.image} alt="" />
+                  <span>Por:{item.userAsociate.name}</span>
                 </Link>
               </li>
-              <li className="post-date">
-              <Link to="#"> {formattedDate}</Link>
-              </li>
+              <br />
+              <li className="post-date"><Link to={"#"}> Fecha:{formattedDate}</Link></li>
             </ul>
           </div>
+
           <h4 className="dz-title">
             <Link to={`/Recomendacion-Detail/${item.id}`}>{item.title}</Link>
           </h4>
           <OverlayTrigger
-            trigger={['hover', 'focus']} // Esto muestra el popover al pasar el cursor
+            trigger={['hover', 'focus']} 
             placement="top"
             overlay={popover}
           >
             <p>
               {shortDescription}
-              {hasMore ? '...' : ''} {/* Mostrar "..." si hay más texto */}
+              {hasMore ? '...' : ''} 
             </p>
           </OverlayTrigger>
           <div className="dz-button recommendation">
