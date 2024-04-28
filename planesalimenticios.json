@@ -1,0 +1,155 @@
+{
+    "planes_alimenticios": [
+      {
+        "id": 1,
+        "tipo": "Perder peso",
+        "descripcion": "Este plan se centra en reducir la ingesta calórica y promover el consumo de alimentos bajos en calorías y ricos en nutrientes.",
+        "imagen": "https://images.ecestaticos.com/1_fRqu0ZQGECNrsRSi4Iq7fxEJc=/0x0:2121x1414/1200x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F30e%2F313%2F679%2F30e3136799d45e8f2506b556e72b2959.jpg",
+        "menu_semanal": {
+          "Lunes": {
+            "desayuno": "Avena con frutas",
+            "almuerzo": "Ensalada de pollo con vegetales",
+            "cena": "Pescado a la plancha con espárragos",
+            "snacks": "Yogur griego con nueces"
+          },
+          "Martes": {
+            "desayuno": "Batido de frutas y espinacas",
+            "almuerzo": "Sopa de lentejas con ensalada verde",
+            "cena": "Tortilla de claras con espinacas",
+            "snacks": "Palitos de zanahoria con hummus"
+          },
+          "Miércoles": {
+            "desayuno": "Tostadas integrales con aguacate",
+            "almuerzo": "Pechuga de pollo a la parrilla con quinoa",
+            "cena": "Ensalada de salmón ahumado",
+            "snacks": "Frutas frescas"
+          },
+          "Jueves": {
+            "desayuno": "Yogur natural con granola",
+            "almuerzo": "Pavo al horno con verduras al vapor",
+            "cena": "Revuelto de tofu con champiñones",
+            "snacks": "Puñado de almendras"
+          },
+          "Viernes": {
+            "desayuno": "Pan integral con tomate y aceite de oliva",
+            "almuerzo": "Ensalada de garbanzos con atún",
+            "cena": "Salmón al horno con brócoli al vapor",
+            "snacks": "Hummus con palitos de apio"
+          },
+          "Sábado": {
+            "desayuno": "Smoothie de proteínas",
+            "almuerzo": "Wrap de pollo con verduras",
+            "cena": "Ensalada tailandesa de pepino",
+            "snacks": "Batido de proteínas"
+          },
+          "Domingo": {
+            "desayuno": "Tortitas de avena con plátano",
+            "almuerzo": "Arroz integral con salmón a la parrilla",
+            "cena": "Ensalada de quinoa con aguacate",
+            "snacks": "Galletas de arroz con mantequilla de almendra"
+          }
+        }
+      },
+      {
+        "id": 2,
+        "tipo": "Mantenimiento de peso",
+        "descripcion": "Este plan es para mantener un peso saludable después de haber alcanzado los objetivos de pérdida de peso.",
+        "imagen": "https://content.clara.es/medio/2024/04/01/dieta-para-perder-peso-facil-efectiva-sana_00000000_004dd38e_240401085047_1280x720.jpg",
+        "menu_semanal": {
+          "Lunes": {
+            "desayuno": "Huevos revueltos con espinacas",
+            "almuerzo": "Sándwich de pavo y aguacate",
+            "cena": "Pasta integral con verduras",
+            "snacks": "Frutos secos"
+          },
+          "Martes": {
+            "desayuno": "Yogur griego con miel y nueces",
+            "almuerzo": "Ensalada de quinoa y garbanzos",
+            "cena": "Pescado al horno con espárragos",
+            "snacks": "Palitos de zanahoria con hummus"
+          },
+          "Miércoles": {
+            "desayuno": "Batido de proteínas",
+            "almuerzo": "Wrap de pollo con aguacate",
+            "cena": "Ensalada de salmón y aguacate",
+            "snacks": "Frutas frescas"
+          },
+          "Jueves": {
+            "desayuno": "Tostadas integrales con mantequilla de almendra",
+            "almuerzo": "Ensalada de pollo con vinagreta balsámica",
+            "cena": "Sopa de verduras",
+            "snacks": "Yogur natural con granola"
+          },
+          "Viernes": {
+            "desayuno": "Tortitas de avena con plátano",
+            "almuerzo": "Arroz integral con verduras al curry",
+            "cena": "Pechuga de pollo a la parrilla con espárragos",
+            "snacks": "Hummus con palitos de apio"
+          },
+          "Sábado": {
+            "desayuno": "Smoothie de frutas y espinacas",
+            "almuerzo": "Ensalada de garbanzos con atún",
+            "cena": "Pasta integral con salsa marinara",
+            "snacks": "Batido de proteínas"
+          },
+          "Domingo": {
+            "desayuno": "Huevos cocidos con aguacate",
+            "almuerzo": "Pollo al horno con patatas asadas",
+            "cena": "Ensalada de quinoa con verduras asadas",
+            "snacks": "Puñado de almendras"
+          }
+        }
+      },
+      {
+        "id": 3,
+        "tipo": "Ganar masa muscular",
+        "descripcion": "Este plan se centra en aumentar la ingesta calórica y la cantidad de proteínas para promover el crecimiento muscular.",
+        "imagen": "https://static.tuasaude.com/media/article/ug/ao/alimentos-para-ganar-masa-muscular_20069_l.jpg",
+        "menu_semanal": {
+          "Lunes": {
+            "desayuno": "Batido de proteínas",
+            "almuerzo": "Filete de ternera a la plancha con arroz integral",
+            "cena": "Pechuga de pollo al horno con patatas",
+            "snacks": "Batido de proteínas"
+          },
+          "Martes": {
+            "desayuno": "Tortilla de claras con espinacas",
+            "almuerzo": "Salmón al horno con quinoa",
+            "cena": "Filete de pavo a la plancha con batata asada",
+            "snacks": "Yogur griego con nueces"
+          },
+          "Miércoles": {
+            "desayuno": "Avena con plátano y almendras",
+            "almuerzo": "Pollo al curry con arroz integral",
+            "cena": "Hamburguesas de pavo caseras con ensalada",
+            "snacks": "Huevos duros"
+          },
+          "Jueves": {
+            "desayuno": "Batido de proteínas con espinacas",
+            "almuerzo": "Lomo de cerdo a la plancha con puré de boniato",
+            "cena": "Salmón a la parrilla con espárragos",
+            "snacks": "Palitos de zanahoria con hummus"
+          },
+          "Viernes": {
+            "desayuno": "Tostadas integrales con aguacate y huevo",
+            "almuerzo": "Ternera guisada con patatas y verduras",
+            "cena": "Ensalada de quinoa con pollo a la parrilla",
+            "snacks": "Frutos secos"
+          },
+          "Sábado": {
+            "desayuno": "Batido de proteínas con plátano",
+            "almuerzo": "Filete de salmón a la parrilla con ensalada",
+            "cena": "Filete de ternera con patatas al horno",
+            "snacks": "Yogur griego con frutas"
+          },
+          "Domingo": {
+            "desayuno": "Huevos revueltos con espinacas y aguacate",
+            "almuerzo": "Pollo asado con quinoa y verduras",
+            "cena": "Pescado a la plancha con puré de batata",
+            "snacks": "Batido de proteínas"
+          }
+        }
+      }
+    ]
+  
+}

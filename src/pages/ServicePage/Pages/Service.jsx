@@ -27,6 +27,7 @@ export const Services = () => {
                     item={item}
                     hover={hover}
                     setHover={setHover}
+                    
                   />
                 ))}
               </div>

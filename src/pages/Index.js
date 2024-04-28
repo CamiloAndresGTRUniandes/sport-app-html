@@ -15,6 +15,7 @@ import Pricing from "./Pricing";
 import Faq from "./Faq";
 import { Schedule } from "./Schedules/Pages/Schedule";
 import ErrorPage from "./ErrorPage";
+import DetailMealTablePage from './MealPlans/Pages/NutritionalPlan/DetailMealTablePage';
 import UnderConstruction from "./UnderConstruction";
 import ComingSoon from "./ComingSoon";
 import Portfolio from "./Portfolio";
@@ -22,6 +23,7 @@ import PortfolioDetails from "./PortfolioDetails";
 import Services from "./ServicePage/Pages/Service";
 import ServicesDetails from "./ServicesDetails";
 import BlogGrid from "./BlogGrid";
+
 import RecomendacionDetailPage from "./Recommendations/Pages/RecommendationDetailPage";
 import BlogLargeSidebar from "./BlogLargeSidebar";
 import BlogListSidebar from "./BlogListSidebar";
@@ -54,6 +56,7 @@ import Pagar from "./Pagar";
 import { CloseSession } from "./Auth/Pages";
 import ListUserTracking from "./UserTracking/Pages/ListUserTracking";
 import { RecommendationForUser, EditRecommendation  } from "./UserTracking/Pages";
+import ServiceTypePage from "./MealPlans/Pages/ServiceTypePage";
 
 
 function Index() {
@@ -121,6 +124,20 @@ function Index() {
             exact
             element={<ProductServiceEdit />}
           />
+          
+          <Route
+            path="/services/serviceType/:serviceTypeId"
+            exact
+            element={<ServiceTypePage />}
+          />
+
+
+          <Route
+            path="/DetailMealTable/:productId"
+            exact
+            element={<DetailMealTablePage />}
+          />
+
            <Route
             path="/Recomendacion-Detail/:id"
             exact
