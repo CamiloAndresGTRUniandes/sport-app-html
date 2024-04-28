@@ -15,6 +15,7 @@ import Pricing from "./Pricing";
 import Faq from "./Faq";
 import { Schedule } from "./Schedules/Pages/Schedule";
 import ErrorPage from "./ErrorPage";
+import DetailMealTablePage from './MealPlans/Pages/NutritionalPlan/DetailMealTablePage';
 import UnderConstruction from "./UnderConstruction";
 import ComingSoon from "./ComingSoon";
 import Portfolio from "./Portfolio";
@@ -22,7 +23,9 @@ import PortfolioDetails from "./PortfolioDetails";
 import Services from "./ServicePage/Pages/Service";
 import ServicesDetails from "./ServicesDetails";
 import BlogGrid from "./BlogGrid";
+
 import RecomendacionDetailPage from "./Recommendations/Pages/RecommendationDetailPage";
+import ReceiveTrackingDetailPage from "./ReceiveTracking/Pages/ReceiveTrackingDetailPage";
 import BlogLargeSidebar from "./BlogLargeSidebar";
 import BlogListSidebar from "./BlogListSidebar";
 import BlogDetail from "./BlogDetail";
@@ -38,11 +41,12 @@ import Home3 from "./Home3";
 import UserProfile from "./User/Pages/UserProfile";
 import ServicesDetailsTable from "./ServicesDetailsTable";
 import RecommendationPage from "./Recommendations/Pages/RecommendationPage";
+import ReceiveTrackingPage from "./ReceiveTracking/Pages/ReceiveTrackingPage";
 import Recomendaciones from "./Recomendaciones";
 import RecomendacionDetail from "./RecomendacionDetail";
 import RecomendacionPlanDepor from "./RecomendacionPlanDepor";
 import AsociacionTerceros from "./AsociacionTerceros";
-import Seguimientos from "./Seguimientos";
+import Seguimientos from "./ReceiveTracking/Pages/ReceiveTrackingPage";
 import ServiciosProductos from "./ServiciosProductos";
 import EdicionServiciosProductos from "./EdicionServiciosProductos";
 import EdicionRecomendacion from "./EdicionRecomendacion";
@@ -54,6 +58,7 @@ import Pagar from "./Pagar";
 import { CloseSession } from "./Auth/Pages";
 import ListUserTracking from "./UserTracking/Pages/ListUserTracking";
 import { RecommendationForUser, EditRecommendation  } from "./UserTracking/Pages";
+import ServiceTypePage from "./MealPlans/Pages/ServiceTypePage";
 
 
 function Index() {
@@ -90,6 +95,7 @@ function Index() {
           <Route path="/user-profile" exact element={<UserProfile />} />
           <Route path="close-session" exact element={<CloseSession />} />
           <Route path="/RecomendacionesPage" exact element={<RecommendationPage />} />
+          <Route path="/ReceiveTrackingPage" exact element={<ReceiveTrackingPage />} />
           <Route path="/user-tracking/:id" exact element={<RecommendationForUser />} />
           <Route path="/edit-recommendation/:id" exact element={<EditRecommendation />} />
 
@@ -121,10 +127,30 @@ function Index() {
             exact
             element={<ProductServiceEdit />}
           />
+          
+          <Route
+            path="/services/serviceType/:serviceTypeId"
+            exact
+            element={<ServiceTypePage />}
+          />
+
+
+          <Route
+            path="/DetailMealTable/:productId"
+            exact
+            element={<DetailMealTablePage />}
+          />
+
            <Route
             path="/Recomendacion-Detail/:id"
             exact
             element={<RecomendacionDetailPage />}
+          />
+
+            <Route
+            path="/Seguimiento-Detail/:id"
+            exact
+            element={<ReceiveTrackingDetailPage />}
           />
           <Route
             path="/edit-product-services/"
