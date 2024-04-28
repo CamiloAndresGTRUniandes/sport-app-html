@@ -59,6 +59,7 @@ import { CloseSession } from "./Auth/Pages";
 import ListUserTracking from "./UserTracking/Pages/ListUserTracking";
 import { RecommendationForUser, EditRecommendation  } from "./UserTracking/Pages";
 import ServiceTypePage from "./MealPlans/Pages/ServiceTypePage";
+import PricingPage from "./Subscriptions/Pages/PricingPage";
 
 
 function Index() {
@@ -89,7 +90,7 @@ function Index() {
           <Route path="/about-us" exact element={<AboutUs />} />
           <Route path="/team" exact element={<Team />} />
           <Route path="/faq" exact element={<Faq />} />
-          <Route path="/pricing" exact element={<Pricing />} />
+          <Route path="/pricing" exact element={<PricingPage />} />
           <Route path="/schedule" exact element={<Schedule />} />
           <Route path="/portfolio" exact element={<Portfolio />} />
           <Route path="/user-profile" exact element={<UserProfile />} />
