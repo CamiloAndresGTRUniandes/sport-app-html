@@ -48,7 +48,7 @@ const PricingCard = () => {
                             </ul>
                             <div className="pricingtable-footer">
                                 <Link
-                                    to={"/contact-us"}
+                                    to={`/subscription/${data.id}`}
                                     className="btn btn-primary btn-skew">
                                     <span>Comprar</span></Link>
                             </div>

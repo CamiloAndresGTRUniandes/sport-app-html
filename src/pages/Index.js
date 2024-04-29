@@ -60,6 +60,7 @@ import ListUserTracking from "./UserTracking/Pages/ListUserTracking";
 import { RecommendationForUser, EditRecommendation  } from "./UserTracking/Pages";
 import ServiceTypePage from "./MealPlans/Pages/ServiceTypePage";
 import PricingPage from "./Subscriptions/Pages/PricingPage";
+import SubscriptionPage from "./Subscriptions/Pages/SubscriptionPage";
 
 
 function Index() {
@@ -91,6 +92,7 @@ function Index() {
           <Route path="/team" exact element={<Team />} />
           <Route path="/faq" exact element={<Faq />} />
           <Route path="/pricing" exact element={<PricingPage />} />
+          <Route path="/subscription/:planId" exact element={<SubscriptionPage />} />
           <Route path="/schedule" exact element={<Schedule />} />
           <Route path="/portfolio" exact element={<Portfolio />} />
           <Route path="/user-profile" exact element={<UserProfile />} />
