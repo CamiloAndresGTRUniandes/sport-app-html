@@ -33,11 +33,11 @@ class PageObject {
     });
   }
 
-  generateAction(modulo, elemento, evento, valor='') {
+  generateAction(modulo, elemento, evento, valor = '') {
     Cypress.on("uncaught:exception", (err, runnable) => {
       return false;
     });
-    var value="";
+    var value = "";
     switch (evento) {
       case "click":
         this.eventoClick(modulo, elemento);
@@ -46,7 +46,7 @@ class PageObject {
         this.eventLoadPage(modulo, elemento);
         break;
       case "type":
-        value=this.eventType(modulo, elemento);
+        value = this.eventType(modulo, elemento);
         break;
       case "select":
         this.eventSelect(modulo, elemento, valor);
@@ -77,10 +77,10 @@ class PageObject {
 
 
 
-  generateActionTypeValue(modulo, elemento,value='') {
+  generateActionTypeValue(modulo, elemento, value = '') {
     this.eventTypeValue(modulo, elemento, value);
   }
-  eventHover(modulo, elemento){
+  eventHover(modulo, elemento) {
     let elem = this.getElement(elemento, modulo);
     console.log(elem);
     cy.xpath(elem.dirpath).trigger('mouseover');
@@ -105,7 +105,7 @@ class PageObject {
     cy.xpath(elem.dirpath).type(valorFake);
     return valorFake;
   }
-  eventTypeValue(modulo, elemento, value='') {
+  eventTypeValue(modulo, elemento, value = '') {
     let elem = this.getElement(elemento, modulo);
     console.log("valor", value);
     cy.xpath(elem.dirpath).clear();
@@ -113,13 +113,12 @@ class PageObject {
   }
 
 
-  eventSelect(modulo, elemento, value='') {
+  eventSelect(modulo, elemento, value = '') {
     let elem = this.getElement(elemento, modulo);
-    if(value=='')
-    {
+    if (value == '') {
       cy.xpath(elem.dirpath).select("100").should("have.value", "100");
     }
-    else{
+    else {
       cy.xpath(elem.dirpath).select(value).should("have.value", value);
     }
   }
@@ -155,7 +154,7 @@ class PageObject {
       case "name":
         return faker.name.firstName();
       case "lastName":
-          return faker.name.lastName();  
+        return faker.name.lastName();
       case "description":
         return faker.lorem.paragraph();
       case "country":
@@ -167,7 +166,7 @@ class PageObject {
       case "year":
         return faker.datatype.number({ min: 1950, max: 2022 });
       case "phone":
-           return faker.datatype.number({ min: 3002001010, max: 3242001010 });
+        return faker.datatype.number({ min: 3002001010, max: 3242001010 });
       case "type":
         return faker.music.genre();
       case "search movement":
@@ -178,14 +177,16 @@ class PageObject {
         return faker.internet.url();
 
       case "email":
-          return faker.internet.email();
+        return faker.internet.email();
       case "date":
         let year = faker.datatype.number({ min: 1950, max: 2022 });
         let month = faker.datatype.number({ min: 1, max: 12 });
         let day = faker.datatype.number({ min: 1, max: 30 });
-        return `${year}-${month<10 ? "0"+ month : month}-${day<10 ? "0"+day : day}`;
+        return `${year}-${month < 10 ? "0" + month : month}-${day < 10 ? "0" + day : day}`;
       case "size":
         return faker.datatype.number({ min: 300, max: 1024 });
+      case "number less 50":
+        return faker.datatype.number({ min: 1, max: 50 });
 
     }
   }

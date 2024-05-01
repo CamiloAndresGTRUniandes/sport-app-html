@@ -23,10 +23,27 @@ class InfoConstants {
     return "c6681461-0abf-454d-80f9-686071e54dea";
   }
 
-  getPhisycalLevel()
-  {
-        return "a75fcf31-da27-4ac6-b914-9cdb12776cd2"; 
+  getPhisycalLevel() {
+    return "a75fcf31-da27-4ac6-b914-9cdb12776cd2";
   }
+
+  getEmailAsociate() {
+    return "andresasociado2@test.com";
+  }
+
+  getKeyAsociate() {
+    return "Andres123*";
+  }
+
+  getImageTest() {
+    return "https://vz.cnwimg.com/wp-content/uploads/2014/01/Alexandra-Daddario.jpg";
+  }
+
+  getTrackingId() {
+    return "f3510145-7a12-448a-b4ae-9cf65dfce907";
+  }
+
+
 }
 
 
