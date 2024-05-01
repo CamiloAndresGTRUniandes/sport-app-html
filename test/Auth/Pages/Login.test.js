@@ -15,7 +15,7 @@ jest.mock('react-router-dom', () => {
     useNavigate: jest.fn(() => jest.fn()),
   };
 });
-jest.mock('../../../src/pages/Auth/hooks/useLogin');
+jest.mock('../../../src/pages/Auth/Hooks/useLogin');
 jest.mock('react-dom', () => ({
   ...jest.requireActual('react-dom'),
   render: jest.fn(),
