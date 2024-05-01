@@ -21,7 +21,8 @@ describe("Register", () => {
       var email=  pageObj.generateAction("register","txtEmail","type");
       pageObj.generateActionTypeValue("register","txtPassword",password);
       pageObj.generateActionTypeValue("register","txtConfirmPassword",password);
-      pageObj.generateAction("register","btnRegister","click");
+      //pageObj.generateAction("register","btnRegister","click");
+      cy.get(".btn-primary > span").click();
       pageObj.waiting(3500);
       pageObj.generateActionTypeValue("login", "txtEmail",email);
       pageObj.waiting(1000);
