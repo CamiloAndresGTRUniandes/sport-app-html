@@ -13,12 +13,22 @@ jobs:
   test_job:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
     runs-on: ubuntu-latest
-    name: Test Job
+
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18.20.2
+
       - name: Install dependencies
+        run: npm install --legacy-peer-deps
+
+      - name: Verify test execution
         run: |
-          npm install --legacy-peer-deps
-          npm test
+            npx jest
   build_and_deploy_job:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
     runs-on: ubuntu-latest
