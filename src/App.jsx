@@ -17,24 +17,15 @@ function App() {
   const { sessionUser } = useSelector((state) => state);
   const [userId, setUserId] = useState("");
 
-  const CloseButton = ({ closeToast }) => (
-    <span className=" ml-5 mt-2" onClick={myAlert}>
-      Ir
-    </span>
-  );
-
-  const notify = (values) => {
-    toast.success(values.title, {
-      closeButton: CloseButton,
-    });
-  };
-  const { dataSignal } = SignalConnector(notify, userId);
+  const { dataSignal } = SignalConnector(userId);
 
   useEffect(() => {
-    //notify();
-    if (sessionUser.userInfo?.name === "") {
+    if (
+      sessionUser.userInfo?.id == "" ||
+      sessionUser.userInfo?.id == undefined
+    ) {
       if (sessionStorage.getItem("userLogin")) {
-        const userLogin = JSON.parse(localStorage.getItem("userLogin"));
+        const userLogin = JSON.parse(sessionStorage.getItem("userLogin"));
         dispatch(setUserState(userLogin));
       } else {
         dispatch(setDefaultUser());
@@ -44,21 +35,11 @@ function App() {
 
   useEffect(() => {
     console.log("userInfo useEffect APP", sessionUser);
-    if (
-      sessionUser.userInfo?.id != "" 
-    ) {
-      console.log("new Connection  useEffect APP");
+    if (sessionUser.userInfo?.id != "") {
       setUserId(sessionUser.userInfo?.id);
     }
   }, [sessionUser.userInfo?.id]);
-
-  const myAlert = (e) => {
-    e.preventDefault();
-    alert("Go to recomedacion");
-  };
-
-  console.log("Notify data signal", dataSignal  );
-
+  console.log("Data signal", dataSignal);
   return (
     <>
       <Index />

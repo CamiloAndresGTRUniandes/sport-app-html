@@ -3,7 +3,7 @@ import * as signalR from "@microsoft/signalr";
 import { Alerts } from "../pages/Utils";
 const urlSignal = process.env.REACT_APP_SIGNALR;
 
-export const SignalConnector = (showInfo, userId) => {
+export const SignalConnector = (userId) => {
   const [dataSignal, setDataSignal] = useState();
   const { showToast } = Alerts();
   let hubConnection;
