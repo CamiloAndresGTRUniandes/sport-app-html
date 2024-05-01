@@ -21238,7 +21238,7 @@ button:focus {
   color: #fff;
 }
 
-.pricingtable-wrapper.style-1 .pricingtable-features li:after {
+/* .pricingtable-wrapper.style-1 .pricingtable-features li:after {
   content: "\f00c";
   font-family: 'Font Awesome 5 Free';
   font-size: 12px;
@@ -21253,6 +21253,21 @@ button:focus {
   border-radius: 35px;
   text-align: center;
   top: 6px;
+  line-height: 26px;
+  -webkit-transition: all 1s;
+  -ms-transition: all 1s;
+  transition: all 1s;
+} */
+.pricing-icon {
+  width: 24px;
+  height: 24px;
+  display: block;
+  position: absolute;
+  left: 0;
+  color: #fff;
+  border-radius: 35px;
+  text-align: center;
+  top: 3px;
   line-height: 26px;
   -webkit-transition: all 1s;
   -ms-transition: all 1s;
