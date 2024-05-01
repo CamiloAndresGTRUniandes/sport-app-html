@@ -31,7 +31,7 @@ const RecommendationCard = ({ item, onCardClick }) => {
       
       <div className="dz-card style-1 overlay-shine">
         <div className="dz-media recommendationimg">
-          <Link to="/Recomendacion-Detail">
+          <Link to={`/Recomendacion-Detail/${item.id}`}>
             <img src={item.image} alt="" />
           </Link>
         </div>
