@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Modal from 'react-modal';
 import { Link } from 'react-router-dom';
-import '../../../assets/css/style.css';
+//import '../../../assets/css/style.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; // Necesario para popovers
 import { OverlayTrigger, Popover } from 'react-bootstrap';
 import { format } from 'date-fns'; 
@@ -31,7 +31,7 @@ const ReceiveTrackingCard = ({ item, onCardClick }) => {
       
       <div className="dz-card style-1 overlay-shine">
         <div className="dz-media recommendationimg">
-          <Link to="/Recomendacion-Detail">
+          <Link to={`/Seguimiento-Detail/${item.id}`}>
             <img src={item.image} alt="" />
           </Link>
         </div>
