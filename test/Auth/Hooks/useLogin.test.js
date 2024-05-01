@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { setUserState } from '../../../src/store/sessionUser';
 import { Alerts } from '../../../src/pages/Utils/Alerts';
-import useLogin from '../../../src/pages/Auth/hooks/useLogin';
+import useLogin from  '../../../src/pages/Auth/Hooks/useLogin';
 
 jest.mock('axios');
 jest.mock('react-redux', () => ({
