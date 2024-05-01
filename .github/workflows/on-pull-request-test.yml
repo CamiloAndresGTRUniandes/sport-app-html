@@ -23,7 +23,7 @@ jobs:
       - name: Install dependencies
         run: npm install --legacy-peer-deps
 
-      - name: Verify code coverage
+      - name: Verify test execution
         run: |
             npx jest
         #   npx jest -- --coverage
