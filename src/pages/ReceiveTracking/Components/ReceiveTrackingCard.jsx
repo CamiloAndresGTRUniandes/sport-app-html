@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Modal from 'react-modal';
 import { Link } from 'react-router-dom';
-import '../../../assets/css/style.css';
+//import '../../../assets/css/style.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; // Necesario para popovers
 import { OverlayTrigger, Popover } from 'react-bootstrap';
 import { format } from 'date-fns'; 
