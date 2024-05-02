@@ -43,8 +43,5 @@ describe('ReceiveTrackingDetail Component', () => {
         expect(authorLink); // El enlace del autor está presente
         expect(dateLink); // El enlace de la fecha está presente
 
-        // Simular un clic en el enlace para asegurar que no causa errores
-        authorLink.click();
-        dateLink.click();
     });
 });

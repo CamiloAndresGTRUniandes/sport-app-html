@@ -19,8 +19,7 @@ export const useDetailMealTable = (id) => {
 
         try {
             const response = await axios.get(`${urlAPI}/api/v1/productService/${id}`);
-            console.log("Data from API:", response.data); // Verificar datos obtenidos
-
+          
             setInitialData(response.data); // Actualizar el estado con los datos obtenidos
         } catch (err) {
             console.error("Error fetching data:", err); // Mostrar el error para depuración

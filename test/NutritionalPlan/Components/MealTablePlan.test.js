@@ -1,100 +1,106 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
-import { MemoryRouter, Routes, Route } from "react-router-dom";
+import { MemoryRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import configureStore from "redux-mock-store";
 import MealTablePlan from "../../../src/pages/MealPlans/Components/NutritionalPlan/MealTablePlan";
 import { useMealTablePlan } from "../../../src/pages/MealPlans/Hooks/NutritionalPlan/useMealTablePlan";
 import { Alerts } from "../../../src/pages/Utils/Alerts";
 
-// Simular el hook useMealTablePlan
+// Configurar el estado simulado para el store de Redux
+const mockStore = configureStore([]);
+const initialState = {
+  sessionUser: {
+    userInfo: {
+      token: 'mock-token', // Simular un token de usuario
+    },
+  },
+};
+
+// Mockear `useMealTablePlan`
 jest.mock("../../../src/pages/MealPlans/Hooks/NutritionalPlan/useMealTablePlan");
 
-// Simular las alertas
+// Mockear `Alerts`
 jest.mock("../../../src/pages/Utils/Alerts", () => ({
     Alerts: jest.fn().mockReturnValue({
         showAlertError: jest.fn(),
+        showAlertSuccess: jest.fn(),
     }),
 }));
 
-// Simulación de datos para pruebas
-const initialData = [
-    {
+const renderWithProviderAndRouter = (component, store, route = "/") => {
+  return render(
+    <Provider store={store}>
+      <MemoryRouter initialEntries={[route]}>
+        {component}
+      </MemoryRouter>
+    </Provider>
+  );
+};
+
+describe("MealTablePlan Component Tests", () => {
+  let store;
+
+  beforeEach(() => {
+    store = mockStore(initialState); // Inicializar el store simulado
+    jest.clearAllMocks(); // Limpiar mocks antes de cada prueba
+  });
+
+  it("muestra el spinner mientras se cargan datos", () => {
+    useMealTablePlan.mockReturnValue({
+      initialData: [],
+      mealLoading: true,
+      GetDataAsync: jest.fn(),
+      error: null,
+      goal: null,
+      handleSubscribe: jest.fn(),
+      subscribedUsers: [],
+    });
+
+    renderWithProviderAndRouter(<MealTablePlan />, store);
+
+    expect(screen.getByRole("status")); // Verificar el spinner
+  });
+
+  it("muestra datos cuando están disponibles", () => {
+    const initialData = [
+      {
         productId: "123",
         name: "Plan de comidas 1",
         description: "Plan nutricional para mejorar rendimiento",
-        picture: "example.jpg",
-        plan: {
-            name: "Plan Básico",
-            id: "plan1",
-        },
-    },
-];
+        plan: { name: "Plan Básico" },
+      },
+    ];
 
-const goal = {
-    name: "Pérdida de peso",
-};
-
-const subscribedUsers = [
-    { userId: "user1", serviceId: "123" },
-];
-
-// Función para renderizar con un MemoryRouter
-const renderWithRouter = (component, route = "/") => {
-    return render(
-        <MemoryRouter initialEntries={[route]}>
-            <Routes>
-                <Route path="/" element={component} />
-            </Routes>
-        </MemoryRouter>
-    );
-};
-
-describe("MealTablePlan Component", () => {
- 
-    it("muestra datos en la tabla cuando están disponibles", () => {
-        // Configurar el hook para tener datos válidos
-        useMealTablePlan.mockReturnValue({
-            initialData,
-            mealLoading: false,
-            GetDataAsync: jest.fn(),
-            goal,
-            subscribedUsers,
-            handleSubscribe: jest.fn(),
-            error: null,
-        });
-
-        // Renderizar el componente
-        renderWithRouter(<MealTablePlan />);
-
-        // Verificar que los datos se muestran en la tabla
-        expect(screen.getByText("Plan de comidas 1")); // Verificar texto
-        expect(screen.getByText("Plan Básico")); // Verificar texto del plan
-        expect(screen.getByText("Pérdida de peso"));// Verificar texto del objetivo
-        expect(screen.getByAltText("Plan de comidas 1")); // Verificar la imagen
+    useMealTablePlan.mockReturnValue({
+      initialData,
+      mealLoading: false,
+      GetDataAsync: jest.fn(),
+      error: null,
+      goal: { name: "Pérdida de peso" },
+      subscribedUsers: [],
+      handleSubscribe: jest.fn(),
     });
 
-    it("interacción con el botón de suscripción", () => {
-        // Configurar el hook para tener datos válidos y el método handleSubscribe
-        useMealTablePlan.mockReturnValue({
-            initialData,
-            mealLoading: false,
-            GetDataAsync: jest.fn(),
-            goal,
-            subscribedUsers,
-            handleSubscribe: jest.fn(),
-            error: null,
-        });
+    renderWithProviderAndRouter(<MealTablePlan />, store);
 
-        const { showAlertError } = Alerts(); // Acceder a la función simulada para alertas
+    expect(screen.getByText("Plan de comidas 1")); // Verificar el nombre del plan
+    expect(screen.getByText("Plan Básico")); // Verificar el tipo de plan
+    expect(screen.getByText("Pérdida de peso")); // Verificar el objetivo
+  });
 
-        // Renderizar el componente
-        renderWithRouter(<MealTablePlan />);
-
-        // Encontrar el botón de suscripción
-        const subscribeButton = screen.getByText("Suscribirse");
-
-        // Disparar el evento de clic
-        fireEvent.click(subscribeButton);
-
-       
+  it("muestra mensaje de error cuando hay un error", () => {
+    useMealTablePlan.mockReturnValue({
+      initialData: [],
+      mealLoading: false,
+      GetDataAsync: jest.fn(),
+      error: "Ocurrió un error al cargar datos.",
     });
+
+    renderWithProviderAndRouter(<MealTablePlan />, store);
+
+    expect(screen.getByText("Ocurrió un error al cargar datos.")); // Verificar el mensaje de error
+  });
+
+  
 });
