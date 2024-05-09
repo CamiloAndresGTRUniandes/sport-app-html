@@ -16,6 +16,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { useCreateProductService } from "../Hooks/useCreateProductService";
 export const CreateProductService = () => {
   const [collapsedDays, setCollapsedDays] = useState([]);
+  const [collapsedTrainings, setCollapsedTrainings] = useState([]);
   const product = useParams();
   const classEditTextBox = " input-group mb-3  input-line";
   const {
@@ -43,7 +44,10 @@ export const CreateProductService = () => {
     eventSelected,
     planSelected,
     GuidEmpty,
-    isEdit
+    isEdit,
+    trainingPlanSelected,
+    changeNewServiceType,
+    showJson
   } = useCreateProductService();
   const navigation = useNavigate();
   useEffect(() => {
@@ -54,6 +58,13 @@ export const CreateProductService = () => {
       const newCollapsedDays = [...prevCollapsedDays];
       newCollapsedDays[dayIndex] = !newCollapsedDays[dayIndex];
       return newCollapsedDays;
+    });
+  };
+  const handleCollapseTraining = (trainingIndex) => {
+    setCollapsedTrainings((prevCollapsedTrainings) => {
+      const newCollapsedTrainings = [...prevCollapsedTrainings];
+      newCollapsedTrainings[trainingIndex] = !newCollapsedTrainings[trainingIndex];
+      return newCollapsedTrainings;
     });
   };
   const validationSchema = Yup.object().shape({
@@ -122,7 +133,7 @@ export const CreateProductService = () => {
                         name="categoryId"
                         className="form-control"
                         size="lg"
-                        disabled = {isEdit}
+                        disabled={isEdit}
                         onChange={(e) => {
                           formik.setFieldValue(
                             "categoryId",
@@ -140,14 +151,36 @@ export const CreateProductService = () => {
                         ))}
                       </Field>
                     </div>
-                    <SelectValidation
-                      classDiv="input-group mb-3  input-line"
-                      idSelect="serviceTypeId"
-                      label="Tipo de servicio"
-                      formikForm={formik}
-                      data={serviceTypesUP}
-                      formFormik={formik}
-                    ></SelectValidation>
+                    <div className="input-group mb-3  input-line">
+                      <label
+                        className="input-group-text"
+                        htmlFor="serviceTypeId"
+                      >
+                        Tipo de servicio
+                      </label>
+                      <Field
+                        id="serviceTypeId"
+                        as="select"
+                        name="serviceTypeId"
+                        className="form-control"
+                        size="lg"
+                        disabled={isEdit}
+                        onChange={(e) => {
+                          formik.setFieldValue(
+                            "serviceTypeId",
+                            e.target.value
+                          );
+                          changeNewServiceType(e.target.value);
+                        }}
+                      >
+                        <option value="0">Selecciona</option>
+                        {serviceTypesUP.map((item) => (
+                          <option key={item.id} value={item.id}>
+                            {item.name}
+                          </option>
+                        ))}
+                      </Field>
+                    </div>
                     {(!eventSelected && !planSelected) && (<TextBoxEditValidation
                       classDiv={classEditTextBox}
                       idText="price"
@@ -170,6 +203,20 @@ export const CreateProductService = () => {
                       type="text"
                       formikForm={formik}
                     />
+                    {(planSelected && trainingPlanSelected) && (<TextBoxEditValidation
+                      classDiv={classEditTextBox}
+                      idText="trainingPlan.startAge"
+                      label="Edad inicial"
+                      type="number"
+                      formikForm={formik}
+                    />)}
+                    {(planSelected && trainingPlanSelected) && (<TextBoxEditValidation
+                      classDiv={classEditTextBox}
+                      idText="trainingPlan.endAge"
+                      label="Edad final"
+                      type="number"
+                      formikForm={formik}
+                    />)}
                     {eventSelected && (<TextBoxEditValidation
                       classDiv={classEditTextBox}
                       idText="startDateTime"
@@ -199,7 +246,7 @@ export const CreateProductService = () => {
                         >
                           Cancelar
                         </Link>
-                        {/* <pre>{JSON.stringify(formik.values, null, 2)}</pre> */}
+                        {showJson && <pre>{JSON.stringify(formik.values, null, 2)}</pre>}
                       </div>
                     )}
 
@@ -345,7 +392,7 @@ export const CreateProductService = () => {
                           </div>
                         </div>
                       </Tab>
-                      {planSelected && <Tab eventKey="3" title="Plan Nutricional">
+                      {(planSelected && !trainingPlanSelected) && <Tab eventKey="3" title="Plan Nutricional">
                         <div className="row animate__animated animate__fadeInUpBig">
                           <div
                             className="col-md-12 col-lg-12 col-sm-12"
@@ -439,26 +486,26 @@ export const CreateProductService = () => {
                                                       type="text"
                                                       formikForm={formik}
                                                     />
-                                                   {mealIndex == formik.values.nutritionalPlan.days[dayIndex].meals.length - 1 && 
-                                                   <div className="mb-5">
-                                                      <button
-                                                        className="col-4  btn btn-primary btn-sm btn-skew"
-                                                        type="button"
-                                                        onClick={() =>
-                                                          pushMeal({ id: GuidEmpty, name: '', description: '', calories: 0, dishType: '', picture: '' })}>
-                                                        Agregar Plato
-                                                      </button>
-                                                      <button
-                                                        className="col-4  btn btn-secondary btn-sm btn-skew"
-                                                        type="button"
-                                                        onClick={() => {
-                                                          if (day.meals.length > 1) {
-                                                            removeMeal(mealIndex)
-                                                          }
-                                                        }}>
-                                                        Remover Plato
-                                                      </button>
-                                                    </div>}
+                                                    {mealIndex == formik.values.nutritionalPlan.days[dayIndex].meals.length - 1 &&
+                                                      <div className="mb-5">
+                                                        <button
+                                                          className="col-4  btn btn-primary btn-sm btn-skew"
+                                                          type="button"
+                                                          onClick={() =>
+                                                            pushMeal({ id: GuidEmpty, name: '', description: '', calories: 0, dishType: '', picture: '' })}>
+                                                          Agregar Plato
+                                                        </button>
+                                                        <button
+                                                          className="col-4  btn btn-secondary btn-sm btn-skew"
+                                                          type="button"
+                                                          onClick={() => {
+                                                            if (day.meals.length > 1) {
+                                                              removeMeal(mealIndex)
+                                                            }
+                                                          }}>
+                                                          Remover Plato
+                                                        </button>
+                                                      </div>}
                                                   </div>
                                                 ))}
                                               </div>
@@ -485,6 +532,175 @@ export const CreateProductService = () => {
                                           Remover Dia
                                         </button>
                                       </div>}
+                                    </div>
+                                  ))}
+                                </div>
+                              )}
+                            </FieldArray>
+                          </div>
+                        </div>
+                      </Tab>}
+                      {(planSelected && trainingPlanSelected) && <Tab eventKey="4" title="Plan de Entrenamiento">
+                        <div className="row animate__animated animate__fadeInUpBig">
+                          <div
+                            className="col-md-12 col-lg-12 col-sm-12"
+                            style={{ maxHeight: '435px', overflowY: 'auto', overflowX: 'hidden' }}>
+                            <FieldArray name="trainingPlan.trainings">
+                              {({ push: pushTraining, remove: removeTraining }) => (
+                                <div>
+                                  {formik.values.trainingPlan.trainings.map((trainings, trainingIndex) => (
+                                    <div key={trainingIndex}>
+                                      <div className="row">
+                                        <div className="col-md-6 col-lg-6 col-sm-6">
+                                          <span>
+                                            Entrenamiento - {trainingIndex + 1}
+                                            <a
+                                              type="button"
+                                              onClick={() => handleCollapseTraining(trainingIndex)}>
+                                              {collapsedTrainings[trainingIndex] ?
+                                                <i className="bi bi-arrow-down">
+                                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-down" viewBox="0 0 16 16">
+                                                    <path fillRule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1" />
+                                                  </svg>
+                                                </i>
+                                                :
+                                                <i className="bi bi-arrow-up">
+                                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-up" viewBox="0 0 16 16">
+                                                    <path fillRule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5" />
+                                                  </svg>
+                                                </i>}
+                                            </a>
+                                          </span>
+                                        </div>
+                                      </div>
+                                      {!collapsedTrainings[trainingIndex] && (
+                                        <div>
+                                          <TextBoxEditValidation
+                                            classDiv={classEditTextBox}
+                                            idText={`trainingPlan.trainings[${trainingIndex}].name`}
+                                            label="Nombre"
+                                            type="text"
+                                            formikForm={formik}
+                                          />
+                                          <TextBoxEditValidation
+                                            classDiv={classEditTextBox}
+                                            idText={`trainingPlan.trainings[${trainingIndex}].description`}
+                                            label="Descripción"
+                                            type="text"
+                                            formikForm={formik}
+                                          />
+                                          <div
+                                            className="col-md-12 col-lg-12 col-sm-12"
+                                            style={{ marginLeft: '5px', marginRight: '5px' }}>
+                                            <FieldArray name={`trainingPlan.trainings[${trainingIndex}].exercises`}>
+                                              {({ push: pushExercise, remove: removeExercise }) => (
+                                                <div>
+                                                  {trainings.exercises.map((exercise, exerciseIndex) => (
+                                                    <div key={exerciseIndex}>
+                                                      <div className="row">
+                                                        <span>
+                                                          Ejercicio - {exerciseIndex + 1}
+                                                        </span>
+                                                      </div>
+                                                      <TextBoxEditValidation
+                                                        classDiv={classEditTextBox}
+                                                        idText={`trainingPlan.trainings[${trainingIndex}].exercises[${exerciseIndex}].name`}
+                                                        label="Nombre"
+                                                        type="text"
+                                                        formikForm={formik}
+                                                      />
+                                                      <TextBoxEditValidation
+                                                        classDiv={classEditTextBox}
+                                                        idText={`trainingPlan.trainings[${trainingIndex}].exercises[${exerciseIndex}].description`}
+                                                        label="Descripción"
+                                                        type="text"
+                                                        formikForm={formik}
+                                                      />
+                                                      <div className="row">
+                                                        <div className="col-md-6 col-lg-6 col-sm-6">
+                                                          <TextBoxEditValidation
+                                                            classDiv={classEditTextBox}
+                                                            idText={`trainingPlan.trainings[${trainingIndex}].exercises[${exerciseIndex}].sets`}
+                                                            label="Series"
+                                                            type="number"
+                                                            formikForm={formik}
+                                                          />
+                                                        </div>
+                                                        <div className="col-md-6 col-lg-6 col-sm-6">
+                                                          <TextBoxEditValidation
+                                                            classDiv={classEditTextBox}
+                                                            idText={`trainingPlan.trainings[${trainingIndex}].exercises[${exerciseIndex}].repeats`}
+                                                            label="Repeticiones"
+                                                            type="number"
+                                                            formikForm={formik}
+                                                          />
+                                                        </div>
+                                                      </div>
+                                                      <div className="row">
+                                                        <div className="col-md-6 col-lg-6 col-sm-6">
+                                                          <TextBoxEditValidation
+                                                            classDiv={classEditTextBox}
+                                                            idText={`trainingPlan.trainings[${trainingIndex}].exercises[${exerciseIndex}].weight`}
+                                                            label="Peso (kg)"
+                                                            type="number"
+                                                            formikForm={formik}
+                                                          />
+                                                        </div>
+                                                      </div>
+                                                      <TextBoxEditValidation
+                                                        classDiv={classEditTextBox}
+                                                        idText={`trainingPlan.trainings[${trainingIndex}].exercises[${exerciseIndex}].picture`}
+                                                        label="Imagen"
+                                                        type="text"
+                                                        formikForm={formik}
+                                                      />
+                                                      {exerciseIndex === formik.values.trainingPlan.trainings[trainingIndex].exercises.length - 1 &&
+                                                        <div className="mb-5">
+                                                          <button
+                                                            className="col-4  btn btn-primary btn-sm btn-skew"
+                                                            type="button"
+                                                            onClick={() =>
+                                                              pushExercise({ id: GuidEmpty, name: '', description: '', sets: 0, repeats: 0, weight: 0, picture: '' })}>
+                                                            Agregar Ejercicio
+                                                          </button>
+                                                          <button
+                                                            className="col-4  btn btn-secondary btn-sm btn-skew"
+                                                            type="button"
+                                                            onClick={() => {
+                                                              if (trainings.exercises.length > 1) {
+                                                                removeExercise(exerciseIndex)
+                                                              }
+                                                            }}>
+                                                            Remover Ejercicio
+                                                          </button>
+                                                        </div>}
+                                                    </div>
+                                                  ))}
+                                                </div>
+                                              )}
+                                            </FieldArray>
+                                          </div>
+                                          {trainingIndex === formik.values.trainingPlan.trainings.length - 1 &&
+                                            <div>
+                                              <button
+                                                className="col-4  btn btn-primary btn-sm btn-skew"
+                                                type="button"
+                                                onClick={() => pushTraining({ id: GuidEmpty, name: '', description: '', exercises: [{ id: GuidEmpty, name: '', description: '', sets: 0, repeats: 0, weight: 0, picture: '' }] })}>
+                                                Agregar Entrenamiento
+                                              </button>
+                                              <button
+                                                className="col-4  btn btn-secondary btn-sm btn-skew"
+                                                type="button"
+                                                onClick={() => {
+                                                  if (formik.values.trainingPlan.trainings.length > 1) {
+                                                    removeTraining(trainingIndex)
+                                                  }
+                                                }}>
+                                                Remover Entrenamiento
+                                              </button>
+                                            </div>}
+                                        </div>
+                                      )}
                                     </div>
                                   ))}
                                 </div>

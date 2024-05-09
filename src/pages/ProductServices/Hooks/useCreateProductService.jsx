@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Alerts } from "../../Utils";
 import axios from "axios";
 
@@ -19,6 +19,7 @@ export const useCreateProductService = () => {
     const [productCreated, setProductCreated] = useState(false);
     const [eventSelected, setEventSelected] = useState(false);
     const [planSelected, setPlanSelected] = useState(false);
+    const [trainingPlanSelected, setTrainingPlanSelected] = useState(false);
     const { showAlertSuccess, showAlertError } = Alerts();
     const [productLoading, setProductLoading] = useState(true);
     const [physicalLevelsUP, setPhysicalLevels] = useState([]);
@@ -29,6 +30,8 @@ export const useCreateProductService = () => {
     const [newCategoryId, setNewCategoryId] = useState(null);
     const GuidEmpty = "00000000-0000-0000-0000-000000000000";
     const currentUser = JSON.parse(sessionStorage.getItem("userLogin"));
+    const trainingPlanServiceType = "3040214a-a77d-4549-8f67-6b51f7755a3e";
+    const showJson = false;
 
     const createProduct = async (updProduct) => {
 
@@ -110,6 +113,29 @@ export const useCreateProductService = () => {
                                             description: "",
                                             calories: 0,
                                             dishType: "",
+                                            picture: ""
+                                        }
+                                    ]
+                                }
+
+                            ]
+                        },
+                        trainingPlan: {
+                            startAge: 0,
+                            endAge: 0,
+                            trainings: [
+                                {
+                                    id: GuidEmpty,
+                                    name: "",
+                                    description: "",
+                                    exercises: [
+                                        {
+                                            id: GuidEmpty,
+                                            name: "",
+                                            description: '',
+                                            sets: 0,
+                                            repeats: 0,
+                                            weight: 0,
                                             picture: ""
                                         }
                                     ]
@@ -202,10 +228,60 @@ export const useCreateProductService = () => {
                         initialProduct.cityId = initialProduct.cityId;
                     }
                 }
+                if(initialProduct.serviceTypeId === trainingPlanServiceType){
+                    changeNewServiceType(trainingPlanServiceType);
+                }
+                if (initialProduct.nutritionalPlan === null){
+                    initialProduct.nutritionalPlan = {
+                        days: [
+                            {
+                                id: GuidEmpty,
+                                name: "",
+                                meals: [
+                                    {
+                                        id: GuidEmpty,
+                                        name: "",
+                                        description: "",
+                                        calories: 0,
+                                        dishType: "",
+                                        picture: ""
+                                    }
+                                ]
+                            }
+    
+                        ]
+                    };
+                }
+                if(initialProduct.trainingPlan === null){
+                    initialProduct.trainingPlan = {
+                        startAge: 0,
+                        endAge: 0,
+                        trainings: [
+                            {
+                                id: GuidEmpty,
+                                name: "",
+                                description: "",
+                                exercises: [
+                                    {
+                                        id: GuidEmpty,
+                                        name: "",
+                                        description: '',
+                                        sets: 0,
+                                        repeats: 0,
+                                        weight: 0,
+                                        picture: ""
+                                    }
+                                ]
+                            }
+    
+                        ]
+                    };
+                }
             }
             if (initialProduct.typeOfNutritionId === null) {
                 initialProduct.typeOfNutritionId = GuidEmpty;
             }
+            
         }
     }, [initialProduct]); 
     const changeNewCountry = (countryId) => setNewCountryId(countryId);
@@ -258,6 +334,15 @@ export const useCreateProductService = () => {
         }
         getCities();
     }, [newStateId]);
+
+    const changeNewServiceType = (serviceType) => {
+        console.log(serviceType);
+        if(serviceType === trainingPlanServiceType){
+            setTrainingPlanSelected(true);
+        }else{
+            setTrainingPlanSelected(false);
+        }
+    };
 
     const changeNewCategory = (categoryId) => setNewCategoryId(categoryId);
     useEffect(() => {
@@ -330,6 +415,9 @@ export const useCreateProductService = () => {
         eventSelected,
         planSelected,
         GuidEmpty,
-        isEdit
+        isEdit,
+        trainingPlanSelected,
+        changeNewServiceType,
+        showJson
     };
 };
