@@ -16,6 +16,7 @@ import Faq from "./Faq";
 import { Schedule } from "./Schedules/Pages/Schedule";
 import ErrorPage from "./ErrorPage";
 import DetailMealTablePage from './MealPlans/Pages/NutritionalPlan/DetailMealTablePage';
+import DetailTrainingTablePage from './MealPlans/Pages/TrainingPlan/DetailTrainingTablePage';
 import UnderConstruction from "./UnderConstruction";
 import ComingSoon from "./ComingSoon";
 import Portfolio from "./Portfolio";
@@ -142,6 +143,13 @@ function Index() {
             path="/DetailMealTable/:productId"
             exact
             element={<DetailMealTablePage />}
+            
+          />
+
+          <Route
+            path="/DetailTrainingTable/:productId"
+            exact
+            element={<DetailTrainingTablePage />}
           />
 
            <Route
