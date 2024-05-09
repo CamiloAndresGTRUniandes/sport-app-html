@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import axios from "axios";
 import { Alerts, GetUserInfo } from "../../../Utils";
 
-export const useMealTablePlan = (goalId) => {
+export const useTrainingTablePlan = (goalId) => {
   const urlAPI = process.env.REACT_APP_API_URL_SERVICE;
   const urlAPI2 = process.env.REACT_APP_API_URL;
   const { getToken } = GetUserInfo();
@@ -10,19 +10,18 @@ export const useMealTablePlan = (goalId) => {
 
   const [initialData, setInitialData] = useState([]);
   const [goal, setGoal] = useState(null);
-  const [mealLoading, setMealsLoading] = useState(true);
+  const [trainingLoading, setTrainingsLoading] = useState(true);
   const [error, setError] = useState(null);
   const { showAlertSuccess, showAlertError } = Alerts();
   const [subscribedUsers, setSubscribedUsers] = useState([]);
 
   const GetDataAsync = async () => {
     try {
-      setMealsLoading(true);
+      setTrainingsLoading(true);
       setError(null);
 
       const requestData = {
-        serviceTypes: ["01B50F0D-3226-4DF2-B912-4DA4B37D9BD9"],
-     
+        serviceTypes: ["3040214a-a77d-4549-8f67-6b51f7755a3e"],
       };
 
       const productServicesResponse = await axios.post(
@@ -38,7 +37,7 @@ export const useMealTablePlan = (goalId) => {
       console.error("Error al obtener datos:", error);
       setError("Ocurrió un error al cargar datos.");
     } finally {
-      setMealsLoading(false);
+      setTrainingsLoading(false);
     }
   };
 
@@ -83,11 +82,11 @@ export const useMealTablePlan = (goalId) => {
     initialData,
     goal,
     GetDataAsync,
-    mealLoading,
+    trainingLoading,
     error,
     handleSubscribe,
     subscribedUsers,
   };
 };
 
-export default useMealTablePlan;
+export default useTrainingTablePlan;
