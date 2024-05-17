@@ -63,7 +63,7 @@ const MealTablePlan = () => {
           initialData.map((item, index) => (
             <tr key={index}>
               <td
-                className="highlighted-cell event"
+                className="highlighted-cell event hand-cursor"
                 onClick={() => navigate(`/DetailMealTable/${item.productId}`)}
               >
                 {item.name}
