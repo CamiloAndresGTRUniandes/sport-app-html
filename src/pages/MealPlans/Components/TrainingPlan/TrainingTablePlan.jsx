@@ -63,7 +63,7 @@ const TrainingTablePlan = () => {
           initialData.map((item, index) => (
             <tr key={index}>
               <td
-                className="highlighted-cell event"
+                className="highlighted-cell event hand-cursor"
                 onClick={() => navigate(`/DetailTrainingTable/${item.productId}`)}
               >
                 {item.name}

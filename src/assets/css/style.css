@@ -37136,3 +37136,7 @@ pre {
 .recommendation-descripcion{
   text-align: justify;
 }
+
+.hand-cursor {
+  cursor: pointer;
+}
