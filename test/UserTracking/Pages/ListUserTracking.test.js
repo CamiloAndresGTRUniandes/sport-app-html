@@ -24,6 +24,8 @@ describe('ListUserTracking component', () => {
         categoryName: 'Category A',
         plan: { name: 'Plan 1' },
         wasPayed: true,
+        endSuscription:new Date("2024-01-01") ,
+        startSuscription:new Date("2029-01-01") 
       }]
 
     useListUsersEnroll.mockReturnValue({

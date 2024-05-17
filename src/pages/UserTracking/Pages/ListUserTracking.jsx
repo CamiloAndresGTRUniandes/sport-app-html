@@ -4,6 +4,7 @@ import PageTitle from "../../../elements/PageTitle";
 import { Link } from "react-router-dom";
 import { useListUsersEnroll } from "../Hooks";
 import { SpinnerSportApp } from "../../Utils";
+import { format } from "date-fns";
 
 const ListUserTracking = () => {
   const {
@@ -69,6 +70,8 @@ const ListUserTracking = () => {
                         <th>Categoria</th>
                         <th>Tipo de plan</th>
                         <th>Contrato</th>
+                        <th>Inicio suscripcion</th>
+                        <th>Fin suscripcion</th>
                         <th>Recomendacion</th>
                       </tr>
                     </thead>
@@ -97,6 +100,8 @@ const ListUserTracking = () => {
                               </Link>
                             )}
                           </td>
+                           <td>{format(new Date(item.startSuscription), "yyyy-MM-dd")}</td> 
+                           <td>{format(new Date(item.endSuscription), "yyyy-MM-dd")}</td> 
                           <td>
                             <Link to={"/recomendacion-user/"&& item.id}>
                               <button className="btn btn-dark shadow-dark btn-skew  mt-2">
