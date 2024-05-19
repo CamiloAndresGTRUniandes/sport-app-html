@@ -71,9 +71,9 @@ export const useSubscriptionTable = () => {
             case "Basic":
                 return 0;
             case "Intermediate":
-                return "https://buy.stripe.com/test_fZe7we6533kgawo144";
+                return "https://buy.stripe.com/test_14keVjf9a5sc0sE6oo";
             case "Premium":
-                return "https://buy.stripe.com/test_fZecQyfFD3kg480001";
+                return "https://buy.stripe.com/test_dR67sR9OQg6Q1wIcMN";
 
         }
     };
