@@ -26,12 +26,12 @@ const initialData = [
             name: "Plan Básico",
             id: "plan1",
         },
+        goal : {
+            name: "Pérdida de peso",
+        }
     },
 ];
 
-const goal = {
-    name: "Pérdida de peso",
-};
 
 const subscribedUsers = [
     { userId: "user1", serviceId: "123" },
@@ -56,7 +56,6 @@ describe("MealTablePlan Component", () => {
             initialData,
             mealLoading: false,
             GetDataAsync: jest.fn(),
-            goal,
             subscribedUsers,
             handleSubscribe: jest.fn(),
             error: null,
@@ -78,7 +77,6 @@ describe("MealTablePlan Component", () => {
             initialData,
             mealLoading: false,
             GetDataAsync: jest.fn(),
-            goal,
             subscribedUsers,
             handleSubscribe: jest.fn(),
             error: null,
