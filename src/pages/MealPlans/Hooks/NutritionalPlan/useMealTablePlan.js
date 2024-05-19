@@ -30,9 +30,9 @@ export const useMealTablePlan = () => {
       );
 
       const newData = await Promise.all(productServicesResponse.data.map(async (x) => {
-        return { ...x, goal: await getGoal(x.goals[0]) }
+        const goal = x.goals.length > 0 ? await getGoal(x.goals[0]) : null
+        return { ...x, goal:  goal}
       }));
-      console.log(newData);
       setInitialData(newData);
     } catch (error) {
       console.error("Error al obtener datos:", error);
