@@ -1,15 +1,14 @@
-import { useState, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { Alerts, GetUserInfo } from "../../../Utils";
 
-export const useMealTablePlan = (goalId) => {
+export const useMealTablePlan = () => {
   const urlAPI = process.env.REACT_APP_API_URL_SERVICE;
   const urlAPI2 = process.env.REACT_APP_API_URL;
   const { getToken } = GetUserInfo();
   const token = useRef(getToken());
 
   const [initialData, setInitialData] = useState([]);
-  const [goal, setGoal] = useState(null);
   const [mealLoading, setMealsLoading] = useState(true);
   const [error, setError] = useState(null);
   const { showAlertSuccess, showAlertError } = Alerts();
@@ -22,7 +21,7 @@ export const useMealTablePlan = (goalId) => {
 
       const requestData = {
         serviceTypes: ["01B50F0D-3226-4DF2-B912-4DA4B37D9BD9"],
-     
+
       };
 
       const productServicesResponse = await axios.post(
@@ -30,10 +29,11 @@ export const useMealTablePlan = (goalId) => {
         requestData
       );
 
-      const goalResponse = await axios.get(`${urlAPI}/api/v1/goal/${goalId}`);
-
-      setInitialData(productServicesResponse.data);
-      setGoal(goalResponse.data);
+      const newData = await Promise.all(productServicesResponse.data.map(async (x) => {
+        return { ...x, goal: await getGoal(x.goals[0]) }
+      }));
+      console.log(newData);
+      setInitialData(newData);
     } catch (error) {
       console.error("Error al obtener datos:", error);
       setError("Ocurrió un error al cargar datos.");
@@ -41,7 +41,10 @@ export const useMealTablePlan = (goalId) => {
       setMealsLoading(false);
     }
   };
-
+  const getGoal = async (goalId) => {
+    const goal = await axios.get(`${urlAPI}/api/v1/goal/${goalId}`);
+    return goal.data;
+  };
   const handleSubscribe = async (item) => {
     try {
       // Verificar si el usuario está suscrito al mismo plan
@@ -81,7 +84,6 @@ export const useMealTablePlan = (goalId) => {
 
   return {
     initialData,
-    goal,
     GetDataAsync,
     mealLoading,
     error,
