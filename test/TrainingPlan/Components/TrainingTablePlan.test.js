@@ -26,14 +26,14 @@ describe('TrainingTablePlan', () => {
         picture: 'image1.jpg',
         description: 'Descripción 1',
         plan: { name: 'Plan A', id: 'plan1' },
-        category: { id: 'cat1', name: 'Categoría 1' }
+        category: { id: 'cat1', name: 'Categoría 1' },
+        goal : { name: 'Meta 1' }
       }
     ];
-    const mockGoal = { name: 'Meta 1' };
+
 
     mockUseTrainingTablePlan.mockReturnValue({
       initialData: mockData,
-      goal: mockGoal,
       GetDataAsync: jest.fn(),
       trainingLoading: false,
       error: null,
@@ -63,15 +63,14 @@ describe('TrainingTablePlan', () => {
         picture: 'image1.jpg',
         description: 'Descripción 1',
         plan: { name: 'Plan A', id: 'plan1' },
-        category: { id: 'cat1', name: 'Categoría 1' }
+        category: { id: 'cat1', name: 'Categoría 1' },
+        goal : { name: 'Meta 1' }
       }
     ];
-    const mockGoal = { name: 'Meta 1' };
     const mockHandleSubscribe = jest.fn();
 
     mockUseTrainingTablePlan.mockReturnValue({
       initialData: mockData,
-      goal: mockGoal,
       GetDataAsync: jest.fn(),
       trainingLoading: false,
       error: null,

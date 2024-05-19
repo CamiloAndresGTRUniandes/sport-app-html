@@ -25,24 +25,23 @@ describe("useTrainingTablePlan Hook", () => {
     });
 
     it("inicializa el estado correctamente", () => {
-        const { result } = renderHook(() => useTrainingTablePlan(goalId));
+        const { result } = renderHook(() => useTrainingTablePlan());
 
         // Verificar el estado inicial del hook
         expect(result.current.initialData).toEqual([]); // Debe ser vacío al inicio
-        expect(result.current.goal).toBeNull(); // Sin objetivo al inicio
 
         expect(result.current.error).toBeNull(); // Sin error al inicio
     });
 
     it("carga datos correctamente tras llamada a GetDataAsync", async () => {
-        const expectedProductServices = [{ productId: "123", name: "Plan Básico" }];
+        const expectedProductServices = [{ productId: "123", name: "Plan Básico" , goals:[1]}];
         const expectedGoal = { name: "Pérdida de peso" };
 
         // Configurar respuestas simuladas para la llamada a la API
         axios.post.mockResolvedValueOnce({ data: expectedProductServices }); // Simular respuesta del POST
         axios.get.mockResolvedValueOnce({ data: expectedGoal }); // Simular respuesta del GET
 
-        const { result, waitForNextUpdate } = renderHook(() => useTrainingTablePlan(goalId));
+        const { result, waitForNextUpdate } = renderHook(() => useTrainingTablePlan());
 
         // Llamar al método para obtener datos
         act(() => {
@@ -53,8 +52,9 @@ describe("useTrainingTablePlan Hook", () => {
         await waitForNextUpdate();
 
         // Verificar que se obtuvieron datos correctamente
-        expect(result.current.initialData).toEqual(expectedProductServices); // Datos correctos
-        expect(result.current.goal).toEqual(expectedGoal); // Objetivo correcto
+        expect(result.current.initialData).toEqual(
+            [{ productId: "123", name: "Plan Básico", goals: [1], goal: expectedGoal }]
+        );// Datos correctos
         expect(result.current.error).toBeNull(); // Sin error
     });
 
@@ -65,7 +65,7 @@ describe("useTrainingTablePlan Hook", () => {
         axios.post.mockRejectedValueOnce(new Error(errorMessage)); // Simular error en el POST
         axios.get.mockRejectedValueOnce(new Error(errorMessage)); // Simular error en el GET
 
-        const { result, waitForNextUpdate } = renderHook(() => useTrainingTablePlan(goalId));
+        const { result, waitForNextUpdate } = renderHook(() => useTrainingTablePlan());
 
         // Llamar al método para obtener datos
         act(() => {
@@ -85,7 +85,7 @@ describe("useTrainingTablePlan Hook", () => {
         // Configurar respuesta simulada para la suscripción
         axios.post.mockResolvedValueOnce({ data: { message: "Success" } });
 
-        const { result } = renderHook(() => useTrainingTablePlan(goalId));
+        const { result } = renderHook(() => useTrainingTablePlan());
 
         // Llamar a `handleSubscribe` para probar la suscripción
         await act(async () => {
@@ -109,7 +109,7 @@ describe("useTrainingTablePlan Hook", () => {
     it("evita suscribirse si el usuario ya está suscrito", async () => {
         const item = { userId: "user1", serviceId: "123", serviceName: "Plan Básico" };
 
-        const { result } = renderHook(() => useTrainingTablePlan(goalId));
+        const { result } = renderHook(() => useTrainingTablePlan());
 
         // Simular que el usuario ya está suscrito
         await act(async () => {

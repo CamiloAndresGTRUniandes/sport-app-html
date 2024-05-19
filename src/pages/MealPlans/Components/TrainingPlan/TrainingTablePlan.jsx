@@ -5,19 +5,18 @@ import { useNavigate } from "react-router-dom";
 import { SpinnerSportApp } from "../../../Utils/SpinnerSportApp";
 import { Alerts } from "../../../Utils";
 
-const goalId = "9bd21ea0-4fe6-46b4-b974-ba594883ffe0";
+
 const { showAlertError } = Alerts();
 
 const TrainingTablePlan = () => {
   const {
     initialData,
-    goal,
     GetDataAsync,
     trainingLoading,
     error,
     handleSubscribe,
     subscribedUsers,
-  } = useTrainingTablePlan(goalId);
+  } = useTrainingTablePlan();
 
   const navigate = useNavigate();
 
@@ -76,7 +75,7 @@ const TrainingTablePlan = () => {
                   height={150}
                 />
               </td>
-              <td>{goal?.name}</td>
+              <td>{item.goal?.name}</td>
               <td>{item.description}</td>
               <td>{item.plan?.name}</td>
               <td>

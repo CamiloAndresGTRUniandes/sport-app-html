@@ -2,14 +2,13 @@ import { useState, useRef } from "react";
 import axios from "axios";
 import { Alerts, GetUserInfo } from "../../../Utils";
 
-export const useTrainingTablePlan = (goalId) => {
+export const useTrainingTablePlan = () => {
   const urlAPI = process.env.REACT_APP_API_URL_SERVICE;
   const urlAPI2 = process.env.REACT_APP_API_URL;
   const { getToken } = GetUserInfo();
   const token = useRef(getToken());
 
   const [initialData, setInitialData] = useState([]);
-  const [goal, setGoal] = useState(null);
   const [trainingLoading, setTrainingsLoading] = useState(true);
   const [error, setError] = useState(null);
   const { showAlertSuccess, showAlertError } = Alerts();
@@ -28,11 +27,11 @@ export const useTrainingTablePlan = (goalId) => {
         `${urlAPI}/api/v1/productService/getFilteredList`,
         requestData
       );
-
-      const goalResponse = await axios.get(`${urlAPI}/api/v1/goal/${goalId}`);
-
-      setInitialData(productServicesResponse.data);
-      setGoal(goalResponse.data);
+      const newData = await Promise.all(productServicesResponse.data.map(async (x) => {
+        const goal = x.goals.length > 0 ? await getGoal(x.goals[0]) : null
+        return { ...x, goal:  goal}
+      }));
+      setInitialData(newData);
     } catch (error) {
       console.error("Error al obtener datos:", error);
       setError("Ocurrió un error al cargar datos.");
@@ -41,6 +40,11 @@ export const useTrainingTablePlan = (goalId) => {
     }
   };
 
+  const getGoal = async (goalId) => {
+    const goal = await axios.get(`${urlAPI}/api/v1/goal/${goalId}`);
+    return goal.data;
+  };
+  
   const handleSubscribe = async (item) => {
     try {
       // Verificar si el usuario está suscrito al mismo plan
@@ -80,7 +84,6 @@ export const useTrainingTablePlan = (goalId) => {
 
   return {
     initialData,
-    goal,
     GetDataAsync,
     trainingLoading,
     error,
