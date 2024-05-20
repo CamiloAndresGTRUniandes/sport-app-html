@@ -5,7 +5,6 @@ const inicio=
     classChange: "sub-menu-down",
     content: [
       { title: "Entrenamiento", to: "/home-2" },
-      { title: "BodyBuilding", to: "/home-3" },
     ],
   };
 
@@ -20,10 +19,6 @@ const inicio=
       {
         title: "Equipo",
         to: "/team",
-      },
-      {
-        title: "Preguntas",
-        to: "/faq",
       },
       {
         title: "Precios",
@@ -41,10 +36,6 @@ const inicio=
       //   title: "Cronograma",
       //   to: "/schedule",
       // },
-      {
-        title: "Proximo evento",
-        to: "/coming-soon",
-      },
       // {
       //   title: "Error 404",
       //   to: "/error-404",
@@ -68,10 +59,6 @@ const inicio=
           title: "Cronograma",
           to: "/schedule",
         },
-        {
-          title: "Proximo evento",
-          to: "/coming-soon",
-        }
       ]
   
     };
@@ -115,10 +102,7 @@ const sugerencias=
       title: "Tus recomendaciones",
       to: "/RecomendacionesPage",
     },
-    {
-      title: "Tus planes  alimentarios, deportivos",
-      to: "/recomendaciones-personales"
-    },
+
     {
       title: "Seguimientos",
       to: "/seguimientos",
