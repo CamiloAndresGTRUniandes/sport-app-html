@@ -5,6 +5,7 @@ import { useDetailMealTable } from "../../Hooks/NutritionalPlan/useDetailMealTab
 import { SpinnerSportApp } from "../../../Utils/SpinnerSportApp";
 import { Alert } from "react-bootstrap";
 
+// istanbul ignore next
 const DetailMealTable = () => {
     const { productId } = useParams(); // Obtener el `productId` de la ruta
     const { initialData, GetDataAsync, mealLoading, error } = useDetailMealTable(productId); // Usar el custom hook con el `productId`

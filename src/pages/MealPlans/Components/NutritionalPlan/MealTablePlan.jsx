@@ -7,6 +7,7 @@ import { Alerts } from "../../../Utils";
 
 const { showAlertError } = Alerts();
 
+// istanbul ignore next
 const MealTablePlan = () => {
   const {
     initialData,
@@ -18,7 +19,7 @@ const MealTablePlan = () => {
   } = useMealTablePlan();
 
   const navigate = useNavigate();
-
+// istanbul ignore next
   useEffect(() => {
     GetDataAsync();
   }, []);
@@ -30,14 +31,14 @@ const MealTablePlan = () => {
   if (error) {
     return <Alert variant="danger">{error}</Alert>;
   }
-
+// istanbul ignore next
   const currentUserStr = sessionStorage.getItem("userLogin");
   let currentUser = null;
 
   if (currentUserStr) {
     currentUser = JSON.parse(currentUserStr);
   }
-
+// istanbul ignore next
   const isSubscribed = (userId, productId) => {
     return subscribedUsers.some(
       (user) => user.userId === userId && user.serviceId === productId

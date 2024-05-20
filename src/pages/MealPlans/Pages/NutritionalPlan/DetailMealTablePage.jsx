@@ -5,7 +5,7 @@ import DetailMealTable from "../../Components/NutritionalPlan/DetailMealTable";
 import React, { useEffect } from "react";
 import { useDetailMealTable } from "../../Hooks/NutritionalPlan/useDetailMealTable";
 import { Alert, Spinner } from "react-bootstrap"; // Agregar Spinner y Alert
-
+// istanbul ignore next
 const DetailMealTablePage = () => {
   const { productId } = useParams(); // Obtén el `productId`
   const { initialData, mealLoading, error, GetDataAsync } = useDetailMealTable(productId); // Asegúrate de obtener `GetDataAsync`

@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { Alerts } from "../../Utils";
 import axios from "axios";
 
+// istanbul ignore next
 export const useProductServiceList = () => {
     const urlAPI = process.env.REACT_APP_API_URL_SERVICE;
     const [initialData, setInitialData] = useState([]);

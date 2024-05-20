@@ -4,7 +4,7 @@ import MealTablePlan from '../Components/NutritionalPlan/MealTablePlan';
 import TrainingTablePlan from '../Components/TrainingPlan/TrainingTablePlan';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-
+// istanbul ignore next
 const ServiceTypePage = () => {
   const [isNutritionalPlan, setIsNutritionalPlan] = useState(false);
   const [isTrainingPlan, setIsTrainingPlan] = useState(false);

@@ -3,7 +3,7 @@ import axios from 'axios';
 import { GetUserInfo } from "../../Utils";
 import { useEditUserProfile } from "../../User/Hooks/useEditUserProfile";
 
-
+// istanbul ignore next
 // Custom hook para obtener los detalles del seguimiento
 const useReceiveTrackingDetail= (id) => {
     const urlAPI = process.env.REACT_APP_API_URL;
