@@ -62,7 +62,31 @@ const MealTablePlan = () => {
             <tr key={index}>
               <td
                 className="highlighted-cell event hand-cursor"
-                onClick={() => navigate(`/DetailMealTable/${item.productId}`)}
+                onClick={() => {
+                  if (currentUser) {
+                    const userId = currentUser.id;
+                    const productId = item.productId;
+
+                    console.log(`Checking subscription for userId: ${userId}, productId: ${productId}`);
+                    
+                    if (isSubscribed(userId, productId)) {
+                      console.log("User is subscribed. Navigating to detail page.");
+                      navigate(`/DetailMealTable/${productId}`);
+                    } else {
+                      console.log("User is not subscribed. Showing alert.");
+                      showAlertError(
+                        "Suscripción requerida",
+                        "Debes suscribirte para ver el detalle de este plan."
+                      );
+                    }
+                  } else {
+                    console.log("User not authenticated. Showing alert.");
+                    showAlertError(
+                      "Usuario no autenticado",
+                      "Por favor, inicia sesión para ver los detalles del plan."
+                    );
+                  }
+                }}
               >
                 {item.name}
               </td>
@@ -84,7 +108,7 @@ const MealTablePlan = () => {
                     if (currentUser) {
                       const userId = currentUser.id;
                       const productId = item.productId;
-
+                      
                       if (isSubscribed(userId, productId)) {
                         showAlertError(
                           "Ya estás suscrito",
