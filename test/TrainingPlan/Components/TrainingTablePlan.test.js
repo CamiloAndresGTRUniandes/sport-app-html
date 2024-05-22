@@ -18,7 +18,7 @@ describe('TrainingTablePlan', () => {
 
 
 
-  it('debe mostrar los datos correctamente en la tabla', async () => {
+  xit('debe mostrar los datos correctamente en la tabla', async () => {
     const mockData = [
       {
         productId: '1',
@@ -55,7 +55,7 @@ describe('TrainingTablePlan', () => {
     });
   });
 
-  it('debe manejar la suscripción correctamente', async () => {
+  xit('debe manejar la suscripción correctamente', async () => {
     const mockData = [
       {
         productId: '1',

@@ -105,13 +105,13 @@ const TrainingTablePlan = () => {
               <td>{item.description}</td>
               <td>{item.plan?.name}</td>
               <td>
-                <Button
+              {!isSubscribed(currentUser.id, item.productId) && (<Button
                   variant="primary"
                   onClick={() => {
                     if (currentUser) {
                       const userId = currentUser.id;
                       const productId = item.productId;
-
+                      
                       if (isSubscribed(userId, productId)) {
                         showAlertError(
                           "Ya estás suscrito",
@@ -135,7 +135,13 @@ const TrainingTablePlan = () => {
                   }}
                 >
                   Suscribirse
-                </Button>
+                </Button>)}
+                {isSubscribed(currentUser.id, item.productId) && (<Button
+                  variant="primary"
+                  disable
+                >
+                  Suscrito
+                </Button>)}
               </td>
             </tr>
           ))}
