@@ -65,9 +65,33 @@ export const Alerts = () => {
       }
     });
   };
+
+  const showToast=(title, message)=>
+  {
+   
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'bottom-end',
+      showConfirmButton: false,
+      timer: 8000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      }
+    });
+    Toast.fire({
+      icon: "success",
+      title: title,
+      text: message,
+    });
+
+  }
+
   return {
     showAlertSuccess,
     showAlertError,
-    showAlertSuscription
+    showAlertSuscription,
+    showToast
   };
 };

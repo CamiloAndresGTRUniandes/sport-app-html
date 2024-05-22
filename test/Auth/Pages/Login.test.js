@@ -5,7 +5,7 @@ import { act } from 'react-test-renderer';
 import { render, fireEvent, screen } from '@testing-library/react';
 
 import Login from '../../../src/pages/Auth/Pages/Login'; // Assuming Login is the export name
-import useLogin from '../../../src/pages/Auth/hooks/useLogin';
+import useLogin from '../../../src/pages/Auth/Hooks/useLogin';
 
 
 jest.mock('react-router-dom', () => {
@@ -15,7 +15,7 @@ jest.mock('react-router-dom', () => {
     useNavigate: jest.fn(() => jest.fn()),
   };
 });
-jest.mock('../../../src/pages/Auth/hooks/useLogin');
+jest.mock('../../../src/pages/Auth/Hooks/useLogin');
 jest.mock('react-dom', () => ({
   ...jest.requireActual('react-dom'),
   render: jest.fn(),

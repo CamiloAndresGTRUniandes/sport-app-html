@@ -5,7 +5,6 @@ const inicio=
     classChange: "sub-menu-down",
     content: [
       { title: "Entrenamiento", to: "/home-2" },
-      { title: "BodyBuilding", to: "/home-3" },
     ],
   };
 
@@ -22,13 +21,9 @@ const inicio=
         to: "/team",
       },
       {
-        title: "Preguntas",
-        to: "/faq",
+        title: "Precios",
+        to: "/pricing",
       },
-      // {
-      //   title: "Precios",
-      //   to: "/pricing",
-      // },
       // {
       //   title: "Calculadora de precios",
       //   to: "/weight-calculator",
@@ -41,10 +36,6 @@ const inicio=
       //   title: "Cronograma",
       //   to: "/schedule",
       // },
-      {
-        title: "Proximo evento",
-        to: "/coming-soon",
-      },
       // {
       //   title: "Error 404",
       //   to: "/error-404",
@@ -68,10 +59,6 @@ const inicio=
           title: "Cronograma",
           to: "/schedule",
         },
-        {
-          title: "Proximo evento",
-          to: "/coming-soon",
-        }
       ]
   
     };
@@ -94,10 +81,14 @@ const asociados=
   title: "Asociados",
   classChange: "sub-menu-down",
   content: [
-    { title: "Administrar seguimiento", to: "/AdministrarSeguimiento" },
+    { title: "Administrar seguimiento", to: "/user-tracking" },
     {
       title: "Registro de productos y servicios",
       to: "/product-services",
+    },
+    {
+      title: "Cerrar session",
+      to: "/close-session",
     }
   ],
 
@@ -109,12 +100,9 @@ const sugerencias=
   content: [
     {
       title: "Tus recomendaciones",
-      to: "/recomendaciones",
+      to: "/RecomendacionesPage",
     },
-    {
-      title: "Tus planes  alimentarios, deportivos",
-      to: "/recomendaciones-personales"
-    },
+
     {
       title: "Seguimientos",
       to: "/seguimientos",

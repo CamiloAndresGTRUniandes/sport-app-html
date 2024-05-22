@@ -1,0 +1,68 @@
+{
+    "ejercicios": [
+      {
+        "id": 1,
+        "titulo": "Flexiones de brazos",
+        "autor": "EntrenadorX",
+        "fecha": "2024-04-18",
+        "comentario": "¡Excelente ejercicio para fortalecer el pecho y los brazos!",
+        "imagen": "https://i.blogs.es/3eddc1/istock-1094479308/450_1000.webp",
+        "descripcion": "Las flexiones de brazos son un ejercicio de fuerza en el que se trabaja principalmente el pecho, los hombros y los tríceps. Para realizarlas, colócate boca abajo con las manos a la altura de los hombros y los pies juntos. Baja el cuerpo flexionando los codos hasta que el pecho casi toque el suelo, luego vuelve a la posición inicial extendiendo los brazos."
+      },
+      {
+        "id": 2,
+        "titulo": "Sentadillas",
+        "autor": "EntrenadorY",
+        "fecha": "2024-04-18",
+        "comentario": "¡Perfecto para trabajar las piernas y glúteos!",
+        "imagen": "https://images.hola.com/imagenes/estar-bien/20200818173705/ejercicios-sentadillas-intensas-gt/0-856-951/sentadillas-intensas-m.jpg?tx=w_680",
+        "descripcion": "Las sentadillas son un ejercicio básico de fuerza que involucra múltiples grupos musculares, incluyendo cuádriceps, isquiotibiales y glúteos. Para realizarlas, colócate de pie con los pies separados al ancho de los hombros, baja el cuerpo flexionando las rodillas y caderas como si te fueras a sentar en una silla, manteniendo los talones en contacto con el suelo, luego vuelve a la posición inicial extendiendo las piernas."
+      },
+      {
+        "id": 3,
+        "titulo": "Plancha abdominal",
+        "autor": "EntrenadorZ",
+        "fecha": "2024-04-18",
+        "comentario": "¡Gran ejercicio para fortalecer el core!",
+        "imagen": "https://hips.hearstapps.com/hmg-prod/images/mid-adult-man-doing-plank-exercise-royalty-free-image-1585917009.jpg?crop=1xw:0.84375xh;center,top&resize=1200:*",
+        "descripcion": "La plancha abdominal es un ejercicio estático que fortalece los músculos abdominales, lumbares y del core. Para realizarla, colócate boca abajo apoyado sobre los antebrazos y los dedos de los pies, mantén el cuerpo en línea recta desde la cabeza hasta los talones, evitando arquear o hundir la espalda."
+      },
+      {
+        "id": 4,
+        "titulo": "Zancadas",
+        "autor": "EntrenadorX",
+        "fecha": "2024-04-18",
+        "comentario": "¡Excelente para trabajar piernas y glúteos!",
+        "imagen": "https://i.blogs.es/7d3224/zancadas/1366_2000.jpg",
+        "descripcion": "Las zancadas son un ejercicio unilateral que trabaja principalmente los músculos de las piernas y los glúteos. Para realizarlas, da un paso hacia adelante con una pierna y flexiona ambas rodillas hasta que formen un ángulo de 90 grados, mantén la espalda recta y el torso erguido, luego vuelve a la posición inicial impulsándote con el talón."
+      },
+      {
+        "id": 5,
+        "titulo": "Abdominales",
+        "autor": "EntrenadorY",
+        "fecha": "2024-04-18",
+        "comentario": "¡Perfectos para fortalecer el abdomen!",
+        "imagen": "https://manmedicalinstitute.com/wp-content/uploads/2022/04/Rutina-de-abdominales-para-hombres-consigue-tu-six-pack-desde-casa-1-768x512.jpg",
+        "descripcion": "Los abdominales son un grupo de ejercicios diseñados para fortalecer los músculos abdominales. Existen numerosas variaciones de abdominales, incluyendo abdominales tradicionales, crunches, oblicuos, entre otros."
+      },
+      {
+        "id": 6,
+        "titulo": "Burpees",
+        "autor": "EntrenadorZ",
+        "fecha": "2024-04-18",
+        "comentario": "¡Gran ejercicio cardiovascular y de fuerza!",
+        "imagen": "https://static.nike.com/a/images/f_auto/dpr_3.0,cs_srgb/w_363,c_limit/4399d325-3fd7-41f8-ac24-219ee6751668/%C2%BFqu%C3%A9-es-un-burpee-los-entrenadores-personales-lo-explican.jpg",
+        "descripcion": "Los burpees son un ejercicio de cuerpo completo que combina fuerza, resistencia y coordinación. Para realizarlos, comienza en posición de cuclillas, luego coloca las manos en el suelo y estira las piernas hacia atrás para quedar en posición de plancha, haz una flexión de brazos, lleva las piernas de vuelta hacia adelante y salta explosivamente con los brazos extendidos por encima de la cabeza."
+      },
+      {
+        "id": 7,
+        "titulo": "Fondos de tríceps",
+        "autor": "EntrenadorX",
+        "fecha": "2024-04-18",
+        "comentario": "¡Ideal para trabajar los tríceps!",
+        "imagen": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhkOd4lmAKUgCOWq-KFUijvZ3uHmw58u1CjqM3_lrmGdC-55g7OKifN1c6rhWqr33VoA9njBG6a1WWc2R0xtwe168FNgPSiXQWz7v4yN9wIPlk_5qhD5jRF_ovNrJTFNAhQBwZcEzdwurI/s1600/pantorrilas_ejercicio_entrenamiento_est%25C3%25A9tica_simetria-12.jpg",
+        "descripcion": "Los fondos de tríceps son un excelente ejercicio para aislar y fortalecer los músculos tríceps. Para realizarlos, colócate frente a una superficie elevada (como una silla o banco), coloca las manos en la superficie detrás de ti con los dedos apuntando hacia adelante, baja el cuerpo flexionando los codos hasta que los brazos formen un ángulo de 90 grados, luego vuelve a la posición inicial extendiendo los brazos."
+      }
+    ]
+  }
+  

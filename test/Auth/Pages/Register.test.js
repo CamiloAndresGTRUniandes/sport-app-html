@@ -4,10 +4,10 @@ import { MemoryRouter } from 'react-router-dom';
 import { act } from 'react-test-renderer';
 import { render, fireEvent, screen } from '@testing-library/react';
 import Registro from '../../../src/pages/Auth/Pages/Register';
-import useRegisterUser from '../../../src/pages/Auth/hooks/useRegisterUser';
-import useEmailExists from '../../../src/pages/Auth/hooks/useEmailExists';
+import useRegisterUser from '../../../src/pages/Auth/Hooks/useRegisterUser';
+import useEmailExists from '../../../src/pages/Auth/Hooks/useEmailExists';
 
-jest.mock('../../../src/pages/Auth/hooks/useRegisterUser',
+jest.mock('../../../src/pages/Auth/Hooks/useRegisterUser',
   () => {
     return {
       createUser: jest.fn(),
@@ -18,7 +18,7 @@ jest.mock('../../../src/pages/Auth/hooks/useRegisterUser',
     }
   }
 );
-jest.mock('../../../src/pages/Auth/hooks/useEmailExists', () => ({
+jest.mock('../../../src/pages/Auth/Hooks/useEmailExists', () => ({
   useEmailExists: jest.fn(() => ({
     validateEmail: jest.fn(),
     emailExists: false,

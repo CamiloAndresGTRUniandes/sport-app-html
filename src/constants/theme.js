@@ -159,7 +159,7 @@ export const IMAGES = {
   overlayBoxpic4: require("../assets/images/overly-box/pic4.jpg"),
   overlayBoxpic5: require("../assets/images/overly-box/pic5.jpg"),
 
-  testimonialPic4: require("../assets/images/testimonials/pic4.jpg"),
+  // testimonialPic4: require("../assets/images/testimonials/pic4.jpg"),
   testimonialPic5: require("../assets/images/testimonials/pic5.jpg"),
   testimonialPic6: require("../assets/images/testimonials/pic6.jpg"),
 

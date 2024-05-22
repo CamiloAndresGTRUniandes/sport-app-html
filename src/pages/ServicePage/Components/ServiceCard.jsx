@@ -1,11 +1,11 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
 
-const ServiceCard = ({ item, hover, setHover }) => {
+const ServiceCard = ({ item, hover, setHover,to }) => {
   return (
     <div className="col-xl-3 col-md-6 m-b30" key={item.id}>
       <div
+        data-testid="service-card-wrapper"
         className={`icon-bx-wraper style-1 box-hover ${
           hover === item.id ? "active" : ""
         }`}
@@ -21,7 +21,7 @@ const ServiceCard = ({ item, hover, setHover }) => {
             <Link to={"#"}>{item.name}</Link>
           </h5>
           <Link
-            to={"/services-details-table"}
+            to={`/services/serviceType/${item.id}`}
             className="btn btn-primary shadow-primary btn-skew"
           >
             <span>Leer más</span>

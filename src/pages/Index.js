@@ -15,6 +15,8 @@ import Pricing from "./Pricing";
 import Faq from "./Faq";
 import { Schedule } from "./Schedules/Pages/Schedule";
 import ErrorPage from "./ErrorPage";
+import DetailMealTablePage from './MealPlans/Pages/NutritionalPlan/DetailMealTablePage';
+import DetailTrainingTablePage from './MealPlans/Pages/TrainingPlan/DetailTrainingTablePage';
 import UnderConstruction from "./UnderConstruction";
 import ComingSoon from "./ComingSoon";
 import Portfolio from "./Portfolio";
@@ -22,7 +24,9 @@ import PortfolioDetails from "./PortfolioDetails";
 import Services from "./ServicePage/Pages/Service";
 import ServicesDetails from "./ServicesDetails";
 import BlogGrid from "./BlogGrid";
-import Recomendacion from "./Recomendacion";
+
+import RecomendacionDetailPage from "./Recommendations/Pages/RecommendationDetailPage";
+import ReceiveTrackingDetailPage from "./ReceiveTracking/Pages/ReceiveTrackingDetailPage";
 import BlogLargeSidebar from "./BlogLargeSidebar";
 import BlogListSidebar from "./BlogListSidebar";
 import BlogDetail from "./BlogDetail";
@@ -37,11 +41,13 @@ import Header2 from "../layouts/Header2";
 import Home3 from "./Home3";
 import UserProfile from "./User/Pages/UserProfile";
 import ServicesDetailsTable from "./ServicesDetailsTable";
+import RecommendationPage from "./Recommendations/Pages/RecommendationPage";
+import ReceiveTrackingPage from "./ReceiveTracking/Pages/ReceiveTrackingPage";
 import Recomendaciones from "./Recomendaciones";
 import RecomendacionDetail from "./RecomendacionDetail";
 import RecomendacionPlanDepor from "./RecomendacionPlanDepor";
 import AsociacionTerceros from "./AsociacionTerceros";
-import Seguimientos from "./Seguimientos";
+import Seguimientos from "./ReceiveTracking/Pages/ReceiveTrackingPage";
 import ServiciosProductos from "./ServiciosProductos";
 import EdicionServiciosProductos from "./EdicionServiciosProductos";
 import EdicionRecomendacion from "./EdicionRecomendacion";
@@ -51,6 +57,12 @@ import ProductServices from "./ProductServices/Pages/ProductServiceList";
 
 import Pagar from "./Pagar";
 import { CloseSession } from "./Auth/Pages";
+import ListUserTracking from "./UserTracking/Pages/ListUserTracking";
+import { RecommendationForUser, EditRecommendation  } from "./UserTracking/Pages";
+import ServiceTypePage from "./MealPlans/Pages/ServiceTypePage";
+import PricingPage from "./Subscriptions/Pages/PricingPage";
+import SubscriptionPage from "./Subscriptions/Pages/SubscriptionPage";
+
 
 function Index() {
   var baseName = "/";
@@ -80,12 +92,17 @@ function Index() {
           <Route path="/about-us" exact element={<AboutUs />} />
           <Route path="/team" exact element={<Team />} />
           <Route path="/faq" exact element={<Faq />} />
-          <Route path="/pricing" exact element={<Pricing />} />
+          <Route path="/pricing" exact element={<PricingPage />} />
+          <Route path="/subscription/:planId" exact element={<SubscriptionPage />} />
           <Route path="/schedule" exact element={<Schedule />} />
           <Route path="/portfolio" exact element={<Portfolio />} />
           <Route path="/user-profile" exact element={<UserProfile />} />
           <Route path="close-session" exact element={<CloseSession />} />
-          <Route path="/Recomendacion" exact element={<Recomendacion />} />
+          <Route path="/RecomendacionesPage" exact element={<RecommendationPage />} />
+          <Route path="/ReceiveTrackingPage" exact element={<ReceiveTrackingPage />} />
+          <Route path="/user-tracking/:id" exact element={<RecommendationForUser />} />
+          <Route path="/edit-recommendation/:id" exact element={<EditRecommendation />} />
+
           <Route
             path="/edicion-recomendacion"
             exact
@@ -114,6 +131,38 @@ function Index() {
             exact
             element={<ProductServiceEdit />}
           />
+          
+          <Route
+            path="/services/serviceType/:serviceTypeId"
+            exact
+            element={<ServiceTypePage />}
+          />
+
+
+          <Route
+            path="/DetailMealTable/:productId"
+            exact
+            element={<DetailMealTablePage />}
+            
+          />
+
+          <Route
+            path="/DetailTrainingTable/:productId"
+            exact
+            element={<DetailTrainingTablePage />}
+          />
+
+           <Route
+            path="/Recomendacion-Detail/:id"
+            exact
+            element={<RecomendacionDetailPage />}
+          />
+
+            <Route
+            path="/Seguimiento-Detail/:id"
+            exact
+            element={<ReceiveTrackingDetailPage />}
+          />
           <Route
             path="/edit-product-services/"
             exact
@@ -121,9 +170,9 @@ function Index() {
           />
           <Route path="/services" exact element={<Services />} />
           <Route
-            path="/AdministrarSeguimiento"
+            path="/user-tracking"
             exact
-            element={<AdministrarSeguimiento />}
+            element={<ListUserTracking />}
           />
           <Route path="/services-details" exact element={<ServicesDetails />} />
           <Route
@@ -132,7 +181,7 @@ function Index() {
             element={<ServicesDetailsTable />}
           />
           <Route path="/blog-grid" exact element={<BlogGrid />} />
-          <Route path="/Recomendaciones" exact element={<Recomendaciones />} />
+          <Route path="/Recomendacion" exact element={<Recomendaciones />} />
           <Route
             path="/Recomendacion-Detail"
             exact

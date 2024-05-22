@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Alerts } from "../../Utils";
 import axios from "axios";
 
@@ -18,15 +18,20 @@ export const useCreateProductService = () => {
     const [loadingUpdateProfile, setLoadingUpdateProduct] = useState(false);
     const [productCreated, setProductCreated] = useState(false);
     const [eventSelected, setEventSelected] = useState(false);
+    const [planSelected, setPlanSelected] = useState(false);
+    const [trainingPlanSelected, setTrainingPlanSelected] = useState(false);
     const { showAlertSuccess, showAlertError } = Alerts();
     const [productLoading, setProductLoading] = useState(true);
     const [physicalLevelsUP, setPhysicalLevels] = useState([]);
     const [newCountryId, setNewCountryId] = useState(null);
     const [newStateId, setNewStateId] = useState(null);
+    const [isEdit, setIsEdit] = useState(false);
     const [newCityId, setNewCityId] = useState(null);
     const [newCategoryId, setNewCategoryId] = useState(null);
     const GuidEmpty = "00000000-0000-0000-0000-000000000000";
     const currentUser = JSON.parse(sessionStorage.getItem("userLogin"));
+    const trainingPlanServiceType = "3040214a-a77d-4549-8f67-6b51f7755a3e";
+    const showJson = false;
 
     const createProduct = async (updProduct) => {
 
@@ -36,7 +41,6 @@ export const useCreateProductService = () => {
                 `${urlAPI}/api/v1/productService`,
                 updProduct
             );
-            console.log("response update product", response);
             setProductCreated(true);
             showAlertSuccess(
                 "Felicitaciones :)",
@@ -72,11 +76,11 @@ export const useCreateProductService = () => {
             let product = {};
             if (productId) {
                 product = axios.get(`${urlAPI}/api/v1/productService/${productId}`);
+                setIsEdit(true);
             } else {
                 let date = new Date(Date.now());
                 let dateString = new Date(date.getTime() - (date.getTimezoneOffset() * 60000))
-                    .toISOString()
-                    .split("T")[0];
+                    .toISOString();
                 product = {
                     data: {
                         productId: GuidEmpty,
@@ -96,7 +100,49 @@ export const useCreateProductService = () => {
                         goals: [],
                         allergies: [],
                         startDateTime: dateString,
-                        endDateTime: dateString
+                        endDateTime: dateString,
+                        nutritionalPlan: {
+                            days: [
+                                {
+                                    id: GuidEmpty,
+                                    name: "",
+                                    meals: [
+                                        {
+                                            id: GuidEmpty,
+                                            name: "",
+                                            description: "",
+                                            calories: 0,
+                                            dishType: "",
+                                            picture: ""
+                                        }
+                                    ]
+                                }
+
+                            ]
+                        },
+                        trainingPlan: {
+                            startAge: 0,
+                            endAge: 0,
+                            trainings: [
+                                {
+                                    id: GuidEmpty,
+                                    name: "",
+                                    description: "",
+                                    exercises: [
+                                        {
+                                            id: GuidEmpty,
+                                            name: "",
+                                            description: '',
+                                            sets: 0,
+                                            repeats: 0,
+                                            weight: 0,
+                                            picture: ""
+                                        }
+                                    ]
+                                }
+
+                            ]
+                        }
                     }
                 }
             }
@@ -164,21 +210,13 @@ export const useCreateProductService = () => {
         if (initialProduct) {
             if (initialProduct.productId != '' && initialProduct.productId != GuidEmpty && initialProduct.productId != null) {
                 initialProduct.user = currentUser.id;
-                if (initialProduct.categoryId) {
-                    setNewCategoryId(initialProduct.categoryId);
-                    initialProduct.serviceTypeId = initialProduct.serviceTypeId;
+                initialProduct.planId = initialProduct.plan.id;
+                if (initialProduct.category.id) {
+                    initialProduct.categoryId = initialProduct.category.id;
+                    setNewCategoryId(initialProduct.category.id);
+                    initialProduct.serviceTypeId = initialProduct.serviceType.id;
                 }
-                if (initialProduct.categoryId === 'be8e2306-8bc9-49cc-8d43-a76820370994') {
-                    const startDate = new Date(initialProduct.startDateTime);
-                    const startDateString = new Date(startDate.getTime() - (startDate.getTimezoneOffset() * 60000))
-                        .toISOString()
-                        .split("T")[0];
-                    const endDate = new Date(initialProduct.endDateTime);
-                    const endDateString = new Date(endDate.getTime() - (endDate.getTimezoneOffset() * 60000))
-                        .toISOString()
-                        .split("T")[0];
-                    initialProduct.startDateTime = startDateString;
-                    initialProduct.endDateTime = endDateString;
+                if (initialProduct.category.id === 'be8e2306-8bc9-49cc-8d43-a76820370994') {
                     setEventSelected(true);
                 } else {
                     setEventSelected(false);
@@ -186,19 +224,66 @@ export const useCreateProductService = () => {
                 if (initialProduct.countryId) {
                     setNewCountryId(initialProduct.countryId);
                     if (initialProduct.stateId) {
-                        setNewStateId(initialProduct.stateId);
+                        changeNewState(initialProduct.stateId);
                         initialProduct.cityId = initialProduct.cityId;
                     }
+                }
+                if(initialProduct.serviceTypeId === trainingPlanServiceType){
+                    changeNewServiceType(trainingPlanServiceType);
+                }
+                if (initialProduct.nutritionalPlan === null){
+                    initialProduct.nutritionalPlan = {
+                        days: [
+                            {
+                                id: GuidEmpty,
+                                name: "",
+                                meals: [
+                                    {
+                                        id: GuidEmpty,
+                                        name: "",
+                                        description: "",
+                                        calories: 0,
+                                        dishType: "",
+                                        picture: ""
+                                    }
+                                ]
+                            }
+    
+                        ]
+                    };
+                }
+                if(initialProduct.trainingPlan === null){
+                    initialProduct.trainingPlan = {
+                        startAge: 0,
+                        endAge: 0,
+                        trainings: [
+                            {
+                                id: GuidEmpty,
+                                name: "",
+                                description: "",
+                                exercises: [
+                                    {
+                                        id: GuidEmpty,
+                                        name: "",
+                                        description: '',
+                                        sets: 0,
+                                        repeats: 0,
+                                        weight: 0,
+                                        picture: ""
+                                    }
+                                ]
+                            }
+    
+                        ]
+                    };
                 }
             }
             if (initialProduct.typeOfNutritionId === null) {
                 initialProduct.typeOfNutritionId = GuidEmpty;
             }
-            if (initialProduct.serviceTypeId) {
-                initialProduct.serviceTypeId = GuidEmpty;
-            }
+            
         }
-    }, [initialProduct]);
+    }, [initialProduct]); 
     const changeNewCountry = (countryId) => setNewCountryId(countryId);
 
     useEffect(() => {
@@ -250,6 +335,15 @@ export const useCreateProductService = () => {
         getCities();
     }, [newStateId]);
 
+    const changeNewServiceType = (serviceType) => {
+        console.log(serviceType);
+        if(serviceType === trainingPlanServiceType){
+            setTrainingPlanSelected(true);
+        }else{
+            setTrainingPlanSelected(false);
+        }
+    };
+
     const changeNewCategory = (categoryId) => setNewCategoryId(categoryId);
     useEffect(() => {
 
@@ -271,8 +365,15 @@ export const useCreateProductService = () => {
 
                     if (newCategoryId === 'be8e2306-8bc9-49cc-8d43-a76820370994') {
                         setEventSelected(true);
-                    } else {
+                        setPlanSelected(false);
+                    }
+                    else if (newCategoryId === '03388722-321f-4b6a-963e-104eb73d17c2') {
+                        setPlanSelected(true);
                         setEventSelected(false);
+                    }
+                    else {
+                        setEventSelected(false);
+                        setPlanSelected(false);
                     }
 
                     setServiceTypesUP(response.data);
@@ -288,7 +389,7 @@ export const useCreateProductService = () => {
 
         getServiceTypes();
     }, [newCategoryId]);
-
+    
     return {
         initialProduct,
         GetInitialInformation,
@@ -311,6 +412,12 @@ export const useCreateProductService = () => {
         serviceTypesUP,
         changeNewCategory,
         plansUp,
-        eventSelected
+        eventSelected,
+        planSelected,
+        GuidEmpty,
+        isEdit,
+        trainingPlanSelected,
+        changeNewServiceType,
+        showJson
     };
 };

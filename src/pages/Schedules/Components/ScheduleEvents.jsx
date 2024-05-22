@@ -2,16 +2,14 @@ import { addDays, endOfWeek, format, startOfWeek } from "date-fns";
 import { useEffect, useState } from "react";
 import { Calendar } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-import { Alerts, GetUserInfo, SpinnerSportApp } from "../../Utils";
+import { Alerts, SpinnerSportApp } from "../../Utils";
 import { getMessagesES, localizer } from "../Helpers/";
 import { useCalendarEvents } from "../Hooks/useCalendarEvents";
 import { CalendarEvent } from "./";
 
 export const ScheduleEvents = () => {
-  const { showAlertSuscription, showAlertSuccess } = Alerts();
-  // const { getUser } = GetUserInfo();
-  const getUser  = JSON.parse(sessionStorage.getItem("userLogin"));
-  console.log(getUser);
+  const { showAlertSuscription } = Alerts();
+  const getUser = JSON.parse(sessionStorage.getItem("userLogin"));
   const [firstDateWeek, setFirstDateWeek] = useState(
     format(new Date(), "MMM dd, yyyy")
   );
@@ -22,9 +20,9 @@ export const ScheduleEvents = () => {
   const [lastView, setLastView] = useState(
     localStorage.getItem("lastView") || "week"
   );
-  const { eventsByUser, loadEvents, getEvents } =
-  useCalendarEvents(getUser.id, getUser.name);
- 
+  const { eventsByUser, loadEvents, getEvents, suscribeEvent } =
+    useCalendarEvents(getUser.id, getUser.name);
+
   useEffect(() => {
     getEvents(firstDateWeek, lastDateWeek);
   }, []);
@@ -40,14 +38,10 @@ export const ScheduleEvents = () => {
   const onSelect = (event) => {
     const { title, description } = event;
     showAlertSuscription(title, description, event, onConfirm);
-    console.log({ onSelect: event });
   };
 
   const onConfirm = (event) => {
-    showAlertSuccess(
-      "Super lo hiciste quedaste inscrito (•‿•)!",
-      "Recuerda, este  evento es  pago"
-    );
+    suscribeEvent(event);
   };
   const onNavigate = (date, view, action) => {
     console.log(
