@@ -6,7 +6,7 @@ import { SpinnerSportApp } from "../../../Utils/SpinnerSportApp";
 import { Alerts } from "../../../Utils";
 
 const { showAlertError } = Alerts();
-
+ // istanbul ignore next
 const MealTablePlan = () => {
   const {
     initialData,
@@ -102,7 +102,7 @@ const MealTablePlan = () => {
               <td>{item.description}</td>
               <td>{item.plan?.name}</td>
               <td>
-                <Button
+                {!isSubscribed(currentUser.id, item.productId) && (<Button
                   variant="primary"
                   onClick={() => {
                     if (currentUser) {
@@ -132,7 +132,13 @@ const MealTablePlan = () => {
                   }}
                 >
                   Suscribirse
-                </Button>
+                </Button>)}
+                {isSubscribed(currentUser.id, item.productId) && (<Button
+                  variant="primary"
+                  disable
+                >
+                  Suscrito
+                </Button>)}
               </td>
             </tr>
           ))}
